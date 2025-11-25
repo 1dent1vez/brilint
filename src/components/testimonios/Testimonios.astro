@@ -1,0 +1,34 @@
+---
+import Container from '../ui/Container.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
+import { testimonios } from '../../data/testimonios.js';
+---
+
+<section id="testimonios" class="py-section-y bg-brilint-bg">
+  <Container>
+    <SectionTitle
+      title="Personas y negocios que ya están viendo resultados"
+      subtitle="Testimonios reales de proyectos donde se mezclan desarrollo, redes y soporte para que todo funcione mejor en el día a día."
+    />
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {testimonios.map((t) => (
+        <article class="relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/70 p-6">
+          <p class="text-sm text-brilint-muted mb-4">
+            “{t.mensaje}”
+          </p>
+
+          <div class="mt-auto">
+            <p class="text-sm font-semibold text-brilint-text">
+              {t.nombre}
+            </p>
+            <p class="text-xs text-brilint-muted">{t.rol}</p>
+            <p class="mt-2 text-xs text-brilint-muted/80">
+              {t.tipoProyecto} · {t.zona}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </Container>
+</section>

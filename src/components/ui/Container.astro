@@ -1,0 +1,9 @@
+---
+// Componente contenedor reutilizable
+const { as = 'div', className = '' } = Astro.props;
+const Tag = as;
+---
+
+<Tag class={`container-brilint ${className}`}>
+  <slot />
+</Tag>

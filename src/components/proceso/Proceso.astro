@@ -1,0 +1,63 @@
+---
+import Container from '../ui/Container.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
+
+const pasos = [
+  {
+    id: 1,
+    titulo: 'Diagnóstico',
+    descripcion:
+      'Escuchamos tu situación actual: qué negocio tienes, cómo te encuentran hoy, qué falla y qué quieres lograr.',
+    detalle:
+      'Se revisa tu presencia digital actual (si existe), tu zona de influencia, tu competencia directa y tu capacidad operativa.',
+  },
+  {
+    id: 2,
+    titulo: 'Estrategia',
+    descripcion:
+      'Definimos qué se construye primero: landing, campañas, ajustes de red, soporte o una mezcla.',
+    detalle:
+      'Se priorizan acciones según impacto en clientes nuevos y según tu presupuesto real, no en teorías.',
+  },
+  {
+    id: 3,
+    titulo: 'Implementación',
+    descripcion:
+      'Diseñamos y desarrollamos la solución: sitio, campañas, ajustes técnicos y configuraciones.',
+    detalle:
+      'Se entregan avances claros, se prueban formularios, enlaces, WhatsApp, métricas y funcionamiento en móvil.',
+  },
+  {
+    id: 4,
+    titulo: 'Optimización',
+    descripcion:
+      'Ajustamos según lo que pasa en la vida real: visitas, leads, consultas y problemas técnicos.',
+    detalle:
+      'Se corrigen fricciones, se afinan textos, velocidad, segmentaciones y se dejan bases listas para crecer.',
+  },
+];
+---
+
+<section id="proceso" class="py-section-y bg-brilint-surface">
+  <Container>
+    <SectionTitle
+      title="Así es trabajar con Brilint"
+      subtitle="Un proceso claro, sin palabras raras: entiendes qué se hace, por qué y qué puedes esperar en cada etapa."
+    />
+
+    <ol class="grid gap-6 md:grid-cols-2">
+      {pasos.map((paso) => (
+        <li class="relative rounded-2xl border border-brilint-border bg-brilint-bg/60 p-6">
+          <div class="mb-3 flex items-center gap-3">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg text-sm font-semibold">
+              {paso.id}
+            </span>
+            <h3 class="text-lg font-semibold">{paso.titulo}</h3>
+          </div>
+          <p class="text-sm text-brilint-muted mb-2">{paso.descripcion}</p>
+          <p class="text-xs text-brilint-muted/80">{paso.detalle}</p>
+        </li>
+      ))}
+    </ol>
+  </Container>
+</section>

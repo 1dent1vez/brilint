@@ -1,16 +1,39 @@
 ---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import Nav from '../components/nav/Nav.astro';
+import Hero from '../components/hero/Hero.astro';
+import Services from '../components/services/Services.astro';
+import Paquetes from '../components/paquetes/Paquetes.astro';
+import Proceso from '../components/proceso/Proceso.astro';
+import Portfolio from '../components/portfolio/Portfolio.astro';
+import ContactSection from '../components/form/ContactSection.astro';
+import FAQ from '../components/faq/FAQ.astro';
+import CTA from '../components/cta/CTA.astro';
+import Testimonios from '../components/testimonios/Testimonios.astro';
+import Footer from '../components/footer/Footer.astro';
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<DefaultLayout
+  title="Brilint – Servicios digitales premium en el Valle de Toluca"
+  description="Brilint ayuda a PyMEs, profesionales y hogares a tener presencia digital, campañas y sistemas tecnológicos confiables en Metepec, Toluca y alrededores."
+>
+  <Nav />
+
+  <main class="bg-brilint-bg">
+    <Hero />
+    <Services />
+    <Paquetes />
+    <Proceso />
+    <Portfolio />
+    <ContactSection />
+    <Testimonios />
+    <FAQ />
+    <CTA />
+  </main>
+
+  <Footer />
+</DefaultLayout>
+
+  </main>
+</DefaultLayout>

@@ -1,0 +1,45 @@
+---
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+
+const links = [
+  { href: '#servicios', label: 'Servicios' },
+  { href: '#paquetes', label: 'Paquetes' },
+  { href: '#proceso', label: 'Proceso' },
+  { href: '#portfolio', label: 'Portafolio' },
+  { href: '#testimonios', label: 'Testimonios' },
+  { href: '#faq', label: 'FAQ' },
+];
+
+---
+
+<header class="fixed top-0 inset-x-0 z-30 border-b border-brilint-border/60 backdrop-blur-md bg-brilint-bg/70">
+  <Container className="flex h-16 items-center justify-between">
+    <a href="#top" class="inline-flex items-center gap-2">
+      <span class="h-2 w-2 rounded-full bg-brilint-accent"></span>
+      <span class="font-display text-lg font-semibold tracking-tight">
+        Brilint
+      </span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm text-brilint-muted">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="hover:text-brilint-text transition duration-fast"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="hidden md:block">
+      <Button
+        href="https://wa.me/527292392198?text=Hola,%20me%20interesa%20una%20cotización%20con%20Brilint"
+        variant="primary"
+      >
+        Hablar por WhatsApp
+      </Button>
+    </div>
+  </Container>
+</header>

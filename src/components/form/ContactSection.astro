@@ -1,0 +1,18 @@
+---
+import Container from '../ui/Container.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
+import ContactForm from '../../react/ContactForm.jsx';
+---
+
+<section id="contacto" class="py-section-y bg-brilint-bg">
+  <Container>
+    <SectionTitle
+      title="Hablemos de tu proyecto"
+      subtitle="Cotizaciones rápidas y claras. Atención por WhatsApp o formulario."
+    />
+
+    <div class="max-w-xl mx-auto">
+      <ContactForm client:load />
+    </div>
+  </Container>
+</section>

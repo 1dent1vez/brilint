@@ -1,0 +1,29 @@
+---
+import Container from '../ui/Container.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
+import { faqs } from '../../data/faqs.js';
+---
+
+<section id="faq" class="py-section-y bg-brilint-bg">
+  <Container>
+    <SectionTitle
+      title="Preguntas frecuentes"
+      subtitle="Dudas que suelen salir antes de empezar. Si tienes otra, solo escríbeme y la resolvemos directo."
+    />
+
+    <div class="space-y-3">
+      {faqs.map((faq) => (
+        <details class="group rounded-2xl border border-brilint-border bg-brilint-surface/70 p-4">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-medium text-brilint-text">
+            <span>{faq.pregunta}</span>
+            <span class="text-brilint-muted text-xs group-open:hidden">+</span>
+            <span class="text-brilint-muted text-xs hidden group-open:inline">−</span>
+          </summary>
+          <div class="mt-2 text-sm text-brilint-muted">
+            {faq.respuesta}
+          </div>
+        </details>
+      ))}
+    </div>
+  </Container>
+</section>

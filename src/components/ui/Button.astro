@@ -1,0 +1,31 @@
+---
+/**
+ * Button.astro
+ * Componente base de botón para Brilint
+ * En Astro el contenido va por <slot />, no por children.
+ */
+
+const { href = null, variant = 'primary' } = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-sm transition duration-fast';
+
+const variants = {
+  primary:
+    'bg-brilint-accent text-brilint-bg hover:bg-brilint-accent/90',
+  ghost:
+    'bg-transparent border border-brilint-border text-brilint-text hover:border-brilint-accent',
+};
+
+const classes = `${base} ${variants[variant] ?? variants.primary}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button type="button" class={classes}>
+    <slot />
+  </button>
+)}

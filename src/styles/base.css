@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset / ajustes mínimos para look premium */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @apply bg-brilint-bg text-brilint-text antialiased;
+}
+
+/* Contenedor base reutilizable */
+.container-brilint {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+/* Tipografía base */
+h1, h2, h3, h4 {
+  @apply font-display tracking-tight;
+}
+
+p {
+  @apply text-brilint-muted leading-relaxed;
+}

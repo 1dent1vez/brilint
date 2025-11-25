@@ -1,0 +1,67 @@
+---
+import Container from '../ui/Container.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
+import Button from '../ui/Button.astro';
+import { paquetes } from '../../data/paquetes.js';
+---
+
+<section id="paquetes" class="py-section-y bg-brilint-bg">
+  <Container>
+    <SectionTitle
+      title="Paquetes pensados para tu negocio"
+      subtitle="Tres niveles claros para que elijas según tu momento. Desde una landing rápida hasta soluciones completas."
+    />
+
+    <div class="grid gap-8 md:grid-cols-3">
+      {paquetes.map((paquete) => (
+        <article
+          class={`relative rounded-2xl border p-8 flex flex-col h-full ${
+            paquete.destacado
+              ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10'
+              : 'border-brilint-border bg-brilint-surface/70'
+          }`}
+        >
+          {paquete.destacado && (
+            <span class="absolute -top-3 left-8 rounded-full bg-brilint-accent px-3 py-1 text-xs font-semibold text-brilint-bg">
+              Más elegido
+            </span>
+          )}
+
+          <h3 class="text-2xl font-semibold mb-1">{paquete.nombre}</h3>
+
+          <p class="text-xs tracking-[0.18em] uppercase text-brilint-muted mb-4">
+            {paquete.etiqueta}
+          </p>
+
+          <p class="text-base font-semibold text-brilint-accent mb-2">
+            {paquete.precioDesde}
+          </p>
+
+          <p class="text-sm text-brilint-muted mb-6">
+            {paquete.idealPara}
+          </p>
+
+          <ul class="space-y-2 text-sm text-brilint-muted flex-1">
+            {paquete.incluye.map((item) => (
+              <li class="flex gap-2">
+                <span class="text-brilint-accent">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-8">
+            <Button
+              href={`https://wa.me/527292392198?text=Hola,%20quiero%20el%20paquete%20${encodeURIComponent(
+                paquete.nombre
+              )}`}
+              variant={paquete.destacado ? 'primary' : 'ghost'}
+            >
+              Cotizar {paquete.nombre}
+            </Button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </Container>
+</section>

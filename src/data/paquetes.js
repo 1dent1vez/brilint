@@ -1,0 +1,46 @@
+export const paquetes = [
+  {
+    id: 'starter',
+    nombre: 'Starter',
+    etiqueta: 'Ideal para empezar',
+    precioDesde: 'Desde $3,000 MXN',
+    idealPara: 'Negocios locales y profesionales que quieren su primera presencia online bien hecha.',
+    incluye: [
+      'Landing page de 1 sección principal + 3 secciones',
+      'Diseño responsivo básico (móvil y escritorio)',
+      'Integración a WhatsApp y Google Maps',
+      'Configuración de dominio y hosting (si ya lo tienes)',
+      'Optimización básica de velocidad',
+    ],
+  },
+  {
+    id: 'pro',
+    nombre: 'Pro',
+    etiqueta: 'Más vendido',
+    precioDesde: 'Desde $6,000 MXN',
+    idealPara: 'PyMEs que necesitan una presencia sólida y campañas que generen leads.',
+    incluye: [
+      'Landing page completa con hasta 7 secciones',
+      'Copywriting persuasivo para mejorar conversiones',
+      'Integración con Meta Ads / Google Ads',
+      'Configuración de Google Analytics / métricas básicas',
+      'Optimización de velocidad + SEO técnico on-page',
+      'Soporte y ajustes durante 30 días',
+    ],
+    destacado: true,
+  },
+  {
+    id: 'elite',
+    nombre: 'Elite',
+    etiqueta: 'A medida',
+    precioDesde: 'Desde $10,000 MXN',
+    idealPara: 'Negocios que quieren una solución más personalizada, con más páginas o integraciones.',
+    incluye: [
+      'Sitio a medida (más de 7 secciones o varias páginas)',
+      'Integraciones específicas (sistemas, formularios avanzados, embudos)',
+      'Estrategia de campañas y presencia local',
+      'Reunión de estrategia previa al desarrollo',
+      'Optimización continua por un periodo acordado',
+    ],
+  },
+];

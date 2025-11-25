@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brilint.dev/sitemap-index.xml

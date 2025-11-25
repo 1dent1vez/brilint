@@ -1,0 +1,58 @@
+---
+// DefaultLayout.astro
+import '../styles/base.css';
+
+// Renombramos la descripción para evitar conflictos
+const {
+  title = 'Brilint – Servicios digitales premium',
+  description: pageDescription = 'Consultora de servicios digitales para PyMEs, profesionales y hogares del Valle de Toluca.',
+} = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{title}</title>
+    <meta name="description" content={pageDescription} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content="/og-image.webp" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://brilint.dev/" />
+
+    <!-- Fuente Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD: datos estructurados -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Brilint',
+        image: 'https://brilint.dev/og-image.webp',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Metepec',
+          addressRegion: 'Estado de México',
+        },
+        url: 'https://brilint.dev',
+        telephone: '+52 1 000 000 0000',
+        servesLocation: ['Metepec', 'Toluca', 'Lerma', 'San Mateo Atenco'],
+        description: pageDescription,
+      })}
+    </script>
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>
