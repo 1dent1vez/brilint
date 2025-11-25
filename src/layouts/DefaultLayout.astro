@@ -1,18 +1,24 @@
 ---
-// DefaultLayout.astro
 import '../styles/base.css';
 
-// Renombramos la descripción para evitar conflictos
 const {
   title = 'Brilint – Servicios digitales premium',
   description: pageDescription = 'Consultora de servicios digitales para PyMEs, profesionales y hogares del Valle de Toluca.',
 } = Astro.props;
 ---
 
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Mejora móvil REAL -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+
+    <!-- Forzar dark mode consistente -->
+    <meta name="color-scheme" content="dark only" />
 
     <title>{title}</title>
     <meta name="description" content={pageDescription} />
@@ -22,37 +28,49 @@ const {
     <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content="/og-image.webp" />
     <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://brilint.dev/" />
+    <link rel="canonical" href="https://brilint.vercel.app/" />
 
-    <!-- Fuente Inter -->
+    <!-- Fuente Inter + Optimización -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- font-display: swap para performance móvil -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- JSON-LD: datos estructurados -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
       {JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
         name: 'Brilint',
-        image: 'https://brilint.dev/og-image.webp',
+        image: 'https://brilint.vercel.app/og-image.webp',
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Metepec',
           addressRegion: 'Estado de México',
         },
-        url: 'https://brilint.dev',
-        telephone: '+52 1 000 000 0000',
+        url: 'https://brilint.vercel.app/',
+        telephone: '+52 1 7292392198',
         servesLocation: ['Metepec', 'Toluca', 'Lerma', 'San Mateo Atenco'],
         description: pageDescription,
       })}
     </script>
   </head>
 
-  <body>
+  <body class="relative bg-brilint-bg text-brilint-text">
+    <!-- Contenido de la página -->
     <slot />
+
+    <!-- BOTÓN FLOTANTE SOLO MÓVIL -->
+    <a
+      href="https://wa.me/527292392198?text=Hola,%20quiero%20más%20información%20sobre%20Brilint"
+      aria-label="Hablar por WhatsApp"
+      class="fixed bottom-5 right-4 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg shadow-xl shadow-brilint-accent/40 md:hidden active:scale-95 transition"
+    >
+      W
+    </a>
   </body>
 </html>

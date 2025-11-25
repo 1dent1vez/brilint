@@ -38,14 +38,44 @@ const pasos = [
 ];
 ---
 
-<section id="proceso" class="py-section-y bg-brilint-surface">
+<section id="proceso" class="py-16 md:py-section-y bg-brilint-surface">
   <Container>
     <SectionTitle
       title="Así es trabajar con Brilint"
       subtitle="Un proceso claro, sin palabras raras: entiendes qué se hace, por qué y qué puedes esperar en cada etapa."
     />
 
-    <ol class="grid gap-6 md:grid-cols-2">
+    <!-- MOBILE: Acordeón -->
+    <div class="space-y-4 md:hidden">
+      {pasos.map((paso) => (
+        <details
+          class="group rounded-2xl border border-brilint-border bg-brilint-bg/60 px-5 py-4"
+        >
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <div class="flex items-center gap-3">
+              <span
+                class="flex h-7 w-7 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg text-xs font-semibold"
+              >
+                {paso.id}
+              </span>
+              <h3 class="text-base font-semibold">{paso.titulo}</h3>
+            </div>
+
+            <span class="transition-transform duration-200 group-open:rotate-180 text-brilint-muted">
+              ▼
+            </span>
+          </summary>
+
+          <div class="mt-3">
+            <p class="text-sm text-brilint-muted mb-2">{paso.descripcion}</p>
+            <p class="text-xs text-brilint-muted/80">{paso.detalle}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- DESKTOP: Grid original -->
+    <ol class="hidden md:grid gap-6 md:grid-cols-2">
       {pasos.map((paso) => (
         <li class="relative rounded-2xl border border-brilint-border bg-brilint-bg/60 p-6">
           <div class="mb-3 flex items-center gap-3">

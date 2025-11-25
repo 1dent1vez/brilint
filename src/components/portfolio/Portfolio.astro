@@ -5,28 +5,39 @@ import PortfolioSlider from '../../react/PortfolioSlider.jsx';
 import { proyectos } from '../../data/portfolio.js';
 ---
 
-<section id="portfolio" class="py-section-y bg-brilint-surface">
+<section id="portfolio" class="py-14 md:py-section-y bg-brilint-surface">
   <Container>
     <SectionTitle
       title="Algunos proyectos recientes"
-      subtitle="Una muestra de trabajos realizados en landing pages, redes e infraestructura y soporte para negocios reales de la zona."
+      subtitle="Muestras reales de trabajo en landing pages, infraestructura, redes y soporte para negocios del Valle de Toluca."
     />
 
-    <div class="mb-10">
+    <!-- SLIDER -->
+    <div class="mb-8 sm:mb-10 px-1 sm:px-0">
       <PortfolioSlider proyectos={proyectos} client:load />
     </div>
 
-    <div class="grid gap-4 md:grid-cols-3 text-sm text-brilint-muted">
+    <!-- GRID DE PROYECTOS -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 text-xs sm:text-sm text-brilint-muted"
+    >
       {proyectos.map((p) => (
-        <div class="rounded-xl border border-brilint-border bg-brilint-bg/60 p-4">
-          <p class="text-xs uppercase tracking-[0.18em] mb-1 text-brilint-muted/80">
+        <div
+          class="rounded-xl border border-brilint-border bg-brilint-bg/60 p-4 sm:p-5 hover:border-brilint-accent/50 transition duration-200 active:scale-[0.98]"
+        >
+          <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] mb-1 text-brilint-muted/80">
             {p.tipo}
           </p>
-          <h4 class="text-sm font-semibold text-brilint-text mb-1">
+
+          <h4 class="text-sm sm:text-base font-semibold text-brilint-text mb-1">
             {p.titulo}
           </h4>
-          <p class="mb-1">{p.descripcion}</p>
-          <p class="text-xs text-brilint-muted/80">
+
+          <p class="leading-relaxed mb-1 text-[12px] sm:text-sm">
+            {p.descripcion}
+          </p>
+
+          <p class="text-[11px] sm:text-xs text-brilint-muted/80">
             Zona: {p.zona}
           </p>
         </div>

@@ -4,25 +4,32 @@ import SectionTitle from '../ui/SectionTitle.astro';
 import { servicios } from '../../data/servicios.js';
 ---
 
-<section id="servicios" class="py-section-y bg-brilint-bg">
+<section id="servicios" class="py-14 md:py-section-y bg-brilint-bg">
   <Container>
     <SectionTitle
       title="Servicios digitales para que dejes de perder clientes"
       subtitle="Brilint combina desarrollo web, campañas y soporte tecnológico para que tu negocio tenga una presencia online sólida y sistemas que no te fallen cuando más los necesitas."
     />
 
-    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:grid-cols-2 xl:grid-cols-3">
       {servicios.map((servicio) => (
         <article
-          class="rounded-2xl border border-brilint-border bg-brilint-surface/60 p-6 hover:border-brilint-accent/60 transition duration-fast"
+          class="rounded-2xl border border-brilint-border bg-brilint-surface/70 p-5 sm:p-6 transition duration-200 hover:border-brilint-accent/60 hover:shadow-brilint-soft active:scale-[0.98]"
         >
-          <h3 class="text-lg font-semibold mb-2">{servicio.titulo}</h3>
+          <h3 class="text-base sm:text-lg font-semibold mb-2">
+            {servicio.titulo}
+          </h3>
+
           <p class="text-sm text-brilint-muted mb-4">
             {servicio.descripcion}
           </p>
+
           <ul class="space-y-1.5 text-sm text-brilint-muted">
             {servicio.bullets.map((bullet) => (
-              <li>• {bullet}</li>
+              <li class="flex gap-2">
+                <span class="mt-[5px] h-1.5 w-1.5 rounded-full bg-brilint-accent/80"></span>
+                <span>{bullet}</span>
+              </li>
             ))}
           </ul>
         </article>

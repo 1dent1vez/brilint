@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-// Cargamos la key desde tu archivo .env
-// Debe llamarse: PUBLIC_WEB3FORMS_KEY=xxxx
 const ACCESS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 
 export default function ContactForm() {
@@ -10,18 +8,11 @@ export default function ContactForm() {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-
     setStatus("sending");
 
     const formData = new FormData(event.target);
-
-   
     formData.append("access_key", ACCESS_KEY);
-
-    // Asunto del correo
     formData.append("subject", "Nuevo mensaje desde Brilint");
-
-    // Anti-bots
     formData.append("botcheck", "");
 
     try {
@@ -38,7 +29,9 @@ export default function ContactForm() {
         event.target.reset();
       } else {
         setStatus("error");
-        setResult("Ocurrió un error. Intenta nuevamente o escríbeme por WhatsApp.");
+        setResult(
+          "Ocurrió un error. Intenta nuevamente o escríbeme por WhatsApp."
+        );
       }
     } catch (error) {
       console.error("Error al enviar formulario:", error);
@@ -50,45 +43,47 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="space-y-4 bg-brilint-surface p-6 rounded-2xl border border-brilint-border"
+      className="max-w-md mx-auto space-y-4 bg-brilint-surface p-5 sm:p-6 rounded-2xl border border-brilint-border shadow-brilint-soft"
     >
-      {/* Honeypot */}
       <input type="text" name="botcheck" className="hidden" autoComplete="off" />
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-brilint-muted">
+        <label className="text-[11px] sm:text-xs font-medium text-brilint-muted">
           Tu nombre
         </label>
         <input
           type="text"
           name="name"
-          className="w-full bg-brilint-bg border border-brilint-border p-3 rounded-lg text-sm"
+          maxLength={80}
+          className="w-full bg-brilint-bg border border-brilint-border p-2.5 sm:p-3 rounded-lg text-sm"
           placeholder="Cómo te llamas"
           required
         />
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-brilint-muted">
+        <label className="text-[11px] sm:text-xs font-medium text-brilint-muted">
           Tu correo
         </label>
         <input
           type="email"
           name="email"
-          className="w-full bg-brilint-bg border border-brilint-border p-3 rounded-lg text-sm"
+          maxLength={120}
+          className="w-full bg-brilint-bg border border-brilint-border p-2.5 sm:p-3 rounded-lg text-sm"
           placeholder="correo@ejemplo.com"
           required
         />
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-brilint-muted">
+        <label className="text-[11px] sm:text-xs font-medium text-brilint-muted">
           Tu mensaje
         </label>
         <textarea
           name="message"
           rows="4"
-          className="w-full bg-brilint-bg border border-brilint-border p-3 rounded-lg text-sm"
+          maxLength={1000}
+          className="w-full bg-brilint-bg border border-brilint-border p-2.5 sm:p-3 rounded-lg text-sm"
           placeholder="Cuéntame qué necesitas"
           required
         ></textarea>
@@ -97,14 +92,14 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full bg-brilint-accent text-brilint-bg rounded-lg py-3 font-semibold text-sm transition duration-fast hover:bg-brilint-accent/90 disabled:opacity-60"
+        className="w-full bg-brilint-accent text-brilint-bg rounded-lg py-2.5 sm:py-3 font-semibold text-sm transition duration-fast hover:bg-brilint-accent/90 disabled:opacity-60 active:scale-[0.98]"
       >
         {status === "sending" ? "Enviando…" : "Enviar mensaje"}
       </button>
 
       {result && (
         <p
-          className={`text-sm ${
+          className={`text-sm text-center ${
             status === "sent" ? "text-emerald-400" : "text-red-400"
           }`}
         >
