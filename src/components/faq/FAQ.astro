@@ -14,16 +14,16 @@ import { faqs } from '../../data/faqs.js';
     <div class="space-y-3 sm:space-y-4">
       {faqs.map((faq) => (
         <details
-          class="group rounded-2xl border border-brilint-border bg-brilint-surface/70 px-4 py-3 sm:px-5 sm:py-4"
+          class="group rounded-2xl border border-brilint-border bg-brilint-surface/75 px-4 py-3 sm:px-5 sm:py-4"
         >
           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm sm:text-base font-medium text-brilint-text">
-            <span class="text-left">{faq.pregunta}</span>
+            <span class="text-left leading-snug">{faq.pregunta}</span>
 
-            <span class="flex items-center justify-center h-6 w-6 rounded-full border border-brilint-border text-[11px] text-brilint-muted group-open:hidden">
+            <span class="flex items-center justify-center h-7 w-7 rounded-full border border-brilint-border text-[12px] text-brilint-muted group-open:hidden">
               +
             </span>
-            <span class="flex items-center justify-center h-6 w-6 rounded-full border border-brilint-border text-[11px] text-brilint-muted hidden group-open:flex">
-              −
+            <span class="flex items-center justify-center h-7 w-7 rounded-full border border-brilint-border text-[12px] text-brilint-muted hidden group-open:flex">
+              –
             </span>
           </summary>
 

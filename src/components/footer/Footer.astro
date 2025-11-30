@@ -4,29 +4,29 @@ import Container from '../ui/Container.astro';
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-brilint-border bg-brilint-bg/95 py-8 md:py-10 text-xs sm:text-sm text-brilint-muted">
+<footer class="border-t border-brilint-border bg-brilint-bg/95 py-9 md:py-10 text-xs sm:text-sm text-brilint-muted">
   <Container className="flex flex-col gap-8 md:gap-10">
     <div
       class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)_minmax(0,1fr)]"
     >
-      <div class="text-center md:text-left">
-        <div class="mb-3 inline-flex items-center gap-2">
+      <div class="text-center md:text-left space-y-3">
+        <div class="inline-flex items-center gap-2">
           <span class="h-2 w-2 rounded-full bg-brilint-accent"></span>
           <span class="font-display text-sm sm:text-base font-semibold text-brilint-text">
             Brilint
           </span>
         </div>
-        <p class="max-w-md mx-auto md:mx-0">
+        <p class="max-w-md mx-auto md:mx-0 leading-relaxed">
           Consultora de servicios digitales para PyMEs, profesionales y hogares que
           necesitan una presencia online clara y sistemas tecnológicos confiables.
         </p>
-        <p class="mt-3 text-[11px] sm:text-xs text-brilint-muted/80">
+        <p class="text-[11px] sm:text-xs text-brilint-muted/80 leading-relaxed">
           Zona de trabajo principal: Metepec, Toluca, Lerma, San Mateo Atenco y alrededores.
         </p>
       </div>
 
-      <div class="text-center md:text-left">
-        <h4 class="mb-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-brilint-muted">
+      <div class="text-center md:text-left space-y-3">
+        <h4 class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-brilint-muted">
           Navegación
         </h4>
         <nav class="flex flex-col gap-1.5 items-center md:items-start">
@@ -51,8 +51,8 @@ const year = new Date().getFullYear();
         </nav>
       </div>
 
-      <div class="text-center md:text-left">
-        <h4 class="mb-3 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-brilint-muted">
+      <div class="text-center md:text-left space-y-3">
+        <h4 class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-brilint-muted">
           Contacto
         </h4>
         <div class="space-y-1.5">
@@ -63,7 +63,7 @@ const year = new Date().getFullYear();
             </span>
           </p>
           <a
-            href="https://wa.me/527292392198?text=Hola,%20quiero%20información%20sobre%20Brilint"
+            href="https://wa.me/527223579869?text=Hola,%20quiero%20información%20sobre%20Brilint"
             class="inline-flex items-center justify-center text-brilint-accent hover:text-brilint-accent/90 transition duration-fast"
           >
             Escribir por WhatsApp
@@ -73,10 +73,9 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="flex flex-col items-center justify-between gap-2 border-t border-brilint-border/60 pt-4 text-[11px] sm:text-xs md:flex-row">
-      <p class="text-brilint-muted/80">
-        © {year} Brilint. Todos los derechos reservados.
+      <p class="text-brilint-muted/80 text-center">
+        © {year} Brilint S.A de C.V. Todos los derechos reservados.
       </p>
-      
     </div>
   </Container>
 </footer>

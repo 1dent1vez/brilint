@@ -6,7 +6,7 @@ import { HeroMotion } from '../../react/HeroMotion.jsx';
 
 <section
   id="top"
-  class="relative pt-20 pb-16 md:pt-28 md:pb-section-y overflow-hidden"
+  class="relative pt-20 pb-14 md:pt-28 md:pb-section-y overflow-hidden"
   aria-labelledby="hero-title"
 >
   <div class="pointer-events-none absolute inset-0 -z-10">
@@ -14,22 +14,22 @@ import { HeroMotion } from '../../react/HeroMotion.jsx';
     <div class="absolute bottom-0 left-[-15%] h-56 w-56 rounded-full bg-brilint-accent-soft blur-3xl md:left-[-5%] md:h-64 md:w-64"></div>
   </div>
 
-  <Container className="grid gap-8 md:gap-10 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
+  <Container className="grid gap-10 md:gap-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] items-start">
     <HeroMotion client:load>
-      <div>
-        <p class="mb-3 text-xs tracking-[0.22em] text-brilint-muted md:text-sm md:mb-4 uppercase">
+      <div class="space-y-5 md:space-y-6">
+        <p class="text-xs tracking-[0.22em] text-brilint-muted md:text-sm uppercase">
           Servicios digitales premium · Valle de Toluca
         </p>
 
         <h1
           id="hero-title"
-          class="text-3xl sm:text-4xl md:text-6xl font-display font-semibold mb-4 md:mb-6 leading-tight"
+          class="text-3xl sm:text-4xl md:text-6xl font-display font-semibold leading-tight"
         >
-          Don’t just adapt.<br class="hidden md:block" />
+          Don't just adapt.<br class="hidden md:block" />
           <span class="text-brilint-accent">Evolve.</span>
         </h1>
 
-        <p class="max-w-xl text-base md:text-lg text-brilint-muted mb-6 md:mb-8">
+        <p class="max-w-2xl text-base md:text-lg leading-relaxed text-brilint-muted">
           Brilint ayuda a PyMEs, profesionales y hogares a construir presencia
           digital, campañas y sistemas tecnológicos confiables para que dejes
           de perder clientes por no estar bien en línea.
@@ -37,7 +37,7 @@ import { HeroMotion } from '../../react/HeroMotion.jsx';
 
         <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
           <Button
-            href="https://wa.me/527292392198?text=Hola,%20quiero%20agendar%20un%20diagnóstico%20para%20mi%20negocio"
+            href="https://wa.me/527223579869?text=Hola,%20quiero%20agendar%20un%20diagnóstico%20para%20mi%20negocio"
             variant="primary"
           >
             Agendar diagnóstico
@@ -48,28 +48,39 @@ import { HeroMotion } from '../../react/HeroMotion.jsx';
           </Button>
         </div>
 
-        <div class="mt-5 md:mt-6 flex flex-wrap items-center gap-3 md:gap-4 text-[11px] md:text-xs text-brilint-muted">
-          <span class="inline-flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-3 md:gap-4 text-[11px] md:text-xs text-brilint-muted">
+          <span class="inline-flex items-center gap-2 rounded-full bg-brilint-surface/60 px-3 py-1">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
             Respuesta rápida por WhatsApp
           </span>
-          <span>Zona: Metepec · Toluca · Lerma</span>
+          <span class="rounded-full bg-brilint-surface/60 px-3 py-1">
+            Zona: Metepec · Toluca · Lerma
+          </span>
         </div>
       </div>
     </HeroMotion>
 
     <HeroMotion client:load>
-      <div class="mt-6 md:mt-0 relative rounded-2xl md:rounded-3xl border border-brilint-border bg-brilint-surface/80 p-5 md:p-6 shadow-brilint-soft">
-        <p class="text-[11px] md:text-xs font-medium text-brilint-muted mb-1.5 md:mb-2">
+      <div class="mt-2 md:mt-0 relative rounded-2xl md:rounded-3xl border border-brilint-border bg-brilint-surface/80 p-5 md:p-6 shadow-brilint-soft space-y-3">
+        <p class="text-[11px] md:text-xs font-medium text-brilint-muted">
           Vista rápida de servicios
         </p>
-        <h3 class="text-lg md:text-xl font-semibold mb-3 md:mb-4 leading-snug">
-          Diagnóstico → Estrategia → Implementación → Optimización
+        <h3 class="text-lg md:text-xl font-semibold leading-snug">
+          Diagnóstico · Estrategia · Implementación · Optimización
         </h3>
         <ul class="space-y-1.5 md:space-y-2 text-xs md:text-sm text-brilint-muted">
-          <li>• Landing pages y campañas Meta/Google para captar clientes.</li>
-          <li>• Redes e internet confiables en hogar y negocio.</li>
-          <li>• Soporte técnico y seguridad digital preventiva.</li>
+          <li class="flex gap-2">
+            <span class="text-brilint-accent">•</span>
+            <span>Landing pages y campañas Meta/Google para captar clientes.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-brilint-accent">•</span>
+            <span>Redes e internet confiables en hogar y negocio.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-brilint-accent">•</span>
+            <span>Soporte técnico y seguridad digital preventiva.</span>
+          </li>
         </ul>
       </div>
     </HeroMotion>

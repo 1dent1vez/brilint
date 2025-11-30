@@ -55,7 +55,7 @@ export default function ContactForm() {
           type="text"
           name="name"
           maxLength={80}
-          className="w-full bg-brilint-bg border border-brilint-border p-2.5 sm:p-3 rounded-lg text-sm"
+          className="w-full bg-brilint-bg border border-brilint-border p-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brilint-accent/40"
           placeholder="Cómo te llamas"
           required
         />
@@ -69,7 +69,7 @@ export default function ContactForm() {
           type="email"
           name="email"
           maxLength={120}
-          className="w-full bg-brilint-bg border border-brilint-border p-2.5 sm:p-3 rounded-lg text-sm"
+          className="w-full bg-brilint-bg border border-brilint-border p-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brilint-accent/40"
           placeholder="correo@ejemplo.com"
           required
         />
@@ -83,7 +83,7 @@ export default function ContactForm() {
           name="message"
           rows="4"
           maxLength={1000}
-          className="w-full bg-brilint-bg border border-brilint-border p-2.5 sm:p-3 rounded-lg text-sm"
+          className="w-full bg-brilint-bg border border-brilint-border p-3 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brilint-accent/40"
           placeholder="Cuéntame qué necesitas"
           required
         ></textarea>
@@ -94,7 +94,7 @@ export default function ContactForm() {
         disabled={status === "sending"}
         className="w-full bg-brilint-accent text-brilint-bg rounded-lg py-2.5 sm:py-3 font-semibold text-sm transition duration-fast hover:bg-brilint-accent/90 disabled:opacity-60 active:scale-[0.98]"
       >
-        {status === "sending" ? "Enviando…" : "Enviar mensaje"}
+        {status === "sending" ? "Enviando..." : "Enviar mensaje"}
       </button>
 
       {result && (

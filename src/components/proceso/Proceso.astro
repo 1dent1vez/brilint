@@ -48,27 +48,25 @@ const pasos = [
     <!-- MOBILE: Acordeón -->
     <div class="space-y-4 md:hidden">
       {pasos.map((paso) => (
-        <details
-          class="group rounded-2xl border border-brilint-border bg-brilint-bg/60 px-5 py-4"
-        >
-          <summary class="flex items-center justify-between cursor-pointer list-none">
+        <details class="group rounded-2xl border border-brilint-border bg-brilint-bg/70 px-4 py-3">
+          <summary class="flex items-center justify-between cursor-pointer list-none gap-3">
             <div class="flex items-center gap-3">
               <span
-                class="flex h-7 w-7 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg text-xs font-semibold"
+                class="flex h-8 w-8 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg text-sm font-semibold"
               >
                 {paso.id}
               </span>
-              <h3 class="text-base font-semibold">{paso.titulo}</h3>
+              <h3 class="text-base font-semibold leading-snug">{paso.titulo}</h3>
             </div>
 
             <span class="transition-transform duration-200 group-open:rotate-180 text-brilint-muted">
-              ▼
+              ▾
             </span>
           </summary>
 
-          <div class="mt-3">
-            <p class="text-sm text-brilint-muted mb-2">{paso.descripcion}</p>
-            <p class="text-xs text-brilint-muted/80">{paso.detalle}</p>
+          <div class="mt-3 space-y-2">
+            <p class="text-sm text-brilint-muted leading-relaxed">{paso.descripcion}</p>
+            <p class="text-xs text-brilint-muted/80 leading-relaxed">{paso.detalle}</p>
           </div>
         </details>
       ))}
@@ -77,15 +75,15 @@ const pasos = [
     <!-- DESKTOP: Grid original -->
     <ol class="hidden md:grid gap-6 md:grid-cols-2">
       {pasos.map((paso) => (
-        <li class="relative rounded-2xl border border-brilint-border bg-brilint-bg/60 p-6">
-          <div class="mb-3 flex items-center gap-3">
+        <li class="relative rounded-2xl border border-brilint-border bg-brilint-bg/60 p-6 space-y-3">
+          <div class="flex items-center gap-3">
             <span class="flex h-8 w-8 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg text-sm font-semibold">
               {paso.id}
             </span>
-            <h3 class="text-lg font-semibold">{paso.titulo}</h3>
+            <h3 class="text-lg font-semibold leading-snug">{paso.titulo}</h3>
           </div>
-          <p class="text-sm text-brilint-muted mb-2">{paso.descripcion}</p>
-          <p class="text-xs text-brilint-muted/80">{paso.detalle}</p>
+          <p class="text-sm text-brilint-muted leading-relaxed">{paso.descripcion}</p>
+          <p class="text-xs text-brilint-muted/80 leading-relaxed">{paso.detalle}</p>
         </li>
       ))}
     </ol>

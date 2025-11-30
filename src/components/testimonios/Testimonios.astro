@@ -12,23 +12,23 @@ import { testimonios } from '../../data/testimonios.js';
     />
 
     <!-- MOBILE: carrusel horizontal -->
-    <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 md:hidden">
+    <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-1 md:hidden">
       {testimonios.map((t) => (
         <article
-          class="min-w-[85%] snap-center relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/80 p-5 flex flex-col justify-between transition duration-200 active:scale-[0.98]"
+          class="min-w-[88%] snap-center relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/85 p-5 flex flex-col justify-between space-y-4 transition duration-200 active:scale-[0.98]"
         >
-          <p class="text-sm text-brilint-muted mb-4 leading-relaxed">
+          <p class="text-sm text-brilint-muted leading-relaxed">
             “{t.mensaje}”
           </p>
 
-          <div class="mt-auto pt-1">
+          <div class="mt-auto space-y-0.5">
             <p class="text-sm font-semibold text-brilint-text">
               {t.nombre}
             </p>
             <p class="text-xs text-brilint-muted">
               {t.rol}
             </p>
-            <p class="mt-2 text-[11px] text-brilint-muted/80">
+            <p class="text-[11px] text-brilint-muted/80">
               {t.tipoProyecto} · {t.zona}
             </p>
           </div>
@@ -39,19 +39,19 @@ import { testimonios } from '../../data/testimonios.js';
     <!-- DESKTOP: grid original mejorado -->
     <div class="hidden md:grid gap-6 md:grid-cols-3">
       {testimonios.map((t) => (
-        <article class="relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/70 p-6 flex flex-col">
-          <p class="text-sm text-brilint-muted mb-4 leading-relaxed">
+        <article class="relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/70 p-6 flex flex-col space-y-4">
+          <p class="text-sm text-brilint-muted leading-relaxed">
             “{t.mensaje}”
           </p>
 
-          <div class="mt-auto">
+          <div class="mt-auto space-y-0.5">
             <p class="text-sm font-semibold text-brilint-text">
               {t.nombre}
             </p>
             <p class="text-xs text-brilint-muted">
               {t.rol}
             </p>
-            <p class="mt-2 text-xs text-brilint-muted/80">
+            <p class="text-xs text-brilint-muted/80">
               {t.tipoProyecto} · {t.zona}
             </p>
           </div>

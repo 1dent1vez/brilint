@@ -19,25 +19,25 @@ import { proyectos } from '../../data/portfolio.js';
 
     <!-- GRID DE PROYECTOS -->
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 text-xs sm:text-sm text-brilint-muted"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 text-xs sm:text-sm text-brilint-muted"
     >
       {proyectos.map((p) => (
         <div
-          class="rounded-xl border border-brilint-border bg-brilint-bg/60 p-4 sm:p-5 hover:border-brilint-accent/50 transition duration-200 active:scale-[0.98]"
+          class="rounded-xl border border-brilint-border bg-brilint-bg/70 p-4 sm:p-5 hover:border-brilint-accent/50 transition duration-200 active:scale-[0.98] h-full flex flex-col space-y-2"
         >
           <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] mb-1 text-brilint-muted/80">
             {p.tipo}
           </p>
 
-          <h4 class="text-sm sm:text-base font-semibold text-brilint-text mb-1">
+          <h4 class="text-sm sm:text-base font-semibold text-brilint-text">
             {p.titulo}
           </h4>
 
-          <p class="leading-relaxed mb-1 text-[12px] sm:text-sm">
+          <p class="leading-relaxed text-[12px] sm:text-sm">
             {p.descripcion}
           </p>
 
-          <p class="text-[11px] sm:text-xs text-brilint-muted/80">
+          <p class="text-[11px] sm:text-xs text-brilint-muted/80 mt-auto">
             Zona: {p.zona}
           </p>
         </div>

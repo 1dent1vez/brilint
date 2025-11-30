@@ -12,8 +12,8 @@ const links = [
 ];
 ---
 
-<header class="fixed top-0 inset-x-0 z-30 border-b border-brilint-border/60 backdrop-blur-md bg-brilint-bg/75">
-  <Container className="flex h-16 items-center justify-between">
+<header class="fixed top-0 inset-x-0 z-30 border-b border-brilint-border/60 backdrop-blur-md bg-brilint-bg/80">
+  <Container className="flex h-16 items-center justify-between px-1 sm:px-0">
     <a href="#top" class="inline-flex items-center gap-2">
       <span class="h-2 w-2 rounded-full bg-brilint-accent"></span>
       <span class="font-display text-lg font-semibold tracking-tight">
@@ -26,7 +26,7 @@ const links = [
       {links.map((link) => (
         <a
           href={link.href}
-          class="hover:text-brilint-text transition duration-fast"
+          class="hover:text-brilint-text transition duration-fast rounded-full px-2 py-1"
         >
           {link.label}
         </a>
@@ -47,7 +47,7 @@ const links = [
       <!-- MENÚ MÓVIL -->
       <details class="relative md:hidden">
         <summary
-          class="list-none inline-flex h-9 w-9 items-center justify-center rounded-full border border-brilint-border bg-brilint-surface/80 text-brilint-text cursor-pointer"
+          class="list-none inline-flex h-10 w-10 items-center justify-center rounded-full border border-brilint-border bg-brilint-surface/90 text-brilint-text cursor-pointer shadow-brilint-soft"
           aria-label="Abrir menú de navegación"
         >
           <span class="flex flex-col gap-1.5">
@@ -57,13 +57,13 @@ const links = [
         </summary>
 
         <div
-          class="absolute right-0 mt-3 w-56 rounded-2xl border border-brilint-border bg-brilint-bg/95 shadow-lg shadow-black/40 py-3"
+          class="absolute right-0 mt-3 w-[min(88vw,17rem)] rounded-2xl border border-brilint-border bg-brilint-bg/95 shadow-lg shadow-black/40 p-3"
         >
           <nav class="flex flex-col">
             {links.map((link) => (
               <a
                 href={link.href}
-                class="px-4 py-2.5 text-sm text-brilint-muted hover:text-brilint-text hover:bg-brilint-surface/70 transition"
+                class="px-4 py-2.5 text-sm text-brilint-muted hover:text-brilint-text hover:bg-brilint-surface/70 transition rounded-xl"
               >
                 {link.label}
               </a>
@@ -72,7 +72,7 @@ const links = [
             <div class="mt-2 border-t border-brilint-border/60 pt-2">
               <a
                 href="https://wa.me/527292392198?text=Hola,%20me%20interesa%20una%20cotización%20con%20Brilint"
-                class="mx-3 mt-1 inline-flex w-[calc(100%-1.5rem)] items-center justify-center rounded-lg bg-brilint-accent px-3 py-2 text-xs font-semibold text-brilint-bg hover:bg-brilint-accent/90 transition"
+                class="mx-1 mt-1 inline-flex w-[calc(100%-0.5rem)] items-center justify-center rounded-lg bg-brilint-accent px-3 py-2 text-xs font-semibold text-brilint-bg hover:bg-brilint-accent/90 transition"
               >
                 Hablar por WhatsApp
               </a>

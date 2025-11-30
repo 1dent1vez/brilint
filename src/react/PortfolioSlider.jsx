@@ -20,9 +20,11 @@ export default function PortfolioSlider({ proyectos }) {
         className="rounded-2xl overflow-hidden border border-brilint-border bg-brilint-surface"
       >
         <img src={proyecto.imagen} alt={proyecto.titulo} className="w-full" />
-        <div className="p-4">
-          <h4 className="text-lg font-semibold">{proyecto.titulo}</h4>
-          <p className="text-sm text-brilint-muted">{proyecto.descripcion}</p>
+        <div className="p-4 space-y-1.5">
+          <h4 className="text-lg font-semibold leading-snug">{proyecto.titulo}</h4>
+          <p className="text-sm text-brilint-muted leading-relaxed">
+            {proyecto.descripcion}
+          </p>
         </div>
       </motion.div>
 
@@ -30,18 +32,20 @@ export default function PortfolioSlider({ proyectos }) {
       <div className="absolute inset-y-0 left-0 flex items-center">
         <button
           onClick={prev}
-          className="p-2 text-brilint-muted hover:text-brilint-accent transition duration-fast"
+          aria-label="Proyecto anterior"
+          className="p-2 rounded-full bg-brilint-bg/80 border border-brilint-border text-brilint-muted hover:text-brilint-accent transition duration-fast active:scale-95"
         >
-          ‹
+          {"<"}
         </button>
       </div>
 
       <div className="absolute inset-y-0 right-0 flex items-center">
         <button
           onClick={next}
-          className="p-2 text-brilint-muted hover:text-brilint-accent transition duration-fast"
+          aria-label="Proyecto siguiente"
+          className="p-2 rounded-full bg-brilint-bg/80 border border-brilint-border text-brilint-muted hover:text-brilint-accent transition duration-fast active:scale-95"
         >
-          ›
+          {">"}
         </button>
       </div>
     </div>
