@@ -2,46 +2,39 @@
 import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
 import PortfolioSlider from '../../react/PortfolioSlider.jsx';
+import FeaturedProject from './FeaturedProject.astro';
 import { proyectos } from '../../data/portfolio.js';
+
+const destacados = proyectos.filter((p) => p.destacado);
+const secundarios = proyectos.filter((p) => !p.destacado);
+const sliderItems = secundarios.length ? secundarios : proyectos;
 ---
 
 <section id="portfolio" class="py-14 md:py-section-y bg-brilint-surface">
-  <Container>
+  <Container className="space-y-8 md:space-y-10">
     <SectionTitle
       title="Algunos proyectos recientes"
       subtitle="Muestras reales de trabajo en landing pages, infraestructura, redes y soporte para negocios del Valle de Toluca."
     />
 
-    <!-- SLIDER -->
-    <div class="mb-8 sm:mb-10 px-1 sm:px-0">
-      <PortfolioSlider proyectos={proyectos} client:load />
-    </div>
-
-    <!-- GRID DE PROYECTOS -->
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 text-xs sm:text-sm text-brilint-muted"
-    >
-      {proyectos.map((p) => (
-        <div
-          class="rounded-xl border border-brilint-border bg-brilint-bg/70 p-4 sm:p-5 hover:border-brilint-accent/50 transition duration-200 active:scale-[0.98] h-full flex flex-col space-y-2"
-        >
-          <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] mb-1 text-brilint-muted/80">
-            {p.tipo}
-          </p>
-
-          <h4 class="text-sm sm:text-base font-semibold text-brilint-text">
-            {p.titulo}
-          </h4>
-
-          <p class="leading-relaxed text-[12px] sm:text-sm">
-            {p.descripcion}
-          </p>
-
-          <p class="text-[11px] sm:text-xs text-brilint-muted/80 mt-auto">
-            Zona: {p.zona}
-          </p>
+    <!-- Proyectos destacados -->
+    <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 md:hidden">
+      {destacados.map((p) => (
+        <div class="min-w-[90%] snap-center">
+          <FeaturedProject proyecto={p} />
         </div>
       ))}
+    </div>
+
+    <div class="hidden md:grid md:grid-cols-2 md:gap-6">
+      {destacados.map((p) => (
+        <FeaturedProject proyecto={p} />
+      ))}
+    </div>
+
+    <!-- Slider compacto -->
+    <div class="px-1 sm:px-0">
+      <PortfolioSlider proyectos={sliderItems} client:load />
     </div>
   </Container>
 </section>

@@ -1,0 +1,67 @@
+---
+const { proyecto } = Astro.props;
+---
+
+<article
+  class={`rounded-2xl border ${proyecto.destacado ? 'border-brilint-accent/80' : 'border-brilint-border'} bg-brilint-bg/70 p-4 sm:p-5 flex flex-col gap-4 shadow-brilint-soft`}
+>
+  <div class="space-y-1">
+    <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-brilint-muted/80">
+      {proyecto.tipo}
+    </p>
+    <h3 class="text-lg sm:text-xl font-semibold text-brilint-text leading-snug">
+      {proyecto.titulo}
+    </h3>
+    {proyecto.zona && (
+      <p class="text-[11px] sm:text-xs text-brilint-muted/80">
+        Zona: {proyecto.zona}
+      </p>
+    )}
+    <p class="text-sm text-brilint-muted leading-relaxed">
+      {proyecto.descripcion}
+    </p>
+  </div>
+
+  <div class="rounded-xl border border-brilint-border bg-brilint-surface/70 overflow-hidden">
+    {proyecto.mockup ? (
+      <div class="h-72 sm:h-80 overflow-y-auto">
+        <img
+          src={proyecto.mockup}
+          alt={`Mockup de ${proyecto.titulo}`}
+          class="w-full"
+          loading="lazy"
+        />
+      </div>
+    ) : (
+      <img
+        src={proyecto.imagen}
+        alt={`Vista de ${proyecto.titulo}`}
+        class="w-full"
+        loading="lazy"
+      />
+    )}
+  </div>
+
+  <div class="flex flex-wrap gap-3">
+    {proyecto.url && proyecto.url !== '#' && (
+      <a
+        href={proyecto.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full bg-brilint-accent px-4 py-2 text-xs font-semibold text-brilint-bg hover:bg-brilint-accent/90 transition"
+      >
+        Ver sitio en vivo
+      </a>
+    )}
+    {proyecto.repo && (
+      <a
+        href={proyecto.repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full border border-brilint-border px-4 py-2 text-xs font-semibold text-brilint-text hover:border-brilint-accent/70 transition"
+      >
+        Ver código
+      </a>
+    )}
+  </div>
+</article>
