@@ -1,29 +1,35 @@
 export const testimonios = [
   {
     id: 'salon-belleza',
-    nombre: 'Carolina M.',
-    rol: 'Dueña de salón de belleza en Metepec',
+    nombre: 'Anahi G.',
+    rol: 'Dueña de Glam Studio',
     mensaje:
       'Antes respondía todo por WhatsApp sin ningún orden. Con la landing y Google Business Profile ahora me encuentran fácil y llegan mensajes de clientes nuevos cada semana.',
     tipoProyecto: 'Landing + Google Business Profile',
     zona: 'Metepec',
+    esVerificado: true,
+    badgeLabel: 'Reseña verificada',
   },
   {
-    id: 'consultor-toluca',
-    nombre: 'Luis R.',
-    rol: 'Consultor independiente en Toluca',
+    id: 'consultorio-dental',
+    nombre: 'Dr. Carlos M.',
+    rol: 'Gerente de Clínica Dental',
     mensaje:
-      'Necesitaba algo profesional pero sin enredarme en términos técnicos. Me guiaron en todo el proceso, ahora tengo una página clara y un canal estable para recibir consultas.',
-    tipoProyecto: 'Landing profesional',
+      'El internet en la clínica fallaba constantemente y afectaba nuestra agenda. Realizó el cableado estructurado y configuró los puntos de acceso. Ahora la red es rápida y estable en todos los consultorios.',
+    tipoProyecto: 'Instalación de Red y WiFi',
     zona: 'Toluca',
+    esVerificado: true,
+    badgeLabel: 'Reseña verificada',
   },
   {
-    id: 'pyme-lerma',
-    nombre: 'María G.',
-    rol: 'PyME de servicios en Lerma',
+    id: 'despacho-contable',
+    nombre: 'Fernanda R.',
+    rol: 'Contadora Independiente',
     mensaje:
-      'Teníamos problemas de red, equipos lentos y nada de presencia digital. Se corrigió la red, se ordenaron los equipos y ahora empezamos con campañas para captar clientes.',
-    tipoProyecto: 'Redes + soporte + presencia digital',
-    zona: 'Lerma',
+      'Mis equipos estaban muy lentos y temía por la seguridad de mis datos fiscales. Hizo un mantenimiento completo, optimizó el rendimiento y me asesoró sobre copias de seguridad. Servicio muy profesional.',
+    tipoProyecto: 'Soporte Técnico y Seguridad',
+    zona: 'San Mateo Atenco',
+    esVerificado: true,
+    badgeLabel: 'Reseña verificada',
   },
 ];

@@ -1,62 +1,17 @@
 ---
 import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
+import TestimonialsMotion from '../../react/TestimonialsMotion.jsx';
 import { testimonios } from '../../data/testimonios.js';
 ---
 
 <section id="testimonios" class="py-14 md:py-section-y bg-brilint-bg">
-  <Container>
+  <Container className="space-y-8">
     <SectionTitle
       title="Personas y negocios que ya están viendo resultados"
       subtitle="Testimonios reales de proyectos donde se mezclan desarrollo, redes y soporte para que todo funcione mejor en el día a día."
     />
 
-    <!-- MOBILE: carrusel horizontal -->
-    <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-1 md:hidden">
-      {testimonios.map((t) => (
-        <article
-          class="min-w-[88%] snap-center relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/85 p-5 flex flex-col justify-between space-y-4 transition duration-200 active:scale-[0.98]"
-        >
-          <p class="text-sm text-brilint-muted leading-relaxed">
-            “{t.mensaje}”
-          </p>
-
-          <div class="mt-auto space-y-0.5">
-            <p class="text-sm font-semibold text-brilint-text">
-              {t.nombre}
-            </p>
-            <p class="text-xs text-brilint-muted">
-              {t.rol}
-            </p>
-            <p class="text-[11px] text-brilint-muted/80">
-              {t.tipoProyecto} · {t.zona}
-            </p>
-          </div>
-        </article>
-      ))}
-    </div>
-
-    <!-- DESKTOP: grid original mejorado -->
-    <div class="hidden md:grid gap-6 md:grid-cols-3">
-      {testimonios.map((t) => (
-        <article class="relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/70 p-6 flex flex-col space-y-4">
-          <p class="text-sm text-brilint-muted leading-relaxed">
-            “{t.mensaje}”
-          </p>
-
-          <div class="mt-auto space-y-0.5">
-            <p class="text-sm font-semibold text-brilint-text">
-              {t.nombre}
-            </p>
-            <p class="text-xs text-brilint-muted">
-              {t.rol}
-            </p>
-            <p class="text-xs text-brilint-muted/80">
-              {t.tipoProyecto} · {t.zona}
-            </p>
-          </div>
-        </article>
-      ))}
-    </div>
+    <TestimonialsMotion testimonios={testimonios} client:load />
   </Container>
 </section>
