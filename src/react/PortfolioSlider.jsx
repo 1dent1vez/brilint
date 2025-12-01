@@ -19,11 +19,11 @@ export default function PortfolioSlider({ proyectos }) {
         transition={{ duration: 0.45, ease: 'easeOut' }}
         className="rounded-2xl overflow-hidden border border-brilint-border bg-brilint-surface shadow-brilint-soft"
       >
-        <div className="h-[230px] sm:h-[280px] overflow-hidden">
+        <div className="h-[230px] sm:h-[280px] overflow-y-auto bg-black">
           <img
             src={proyecto.imagen}
             alt={proyecto.titulo}
-            className="w-full h-full object-cover"
+            className="w-full object-top"
           />
         </div>
         <div className="p-4 sm:p-5 space-y-2">

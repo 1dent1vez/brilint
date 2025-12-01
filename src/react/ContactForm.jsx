@@ -43,7 +43,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="max-w-md mx-auto space-y-4 bg-brilint-surface p-5 sm:p-6 rounded-2xl border border-brilint-border shadow-brilint-soft"
+      className="max-w-md mx-auto space-y-4 bg-brilint-surface p-5 sm:p-6 rounded-2xl border border-brilint-accent/60 shadow-brilint-soft"
     >
       <input type="text" name="botcheck" className="hidden" autoComplete="off" />
 

@@ -14,79 +14,131 @@ import { HeroMotion } from '../../react/HeroMotion.jsx';
     <div class="absolute bottom-0 left-[-15%] h-56 w-56 rounded-full bg-brilint-accent-soft blur-3xl md:left-[-5%] md:h-64 md:w-64"></div>
   </div>
 
-  <Container className="flex flex-col gap-10 md:gap-12 md:grid md:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] items-start">
-    <HeroMotion client:load>
-      <div class="space-y-7 md:space-y-6 max-w-2xl">
-        <p class="inline-flex items-center gap-2 text-[11px] tracking-[0.22em] text-brilint-muted md:text-sm uppercase rounded-full border border-brilint-border/70 bg-brilint-surface/60 px-3 py-1.5">
-          Servicios digitales premium · Valle de Toluca
-        </p>
+  <!-- MOBILE -->
+  <div class="block md:hidden">
+    <Container className="flex flex-col items-center text-center gap-8">
+      <HeroMotion client:load>
+        <div class="space-y-5 w-full">
+          <p class="mx-auto inline-flex items-center gap-2 text-[11px] tracking-[0.18em] text-brilint-muted uppercase rounded-full border border-brilint-border/70 bg-brilint-surface/60 px-3 py-1.5">
+            Servicios digitales premium · Valle de Toluca
+          </p>
 
-        <h1
-          id="hero-title"
-          class="text-3xl sm:text-4xl md:text-6xl font-display font-semibold leading-[1.1]"
-        >
-          Don't just adapt.<br class="hidden md:block" />
-          <span class="text-brilint-accent">Evolve.</span>
-        </h1>
+          <div class="space-y-3">
+            <h1 id="hero-title" class="text-4xl font-display font-semibold leading-[1.05]">
+              Don't just adapt.
+              <br />
+              <span class="text-brilint-accent">Evolve.</span>
+            </h1>
+            <p class="px-3 text-base text-brilint-muted leading-relaxed">
+              Presencia digital, campañas y sistemas confiables para atraer clientes y que tu operación no falle.
+            </p>
+          </div>
 
-        <p class="text-base md:text-lg leading-relaxed text-brilint-muted">
-          Brilint ayuda a PyMEs, profesionales y hogares a construir presencia
-          digital, campañas y sistemas tecnológicos confiables para que dejes
-          de perder clientes por no estar bien en línea.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto">
-          <div class="w-full sm:w-auto">
+          <div class="w-full space-y-3">
             <Button
               href="https://wa.me/527223579869?text=Hola,%20quiero%20agendar%20un%20diagn%C3%B3stico%20para%20mi%20negocio"
               variant="primary"
+              class="w-full"
             >
               Agendar diagnóstico
             </Button>
-          </div>
-
-          <div class="w-full sm:w-auto">
-            <Button href="#portfolio" variant="ghost">
+            <Button href="#portfolio" variant="ghost" class="w-full">
               Ver portafolio
             </Button>
           </div>
-        </div>
 
-        <div class="grid grid-cols-1 sm:flex sm:flex-wrap gap-2.5 md:gap-3 text-[11px] md:text-xs text-brilint-muted">
-          <span class="inline-flex items-center gap-2 rounded-full bg-brilint-surface/60 px-3 py-1.5 border border-brilint-border/70">
-            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-            Respuesta rápida por WhatsApp
-          </span>
-          <span class="inline-flex items-center gap-2 rounded-full bg-brilint-surface/60 px-3 py-1.5 border border-brilint-border/70">
-            Zona: Metepec · Toluca · Lerma
-          </span>
+          <div class="w-full">
+            <div class="flex gap-3 overflow-x-auto hide-scrollbar justify-center px-1 text-[11px] text-brilint-muted">
+              <span class="inline-flex items-center gap-2 rounded-full bg-brilint-surface/60 px-3 py-1.5 border border-brilint-border/70">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                Respuesta rápida por WhatsApp
+              </span>
+              <span class="inline-flex items-center gap-2 rounded-full bg-brilint-surface/60 px-3 py-1.5 border border-brilint-border/70">
+                Zona: Metepec · Toluca · Lerma
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </HeroMotion>
+      </HeroMotion>
+    </Container>
+  </div>
 
-    <HeroMotion client:load>
-      <div class="w-full relative rounded-2xl md:rounded-3xl border border-brilint-border bg-brilint-surface/85 p-6 md:p-7 shadow-brilint-soft space-y-4">
-        <p class="inline-flex items-center gap-2 text-[11px] md:text-xs font-semibold text-brilint-muted uppercase tracking-[0.16em] rounded-full bg-brilint-bg/60 px-3 py-1.5 border border-brilint-border/60">
-          Vista rápida de servicios
-        </p>
-        <h3 class="text-lg md:text-xl font-semibold leading-snug">
-          Diagnóstico · Estrategia · Implementación · Optimización
-        </h3>
-        <ul class="space-y-2 md:space-y-2.5 text-xs md:text-sm text-brilint-muted leading-relaxed">
-          <li class="flex gap-2">
-            <span class="text-brilint-accent">•</span>
-            <span>Landing pages y campañas Meta/Google para captar clientes.</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="text-brilint-accent">•</span>
-            <span>Redes e internet confiables en hogar y negocio.</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="text-brilint-accent">•</span>
-            <span>Soporte técnico y seguridad digital preventiva.</span>
-          </li>
-        </ul>
-      </div>
-    </HeroMotion>
-  </Container>
+  <!-- DESKTOP -->
+  <div class="hidden md:block">
+    <Container className="grid gap-12 md:gap-12 md:grid-cols-[minmax(0,1.08fr)_minmax(0,1fr)] items-start">
+      <HeroMotion client:load>
+        <div class="space-y-7 md:space-y-6 max-w-2xl">
+          <p class="inline-flex items-center gap-2 text-[11px] tracking-[0.22em] text-brilint-muted md:text-sm uppercase rounded-full border border-brilint-border/70 bg-brilint-surface/60 px-3 py-1.5">
+            Servicios digitales premium · Valle de Toluca
+          </p>
+
+          <h1
+            id="hero-title"
+            class="text-3xl sm:text-4xl md:text-6xl font-display font-semibold leading-[1.1]"
+          >
+            Don't just adapt.<br class="hidden md:block" />
+            <span class="text-brilint-accent">Evolve.</span>
+          </h1>
+
+          <p class="text-base md:text-lg leading-relaxed text-brilint-muted">
+            Brilint ayuda a PyMEs, profesionales y hogares a construir presencia
+            digital, campañas y sistemas tecnológicos confiables para que dejes
+            de perder clientes por no estar bien en línea.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto">
+            <div class="w-full sm:w-auto">
+              <Button
+                href="https://wa.me/527223579869?text=Hola,%20quiero%20agendar%20un%20diagn%C3%B3stico%20para%20mi%20negocio"
+                variant="primary"
+              >
+                Agendar diagnóstico
+              </Button>
+            </div>
+
+            <div class="w-full sm:w-auto">
+              <Button href="#portfolio" variant="ghost">
+                Ver portafolio
+              </Button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:flex sm:flex-wrap gap-2.5 md:gap-3 text-[11px] md:text-xs text-brilint-muted">
+            <span class="inline-flex items-center gap-2 rounded-full bg-brilint-surface/60 px-3 py-1.5 border border-brilint-border/70">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Respuesta rápida por WhatsApp
+            </span>
+            <span class="inline-flex items-center gap-2 rounded-full bg-brilint-surface/60 px-3 py-1.5 border border-brilint-border/70">
+              Zona: Metepec · Toluca · Lerma
+            </span>
+          </div>
+        </div>
+      </HeroMotion>
+
+      <HeroMotion client:load>
+        <div class="w-full relative rounded-2xl md:rounded-3xl border border-brilint-border bg-brilint-surface/85 p-6 md:p-7 shadow-brilint-soft space-y-4">
+          <p class="inline-flex items-center gap-2 text-[11px] md:text-xs font-semibold text-brilint-muted uppercase tracking-[0.16em] rounded-full bg-brilint-bg/60 px-3 py-1.5 border border-brilint-border/60">
+            Vista rápida de servicios
+          </p>
+          <h3 class="text-lg md:text-xl font-semibold leading-snug">
+            Diagnóstico · Estrategia · Implementación · Optimización
+          </h3>
+          <ul class="space-y-2 md:space-y-2.5 text-xs md:text-sm text-brilint-muted leading-relaxed">
+            <li class="flex gap-2">
+              <span class="text-brilint-accent">•</span>
+              <span>Landing pages y campañas Meta/Google para captar clientes.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-brilint-accent">•</span>
+              <span>Redes e internet confiables en hogar y negocio.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="text-brilint-accent">•</span>
+              <span>Soporte técnico y seguridad digital preventiva.</span>
+            </li>
+          </ul>
+        </div>
+      </HeroMotion>
+    </Container>
+  </div>
 </section>
