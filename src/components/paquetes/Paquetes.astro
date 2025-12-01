@@ -6,71 +6,73 @@ import { paquetes } from '../../data/paquetes.js';
 ---
 
 <section id="paquetes" class="py-16 md:py-section-y bg-brilint-bg">
-  <Container>
+  <Container className="space-y-8 md:space-y-10">
     <SectionTitle
       title="Paquetes pensados para tu negocio"
       subtitle="Tres niveles claros para que elijas según tu momento. Desde una landing rápida hasta soluciones completas."
     />
 
     <!-- MOBILE: Carrusel horizontal swipeable -->
-    <div
-      class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-5 px-1 md:hidden"
-    >
-      {paquetes.map((paquete) => (
-        <article
-          class={`relative min-w-[88%] flex-shrink-0 snap-center rounded-2xl border p-6 flex flex-col h-full space-y-4 transition duration-200 active:scale-[0.98] ${
-            paquete.destacado
-              ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10'
-              : 'border-brilint-border bg-brilint-surface/70'
-          }`}
-        >
-          {paquete.destacado && (
-            <span class="absolute -top-3 left-6 rounded-full bg-brilint-accent px-3 py-1 text-xs font-semibold text-brilint-bg">
-              Más elegido
-            </span>
-          )}
+    <div class="md:hidden -mx-2">
+      <div
+        class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-6 px-2 hide-scrollbar"
+      >
+        {paquetes.map((paquete) => (
+          <article
+            class={`relative min-w-[88%] sm:min-w-[70%] flex-shrink-0 snap-center rounded-2xl border p-6 flex flex-col h-full space-y-4 transition duration-200 active:scale-[0.985] ${
+              paquete.destacado
+                ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10'
+                : 'border-brilint-border bg-brilint-surface/80'
+            }`}
+          >
+            {paquete.destacado && (
+              <span class="absolute -top-3 left-6 rounded-full bg-brilint-accent px-3 py-1 text-xs font-semibold text-brilint-bg">
+                Más elegido
+              </span>
+            )}
 
-          <div class="space-y-1">
-            <h3 class="text-xl font-semibold leading-snug">{paquete.nombre}</h3>
-            <p class="text-[11px] tracking-[0.18em] uppercase text-brilint-muted">
-              {paquete.etiqueta}
+            <div class="space-y-1">
+              <h3 class="text-xl font-semibold leading-snug">{paquete.nombre}</h3>
+              <p class="text-[11px] tracking-[0.18em] uppercase text-brilint-muted">
+                {paquete.etiqueta}
+              </p>
+            </div>
+
+            <p class="text-base font-semibold text-brilint-accent">
+              {paquete.precioDesde}
             </p>
-          </div>
 
-          <p class="text-base font-semibold text-brilint-accent">
-            {paquete.precioDesde}
-          </p>
+            <p class="text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
 
-          <p class="text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
+            <ul class="space-y-2 text-sm text-brilint-muted flex-1 leading-relaxed">
+              {paquete.incluye.map((item) => (
+                <li class="flex gap-2">
+                  <span class="text-brilint-accent">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
 
-          <ul class="space-y-2 text-sm text-brilint-muted flex-1 leading-relaxed">
-            {paquete.incluye.map((item) => (
-              <li class="flex gap-2">
-                <span class="text-brilint-accent">•</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div class="pt-2">
-            <Button
-              href={`https://wa.me/527223579869?text=Hola,%20quiero%20el%20paquete%20${encodeURIComponent(
-                paquete.nombre
-              )}`}
-              variant={paquete.destacado ? 'primary' : 'ghost'}
-            >
-              Cotizar {paquete.nombre}
-            </Button>
-          </div>
-        </article>
-      ))}
+            <div class="pt-2">
+              <Button
+                href={`https://wa.me/527223579869?text=Hola,%20quiero%20el%20paquete%20${encodeURIComponent(
+                  paquete.nombre
+                )}`}
+                variant={paquete.destacado ? 'primary' : 'ghost'}
+              >
+                Cotizar {paquete.nombre}
+              </Button>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
 
     <!-- DESKTOP: Grid intacto -->
     <div class="hidden md:grid md:grid-cols-3 md:gap-8">
       {paquetes.map((paquete) => (
         <article
-          class={`relative rounded-2xl border p-8 flex flex-col h-full space-y-4 ${
+          class={`relative rounded-2xl border p-8 flex flex-col h-full space-y-5 ${
             paquete.destacado
               ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10'
               : 'border-brilint-border bg-brilint-surface/70'

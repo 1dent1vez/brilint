@@ -1,0 +1,1 @@
+import{j as i}from"./jsx-runtime.D_zvdyIk.js";import{m as o}from"./proxy.B7PyQ4kN.js";import"./index.Cd_vQiNd.js";function e({children:t}){return i.jsx(o.div,{initial:{opacity:0,y:24},animate:{opacity:1,y:0},transition:{duration:.6,ease:"easeOut"},children:t})}export{e as HeroMotion};

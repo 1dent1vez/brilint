@@ -39,7 +39,7 @@ const pasos = [
 ---
 
 <section id="proceso" class="py-16 md:py-section-y bg-brilint-surface">
-  <Container>
+  <Container className="space-y-8 md:space-y-10">
     <SectionTitle
       title="Así es trabajar con Brilint"
       subtitle="Un proceso claro, sin palabras raras: entiendes qué se hace, por qué y qué puedes esperar en cada etapa."
@@ -48,11 +48,11 @@ const pasos = [
     <!-- MOBILE: Acordeón -->
     <div class="space-y-4 md:hidden">
       {pasos.map((paso) => (
-        <details class="group rounded-2xl border border-brilint-border bg-brilint-bg/70 px-4 py-3">
+        <details class="group rounded-2xl border border-brilint-border bg-brilint-bg/70 px-4 py-3 shadow-brilint-soft">
           <summary class="flex items-center justify-between cursor-pointer list-none gap-3">
             <div class="flex items-center gap-3">
               <span
-                class="flex h-8 w-8 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg text-sm font-semibold"
+                class="flex h-9 w-9 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg text-sm font-semibold"
               >
                 {paso.id}
               </span>
@@ -60,11 +60,11 @@ const pasos = [
             </div>
 
             <span class="transition-transform duration-200 group-open:rotate-180 text-brilint-muted">
-              ▾
+              &gt;
             </span>
           </summary>
 
-          <div class="mt-3 space-y-2">
+          <div class="mt-3 space-y-2 border-t border-brilint-border/60 pt-3">
             <p class="text-sm text-brilint-muted leading-relaxed">{paso.descripcion}</p>
             <p class="text-xs text-brilint-muted/80 leading-relaxed">{paso.detalle}</p>
           </div>
@@ -75,7 +75,7 @@ const pasos = [
     <!-- DESKTOP: Grid original -->
     <ol class="hidden md:grid gap-6 md:grid-cols-2">
       {pasos.map((paso) => (
-        <li class="relative rounded-2xl border border-brilint-border bg-brilint-bg/60 p-6 space-y-3">
+        <li class="relative rounded-2xl border border-brilint-border bg-brilint-bg/60 p-6 space-y-3 shadow-brilint-soft">
           <div class="flex items-center gap-3">
             <span class="flex h-8 w-8 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg text-sm font-semibold">
               {paso.id}

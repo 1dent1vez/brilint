@@ -12,9 +12,9 @@ export default function TestimonialsMotion({ testimonios }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 md:space-y-8">
       {/* MOBILE: carrusel horizontal */}
-      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-1 md:hidden">
+      <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-5 px-2 md:hidden hide-scrollbar">
         {testimonios.map((t) => (
           <motion.article
             key={t.id}
@@ -23,7 +23,7 @@ export default function TestimonialsMotion({ testimonios }) {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
-            className="min-w-[88%] snap-center relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/85 p-5 flex flex-col gap-3 transition duration-200"
+            className="min-w-[88%] max-w-[420px] snap-center relative h-full rounded-2xl border border-brilint-border bg-brilint-surface/85 p-6 flex flex-col gap-4 shadow-brilint-soft"
           >
             <div className="flex items-center gap-2 text-[11px] text-brilint-muted uppercase tracking-[0.14em]">
               {t.esVerificado && (
@@ -54,7 +54,7 @@ export default function TestimonialsMotion({ testimonios }) {
             </div>
 
             {t.techStack && (
-              <div className="pt-2">
+              <div className="pt-2 border-t border-brilint-border/60">
                 <p className="text-[11px] uppercase tracking-[0.16em] text-brilint-muted mb-2">
                   Stack del proyecto
                 </p>

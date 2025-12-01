@@ -15,7 +15,7 @@ export const testimonios = [
     nombre: 'Dr. Carlos M.',
     rol: 'Gerente de Clínica Dental',
     mensaje:
-      'El internet en la clínica fallaba constantemente y afectaba nuestra agenda. Realizó el cableado estructurado y configuró los puntos de acceso. Ahora la red es rápida y estable en todos los consultorios.',
+      'El internet en la clínica fallaba constantemente y afectaba nuestra agenda. Realicé el cableado estructurado y configuré los puntos de acceso. Ahora la red es rápida y estable en todos los consultorios.',
     tipoProyecto: 'Instalación de Red y WiFi',
     zona: 'Toluca',
     esVerificado: true,

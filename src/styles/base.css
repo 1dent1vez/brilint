@@ -19,7 +19,7 @@ body {
 
 /* Contenedor base reutilizable */
 .container-brilint {
-  @apply max-w-6xl mx-auto px-4;
+  @apply max-w-6xl mx-auto px-4 sm:px-5;
 }
 
 /* Tipografía base */
@@ -29,4 +29,12 @@ h1, h2, h3, h4 {
 
 p {
   @apply text-brilint-muted leading-relaxed;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }

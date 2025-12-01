@@ -4,14 +4,45 @@ import SectionTitle from '../ui/SectionTitle.astro';
 import { servicios } from '../../data/servicios.js';
 ---
 
-<section id="servicios" class="py-14 md:py-section-y bg-brilint-bg">
-  <Container>
+<section id="servicios" class="py-16 md:py-section-y bg-brilint-bg">
+  <Container className="space-y-8 md:space-y-10">
     <SectionTitle
       title="Servicios digitales para que dejes de perder clientes"
       subtitle="Brilint combina desarrollo web, campañas y soporte tecnológico para que tu negocio tenga una presencia online sólida y sistemas que no te fallen cuando más los necesitas."
     />
 
-    <div class="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <!-- MOBILE: carrusel para dar respiro -->
+    <div class="md:hidden -mx-2">
+      <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-5 px-2 hide-scrollbar">
+        {servicios.map((servicio) => (
+          <article
+            class="min-w-[86%] sm:min-w-[64%] snap-center rounded-2xl border border-brilint-border bg-brilint-surface/80 p-5 space-y-3 transition duration-200 shadow-brilint-soft active:scale-[0.985]"
+          >
+            <div class="space-y-1">
+              <h3 class="text-lg font-semibold leading-snug">
+                {servicio.titulo}
+              </h3>
+            </div>
+
+            <p class="text-sm text-brilint-muted leading-relaxed">
+              {servicio.descripcion}
+            </p>
+
+            <ul class="space-y-2 text-sm text-brilint-muted leading-relaxed">
+              {servicio.bullets.map((bullet) => (
+                <li class="flex gap-2">
+                  <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-brilint-accent/80"></span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- DESKTOP: grid intacta -->
+    <div class="hidden md:grid grid-cols-1 gap-5 sm:gap-5 md:gap-6 md:grid-cols-2 xl:grid-cols-3">
       {servicios.map((servicio) => (
         <article
           class="rounded-2xl border border-brilint-border bg-brilint-surface/70 p-5 sm:p-6 space-y-3 transition duration-200 hover:border-brilint-accent/60 hover:shadow-brilint-soft active:scale-[0.98]"

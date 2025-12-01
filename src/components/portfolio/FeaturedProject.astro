@@ -3,9 +3,9 @@ const { proyecto } = Astro.props;
 ---
 
 <article
-  class={`rounded-2xl border ${proyecto.destacado ? 'border-brilint-accent/80' : 'border-brilint-border'} bg-brilint-bg/70 p-4 sm:p-5 flex flex-col gap-4 shadow-brilint-soft`}
+  class={`rounded-2xl border ${proyecto.destacado ? 'border-brilint-accent/80' : 'border-brilint-border'} bg-brilint-bg/70 p-4 sm:p-5 flex flex-col gap-4 md:gap-5 shadow-brilint-soft`}
 >
-  <div class="space-y-1">
+  <div class="space-y-1.5">
     <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-brilint-muted/80">
       {proyecto.tipo}
     </p>
@@ -24,11 +24,11 @@ const { proyecto } = Astro.props;
 
   <div class="rounded-xl border border-brilint-border bg-brilint-surface/70 overflow-hidden">
     {proyecto.mockup ? (
-      <div class="h-72 sm:h-80 overflow-y-auto">
+      <div class="h-64 sm:h-72 overflow-hidden">
         <img
           src={proyecto.mockup}
           alt={`Mockup de ${proyecto.titulo}`}
-          class="w-full"
+          class="w-full h-full object-cover"
           loading="lazy"
         />
       </div>

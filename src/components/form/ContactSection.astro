@@ -4,14 +4,14 @@ import SectionTitle from '../ui/SectionTitle.astro';
 import ContactForm from '../../react/ContactForm.jsx';
 ---
 
-<section id="contacto" class="py-14 md:py-section-y bg-brilint-bg">
-  <Container>
+<section id="contacto" class="py-16 md:py-section-y bg-brilint-bg">
+  <Container className="px-3 sm:px-0 space-y-7 md:space-y-9">
     <SectionTitle
       title="Hablemos de tu proyecto"
       subtitle="Cotizaciones rápidas y claras. Atención por WhatsApp o formulario."
     />
 
-    <div class="max-w-xl mx-auto px-2 sm:px-0">
+    <div class="max-w-xl mx-auto">
       <ContactForm client:load />
     </div>
   </Container>
