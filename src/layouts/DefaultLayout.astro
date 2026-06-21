@@ -29,7 +29,7 @@ const {
     <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content="/og-image.webp" />
     <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://brilint.vercel.app/" />
+    <link rel="canonical" href={Astro.site} />
 
     <!-- Fuente Inter + Optimización -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -47,13 +47,13 @@ const {
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
         name: 'Brilint',
-        image: 'https://brilint.vercel.app/og-image.webp',
+        image: new URL('og-image.webp', Astro.site).href,
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Metepec',
           addressRegion: 'Estado de México',
         },
-        url: 'https://brilint.vercel.app/',
+        url: Astro.site.href,
         telephone: '+52 1 7223579869',
         servesLocation: ['Metepec', 'Toluca', 'Lerma', 'San Mateo Atenco'],
         description: pageDescription,
