@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 const { proyecto } = Astro.props;
 ---
 
@@ -25,18 +26,22 @@ const { proyecto } = Astro.props;
   <div class="rounded-xl border border-brilint-border bg-black overflow-hidden h-72 sm:h-80">
     {proyecto.mockup ? (
       <div class="h-full overflow-y-auto">
-        <img
+        <Image
           src={proyecto.mockup}
           alt={`Mockup de ${proyecto.titulo}`}
+          width={800}
+          height={1600}
           class="w-full object-top"
           loading="lazy"
         />
       </div>
     ) : (
       <div class="h-full overflow-y-auto">
-        <img
+        <Image
           src={proyecto.imagen}
           alt={`Vista de ${proyecto.titulo}`}
+          width={800}
+          height={500}
           class="w-full object-top"
           loading="lazy"
         />
