@@ -2,6 +2,7 @@
 import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
 import { servicios } from '../../data/servicios.js';
+import { WHATSAPP_URL } from '../../config/contact';
 ---
 
 <section id="servicios" class="py-16 md:py-section-y bg-brilint-bg">
@@ -42,7 +43,7 @@ import { servicios } from '../../data/servicios.js';
             </ul>
 
             <a
-              href={`https://wa.me/527223579869?text=Hola,%20quiero%20cotizar%20el%20servicio%20de%20${encodeURIComponent(servicio.titulo)}`}
+              href={WHATSAPP_URL(`Hola, quiero cotizar el servicio de ${servicio.titulo}`)}
               class="inline-flex items-center justify-center rounded-lg bg-brilint-accent text-brilint-bg text-sm font-semibold px-4 py-2.5 transition duration-200 hover:scale-[1.02] hover:shadow-brilint-soft active:scale-[0.97]"
             >
               Cotizar este servicio

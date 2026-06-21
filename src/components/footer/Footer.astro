@@ -1,5 +1,6 @@
 ---
 import Container from '../ui/Container.astro';
+import { WHATSAPP_NUMBER, WHATSAPP_URL } from '../../config/contact';
 
 const year = new Date().getFullYear();
 ---
@@ -59,11 +60,11 @@ const year = new Date().getFullYear();
           <p>
             WhatsApp:{' '}
             <span class="text-brilint-text font-medium">
-              +52 7223579869
+              +{WHATSAPP_NUMBER.slice(0, 2)} {WHATSAPP_NUMBER.slice(2, 5)} {WHATSAPP_NUMBER.slice(5, 8)} {WHATSAPP_NUMBER.slice(8)}
             </span>
           </p>
           <a
-            href="https://wa.me/527223579869?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Brilint"
+            href={WHATSAPP_URL("Hola, quiero información sobre Brilint")}
             class="inline-flex items-center justify-center text-brilint-accent hover:text-brilint-accent/90 transition duration-fast"
           >
             Escribir por WhatsApp

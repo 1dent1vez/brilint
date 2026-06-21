@@ -1,6 +1,7 @@
 ---
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
+import { WHATSAPP_URL } from '../../config/contact';
 ---
 
 <section class="py-16 md:py-section-y bg-brilint-surface">
@@ -16,7 +17,7 @@ import Button from '../ui/Button.astro';
     <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
       <div class="w-full sm:w-auto">
         <Button
-          href="https://wa.me/527223579869?text=Hola,%20quiero%20una%20cotizaci%C3%B3n"
+          href={WHATSAPP_URL("Hola, quiero una cotización")}
           variant="primary"
         >
           Empezar ahora

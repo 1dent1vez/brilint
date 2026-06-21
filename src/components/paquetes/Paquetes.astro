@@ -1,7 +1,9 @@
 ---
 import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
+import Button from '../ui/Button.astro';
 import { paquetes } from '../../data/paquetes.js';
+import { WHATSAPP_URL } from '../../config/contact';
 ---
 
 <section id="paquetes" class="py-16 md:py-section-y bg-brilint-bg">
@@ -17,10 +19,10 @@ import { paquetes } from '../../data/paquetes.js';
         {paquetes.map((paquete) => (
           <div class="min-w-[88%] snap-center">
             <article
-              class={`relative rounded-2xl border p-5 flex flex-col h-full gap-4 min-h-[380px] transition duration-200 active:scale-[0.985] ${
+              class={`relative rounded-3xl border p-6 flex flex-col h-full min-h-[420px] transition duration-200 ${
                 paquete.destacado
-                  ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10'
-                  : 'border-brilint-accent/60 bg-brilint-surface/80'
+                  ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10 ring-2 ring-brilint-accent/60'
+                  : 'border-brilint-border bg-brilint-surface/90 shadow-brilint-soft'
               }`}
             >
               {paquete.destacado && (
@@ -29,20 +31,21 @@ import { paquetes } from '../../data/paquetes.js';
                 </span>
               )}
 
-              <div class="space-y-1">
-                <h3 class="text-xl font-semibold leading-snug">{paquete.nombre}</h3>
-                <p class="text-[11px] tracking-[0.18em] uppercase text-brilint-muted">
+              <div class="space-y-2">
+                <p class="text-[11px] tracking-[0.2em] uppercase text-brilint-muted">
                   {paquete.etiqueta}
                 </p>
+                <h3 class="text-2xl font-semibold leading-snug">{paquete.nombre}</h3>
               </div>
 
-              <p class="text-base font-semibold text-brilint-accent">
-                {paquete.precioDesde}
-              </p>
+              <div class="mt-3 space-y-2">
+                <p class="text-4xl font-semibold text-brilint-accent">
+                  {paquete.precioDesde}
+                </p>
+                <p class="text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
+              </div>
 
-              <p class="text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
-
-              <ul class="space-y-2 text-sm text-brilint-muted flex-1 leading-relaxed">
+              <ul class="mt-5 space-y-3 text-sm text-brilint-muted leading-relaxed flex-1">
                 {paquete.incluye.map((item) => (
                   <li class="flex gap-2">
                     <span class="text-brilint-accent">•</span>
@@ -51,14 +54,12 @@ import { paquetes } from '../../data/paquetes.js';
                 ))}
               </ul>
 
-              <a
-                href={`https://wa.me/527223579869?text=Hola,%20quiero%20el%20paquete%20${encodeURIComponent(
-                  paquete.nombre
-                )}`}
-                class="inline-flex items-center justify-center rounded-lg text-sm md:text-base font-semibold tracking-wide uppercase px-4 py-3 transition duration-200 shadow-brilint-soft hover:shadow-lg hover:scale-[1.03] active:scale-[0.97] bg-brilint-accent text-brilint-bg"
+              <Button
+                href={WHATSAPP_URL(`Hola, quiero el paquete ${paquete.nombre}`)}
+                class="mt-6 w-full uppercase tracking-wide shadow-brilint-soft hover:shadow-lg active:scale-[0.97]"
               >
                 Cotizar {paquete.nombre}
-              </a>
+              </Button>
             </article>
           </div>
         ))}
@@ -69,10 +70,10 @@ import { paquetes } from '../../data/paquetes.js';
     <div class="hidden md:grid md:grid-cols-3 md:gap-8">
       {paquetes.map((paquete) => (
         <article
-          class={`relative rounded-2xl border p-7 flex flex-col h-full gap-5 min-h-[420px] ${
+          class={`relative rounded-3xl border p-8 flex flex-col h-full min-h-[520px] transition duration-200 ${
             paquete.destacado
-              ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10'
-              : 'border-brilint-accent/60 bg-brilint-surface/70'
+              ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10 ring-2 ring-brilint-accent/60'
+              : 'border-brilint-border bg-brilint-surface/90 shadow-brilint-soft'
           }`}
         >
           {paquete.destacado && (
@@ -81,20 +82,21 @@ import { paquetes } from '../../data/paquetes.js';
             </span>
           )}
 
-          <div class="space-y-1">
-            <h3 class="text-2xl font-semibold leading-snug">{paquete.nombre}</h3>
-            <p class="text-xs tracking-[0.18em] uppercase text-brilint-muted">
+          <div class="space-y-2">
+            <p class="text-xs tracking-[0.2em] uppercase text-brilint-muted">
               {paquete.etiqueta}
             </p>
+            <h3 class="text-2xl font-semibold leading-snug">{paquete.nombre}</h3>
           </div>
 
-          <p class="text-base font-semibold text-brilint-accent">
-            {paquete.precioDesde}
-          </p>
+          <div class="mt-4 space-y-2">
+            <p class="text-4xl font-semibold text-brilint-accent">
+              {paquete.precioDesde}
+            </p>
+            <p class="text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
+          </div>
 
-          <p class="text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
-
-          <ul class="space-y-2 text-sm text-brilint-muted flex-1 leading-relaxed">
+          <ul class="mt-6 space-y-3 text-sm text-brilint-muted leading-relaxed flex-1">
             {paquete.incluye.map((item) => (
               <li class="flex gap-2">
                 <span class="text-brilint-accent">•</span>
@@ -103,14 +105,12 @@ import { paquetes } from '../../data/paquetes.js';
             ))}
           </ul>
 
-          <a
-            href={`https://wa.me/527223579869?text=Hola,%20quiero%20el%20paquete%20${encodeURIComponent(
-              paquete.nombre
-            )}`}
-            class="inline-flex items-center justify-center rounded-lg text-sm md:text-base font-semibold tracking-wide uppercase px-4 py-3 transition duration-200 shadow-brilint-soft hover:shadow-lg hover:scale-[1.03] active:scale-[0.97] bg-brilint-accent text-brilint-bg"
+          <Button
+            href={WHATSAPP_URL(`Hola, quiero el paquete ${paquete.nombre}`)}
+            class="mt-8 w-full uppercase tracking-wide shadow-brilint-soft hover:shadow-lg active:scale-[0.97]"
           >
             Cotizar {paquete.nombre}
-          </a>
+          </Button>
         </article>
       ))}
     </div>
