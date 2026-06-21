@@ -70,7 +70,6 @@ Este catálogo documenta de forma detallada todos los componentes del proyecto, 
 *   **Propósito:** Cabecera de navegación superior fija (`sticky`). Utiliza un efecto de desenfoque (`backdrop-blur`) y un menú hamburguesa responsivo resuelto únicamente con HTML/CSS (sin JS) utilizando `<details>` y `<summary>`.
 *   **Props:** Ninguna.
 *   **Componentes Hijos:** `Container.astro`, `Button.astro`.
-*   **⚠️ Deuda Técnica:** Contiene dos números de WhatsApp discrepantes: uno para escritorio (`+52 722 357 9869`) y otro para móvil en el menú desplegable (`+52 729 239 2198`).
 *   **Notas de Accesibilidad:** El `<summary>` del menú móvil tiene el atributo `aria-label="Abrir menú de navegación"`.
 
 ### 2. `Hero.astro`
@@ -111,9 +110,12 @@ Este catálogo documenta de forma detallada todos los componentes del proyecto, 
 
 ### 7. `FeaturedProject.astro`
 *   **Ubicación:** `src/components/portfolio/FeaturedProject.astro`
-*   **Propósito:** Renderiza una tarjeta de proyecto destacada con imagen responsiva y botones de enlace a la URL en vivo y al código fuente.
+*   **Propósito:** Renderiza una tarjeta de proyecto destacada con imágenes optimizadas y botones de enlace a la URL en vivo y al código fuente.
+*   **Detalles de Optimización:** Usa el componente `<Image />` de `astro:assets` para generación automática de srcsets responsivos y prevención de CLS. Requiere los atributos `width` y `height` para el cálculo de aspect-ratio.
 *   **Props Aceptadas:**
     *   `proyecto` (`object`, Requerido): Un objeto con los datos del proyecto (título, tipo, zona, descripción, imagen/mockup, url, repo, destacado).
+    *   `width` (`number`, Requerido para optimización): Ancho real de la imagen en píxeles.
+    *   `height` (`number`, Requerido para optimización): Alto real de la imagen en píxeles.
 *   **Ejemplo de Uso:**
     ```astro
     <FeaturedProject proyecto={proyectoData} />
@@ -159,10 +161,9 @@ Estos componentes de React se renderizan en el servidor pero se activan (hidrata
 
 ### 1. `ConstellationBg.jsx`
 *   **Ubicación:** `src/react/ConstellationBg.jsx`
-*   **Propósito:** Fondo canvas dinámico interactivo con partículas estelares conectadas entre sí mediante líneas sutiles.
+*   **Propósito:** Fondo canvas dinámico con partículas estelares conectadas entre sí mediante líneas sutiles. Genera una animación de partículas estática. No utiliza eventos del ratón.
 *   **Estrategia de Hidratación:** `client:load`
 *   **Props:** `className` (opcional).
-*   **⚠️ Deuda Técnica:** Inicializa un manejador de movimiento de ratón (`window.addEventListener('mousemove')`) y actualiza la referencia `mouseRef.current`, pero este valor no se utiliza en absoluto en el cálculo o renderizado de partículas, lo que causa ciclos de eventos ociosos.
 
 ### 2. `HeroMotion.jsx` & `HeroMotionItem`
 *   **Ubicación:** `src/react/HeroMotion.jsx`
@@ -174,14 +175,14 @@ Estos componentes de React se renderizan en el servidor pero se activan (hidrata
 ### 3. `PortfolioSlider.jsx`
 *   **Ubicación:** `src/react/PortfolioSlider.jsx`
 *   **Propósito:** Carrusel deslizable interactivo con animaciones de entrada/salida para mostrar los proyectos no destacados.
-*   **Estrategia de Hidratación:** `client:load`
+*   **Estrategia de Hidratación:** `client:visible`
 *   **Props:** `proyectos` (`array`, Requerido): Lista de ítems del portafolio.
 *   **Estados Internos:** `index` (controla la diapositiva actual).
 
 ### 4. `TestimonialsMotion.jsx`
 *   **Ubicación:** `src/react/TestimonialsMotion.jsx`
 *   **Propósito:** Carrusel y grid animado de testimonios de clientes.
-*   **Estrategia de Hidratación:** `client:load`
+*   **Estrategia de Hidratación:** `client:visible`
 *   **Props:** `testimonios` (`array`, Requerido): Lista de testimonios.
 *   **Comportamiento:**
     *   **Móvil:** Renderiza un carrusel automático que cambia cada 3 segundos (`setTimeout`) con botones manuales para avanzar/retroceder.
@@ -191,7 +192,7 @@ Estos componentes de React se renderizan en el servidor pero se activan (hidrata
 ### 5. `ContactForm.jsx`
 *   **Ubicación:** `src/react/ContactForm.jsx`
 *   **Propósito:** Formulario interactivo que recopila y envía consultas del usuario al servicio externo Web3Forms mediante una petición HTTP POST (`fetch`).
-*   **Estrategia de Hidratación:** `client:load`
+*   **Estrategia de Hidratación:** `client:visible`
 *   **Props:** Ninguna.
 *   **Campos:**
     *   `name` (Nombre, requerido, max 80 chars)
@@ -201,16 +202,25 @@ Estos componentes de React se renderizan en el servidor pero se activan (hidrata
 *   **Estados Internos:**
     *   `status` (`'idle' | 'sending' | 'sent' | 'error'`)
     *   `result` (`string` de respuesta visual)
-*   **⚠️ Deuda Técnica (Crítica):** Este archivo está bloqueado localmente en Windows por antivirus debido a falsos positivos de firmas de script o comportamiento sospechoso en torno al envío HTTP a API externa. Esto causa un fallo en la compilación local al resolver el módulo.
 
 ---
 
-## 🚫 Componentes Sin Utilizar (Código Muerto)
+---
 
-### 1. `HeroSignature.jsx`
-*   **Ubicación:** `src/react/HeroSignature.jsx`
-*   **Propósito:** Fondo animado con órbitas giratorias, líneas de gradiente cruzadas y nodos parpadeantes que reacciona de forma elástica al cursor usando `useSpring` y `requestAnimationFrame`. No está integrado en ninguna sección.
+## ⚙️ Configuración y Constantes
 
-### 2. `FadeIn.jsx`
-*   **Ubicación:** `src/react/FadeIn.jsx`
-*   **Propósito:** Contenedor de animación scroll-based usando `IntersectionObserver` y Framer Motion para desvanecer elementos en pantalla cuando entran al viewport. No está en uso.
+### 1. `contact.ts`
+*   **Ubicación:** `src/config/contact.ts`
+*   **Tipo:** Módulo de configuración TypeScript.
+*   **Propósito:** Define y centraliza la configuración de datos de contacto (número de WhatsApp de la consultora) y helpers generadores de URLs `wa.me` a nivel global para garantizar que toda la web use la misma información canónica.
+*   **Exports:**
+    *   `WHATSAPP_NUMBER` (`string`): Teléfono limpio sin símbolos (ej. `"527223579869"`).
+    *   `WHATSAPP_URL(mensaje)` (`function`): Retorna la URL de redirección a WhatsApp codificada apropiadamente.
+*   **Ejemplo de Uso:**
+    ```astro
+    ---
+    import { WHATSAPP_URL } from '../config/contact';
+    ---
+    <a href={WHATSAPP_URL("Hola, me interesa...")}>WhatsApp</a>
+    ```
+*   **Módulos que lo importan:** `Nav.astro`, `DefaultLayout.astro`, `Hero.astro`, `Services.astro`, `Paquetes.astro`, `Footer.astro`, `CTA.astro`.

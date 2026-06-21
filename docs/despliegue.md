@@ -15,14 +15,14 @@ El sitio está estructurado para alojarse en **Vercel**:
 
 ## 🔌 Adaptador Astro y Configuración
 
-El archivo [astro.config.mjs](file:///astro.config.mjs) expone la siguiente integración del adaptador:
+El archivo [astro.config.mjs](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/astro.config.mjs) expone la siguiente integración del adaptador:
 
 ```javascript
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/static'; // Adaptador de Vercel para salida estática
+import vercel from '@astrojs/vercel'; // Adaptador de Vercel (actualizado para Astro v5+)
 
 export default defineConfig({
   site: 'https://brilint.dev',
@@ -35,6 +35,9 @@ export default defineConfig({
   ],
 });
 ```
+
+> ⚠️ **Nota de Versión:** La ruta de importación `@astrojs/vercel/static` está obsoleta en Astro v5+ y ha sido migrada a `@astrojs/vercel` para mantener la compatibilidad y evitar warnings durante la compilación.
+
 
 ### Comportamiento del Adaptador Estático
 Al compilar, el adaptador traduce los recursos de Astro a la especificación de carpetas requerida por el **Vercel Build Output API** (colocando la estructura dentro de `.vercel/output/`). Al ser una compilación estática (`output: 'static'`), Vercel sirve todos los ficheros de forma directa desde su CDN perimetral (Edge Network), sin levantar instancias serverless de cómputo por cada petición HTTP, reduciendo costes y tiempos de respuesta.
@@ -101,6 +104,21 @@ vercel --prod
 ```
 
 ---
+
+## 🌐 Dominios y Entornos
+
+El proyecto utiliza los siguientes dominios según el entorno de despliegue:
+
+| Ambiente | URL | Estado |
+| :--- | :--- | :--- |
+| **Producción** | [https://brilint.dev/](https://brilint.dev/) | ✅ Activo |
+| **Preview** | [https://brilint.vercel.app/](https://brilint.vercel.app/) | ⚠️ Temporal — no usar en producción |
+
+> [!NOTE]
+> El dominio temporal `brilint.vercel.app` ha sido completamente removido de todos los metadatos SEO del proyecto. Solo debe usarse para previews de PR.
+
+---
+
 
 ## 🌐 Consideraciones Post-Despliegue y Caché
 

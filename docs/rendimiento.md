@@ -15,23 +15,29 @@ El sitio está configurado en modo **SSG (Static Site Generation)**:
 
 ## 🖼️ Optimización de Imágenes
 
-*   **Estado Actual:** El proyecto **no** utiliza el módulo nativo de optimización de imágenes de Astro (`astro:assets`).
-*   **Implementación en Código:** Los componentes [FeaturedProject.astro](file:///src/components/portfolio/FeaturedProject.astro) y [PortfolioSlider.jsx](file:///src/react/PortfolioSlider.jsx) utilizan etiquetas estándar de HTML `<img>` con el atributo `loading="lazy"` cargando directamente imágenes en formato `.webp` de la carpeta pública.
-*   **Impacto:** Aunque se utiliza formato moderno WebP y carga diferida (lazy), la falta de optimización automática impide generar múltiples tamaños (srcset), comprimir la calidad al vuelo o prevenir desplazamientos de diseño (CLS) al no tener dimensiones explícitas auto-calculadas.
+*   **Estado Actual:** El proyecto utiliza el módulo nativo de optimización de imágenes de Astro (`astro:assets`).
+*   **Implementación en Código:** El componente [FeaturedProject.astro](file:///src/components/portfolio/FeaturedProject.astro) utiliza la etiqueta `<Image />` importada de `astro:assets` para procesar y optimizar las imágenes del portafolio.
+*   **Detalles de Configuración:**
+    | Propiedad | Valor | Efecto |
+    | :--- | :--- | :--- |
+    | `loading` | `"lazy"` | Carga diferida de imágenes fuera de pantalla. |
+    | `decoding` | `"async"` | Decodificación no bloqueante para liberar el hilo principal. |
+    | `width/height` | Valores reales | Prevención de Cumulative Layout Shift (CLS) mediante dimensiones proporcionales explicitadas. |
+*   **Impacto:** Permite la generación de srcsets automáticos basados en resoluciones móviles y pantallas de alta densidad, previene saltos en el diseño de la página al reservar el aspect-ratio y optimiza la compresión de forma nativa.
 
 ---
 
 ## 🏝️ Estrategias de Hidratación de Islas
 
-El proyecto utiliza la reactividad de React para cinco islas de interacción en `index.astro`:
+El proyecto utiliza la reactividad de React para cinco islas de interacción:
 
 | Componente React | Ubicación | Directiva de Hidratación | Evaluación de Impacto |
 | :--- | :--- | :--- | :--- |
 | `ConstellationBg` | Hero Section | `client:load` | **Adecuado:** Se ubica sobre el primer pliegue visual y debe renderizarse inmediatamente para dar soporte visual. |
 | `HeroMotion` | Hero Section | `client:load` | **Adecuado:** Gestiona las animaciones de entrada en el FCP (First Contentful Paint) y LCP (Largest Contentful Paint). |
-| `PortfolioSlider` | Portafolio (Bajo el pliegue) | `client:load` | ⚠️ **Subóptimo:** Está muy abajo en la página. Carga e hidrata código de carrusel innecesariamente durante la carga inicial del sitio. |
-| `TestimonialsMotion` | Testimonios (Bajo el pliegue) | `client:load` | ⚠️ **Subóptimo:** Inicia temporizadores (`setTimeout`) y carga animaciones de Framer Motion en el primer renderizado, consumiendo CPU inicial. |
-| `ContactForm` | Contacto (Bajo el pliegue) | `client:load` | ⚠️ **Subóptimo:** El usuario no interactuará con el formulario hasta hacer scroll hasta el final del sitio. |
+| `PortfolioSlider` | Portafolio (Bajo el pliegue) | `client:visible` | **Optimizado:** Difiere la descarga y ejecución de JavaScript del carrusel hasta que el usuario se desplaza a la sección. |
+| `TestimonialsMotion` | Testimonios (Bajo el pliegue) | `client:visible` | **Optimizado:** Difiere la inicialización de temporizadores y micro-animaciones en carrusel hasta que es visible. |
+| `ContactForm` | Contacto (Bajo el pliegue) | `client:visible` | **Optimizado:** Evita la carga prematura de dependencias del formulario. |
 
 ---
 
@@ -51,44 +57,10 @@ El proyecto es extremadamente limpio en este apartado:
 
 ---
 
-## 📈 Recomendaciones de Mejora y Oportunidades
+## 📈 Registro de Optimizaciones Completadas
 
-Se proponen las siguientes mejoras para llevar el rendimiento y calidad del proyecto a niveles sobresalientes:
+Las oportunidades de rendimiento identificadas anteriormente han sido implementadas exitosamente:
 
-### 1. Migrar a `astro:assets` (Prioridad Alta)
-Sustituir las etiquetas HTML `<img>` por el componente `<Image />` o `<Picture />` nativo de Astro en [FeaturedProject.astro](file:///src/components/portfolio/FeaturedProject.astro):
-```astro
----
-import { Image } from 'astro:assets';
----
-<!-- Ejemplo de reemplazo -->
-<Image
-  src={proyecto.mockup || proyecto.imagen}
-  alt={`Mockup de ${proyecto.titulo}`}
-  width={600}
-  height={400}
-  class="w-full object-top"
-  loading="lazy"
-/>
-```
-*   *Beneficio:* Optimización automática de dimensiones, compresión inteligente de imágenes y prevención de Cumulative Layout Shift (CLS).
-
-### 2. Optimizar Directivas de Hidratación (Prioridad Media)
-Cambiar el tipo de hidratación en [index.astro](file:///src/pages/index.astro) de `client:load` a `client:visible` en las islas que se encuentran debajo del pliegue inicial de pantalla:
-```astro
-<!-- En src/pages/index.astro -->
-<PortfolioSlider proyectos={sliderItems} client:visible />
-<TestimonialsMotion testimonios={testimonios} client:visible />
-<ContactForm client:visible />
-```
-*   *Beneficio:* Reduce el peso del JS inicial descargado en el render primario, mejorando los tiempos de bloqueo de CPU (TBT) y aumentando la velocidad móvil real.
-
-### 3. Remover Escucha de Eventos Ociosa (Prioridad Baja)
-En `src/react/ConstellationBg.jsx`, eliminar el código de escucha de movimiento del ratón que no realiza ninguna tarea real:
-```diff
-- const handleMouseMove = (e) => {
--   mouseRef.current = { x: e.clientX, y: e.clientY };
-- };
-- window.addEventListener('mousemove', handleMouseMove);
-```
-*   *Beneficio:* Evita el consumo innecesario de recursos en el hilo de renderización de eventos del navegador.
+1.  **Migración a `astro:assets`:** Implementada en [FeaturedProject.astro](file:///src/components/portfolio/FeaturedProject.astro) utilizando el componente `<Image />`.
+2.  **Optimización de Hidratación:** Cambiada de `client:load` a `client:visible` para las islas de testimonios, portafolio y formulario de contacto.
+3.  **Remoción de Escucha de Eventos Ociosa:** Completada en [ConstellationBg.jsx](file:///src/react/ConstellationBg.jsx). El listener de `mousemove` fue removido al no estar conectado al loop de animación. La animación de partículas es ahora puramente basada en tiempo, sin procesamiento adicional de eventos del ratón.

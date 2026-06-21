@@ -31,10 +31,12 @@ brilint/
 │   │   ├── services/       # Tarjetas de servicios principales (Services.astro)
 │   │   ├── testimonios/    # Contenedor de testimonios de clientes (Testimonios.astro)
 │   │   └── ui/             # Componentes base de UI (Button, Container, SectionTitle)
-│   ├── data/               # Archivos JavaScript que centralizan datos (servicios, paquetes, FAQs, etc.)
+│   ├── config/             # Configuración y constantes del proyecto
+│   │   └── contact.ts      # ← NUEVO: Configuración centralizada de datos de contacto
+│   ├── data/               # Archivos JavaScript que centralizan datos (servicios, paquetes, FAQs, etc.) (portafolio.js eliminado)
 │   ├── layouts/            # Plantillas de diseño de página global (DefaultLayout.astro)
 │   ├── pages/              # Páginas del proyecto que definen las rutas físicas (index.astro)
-│   ├── react/              # Componentes de React para interactividad e islas (Framer Motion, Canvas)
+│   ├── react/              # Componentes de React para interactividad e islas (Framer Motion, Canvas) (HeroSignature.jsx y FadeIn.jsx eliminados)
 │   ├── styles/             # Hojas de estilo globales (base.css)
 │   └── utils/              # Funciones auxiliares o utilidades comunes (actualmente vacío)
 ├── astro.config.mjs        # Configuración principal de Astro e integraciones
@@ -72,7 +74,8 @@ El proyecto utiliza la **Arquitectura de Islas (Islands Architecture)** provista
 
 *   **Astro como Framework:** Elegido debido al enfoque de la página (Landing Page informativa). Astro elimina por completo el JavaScript innecesario del navegador al compilar páginas HTML estáticas, lo que maximiza el rendimiento móvil y el SEO en comparación con SPAs tradicionales (React puro, Next.js).
 *   **Modo de Salida Estático (SSG):** Configurado mediante `output: 'static'` en `astro.config.mjs`. Esto significa que todas las páginas se generan como archivos HTML puros durante el build, lo que reduce costos de servidor y permite servir la web mediante redes CDN globales de alta velocidad.
-*   **Adaptador de Vercel Static:** Utiliza `@astrojs/vercel/static` en el build. Al ser un sitio puramente estático, no requiere un servidor Node en ejecución continua, pero el adaptador integra de forma óptima el despliegue con la infraestructura CDN de Vercel.
+*   **Adaptador de Vercel:** Utiliza `@astrojs/vercel` en el build (actualizado para remover el import obsoleto `/static`). Al ser un sitio puramente estático, no requiere un servidor Node en ejecución continua, pero el adaptador integra de forma óptima el despliegue con la infraestructura CDN de Vercel.
+*   **Centralización de Datos de Contacto:** Los datos de contacto (WhatsApp) se centralizan en [contact.ts](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/src/config/contact.ts) para evitar discrepancias entre versiones móvil y desktop. Cualquier cambio de número requiere editar un único archivo.
 
 ---
 
@@ -97,20 +100,12 @@ El archivo `package.json` define las siguientes dependencias de terceros:
 5.  **`@astrojs/sitemap` (v3.6.0):** Generador de sitemap para rastreo SEO del sitio.
 6.  **`framer-motion` (v12.23.24):** Biblioteca de animaciones de alto rendimiento para componentes React. Utilizada para gestionar transiciones y carruseles fluidos.
 7.  **`tailwindcss` (v3.4.18) & `autoprefixer` (v10.4.22) & `postcss` (v8.5.6):** Motor de estilos utilitarios y herramientas de postprocesado para generar CSS optimizado para múltiples navegadores.
+8.  **`@astrojs/vercel` (v8.0.4):** Adaptador oficial de Astro para empaquetar el sitio web de forma estática en la infraestructura de Vercel.
 
 ---
 
-## ⚠️ Hallazgos Arquitectónicos y Deuda Técnica Detectada
+## ⚠️ Historial de Deuda Técnica y Auditoría
 
-Durante el análisis del proyecto se identificaron los siguientes puntos que requieren atención:
+Todos los hallazgos de deuda técnica identificados durante la auditoría inicial (bloqueo del archivo `ContactForm.jsx` por Windows Defender, inconsistencias de números de WhatsApp móvil y desktop, importaciones obsoletas del adaptador Vercel, referencias al subdominio temporal y archivos huérfanos o en desuso) fueron resueltos en su totalidad durante la sesión de corrección. 
 
-*   **Bloqueo de Seguridad en local (Crítico):** El archivo `src/react/ContactForm.jsx` está siendo bloqueado por Windows Defender (`os error 225` o "operación no completada porque el archivo contiene un virus o software potencialmente no deseado"). Esto interrumpe la lectura del archivo mediante el sistema de archivos estándar y provoca que el comando `npm run build` falle. (Se pudo acceder a su contenido utilizando el historial de Git: `git show HEAD:src/react/ContactForm.jsx`).
-*   **Inconsistencia en número de WhatsApp (Media):** Hay una discrepancia crítica de números telefónicos en las llamadas a la acción:
-    *   En la cabecera móvil (`Nav.astro` línea 74), el enlace redirige al número: `+52 729 239 2198`.
-    *   En la versión de escritorio de la cabecera (`Nav.astro` línea 40), el botón flotante general (`DefaultLayout.astro` línea 69) y el resto de las secciones apuntan al número: `+52 722 357 9869`.
-*   **Archivos Huérfanos / Código Muerto (Baja):**
-    *   `src/react/HeroSignature.jsx`: Un componente interactivo con animaciones de órbitas y nodos que responde al cursor de mouse no está importado ni utilizado en `Hero.astro` ni en ninguna otra sección.
-    *   `src/react/FadeIn.jsx`: Componente React que implementa animaciones al hacer scroll mediante `IntersectionObserver` que está en desuso.
-    *   `src/data/portafolio.js`: Archivo con datos redundantes de portafolio que no se está importando (el archivo real utilizado es `portfolio.js`).
-*   **Imports Deprecados (Baja):** En `astro.config.mjs`, se importa `@astrojs/vercel/static` (línea 5), lo cual está deprecado en la CLI de Astro 5. Se debe importar el módulo genérico `@astrojs/vercel` y configurar el adaptador adecuadamente.
-*   **Canvas sin optimizar (Baja):** En `ConstellationBg.jsx`, se implementa un listener para seguir las coordenadas de movimiento del mouse a través del evento `mousemove`, pero las variables registradas (`mouseRef.current`) no se emplean para interactuar con las partículas, generando procesamiento de eventos estéril en hilos de render principal.
+Para consultar el registro histórico de las soluciones aplicadas a cada uno de estos hallazgos, diríjase al documento maestro [Changelog Técnico](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/changelog.md).

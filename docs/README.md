@@ -24,13 +24,16 @@ El proyecto está construido sobre un stack moderno orientado al rendimiento est
 
 La documentación del proyecto se encuentra estructurada en los siguientes archivos:
 
-1.  **[Arquitectura general](file:///docs/arquitectura.md):** Estructura del proyecto, directorios, patrón de diseño y mapa de rutas.
-2.  **[Catálogo de componentes](file:///docs/componentes.md):** Catálogo detallado de los componentes de UI en Astro e islas interactivas en React.
-3.  **[Estructura de Layouts](file:///docs/layouts.md):** Layout base, slots disponibles, y configuración de la cabecera.
-4.  **[Diseño y Estilos](file:///docs/estilos.md):** Configuración de Tailwind CSS, paleta de colores, tipografía y animaciones.
-5.  **[Optimización y Rendimiento](file:///docs/rendimiento.md):** Estrategias de hidratación, optimización de assets y sugerencias de mejora.
-6.  **[Estrategia SEO y Metadatos](file:///docs/seo.md):** Configuración SEO, Open Graph, datos estructurados (JSON-LD) e indexación.
-7.  **[Guía de Despliegue y Entornos](file:///docs/despliegue.md):** Configuración del adaptador Vercel, variables de entorno y comandos de compilación.
+| Archivo | Contenido |
+| :--- | :--- |
+| [arquitectura.md](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/arquitectura.md) | Estructura de carpetas, rutas, dependencias |
+| [componentes.md](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/componentes.md) | Catálogo de componentes con props y ejemplos |
+| [layouts.md](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/layouts.md) | Layouts disponibles y sistema de slots |
+| [estilos.md](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/estilos.md) | Sistema de diseño, tokens, tipografía |
+| [rendimiento.md](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/rendimiento.md) | Hidratación, imágenes, estrategia de carga |
+| [seo.md](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/seo.md) | Metadatos, canonical, JSON-LD, validación |
+| [despliegue.md](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/despliegue.md) | Plataforma, adaptador, dominios, pipeline |
+| [changelog.md](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/docs/changelog.md) | ← NUEVO: Historial de correcciones técnicas |
 
 ---
 
@@ -83,8 +86,19 @@ El proyecto requiere las siguientes variables de entorno para funcionar correcta
 
 ---
 
+## ⚙️ Configuración de Contacto Centralizada
+
+Los datos de contacto y enlaces de redirección a WhatsApp están centralizados en el archivo [contact.ts](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/src/config/contact.ts) para actuar como única fuente de verdad y evitar inconsistencias:
+
+*   **Ubicación:** `src/config/contact.ts`
+*   **Constantes Exportadas:**
+    *   `WHATSAPP_NUMBER`: Número telefónico del negocio en formato numérico puro, con código de país (ej. `"527223579869"`).
+    *   `WHATSAPP_URL(mensaje)`: Función auxiliar que recibe un texto opcional y retorna el enlace `wa.me` de forma segura.
+
+---
+
 ## 📊 Estado del Proyecto
 
-*   **Última actualización:** Junio 2026
+*   **Última actualización:** 21 de Junio de 2026 (Resolución de deuda técnica)
 *   **Entorno actual:** Listo para producción (SSG)
-*   **Estado de compilación:** ⚠️ Fallando localmente debido a una cuarentena de seguridad de Windows Defender sobre el archivo `src/react/ContactForm.jsx`. (Consulta la sección de hallazgos importantes en [Arquitectura](file:///docs/arquitectura.md) para más detalles).
+*   **Estado de compilación:** ✅ Pasa sin errores. El conflicto de Windows Defender con `ContactForm.jsx` fue resuelto mediante una exclusión local y restauración del archivo.
