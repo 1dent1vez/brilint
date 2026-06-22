@@ -21,7 +21,7 @@ import { testimonios } from '../../data/testimonios.js';
 <style is:global>
   /* Cita de testimonios */
   .testimonios-wrapper article > p {
-    @apply font-body text-base italic;
+    @apply font-body text-base italic leading-relaxed;
   }
   
   /* Nombre de testimonios */
@@ -33,7 +33,7 @@ import { testimonios } from '../../data/testimonios.js';
   /* Rol de testimonios */
   .testimonios-wrapper div.space-y-0\.5 p:nth-child(2),
   .testimonios-wrapper div.mt-auto p:nth-child(2) {
-    @apply font-mono text-xs uppercase tracking-wider;
+    @apply font-body text-xs text-brilint-muted uppercase tracking-wider;
   }
 
   /* Info adicional */
@@ -44,6 +44,6 @@ import { testimonios } from '../../data/testimonios.js';
 
   /* Badges (verificado, stack) */
   .testimonios-wrapper span {
-    @apply font-mono text-[10px] tracking-wider;
+    @apply font-body text-[10px] tracking-wider;
   }
 </style>

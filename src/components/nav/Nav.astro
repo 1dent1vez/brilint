@@ -17,13 +17,13 @@ const links = [
   <Container className="flex h-16 items-center justify-between px-1 sm:px-0">
     <a href="#top" class="inline-flex items-center gap-2">
       <span class="h-2 w-2 rounded-full bg-brilint-accent"></span>
-      <span class="font-display text-lg font-semibold tracking-tight">
+      <span class="font-body font-bold text-lg">
         Brilint
       </span>
     </a>
 
     <!-- NAV ESCRITORIO -->
-    <nav class="font-body hidden md:flex items-center gap-8 text-sm text-brilint-muted">
+    <nav class="font-body hidden md:flex items-center gap-8 text-sm font-medium text-brilint-muted">
       {links.map((link) => (
         <a
           href={link.href}
@@ -64,7 +64,7 @@ const links = [
             {links.map((link) => (
               <a
                 href={link.href}
-                class="px-4 py-2.5 text-sm text-brilint-muted hover:text-brilint-text hover:bg-brilint-surface/70 transition rounded-xl"
+                class="px-4 py-2.5 text-sm font-medium text-brilint-muted hover:text-brilint-text hover:bg-brilint-surface/70 transition rounded-xl"
               >
                 {link.label}
               </a>
