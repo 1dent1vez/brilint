@@ -1,6 +1,6 @@
 # Sistema de Diseño y Estilos
 
-Este documento describe la arquitectura de estilos, la paleta de colores, los tokens tipográficos y las configuraciones de diseño que dan soporte al aspecto visual premium de **Brilint**.
+Este documento describe la arquitectura de estilos, la paleta de colores, los tokens tipográficos y las configuraciones de diseño que dan soporte al aspecto visual premium de **Dab**.
 
 ---
 
@@ -16,17 +16,17 @@ El proyecto utiliza una combinación moderna y escalable de estilos utilitarios 
 
 ## 🎨 Paleta de Colores (Tokens de Diseño)
 
-Los colores oficiales de Brilint están registrados bajo la clave `extend` de Tailwind en [tailwind.config.cjs](file:///tailwind.config.cjs) y representan un esquema de modo oscuro coherente:
+Los colores oficiales de Dab están registrados bajo la clave `extend` de Tailwind en [tailwind.config.cjs](file:///tailwind.config.cjs) y representan un esquema de modo oscuro coherente:
 
 | Nombre de Token | Valor Hex/RGB | Propósito Visual |
 | :--- | :--- | :--- |
-| `brilint-bg` | `#05060A` | Color de fondo general del documento (Dark/Black). |
-| `brilint-surface` | `#0B0D14` | Color de fondo para tarjetas, secciones elevadas y bloques destacados. |
-| `brilint-accent` | `#4C7FFF` | Azul brillante utilizado para botones principales, acentos de texto, bordes activos y focos. |
-| `brilint-accent-soft` | `#4C7FFF1A` | `#4C7FFF` con opacidad del 10% para efectos sutiles de fondo. |
-| `brilint-text` | `#E5E7EB` | Color principal de texto legible para párrafos de alta importancia. |
-| `brilint-muted` | `#9CA3AF` | Color de texto secundario con menor contraste para textos informativos y metadatos. |
-| `brilint-border` | `#1F2933` | Gris oscuro utilizado para bordes de tarjetas, separadores y botones ghost. |
+| `dab-bg` | `#05060A` | Color de fondo general del documento (Dark/Black). |
+| `dab-surface` | `#0B0D14` | Color de fondo para tarjetas, secciones elevadas y bloques destacados. |
+| `dab-accent` | `#4C7FFF` | Azul brillante utilizado para botones principales, acentos de texto, bordes activos y focos. |
+| `dab-accent-soft` | `#4C7FFF1A` | `#4C7FFF` con opacidad del 10% para efectos sutiles de fondo. |
+| `dab-text` | `#E5E7EB` | Color principal de texto legible para párrafos de alta importancia. |
+| `dab-muted` | `#9CA3AF` | Color de texto secundario con menor contraste para textos informativos y metadatos. |
+| `dab-border` | `#1F2933` | Gris oscuro utilizado para bordes de tarjetas, separadores y botones ghost. |
 
 Además, en el archivo CSS global se fuerza el esquema de color oscuro al navegador:
 ```css
@@ -46,7 +46,7 @@ El sitio web utiliza la tipografía **Inter** de Google Fonts como fuente princi
 
 ### Reglas Tipográficas Globales (`base.css`):
 *   Títulos (`h1, h2, h3, h4`): Se aplica `font-display tracking-tight` para conseguir títulos compactos y elegantes.
-*   Párrafos (`p`): Se aplica `text-brilint-muted leading-relaxed` para mejorar la legibilidad del texto en pantallas.
+*   Párrafos (`p`): Se aplica `text-dab-muted leading-relaxed` para mejorar la legibilidad del texto en pantallas.
 
 ---
 
@@ -81,7 +81,7 @@ El proyecto utiliza los breakpoints por defecto de Tailwind CSS para crear inter
     *   `2xl`: `1rem` (16px) — Usado en la mayoría de tarjetas secundarias y bloques de proceso.
     *   `3xl`: `1.5rem` (24px) — Usado en tarjetas principales del portafolio y precios.
 *   **Sombras:**
-    *   `brilint-soft`: `0 18px 45px rgba(0,0,0,0.45)` — Sombra difusa oscura que simula elevación tridimensional realista en fondos negros.
+    *   `dab-soft`: `0 18px 45px rgba(0,0,0,0.45)` — Sombra difusa oscura que simula elevación tridimensional realista en fondos negros.
 *   **Transiciones:**
     *   `fast`: `150ms` (Para efectos hover en botones o enlaces)
     *   `normal`: `250ms` (Para transiciones de menús desplegables)

@@ -1,0 +1,21 @@
+---
+import Container from '../ui/Container.astro';
+import { HeroContent } from '../hero/HeroContent.tsx';
+---
+
+<section
+  id="top"
+  class="relative min-h-screen flex items-center bg-dab-bg overflow-hidden"
+  aria-labelledby="hero-title"
+>
+  {/* Fondo: gradiente radial sutil */}
+  <div
+    class="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_70%_30%,rgba(76,127,255,0.06),transparent)]"
+    aria-hidden="true"
+  />
+
+  {/* Contenido */}
+  <Container className="relative z-10 w-full">
+    <HeroContent client:visible />
+  </Container>
+</section>

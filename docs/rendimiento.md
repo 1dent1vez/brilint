@@ -1,6 +1,6 @@
 # Optimización y Rendimiento
 
-Este documento detalla la estrategia de rendimiento de **Brilint**, evaluando la arquitectura de renderizado, la hidratación de islas, la gestión de assets y las recomendaciones para maximizar las métricas Web Vitals.
+Este documento detalla la estrategia de rendimiento de **Dab**, evaluando la arquitectura de renderizado, la hidratación de islas, la gestión de assets y las recomendaciones para maximizar las métricas Web Vitals.
 
 ---
 

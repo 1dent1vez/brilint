@@ -1,6 +1,6 @@
 # Arquitectura del Proyecto
 
-Este documento detalla la arquitectura general de **Brilint**, describiendo la estructura de directorios, patrones de diseño, decisiones arquitectónicas claves y la gestión de rutas y dependencias.
+Este documento detalla la arquitectura general de **Dab**, describiendo la estructura de directorios, patrones de diseño, decisiones arquitectónicas claves y la gestión de rutas y dependencias.
 
 ---
 
@@ -9,7 +9,7 @@ Este documento detalla la arquitectura general de **Brilint**, describiendo la e
 El proyecto sigue la convención estándar de un proyecto Astro combinado con componentes dinámicos de React:
 
 ```text
-brilint/
+dab/
 ├── .astro/                 # Archivos temporales y tipos generados automáticamente por Astro
 ├── docs/                   # Documentación técnica del proyecto (esta carpeta)
 ├── public/                 # Recursos estáticos servidos directamente
@@ -85,7 +85,7 @@ Al ser una Landing Page, la aplicación cuenta con una única ruta raíz:
 
 | Ruta Física | URL Resultante | Tipo de Rendering | Lógica / Contenido |
 | :--- | :--- | :--- | :--- |
-| `src/pages/index.astro` | `/` (`https://brilint.dev`) | **SSG** (Static Site Generation) | Página principal compuesta por las secciones de presentación, servicios, paquetes, portafolio, proceso de trabajo, testimonios de clientes, preguntas frecuentes, contacto y pie de página. |
+| `src/pages/index.astro` | `/` (`https://dab.dev`) | **SSG** (Static Site Generation) | Página principal compuesta por las secciones de presentación, servicios, paquetes, portafolio, proceso de trabajo, testimonios de clientes, preguntas frecuentes, contacto y pie de página. |
 
 ---
 

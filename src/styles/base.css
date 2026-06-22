@@ -20,8 +20,8 @@
 /* Reset / ajustes mínimos para look premium */
 :root {
   color-scheme: dark;
-  --brilint-glow: rgba(76, 127, 255, 0.15);
-  --brilint-shimmer: linear-gradient(90deg, transparent, rgba(76, 127, 255, 0.2), transparent);
+  --dab-glow: rgba(76, 127, 255, 0.15);
+  --dab-shimmer: linear-gradient(90deg, transparent, rgba(76, 127, 255, 0.2), transparent);
   --font-display: 'Thunder', 'Impact', 'Arial Black', sans-serif;
   --font-body: 'Inter', system-ui, ui-sans-serif, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
@@ -34,11 +34,11 @@ body {
 }
 
 body {
-  @apply bg-brilint-bg text-brilint-text font-body antialiased;
+  @apply bg-dab-bg text-dab-text font-body antialiased;
 }
 
 /* Contenedor base reutilizable */
-.container-brilint {
+.container-dab {
   @apply max-w-6xl mx-auto px-4 sm:px-5;
 }
 
@@ -48,7 +48,7 @@ h1, h2, h3, h4 {
 }
 
 p {
-  @apply text-brilint-muted leading-relaxed;
+  @apply text-dab-muted leading-relaxed;
 }
 
 .hide-scrollbar {

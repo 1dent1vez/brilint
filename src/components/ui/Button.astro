@@ -1,7 +1,7 @@
 ---
 /**
  * Button.astro
- * Componente base de botón para Brilint
+ * Componente base de botón para Dab
  * En Astro el contenido va por <slot />, no por children.
  */
 
@@ -12,9 +12,9 @@ const base =
 
 const variants = {
   primary:
-    'bg-brilint-accent text-brilint-bg hover:bg-brilint-accent/90',
+    'bg-dab-accent text-dab-bg hover:bg-dab-accent/90',
   ghost:
-    'bg-transparent border border-brilint-border text-brilint-text hover:border-brilint-accent',
+    'bg-transparent border border-dab-border text-dab-text hover:border-dab-accent',
 };
 
 const classes = `${base} ${variants[variant] ?? variants.primary} ${className}`.trim();

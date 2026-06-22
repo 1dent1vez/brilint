@@ -10,7 +10,7 @@ const secundarios = proyectos.filter((p) => !p.destacado);
 const sliderItems = secundarios.length ? secundarios : proyectos;
 ---
 
-<section id="portfolio" class="py-16 md:py-section-y bg-brilint-surface">
+<section id="portfolio" class="py-16 md:py-section-y bg-dab-surface">
   <Container className="space-y-8 md:space-y-10">
     <SectionTitle
       title="Algunos proyectos recientes"
@@ -53,17 +53,17 @@ const sliderItems = secundarios.length ? secundarios : proyectos;
   /* Descripciones y textos de proyectos */
   .portfolio-wrapper article div.space-y-1\.5 p:last-of-type,
   .portfolio-wrapper div.space-y-2 h4 + p {
-    @apply font-body text-sm text-brilint-muted;
+    @apply font-body text-sm text-dab-muted;
   }
 
   /* Etiquetas de tipo de proyecto (en FeaturedProject) */
   .portfolio-wrapper article div.space-y-1\.5 p:first-of-type {
-    @apply font-body text-xs text-brilint-accent uppercase tracking-wider;
+    @apply font-body text-xs text-dab-accent uppercase tracking-wider;
   }
 
   /* Información de zona */
   .portfolio-wrapper article div.space-y-1\.5 p:nth-of-type(2):not(:last-of-type) {
-    @apply font-body text-[11px] sm:text-xs text-brilint-muted/80;
+    @apply font-body text-[11px] sm:text-xs text-dab-muted/80;
   }
 
   /* Enlaces a código y sitio web */

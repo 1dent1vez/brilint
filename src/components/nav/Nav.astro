@@ -13,21 +13,21 @@ const links = [
 ];
 ---
 
-<header class="fixed top-0 inset-x-0 z-30 border-b border-brilint-border/60 backdrop-blur-md bg-brilint-bg/80">
+<header class="fixed top-0 inset-x-0 z-30 border-b border-dab-border/60 backdrop-blur-md bg-dab-bg/80">
   <Container className="flex h-16 items-center justify-between px-1 sm:px-0">
     <a href="#top" class="inline-flex items-center gap-2">
-      <span class="h-2 w-2 rounded-full bg-brilint-accent"></span>
+      <span class="h-2 w-2 rounded-full bg-dab-accent"></span>
       <span class="font-body font-bold text-lg">
-        Brilint
+        Dab
       </span>
     </a>
 
     <!-- NAV ESCRITORIO -->
-    <nav class="font-body hidden md:flex items-center gap-8 text-sm font-medium text-brilint-muted">
+    <nav class="font-body hidden md:flex items-center gap-8 text-sm font-medium text-dab-muted">
       {links.map((link) => (
         <a
           href={link.href}
-          class="hover:text-brilint-text transition duration-fast rounded-full px-2 py-1"
+          class="hover:text-dab-text transition duration-fast rounded-full px-2 py-1"
         >
           {link.label}
         </a>
@@ -38,7 +38,7 @@ const links = [
     <div class="flex items-center gap-3">
       <div class="hidden md:block">
         <Button
-          href={WHATSAPP_URL("Hola, me interesa una cotización con Brilint")}
+          href={WHATSAPP_URL("Hola, me interesa una cotización con Dab")}
           variant="primary"
         >
           Hablar por WhatsApp
@@ -48,32 +48,32 @@ const links = [
       <!-- MENÚ MÓVIL -->
       <details class="relative md:hidden">
         <summary
-          class="list-none inline-flex h-10 w-10 items-center justify-center rounded-full border border-brilint-border bg-brilint-surface/90 text-brilint-text cursor-pointer shadow-brilint-soft"
+          class="list-none inline-flex h-10 w-10 items-center justify-center rounded-full border border-dab-border bg-dab-surface/90 text-dab-text cursor-pointer shadow-dab-soft"
           aria-label="Abrir menú de navegación"
         >
           <span class="flex flex-col gap-1.5">
-            <span class="h-0.5 w-4 rounded bg-brilint-text"></span>
-            <span class="h-0.5 w-4 rounded bg-brilint-text"></span>
+            <span class="h-0.5 w-4 rounded bg-dab-text"></span>
+            <span class="h-0.5 w-4 rounded bg-dab-text"></span>
           </span>
         </summary>
 
         <div
-          class="absolute right-0 mt-3 w-[min(88vw,17rem)] rounded-2xl border border-brilint-border bg-brilint-bg/95 shadow-lg shadow-black/40 p-3"
+          class="absolute right-0 mt-3 w-[min(88vw,17rem)] rounded-2xl border border-dab-border bg-dab-bg/95 shadow-lg shadow-black/40 p-3"
         >
           <nav class="font-body flex flex-col">
             {links.map((link) => (
               <a
                 href={link.href}
-                class="px-4 py-2.5 text-sm font-medium text-brilint-muted hover:text-brilint-text hover:bg-brilint-surface/70 transition rounded-xl"
+                class="px-4 py-2.5 text-sm font-medium text-dab-muted hover:text-dab-text hover:bg-dab-surface/70 transition rounded-xl"
               >
                 {link.label}
               </a>
             ))}
 
-            <div class="mt-2 border-t border-brilint-border/60 pt-2">
+            <div class="mt-2 border-t border-dab-border/60 pt-2">
               <a
-                href={WHATSAPP_URL("Hola, me interesa una cotización con Brilint")}
-                class="mx-1 mt-1 inline-flex w-[calc(100%-0.5rem)] items-center justify-center rounded-lg bg-brilint-accent px-3 py-2 text-xs font-semibold text-brilint-bg hover:bg-brilint-accent/90 transition"
+                href={WHATSAPP_URL("Hola, me interesa una cotización con Dab")}
+                class="mx-1 mt-1 inline-flex w-[calc(100%-0.5rem)] items-center justify-center rounded-lg bg-dab-accent px-3 py-2 text-xs font-semibold text-dab-bg hover:bg-dab-accent/90 transition"
               >
                 Hablar por WhatsApp
               </a>

@@ -6,7 +6,7 @@ import { paquetes } from '../../data/paquetes.js';
 import { WHATSAPP_URL } from '../../config/contact';
 ---
 
-<section id="paquetes" class="py-16 md:py-section-y bg-brilint-bg">
+<section id="paquetes" class="py-16 md:py-section-y bg-dab-bg">
   <Container className="space-y-8 md:space-y-10">
     <SectionTitle
       title="Paquetes pensados para tu negocio"
@@ -21,34 +21,34 @@ import { WHATSAPP_URL } from '../../config/contact';
             <article
               class={`relative rounded-3xl border p-6 flex flex-col h-full min-h-[420px] transition duration-200 ${
                 paquete.destacado
-                  ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10 ring-2 ring-brilint-accent/60'
-                  : 'border-brilint-border bg-brilint-surface/90 shadow-brilint-soft'
+                  ? 'border-dab-accent bg-dab-surface shadow-lg shadow-dab-accent/10 ring-2 ring-dab-accent/60'
+                  : 'border-dab-border bg-dab-surface/90 shadow-dab-soft'
               }`}
             >
               {paquete.destacado && (
-                <span class="absolute -top-3 left-6 rounded-full bg-brilint-accent px-3 py-1 text-xs font-semibold text-brilint-bg">
+                <span class="absolute -top-3 left-6 rounded-full bg-dab-accent px-3 py-1 text-xs font-semibold text-dab-bg">
                   Más elegido
                 </span>
               )}
 
               <div class="space-y-2">
-                <p class="font-body text-[11px] tracking-[0.2em] uppercase text-brilint-muted">
+                <p class="font-body text-[11px] tracking-[0.2em] uppercase text-dab-muted">
                   {paquete.etiqueta}
                 </p>
                 <h3 class="font-body font-bold text-xl leading-snug">{paquete.nombre}</h3>
               </div>
 
               <div class="mt-3 space-y-2">
-                <p class="font-body font-bold text-4xl md:text-5xl text-brilint-accent">
+                <p class="font-body font-bold text-4xl md:text-5xl text-dab-accent">
                   {paquete.precioDesde}
                 </p>
-                <p class="font-body text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
+                <p class="font-body text-sm text-dab-muted leading-relaxed">{paquete.idealPara}</p>
               </div>
 
-              <ul class="font-body mt-5 space-y-3 text-sm text-brilint-muted leading-relaxed flex-1">
+              <ul class="font-body mt-5 space-y-3 text-sm text-dab-muted leading-relaxed flex-1">
                 {paquete.incluye.map((item) => (
                   <li class="flex gap-2">
-                    <span class="text-brilint-accent">•</span>
+                    <span class="text-dab-accent">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -56,7 +56,7 @@ import { WHATSAPP_URL } from '../../config/contact';
 
               <Button
                 href={WHATSAPP_URL(`Hola, quiero el paquete ${paquete.nombre}`)}
-                class="font-body font-medium text-sm mt-6 w-full shadow-brilint-soft hover:shadow-lg active:scale-[0.97]"
+                class="font-body font-medium text-sm mt-6 w-full shadow-dab-soft hover:shadow-lg active:scale-[0.97]"
               >
                 Cotizar {paquete.nombre}
               </Button>
@@ -72,34 +72,34 @@ import { WHATSAPP_URL } from '../../config/contact';
         <article
           class={`relative rounded-3xl border p-8 flex flex-col h-full min-h-[520px] transition duration-200 ${
             paquete.destacado
-              ? 'border-brilint-accent bg-brilint-surface shadow-lg shadow-brilint-accent/10 ring-2 ring-brilint-accent/60'
-              : 'border-brilint-border bg-brilint-surface/90 shadow-brilint-soft'
+              ? 'border-dab-accent bg-dab-surface shadow-lg shadow-dab-accent/10 ring-2 ring-dab-accent/60'
+              : 'border-dab-border bg-dab-surface/90 shadow-dab-soft'
           }`}
         >
           {paquete.destacado && (
-            <span class="absolute -top-3 left-8 rounded-full bg-brilint-accent px-3 py-1 text-xs font-semibold text-brilint-bg">
+            <span class="absolute -top-3 left-8 rounded-full bg-dab-accent px-3 py-1 text-xs font-semibold text-dab-bg">
               Más elegido
             </span>
           )}
 
           <div class="space-y-2">
-            <p class="font-body text-xs tracking-[0.2em] uppercase text-brilint-muted">
+            <p class="font-body text-xs tracking-[0.2em] uppercase text-dab-muted">
               {paquete.etiqueta}
             </p>
             <h3 class="font-body font-bold text-xl leading-snug">{paquete.nombre}</h3>
           </div>
 
           <div class="mt-4 space-y-2">
-            <p class="font-body font-bold text-4xl md:text-5xl text-brilint-accent">
+            <p class="font-body font-bold text-4xl md:text-5xl text-dab-accent">
               {paquete.precioDesde}
             </p>
-            <p class="font-body text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
+            <p class="font-body text-sm text-dab-muted leading-relaxed">{paquete.idealPara}</p>
           </div>
 
-          <ul class="font-body mt-6 space-y-3 text-sm text-brilint-muted leading-relaxed flex-1">
+          <ul class="font-body mt-6 space-y-3 text-sm text-dab-muted leading-relaxed flex-1">
             {paquete.incluye.map((item) => (
               <li class="flex gap-2">
-                <span class="text-brilint-accent">•</span>
+                <span class="text-dab-accent">•</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -107,7 +107,7 @@ import { WHATSAPP_URL } from '../../config/contact';
 
           <Button
             href={WHATSAPP_URL(`Hola, quiero el paquete ${paquete.nombre}`)}
-            class="font-body font-medium text-sm mt-8 w-full shadow-brilint-soft hover:shadow-lg active:scale-[0.97]"
+            class="font-body font-medium text-sm mt-8 w-full shadow-dab-soft hover:shadow-lg active:scale-[0.97]"
           >
             Cotizar {paquete.nombre}
           </Button>

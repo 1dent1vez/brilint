@@ -17,7 +17,7 @@ export default function PortfolioSlider({ proyectos }) {
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="rounded-2xl overflow-hidden border border-brilint-border bg-brilint-surface shadow-brilint-soft"
+        className="rounded-2xl overflow-hidden border border-dab-border bg-dab-surface shadow-dab-soft"
       >
         <div className="h-[230px] sm:h-[280px] overflow-y-auto bg-black">
           <img
@@ -30,7 +30,7 @@ export default function PortfolioSlider({ proyectos }) {
           <h4 className="text-lg sm:text-xl font-semibold leading-snug">
             {proyecto.titulo}
           </h4>
-          <p className="text-sm text-brilint-muted leading-relaxed">
+          <p className="text-sm text-dab-muted leading-relaxed">
             {proyecto.descripcion}
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function PortfolioSlider({ proyectos }) {
         <button
           onClick={prev}
           aria-label="Proyecto anterior"
-          className="p-2 rounded-full bg-brilint-bg/85 border border-brilint-border text-brilint-muted hover:text-brilint-accent transition duration-fast active:scale-95 shadow-brilint-soft"
+          className="p-2 rounded-full bg-dab-bg/85 border border-dab-border text-dab-muted hover:text-dab-accent transition duration-fast active:scale-95 shadow-dab-soft"
         >
           {"<"}
         </button>
@@ -50,7 +50,7 @@ export default function PortfolioSlider({ proyectos }) {
           {proyectos.map((_, dotIdx) => (
             <span
               key={dotIdx}
-              className={`h-2 w-2 rounded-full ${dotIdx === index ? 'bg-brilint-accent' : 'bg-brilint-border'}`}
+              className={`h-2 w-2 rounded-full ${dotIdx === index ? 'bg-dab-accent' : 'bg-dab-border'}`}
             />
           ))}
         </div>
@@ -58,7 +58,7 @@ export default function PortfolioSlider({ proyectos }) {
         <button
           onClick={next}
           aria-label="Proyecto siguiente"
-          className="p-2 rounded-full bg-brilint-bg/85 border border-brilint-border text-brilint-muted hover:text-brilint-accent transition duration-fast active:scale-95 shadow-brilint-soft"
+          className="p-2 rounded-full bg-dab-bg/85 border border-dab-border text-dab-muted hover:text-dab-accent transition duration-fast active:scale-95 shadow-dab-soft"
         >
           {">"}
         </button>
@@ -68,7 +68,7 @@ export default function PortfolioSlider({ proyectos }) {
         {proyectos.map((_, dotIdx) => (
           <span
             key={dotIdx}
-            className={`h-2 w-2 rounded-full ${dotIdx === index ? 'bg-brilint-accent' : 'bg-brilint-border'}`}
+            className={`h-2 w-2 rounded-full ${dotIdx === index ? 'bg-dab-accent' : 'bg-dab-border'}`}
           />
         ))}
       </div>

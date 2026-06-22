@@ -4,17 +4,17 @@
 
 <form
   id="contact-form"
-  class="space-y-4 bg-brilint-surface p-5 sm:p-6 rounded-2xl border border-brilint-accent/60 shadow-brilint-soft max-w-xl mx-auto"
+  class="space-y-4 bg-dab-surface p-5 sm:p-6 rounded-2xl border border-dab-accent/60 shadow-dab-soft max-w-xl mx-auto"
 >
   <!-- Honeypot check -->
   <input type="checkbox" name="botcheck" class="hidden" style="display:none" />
   <!-- Web3Forms Access Key -->
   <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
   <!-- Subject -->
-  <input type="hidden" name="subject" value="Nuevo mensaje desde Brilint" />
+  <input type="hidden" name="subject" value="Nuevo mensaje desde Dab" />
 
   <div class="space-y-1">
-    <label for="contact-name" class="block font-body text-sm font-medium text-brilint-muted">
+    <label for="contact-name" class="block font-body text-sm font-medium text-dab-muted">
       Tu nombre
     </label>
     <input
@@ -23,13 +23,13 @@
       name="name"
       required
       maxlength="80"
-      class="w-full font-body bg-brilint-bg border border-brilint-border p-3 rounded-lg text-base text-brilint-text placeholder-brilint-muted/50 focus:outline-none focus:ring-2 focus:ring-brilint-accent/40 transition-colors"
+      class="w-full font-body bg-dab-bg border border-dab-border p-3 rounded-lg text-base text-dab-text placeholder-dab-muted/50 focus:outline-none focus:ring-2 focus:ring-dab-accent/40 transition-colors"
       placeholder="Cómo te llamas"
     />
   </div>
 
   <div class="space-y-1">
-    <label for="contact-email" class="block font-body text-sm font-medium text-brilint-muted">
+    <label for="contact-email" class="block font-body text-sm font-medium text-dab-muted">
       Tu correo electrónico
     </label>
     <input
@@ -38,13 +38,13 @@
       name="email"
       required
       maxlength="120"
-      class="w-full font-body bg-brilint-bg border border-brilint-border p-3 rounded-lg text-base text-brilint-text placeholder-brilint-muted/50 focus:outline-none focus:ring-2 focus:ring-brilint-accent/40 transition-colors"
+      class="w-full font-body bg-dab-bg border border-dab-border p-3 rounded-lg text-base text-dab-text placeholder-dab-muted/50 focus:outline-none focus:ring-2 focus:ring-dab-accent/40 transition-colors"
       placeholder="correo@ejemplo.com"
     />
   </div>
 
   <div class="space-y-1">
-    <label for="contact-message" class="block font-body text-sm font-medium text-brilint-muted">
+    <label for="contact-message" class="block font-body text-sm font-medium text-dab-muted">
       Tu mensaje
     </label>
     <textarea
@@ -53,7 +53,7 @@
       required
       maxlength="1000"
       rows="4"
-      class="w-full font-body bg-brilint-bg border border-brilint-border p-3 rounded-lg text-base text-brilint-text placeholder-brilint-muted/50 focus:outline-none focus:ring-2 focus:ring-brilint-accent/40 transition-colors resize-none"
+      class="w-full font-body bg-dab-bg border border-dab-border p-3 rounded-lg text-base text-dab-text placeholder-dab-muted/50 focus:outline-none focus:ring-2 focus:ring-dab-accent/40 transition-colors resize-none"
       placeholder="Cuéntame qué necesitas"
     ></textarea>
   </div>
@@ -61,7 +61,7 @@
   <button
     type="submit"
     id="contact-submit"
-    class="w-full font-body bg-brilint-accent text-brilint-bg rounded-lg py-2.5 sm:py-3 font-semibold text-sm transition duration-fast hover:bg-brilint-accent/90 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98]"
+    class="w-full font-body bg-dab-accent text-dab-bg rounded-lg py-2.5 sm:py-3 font-semibold text-sm transition duration-fast hover:bg-dab-accent/90 disabled:opacity-60 disabled:cursor-not-allowed active:scale-[0.98]"
   >
     Enviar mensaje
   </button>
@@ -81,7 +81,7 @@
       // Disable button and show sending status
       submitBtn.disabled = true;
       submitBtn.textContent = 'Enviando...';
-      resultDiv.className = 'text-center text-sm text-brilint-muted mt-4';
+      resultDiv.className = 'text-center text-sm text-dab-muted mt-4';
       resultDiv.textContent = 'Enviando mensaje...';
       resultDiv.classList.remove('hidden');
 

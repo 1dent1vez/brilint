@@ -3,7 +3,7 @@ import '../styles/base.css';
 import { WHATSAPP_URL } from '../config/contact';
 
 const {
-  title = 'Brilint — Servicios digitales premium',
+  title = 'Dab — Servicios digitales premium',
   description: pageDescription = 'Consultora de servicios digitales para PyMEs, profesionales y hogares del Valle de Toluca.',
 } = Astro.props;
 ---
@@ -31,11 +31,11 @@ const {
     <meta property="og:type" content="website" />
     <link rel="canonical" href={Astro.site} />
 
-    <!-- Fuentes Web Centralizadas: Inter + JetBrains Mono -->
+    <!-- Fuentes Web Centralizadas: Inter + JetBrains Mono + Cormorant Garamond -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
@@ -44,7 +44,7 @@ const {
       {JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
-        name: 'Brilint',
+        name: 'Dab',
         image: new URL('og-image.webp', Astro.site).href,
         address: {
           '@type': 'PostalAddress',
@@ -59,15 +59,15 @@ const {
     </script>
   </head>
 
-  <body class="relative bg-brilint-bg text-brilint-text">
+  <body class="relative bg-dab-bg text-dab-text">
     <!-- Contenido de la página -->
     <slot />
 
     <!-- BOTÓN FLOTANTE SOLO MÓVIL -->
     <a
-      href={WHATSAPP_URL("Hola, quiero más información sobre Brilint")}
+      href={WHATSAPP_URL("Hola, quiero más información sobre Dab")}
       aria-label="Hablar por WhatsApp"
-      class="fixed bottom-5 right-4 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-brilint-accent text-brilint-bg shadow-xl shadow-brilint-accent/40 md:hidden active:scale-95 transition"
+      class="fixed bottom-5 right-4 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-dab-accent text-dab-bg shadow-xl shadow-dab-accent/40 md:hidden active:scale-95 transition"
     >
       W
     </a>

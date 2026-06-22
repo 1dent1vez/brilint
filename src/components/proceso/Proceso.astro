@@ -6,86 +6,105 @@ const pasos = [
   {
     id: 1,
     titulo: 'Diagnóstico',
-    descripcion:
-      'Escuchamos tu situación actual: qué negocio tienes, cómo te encuentran hoy, qué falla y qué quieres lograr.',
-    detalle:
-      'Se revisa tu presencia digital actual (si existe), tu zona de influencia, tu competencia directa y tu capacidad operativa.',
+    linea: 'Entendemos tu negocio antes de tocar una tecla.',
+    tiempo: '30 min',
   },
   {
     id: 2,
     titulo: 'Estrategia',
-    descripcion:
-      'Definimos qué se construye primero: landing, campañas, ajustes de red, soporte o una mezcla.',
-    detalle:
-      'Se priorizan acciones según impacto en clientes nuevos y según tu presupuesto real, no en teorías.',
+    linea: 'Priorizamos lo que genera clientes, no lo que luce bonito.',
+    tiempo: '1-2 días',
   },
   {
     id: 3,
     titulo: 'Implementación',
-    descripcion:
-      'Diseñamos y desarrollamos la solución: sitio, campañas, ajustes técnicos y configuraciones.',
-    detalle:
-      'Se entregan avances claros, se prueban formularios, enlaces, WhatsApp, métricas y funcionamiento en móvil.',
+    linea: 'Construimos, conectamos y probamos antes de entregar.',
+    tiempo: '1-2 semanas',
   },
   {
     id: 4,
     titulo: 'Optimización',
-    descripcion:
-      'Ajustamos según lo que pasa en la vida real: visitas, leads, consultas y problemas técnicos.',
-    detalle:
-      'Se corrigen fricciones, se afinan textos, velocidad, segmentaciones y se dejan bases listas para crecer.',
+    linea: 'Ajustamos según datos reales, no suposiciones.',
+    tiempo: 'Continuo',
   },
 ];
 ---
 
-<section id="proceso" class="py-16 md:py-section-y bg-brilint-surface">
-  <Container className="space-y-8 md:space-y-10">
+<section id="proceso" class="py-16 md:py-section-y bg-dab-surface relative overflow-hidden">
+  <!-- Línea de progresión decorativa (desktop) -->
+  <div class="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dab-accent/20 to-transparent" aria-hidden="true"></div>
+
+  <Container className="space-y-10 md:space-y-14 relative z-10">
     <SectionTitle
-      title="Así es trabajar con Brilint"
-      subtitle="Un proceso claro, sin palabras raras: entiendes qué se hace, por qué y qué puedes esperar en cada etapa."
+      title="Así es trabajar con Dab"
+      subtitle="Cuatro pasos. Cero sorpresas. Sabes exactamente dónde estamos y qué sigue."
     />
 
-    <!-- MOBILE: Acordeón -->
-    <div class="space-y-4 md:hidden">
-      {pasos.map((paso) => (
-        <details class="group rounded-2xl border border-brilint-border bg-brilint-bg/70 px-4 py-3 shadow-brilint-soft">
-          <summary class="flex items-center justify-between cursor-pointer list-none gap-3">
-            <div class="flex items-center gap-3">
-              <span
-                class="font-body font-bold text-4xl text-brilint-accent/30"
-              >
-                0{paso.id}
-              </span>
-              <h3 class="font-body font-bold text-xl leading-snug">{paso.titulo}</h3>
+    <!-- MOBILE: Tarjetas apiladas con indicador visual -->
+    <div class="md:hidden space-y-4">
+      {pasos.map((paso, index) => (
+        <div class="group relative rounded-2xl border border-dab-border/60 bg-dab-bg/50 backdrop-blur-sm p-5 transition-all duration-300 hover:border-dab-accent/30">
+          <!-- Conector vertical -->
+          {index < pasos.length - 1 && (
+            <div class="absolute left-7 top-full h-4 w-px bg-dab-border/40"></div>
+          )}
+          
+          <div class="flex items-start gap-4">
+            <!-- Número con círculo -->
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-dab-accent/10 border border-dab-accent/20 flex items-center justify-center">
+              <span class="font-mono text-sm font-bold text-dab-accent">0{paso.id}</span>
             </div>
-
-            <span class="transition-transform duration-200 group-open:rotate-180 text-brilint-muted">
-              &gt;
-            </span>
-          </summary>
-
-          <div class="mt-3 space-y-2 border-t border-brilint-border/60 pt-3">
-            <p class="font-body text-sm text-brilint-muted leading-relaxed">{paso.descripcion}</p>
-            <p class="font-body text-xs text-brilint-muted/80 leading-relaxed">{paso.detalle}</p>
+            
+            <div class="space-y-1 pt-1">
+              <div class="flex items-center gap-2">
+                <h3 class="font-body font-bold text-lg">{paso.titulo}</h3>
+                <span class="text-[10px] font-mono text-dab-muted/60 bg-dab-border/30 px-1.5 py-0.5 rounded">{paso.tiempo}</span>
+              </div>
+              <p class="font-body text-sm text-dab-muted leading-relaxed">{paso.linea}</p>
+            </div>
           </div>
-        </details>
+        </div>
       ))}
     </div>
 
-    <!-- DESKTOP: Grid original -->
-    <ol class="hidden md:grid gap-6 md:grid-cols-2">
-      {pasos.map((paso) => (
-        <li class="relative rounded-2xl border border-brilint-border bg-brilint-bg/60 p-6 space-y-3 shadow-brilint-soft">
-          <div class="flex items-center gap-3">
-            <span class="font-body font-bold text-4xl text-brilint-accent/30">
-              0{paso.id}
-            </span>
-            <h3 class="font-body font-bold text-xl leading-snug">{paso.titulo}</h3>
+    <!-- DESKTOP: Timeline horizontal con cards flotantes -->
+    <div class="hidden md:block">
+      <div class="grid grid-cols-4 gap-6 relative">
+        {pasos.map((paso, index) => (
+          <div class="group relative">
+            <!-- Nodo en la línea -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-dab-surface border-2 border-dab-accent/40 flex items-center justify-center z-10 group-hover:border-dab-accent group-hover:scale-110 transition-all duration-300">
+              <span class="font-mono text-[10px] font-bold text-dab-accent">{paso.id}</span>
+            </div>
+            
+            <!-- Card -->
+            <div class="mt-8 rounded-2xl border border-dab-border/50 bg-dab-bg/40 backdrop-blur-sm p-5 text-center transition-all duration-300 hover:bg-dab-bg/70 hover:border-dab-accent/30 hover:-translate-y-1">
+              <span class="inline-block text-[10px] font-mono text-dab-muted/60 bg-dab-border/30 px-2 py-0.5 rounded-full mb-3">{paso.tiempo}</span>
+              
+              <h3 class="font-body font-bold text-lg mb-2">{paso.titulo}</h3>
+              
+              <p class="font-body text-sm text-dab-muted leading-relaxed">{paso.linea}</p>
+              
+              <!-- Flecha indicadora (excepto último) -->
+              {index < pasos.length - 1 && (
+                <div class="absolute -right-3 top-1/2 -translate-y-1/2 text-dab-accent/20 group-hover:text-dab-accent/50 transition-colors">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              )}
+            </div>
           </div>
-          <p class="font-body text-sm text-brilint-muted leading-relaxed">{paso.descripcion}</p>
-          <p class="font-body text-xs text-brilint-muted/80 leading-relaxed">{paso.detalle}</p>
-        </li>
-      ))}
-    </ol>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA de proceso -->
+    <div class="text-center pt-4">
+      <p class="font-body text-sm text-dab-muted/70 inline-flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        Diagnóstico inicial sin costo. Sin compromiso.
+      </p>
+    </div>
   </Container>
 </section>

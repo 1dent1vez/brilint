@@ -1,31 +1,31 @@
 ---
 import DefaultLayout from '../layouts/DefaultLayout.astro';
 import Nav from '../components/nav/Nav.astro';
-import Hero from '../components/hero/Hero.astro';
+import Hero from '../components/sections/Hero.astro';
 import Services from '../components/services/Services.astro';
 import Paquetes from '../components/paquetes/Paquetes.astro';
 import Proceso from '../components/proceso/Proceso.astro';
 import Portfolio from '../components/portfolio/Portfolio.astro';
 import ContactSection from '../components/form/ContactSection.astro';
-import FAQ from '../components/faq/FAQ.astro';
+import FAQ from '../components/sections/Faq.astro';
 import CTA from '../components/cta/CTA.astro';
 import Testimonios from '../components/testimonios/Testimonios.astro';
 import Footer from '../components/footer/Footer.astro';
 ---
 
 <DefaultLayout
-  title="Brilint — Web, Redes y Soporte TI"
-  description="Brilint ayuda a PyMEs, profesionales y hogares a tener presencia digital, campañas y sistemas tecnológicos confiables en Metepec, Toluca y alrededores."
+  title="Dab — Web, Redes y Soporte TI"
+  description="Dab ayuda a PyMEs, profesionales y hogares a tener presencia digital, campañas y sistemas tecnológicos confiables en Metepec, Toluca y alrededores."
 >
   <Nav />
 
-  <main class="bg-brilint-bg">
+  <main class="bg-dab-bg">
     <Hero />
     <Services />
     <Paquetes />
     <Proceso />
     <Portfolio />
-    <ContactSection />
+   
     <Testimonios />
     <FAQ />
     <CTA />

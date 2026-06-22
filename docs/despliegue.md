@@ -1,6 +1,6 @@
 # Guía de Despliegue y Entornos
 
-Este documento describe la infraestructura de despliegue de **Brilint**, detallando la integración con la plataforma de alojamiento, el adaptador configurado, las variables de entorno, la pipeline de compilación y las políticas de caché de recursos.
+Este documento describe la infraestructura de despliegue de **Dab**, detallando la integración con la plataforma de alojamiento, el adaptador configurado, las variables de entorno, la pipeline de compilación y las políticas de caché de recursos.
 
 ---
 
@@ -25,7 +25,7 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel'; // Adaptador de Vercel (actualizado para Astro v5+)
 
 export default defineConfig({
-  site: 'https://brilint.dev',
+  site: 'https://dab.dev',
   output: 'static',                         // Fuerza la generación de sitio estático (SSG)
   adapter: vercel(),                        // Asigna a Vercel como receptor del build
   integrations: [
@@ -82,40 +82,17 @@ El proceso de construcción se dispara mediante el comando `npm run build` (que 
 
 ---
 
-## 🚀 Comandos de Despliegue
-
-### Despliegue Automatizado (Recomendado)
-Vercel se conecta directamente al repositorio de control de versiones (Git). Cualquier confirmación (`git push`) en la rama principal (`main` o `master`) dispara la ejecución de la pipeline en los servidores en la nube de forma transparente:
-*   **Comando de construcción en Vercel:** `npm run build`
-*   **Directorio de salida en Vercel:** `dist`
-
-### Despliegue Manual por Consola
-Si necesitas subir cambios directamente desde la máquina local:
-```bash
-# Iniciar sesión en Vercel
-npm install -g vercel
-vercel login
-
-# Desplegar entorno de desarrollo/preview
-vercel
-
-# Desplegar cambios a producción en vivo
-vercel --prod
-```
-
----
-
-## 🌐 Dominios y Entornos
+## 🚀 Dominios y Entornos
 
 El proyecto utiliza los siguientes dominios según el entorno de despliegue:
 
 | Ambiente | URL | Estado |
 | :--- | :--- | :--- |
-| **Producción** | [https://brilint.dev/](https://brilint.dev/) | ✅ Activo |
-| **Preview** | [https://brilint.vercel.app/](https://brilint.vercel.app/) | ⚠️ Temporal — no usar en producción |
+| **Producción** | [https://dab.dev/](https://dab.dev/) | ✅ Activo |
+| **Preview** | [https://dab.vercel.app/](https://dab.vercel.app/) | ⚠️ Temporal — no usar en producción |
 
 > [!NOTE]
-> El dominio temporal `brilint.vercel.app` ha sido completamente removido de todos los metadatos SEO del proyecto. Solo debe usarse para previews de PR.
+> El dominio temporal `dab.vercel.app` ha sido completamente removido de todos los metadatos SEO del proyecto. Solo debe usarse para previews de PR.
 
 ---
 
@@ -138,9 +115,7 @@ El archivo [vercel.json](file:///vercel.json) en la raíz del proyecto inyecta p
 
 ---
 
-## ⚠️ Resolución de Problemas de Despliegue en Compilación Local
-
-Si la compilación local falla con el error:
+## ⚠️ Si la compilación local falla con el error:
 `Could not resolve "../../react/ContactForm.jsx" from "src/components/form/ContactSection.astro"`
 
 **Causa:**

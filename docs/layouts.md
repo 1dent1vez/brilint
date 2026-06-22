@@ -19,7 +19,7 @@ El proyecto utiliza una plantilla global para estructurar el marcado HTML común
 
 | Prop | Tipo | Requerido | Valor por Defecto | Descripción |
 | :--- | :--- | :--- | :--- | :--- |
-| `title` | `string` | No | `'Brilint — Servicios digitales premium'` | El título de la página que aparece en la pestaña del navegador y es indexado por motores de búsqueda. |
+| `title` | `string` | No | `'Dab — Servicios digitales premium'` | El título de la página que aparece en la pestaña del navegador y es indexado por motores de búsqueda. |
 | `description` | `string` | No | `'Consultora de servicios digitales para PyMEs, profesionales y hogares del Valle de Toluca.'` | La descripción corta (meta-description) del contenido de la página para fragmentos de búsqueda. |
 
 ### Slots Disponibles
@@ -46,7 +46,7 @@ El proyecto utiliza una plantilla global para estructurar el marcado HTML común
     *   `<meta name="color-scheme" content="dark only" />` para forzar al navegador a renderizar en modo oscuro consistente.
 2.  **SEO Básico y Canonical Links:**
     *   Etiqueta `<title>` y `<meta name="description">` dinámicas basadas en props.
-    *   `<link rel="canonical" href={Astro.site} />` para evitar duplicidad de contenido y resolver dinámicamente el canonical link usando el dominio oficial configurado en `astro.config.mjs` (`https://brilint.dev`).
+    *   `<link rel="canonical" href={Astro.site} />` para evitar duplicidad de contenido y resolver dinámicamente el canonical link usando el dominio oficial configurado en `astro.config.mjs` (`https://dab.dev`).
 3.  **Protocolo Open Graph (OG):**
     *   Configura títulos, descripciones y tipos (`website`) para previsualizaciones ricas en redes sociales (Facebook, LinkedIn, Slack).
     *   Establece la imagen por defecto en `/og-image.webp` (ubicada en la carpeta pública).
@@ -77,7 +77,7 @@ import Footer from '../components/footer/Footer.astro';
   <!-- Este bloque de contenido se inyecta en el slot default del layout -->
   <Nav />
   
-  <main class="bg-brilint-bg">
+  <main class="bg-dab-bg">
     <section class="py-20 text-center">
       <h1>¡Hola Mundo!</h1>
       <p>Bienvenido a la landing page premium.</p>

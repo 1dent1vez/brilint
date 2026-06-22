@@ -1,6 +1,6 @@
 # Estrategia SEO y Metadatos
 
-Este documento detalla la implementación SEO de **Brilint**, evaluando la indexación, las meta etiquetas de redes sociales, el sitemap, el archivo de configuración de rastreadores y las micro-estructuras de datos para optimizar el posicionamiento local y orgánico.
+Este documento detalla la implementación SEO de **Dab**, evaluando la indexación, las meta etiquetas de redes sociales, el sitemap, el archivo de configuración de rastreadores y las micro-estructuras de datos para optimizar el posicionamiento local y orgánico.
 
 ---
 
@@ -8,13 +8,13 @@ Este documento detalla la implementación SEO de **Brilint**, evaluando la index
 
 Actualmente, al ser una landing page de página única, la gestión de metadatos está concentrada en el archivo base [DefaultLayout.astro](file:///src/layouts/DefaultLayout.astro). Las siguientes etiquetas HTML estándar se inyectan en la cabecera:
 
-*   **Título (`<title>`):** Configurable de manera dinámica. Por defecto toma el valor de `'Brilint — Servicios digitales premium'`. Para la página de inicio, se sobreescribe como `'Brilint — Web, Redes y Soporte TI'` en `index.astro`.
-*   **Descripción (`<meta name="description">`):** Breve sinopsis del sitio. Por defecto toma un texto enfocado en el Valle de Toluca. En la landing de inicio, se configura como `'Brilint ayuda a PyMEs, profesionales y hogares a tener presencia digital, campañas y sistemas tecnológicos confiables...'`.
+*   **Título (`<title>`):** Configurable de manera dinámica. Por defecto toma el valor de `'Dab — Servicios digitales premium'`. Para la página de inicio, se sobreescribe como `'Dab — Web, Redes y Soporte TI'` en `index.astro`.
+*   **Descripción (`<meta name="description">`):** Breve sinopsis del sitio. Por defecto toma un texto enfocado en el Valle de Toluca. En la landing de inicio, se configura como `'Dab ayuda a PyMEs, profesionales y hogares a tener presencia digital, campañas y sistemas tecnológicos confiables...'`.
 *   **Etiqueta Canonical (`<link rel="canonical">`):** Inyectada de manera dinámica en el layout apuntando al dominio configurado a través del objeto `Astro.site`:
     ```astro
     <link rel="canonical" href={Astro.site} />
     ```
-    *   **Resolución:** Se utiliza `Astro.site` de forma dinámica, el cual resuelve a `https://brilint.dev/` (según la propiedad `site` definida en [astro.config.mjs](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/astro.config.mjs)). Al cambiar el dominio en `astro.config.mjs`, se actualiza automáticamente el canonical en producción.
+    *   **Resolución:** Se utiliza `Astro.site` de forma dinámica, el cual resuelve a `https://dab.dev/` (según la propiedad `site` definida en [astro.config.mjs](file:///c:/Users/Identivezz/Documents/BRILINT/brilint/astro.config.mjs)). Al cambiar el dominio en `astro.config.mjs`, se actualiza automáticamente el canonical en producción.
 
 ---
 
@@ -37,7 +37,7 @@ Para optimizar cómo se muestra el enlace al ser compartido en plataformas socia
 El proyecto integra la generación automatizada de sitemaps:
 *   **Herramienta:** `@astrojs/sitemap` configurada en `astro.config.mjs` (línea 4 e inyectada en la línea 16).
 *   **Configuración en Build:** Genera un índice de mapas del sitio `sitemap-index.xml` y los sitemaps de páginas estáticas asociados en el directorio de salida `dist/`.
-*   **Dominio Base:** Utiliza la clave `site: 'https://brilint.dev'` definida en la configuración de Astro para construir las URLs absolutas en el mapa.
+*   **Dominio Base:** Utiliza la clave `site: 'https://dab.dev'` definida en la configuración de Astro para construir las URLs absolutas en el mapa.
 
 ---
 
@@ -48,7 +48,7 @@ Existe un archivo de directivas para rastreadores en [public/robots.txt](file://
 User-agent: *
 Allow: /
 
-Sitemap: https://brilint.dev/sitemap-index.xml
+Sitemap: https://dab.dev/sitemap-index.xml
 ```
 *   **Propósito:** Permite el rastreo completo del sitio para cualquier motor de búsqueda (`User-agent: *`) y declara explícitamente la ubicación absoluta del archivo sitemap index para agilizar la indexación de nuevas páginas.
 
@@ -62,7 +62,7 @@ Para mejorar el SEO local en Google Search y Google Maps, `DefaultLayout.astro` 
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Brilint",
+  "name": "Dab",
   "image": "new URL('og-image.webp', Astro.site).href",
   "address": {
     "@type": "PostalAddress",
@@ -78,7 +78,7 @@ Para mejorar el SEO local en Google Search y Google Maps, `DefaultLayout.astro` 
 *(Nota: El código real serializa este objeto usando `JSON.stringify` en el layout para inyectarlo dinámicamente).*
 
 *   **Impacto:** Permite que el negocio aparezca en búsquedas de intención local (ej. "diseño web en Metepec" o "soporte técnico en Toluca") y ayuda a consolidar el gráfico de conocimiento de la empresa.
-*   **Resolución:** Se corrigieron las claves `url` e `image` usando las propiedades dinámicas de `Astro.site`, garantizando que en el build de producción resuelvan al dominio oficial `https://brilint.dev/` sin intervención manual ni valores hardcodeados obsoletos.
+*   **Resolución:** Se corrigieron las claves `url` e `image` usando las propiedades dinámicas de `Astro.site`, garantizando que en el build de producción resuelvan al dominio oficial `https://dab.dev/` sin intervención manual ni valores hardcodeados obsoletos.
 
 ---
 

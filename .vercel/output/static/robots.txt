@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://brilint.dev/sitemap-index.xml
+Sitemap: https://dab.dev/sitemap-index.xml

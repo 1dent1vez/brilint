@@ -7,18 +7,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'brilint-bg': '#05060A',      // fondo principal
-        'brilint-surface': '#0B0D14', // tarjetas / secciones
-        'brilint-accent': '#4C7FFF',  // acento principal
-        'brilint-accent-soft': '#4C7FFF1A',
-        'brilint-text': '#E5E7EB',
-        'brilint-muted': '#9CA3AF',
-        'brilint-border': '#1F2933',
+        'dab-bg': '#05060A',      // fondo principal
+        'dab-surface': '#0B0D14', // tarjetas / secciones
+        'dab-accent': '#4C7FFF',  // acento principal
+        'dab-accent-soft': '#4C7FFF1A',
+        'dab-text': '#E5E7EB',
+        'dab-muted': '#9CA3AF',
+        'dab-border': '#1F2933',
       },
       fontFamily: {
         display: ['Thunder', 'Impact', 'Arial Black', 'sans-serif'],
         body: ['Inter', 'system-ui', 'ui-sans-serif', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
       },
       borderRadius: {
         '2xl': '1rem',
@@ -36,7 +37,7 @@ module.exports = {
   'section-y-md': '8rem',
       },
       boxShadow: {
-        'brilint-soft': '0 18px 45px rgba(0,0,0,0.45)',
+        'dab-soft': '0 18px 45px rgba(0,0,0,0.45)',
       },
       transitionDuration: {
         fast: '150ms',

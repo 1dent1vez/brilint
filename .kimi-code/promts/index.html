@@ -1,0 +1,355 @@
+<!-- archivo: propuesta.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Transformación Salón de Uñas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .slide {
+      display: none;
+      background: white;
+      border-radius: 20px;
+      padding: 60px;
+      width: 90%;
+      max-width: 900px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease-in;
+      line-height: 1.8;
+      color: #333;
+    }
+    
+    .slide.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    h1 { color: #667eea; font-size: 2.5em; margin-bottom: 20px; }
+    h2 { color: #667eea; font-size: 2em; margin-bottom: 30px; }
+    p { font-size: 1.1em; margin-bottom: 15px; }
+    
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 30px 0;
+    }
+    
+    .before, .after {
+      padding: 20px;
+      border-radius: 10px;
+    }
+    
+    .before {
+      background: #ffe6e6;
+      border-left: 5px solid #ff6b6b;
+    }
+    
+    .after {
+      background: #e6ffe6;
+      border-left: 5px solid #51cf66;
+    }
+    
+    .number-highlight {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #764ba2;
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      gap: 10px;
+    }
+    
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    
+    button:hover {
+      background: #764ba2;
+    }
+    
+    .slide-counter {
+      text-align: center;
+      color: #999;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slide active">
+  <h1>🎯 Transformación Digital</h1>
+  <h2>Para Salones de Uñas</h2>
+  <p style="font-size: 1.3em; margin-top: 40px;">
+    Vamos a ver algo real.<br>
+    Un salón como el tuyo.<br>
+    Esto es lo que pasó en 30 días.
+  </p>
+  <div class="controls">
+    <div></div>
+    <button onclick="nextSlide()">Comenzar →</button>
+  </div>
+  <div class="slide-counter"><span id="current">1</span> / 8</div>
+</div>
+
+<div class="slide">
+  <h2>Salón "La Belleza" - Metepec</h2>
+  <p>Dueña: Karen (como tú)</p>
+  <p><strong>La situación:</strong></p>
+  <ul style="margin-left: 20px;">
+    <li>30-40 citas/semana (agenda fullllll)</li>
+    <li>WhatsApp caótico (15+ mensajes/día sin leer)</li>
+    <li>No-shows: 10-15 citas/mes</li>
+    <li>Instagram: Bonito pero... ¿vende?</li>
+    <li>Google Business: Dormido</li>
+  </ul>
+  <p style="margin-top: 30px; color: #ff6b6b;"><strong>Resultado:</strong> Dinero perdido cada mes 👇</p>
+  <div class="controls">
+    <button onclick="prevSlide()">← Atrás</button>
+    <button onclick="nextSlide()">Siguiente →</button>
+  </div>
+  <div class="slide-counter"><span id="current">2</span> / 8</div>
+</div>
+
+<div class="slide">
+  <h2>¿Cuánto dinero está perdiendo?</h2>
+  <p>20-30 clientas/mes que quieren agendar pero no pueden porque:</p>
+  <ul style="margin-left: 20px;">
+    <li>No responden rápido</li>
+    <li>Agenda confusa</li>
+    <li>Se olvidan</li>
+  </ul>
+  <div class="number-highlight">
+    20 citas × 400 MXN = 8,000 MXN
+  </div>
+  <p style="text-align: center; font-size: 1.2em; color: #ff6b6b;">
+    <strong>POR MES</strong>
+  </p>
+  <p style="text-align: center; font-size: 1.1em; margin-top: 20px;">
+    AL AÑO: <strong>96,000 MXN</strong>
+  </p>
+  <p style="margin-top: 30px; font-size: 1.1em;">¿Eso tiene sentido?</p>
+  <div class="controls">
+    <button onclick="prevSlide()">← Atrás</button>
+    <button onclick="nextSlide()">Siguiente →</button>
+  </div>
+  <div class="slide-counter"><span id="current">3</span> / 8</div>
+</div>
+
+<div class="slide">
+  <h2>Mismo salón, 30 días después</h2>
+  <div class="before-after">
+    <div class="before">
+      <h3>ANTES</h3>
+      <p>✗ WhatsApp caótico</p>
+      <p>✗ No-shows: 15%</p>
+      <p>✗ Citas perdidas</p>
+      <p>✗ Instagram bella</p>
+      <p>✗ Google dormido</p>
+      <p style="margin-top: 20px; font-weight: bold;">Citas/mes: 140</p>
+      <p style="font-weight: bold;">Ingresos: 50k</p>
+    </div>
+    <div class="after">
+      <h3>DESPUÉS</h3>
+      <p>✓ Respuestas automáticas</p>
+      <p>✓ No-shows: 3%</p>
+      <p>✓ Citas 100% confirmadas</p>
+      <p>✓ Instagram vivo</p>
+      <p>✓ Google activo</p>
+      <p style="margin-top: 20px; font-weight: bold;">Citas/mes: 165</p>
+      <p style="font-weight: bold;">Ingresos: 64k</p>
+    </div>
+  </div>
+  <div class="number-highlight">
+    +14k MXN/mes
+  </div>
+  <p style="text-align: center; font-size: 1em;">Costo servicio: 4.2k | Ganancia neta: 9.8k</p>
+  <div class="controls">
+    <button onclick="prevSlide()">← Atrás</button>
+    <button onclick="nextSlide()">Siguiente →</button>
+  </div>
+  <div class="slide-counter"><span id="current">4</span> / 8</div>
+</div>
+
+<div class="slide">
+  <h2>Flujo de una clienta: Antes vs Después</h2>
+  <div class="before-after">
+    <div class="before">
+      <h3>ANTES (Caos)</h3>
+      <p><strong>Viernes 3pm:</strong> Cliente ve Instagram</p>
+      <p><strong>Viernes 4pm:</strong> Escribe DM</p>
+      <p><strong>Sábado 9am:</strong> Espera respuesta</p>
+      <p><strong>Sábado 12pm:</strong> "Voy a otro salón"</p>
+      <p><strong>Sábado 5pm:</strong> Karen ve DM (muy tarde)</p>
+      <p style="margin-top: 20px; color: #ff6b6b;"><strong>RESULTADO:</strong> Cliente perdida -400 MXN</p>
+    </div>
+    <div class="after">
+      <h3>DESPUÉS (Sistema)</h3>
+      <p><strong>Viernes 3pm:</strong> Cliente ve Instagram</p>
+      <p><strong>Viernes 3:15pm:</strong> Click "Agendar"</p>
+      <p><strong>Viernes 3:20pm:</strong> Confirma sábado 3pm</p>
+      <p><strong>Viernes 3:21pm:</strong> WhatsApp confirmado ✓</p>
+      <p><strong>Sábado 2pm:</strong> Recordatorio automático</p>
+      <p><strong>Sábado 3pm:</strong> Cliente llega</p>
+      <p style="margin-top: 20px; color: #51cf66;"><strong>RESULTADO:</strong> Cliente fidelizada +400 MXN</p>
+    </div>
+  </div>
+  <div class="controls">
+    <button onclick="prevSlide()">← Atrás</button>
+    <button onclick="nextSlide()">Siguiente →</button>
+  </div>
+  <div class="slide-counter"><span id="current">5</span> / 8</div>
+</div>
+
+<div class="slide">
+  <h2>3 Formas de Implementarlo</h2>
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.95em;">
+    <tr style="background: #f5f5f5;">
+      <th style="padding: 15px; border: 1px solid #ddd; text-align: left;">PRESENCIA</th>
+      <th style="padding: 15px; border: 1px solid #ddd; text-align: left; background: #e6f9ff;">CONVERSIÓN ⭐</th>
+      <th style="padding: 15px; border: 1px solid #ddd; text-align: left;">TRANSFORMACIÓN</th>
+    </tr>
+    <tr>
+      <td style="padding: 15px; border: 1px solid #ddd;">2,800/mes</td>
+      <td style="padding: 15px; border: 1px solid #ddd; background: #e6f9ff;"><strong>4,200/mes</strong></td>
+      <td style="padding: 15px; border: 1px solid #ddd;">6,500/mes</td>
+    </tr>
+    <tr style="background: #f9f9f9;">
+      <td style="padding: 15px; border: 1px solid #ddd;">Landing ✓<br>Google ✓<br>WhatsApp básico</td>
+      <td style="padding: 15px; border: 1px solid #ddd; background: #e6f9ff;">Todo anterior +<br>Citas automáticas ✓<br>Recordatorios ✓<br>Dashboard ✓</td>
+      <td style="padding: 15px; border: 1px solid #ddd;">Todo anterior +<br>IA Churn ✓<br>SMS + Email ✓<br>Referidos ✓<br>Videos ✓</td>
+    </tr>
+    <tr>
+      <td style="padding: 15px; border: 1px solid #ddd;">ROI: 2-3 meses</td>
+      <td style="padding: 15px; border: 1px solid #ddd; background: #e6f9ff;"><strong>ROI: 1 mes</strong></td>
+      <td style="padding: 15px; border: 1px solid #ddd;">ROI: 1 mes<br>Garantía: Sí</td>
+    </tr>
+  </table>
+  <p style="margin-top: 30px; font-size: 1.1em;">¿Cuál se adapta a tu visión?</p>
+  <div class="controls">
+    <button onclick="prevSlide()">← Atrás</button>
+    <button onclick="nextSlide()">Siguiente →</button>
+  </div>
+  <div class="slide-counter"><span id="current">6</span> / 8</div>
+</div>
+
+<div class="slide">
+  <h2>Hoy tienes 3 opciones</h2>
+  <div style="margin: 30px 0;">
+    <div style="background: #ffe6e6; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #ff6b6b;">
+      <h3>A) Mantener como está</h3>
+      <p>✗ Pierdes 96k/año</p>
+      <p>✗ Sigue caótico</p>
+      <p>✗ Competencia te gana</p>
+    </div>
+    
+    <div style="background: #ffe6e6; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #ff6b6b;">
+      <h3>B) Hacerlo tú sola</h3>
+      <p>✗ 5h/semana de tu tiempo</p>
+      <p>✗ Pierdes 2k en uñas no hechas</p>
+      <p>✗ No sale el math</p>
+    </div>
+    
+    <div style="background: #e6ffe6; padding: 20px; border-radius: 10px; border-left: 5px solid #51cf66;">
+      <h3>C) Nosotros lo hacemos (RECOMENDADO)</h3>
+      <p>✓ Cero tiempo tuyo</p>
+      <p>✓ 9.8k ganancia neta/mes</p>
+      <p>✓ Se paga en 1 mes</p>
+      <p>✓ Tú solo trabajas</p>
+    </div>
+  </div>
+  <p style="margin-top: 40px; font-size: 1.2em; text-align: center; color: #667eea;"><strong>¿CUÁL ELIGES?</strong></p>
+  <div class="controls">
+    <button onclick="prevSlide()">← Atrás</button>
+    <button onclick="nextSlide()">Siguiente →</button>
+  </div>
+  <div class="slide-counter"><span id="current">7</span> / 8</div>
+</div>
+
+<div class="slide">
+  <h2>Vamos a empezar</h2>
+  <div style="background: #f0f7ff; padding: 30px; border-radius: 10px; margin-bottom: 30px;">
+    <p><strong>Opción de pago:</strong></p>
+    <p>☐ Mes a mes: 4,200 MXN</p>
+    <p>☐ 3 meses hoy: 11,200 MXN (ahorras 1,400)</p>
+    
+    <p style="margin-top: 20px;"><strong>Cuándo empezamos:</strong></p>
+    <p>Kickoff: Mañana o [próxima semana]</p>
+    
+    <p style="margin-top: 20px;"><strong>Qué pasa primero:</strong></p>
+    <p>1. Llenan formulario (5 min)</p>
+    <p>2. Kickoff (1h)</p>
+    <p>3. Semana 1: Landing + Google live</p>
+    <p>4. Semana 3: Citas automáticas</p>
+    <p>5. Mes 1: Primeros resultados</p>
+  </div>
+  
+  <p style="font-size: 1.1em; text-align: center; margin: 40px 0;">¿Firmamos hoy y empezamos mañana?</p>
+  
+  <div class="controls">
+    <button onclick="prevSlide()">← Atrás</button>
+    <button onclick="nextSlide()">FIRMAR CONTRATO →</button>
+  </div>
+  <div class="slide-counter"><span id="current">8</span> / 8</div>
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (n + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  document.getElementById('current').textContent = currentSlide + 1;
+}
+
+function nextSlide() {
+  showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+  showSlide(currentSlide - 1);
+}
+
+// Navegación con flechas
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') nextSlide();
+  if (e.key === 'ArrowLeft') prevSlide();
+});
+</script>
+
+</body>
+</html>

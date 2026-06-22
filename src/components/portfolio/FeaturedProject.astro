@@ -4,26 +4,26 @@ const { proyecto } = Astro.props;
 ---
 
 <article
-  class={`rounded-2xl border ${proyecto.destacado ? 'border-brilint-accent/80' : 'border-brilint-accent/60'} bg-brilint-bg/70 p-4 sm:p-5 flex flex-col gap-4 md:gap-5 shadow-brilint-soft`}
+  class={`rounded-2xl border ${proyecto.destacado ? 'border-dab-accent/80' : 'border-dab-accent/60'} bg-dab-bg/70 p-4 sm:p-5 flex flex-col gap-4 md:gap-5 shadow-dab-soft`}
 >
   <div class="space-y-1.5">
-    <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-brilint-muted/80">
+    <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-dab-muted/80">
       {proyecto.tipo}
     </p>
-    <h3 class="text-lg sm:text-xl font-semibold text-brilint-text leading-snug">
+    <h3 class="text-lg sm:text-xl font-semibold text-dab-text leading-snug">
       {proyecto.titulo}
     </h3>
     {proyecto.zona && (
-      <p class="text-[11px] sm:text-xs text-brilint-muted/80">
+      <p class="text-[11px] sm:text-xs text-dab-muted/80">
         Zona: {proyecto.zona}
       </p>
     )}
-    <p class="text-sm text-brilint-muted leading-relaxed">
+    <p class="text-sm text-dab-muted leading-relaxed">
       {proyecto.descripcion}
     </p>
   </div>
 
-  <div class="rounded-xl border border-brilint-border bg-black overflow-hidden h-72 sm:h-80">
+  <div class="rounded-xl border border-dab-border bg-black overflow-hidden h-72 sm:h-80">
     {proyecto.mockup ? (
       <div class="h-full overflow-y-auto">
         <Image
@@ -55,7 +55,7 @@ const { proyecto } = Astro.props;
         href={proyecto.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-full bg-brilint-accent px-4 py-2 text-xs font-semibold text-brilint-bg hover:bg-brilint-accent/90 transition"
+        class="inline-flex items-center gap-2 rounded-full bg-dab-accent px-4 py-2 text-xs font-semibold text-dab-bg hover:bg-dab-accent/90 transition"
       >
         Ver sitio en vivo
       </a>
@@ -65,7 +65,7 @@ const { proyecto } = Astro.props;
         href={proyecto.repo}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-full border border-brilint-border px-4 py-2 text-xs font-semibold text-brilint-text hover:border-brilint-accent/70 transition"
+        class="inline-flex items-center gap-2 rounded-full border border-dab-border px-4 py-2 text-xs font-semibold text-dab-text hover:border-dab-accent/70 transition"
       >
         Ver código
       </a>

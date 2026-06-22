@@ -5,23 +5,23 @@ import { servicios } from '../../data/servicios.js';
 import { WHATSAPP_URL } from '../../config/contact';
 ---
 
-<section id="servicios" class="py-16 md:py-section-y bg-brilint-bg">
+<section id="servicios" class="py-16 md:py-section-y bg-dab-bg">
   <Container className="space-y-8 md:space-y-10">
     <SectionTitle
       title="Servicios digitales para que dejes de perder clientes"
-      subtitle="Brilint combina desarrollo web, campañas y soporte tecnológico para que tu negocio tenga una presencia online sólida y sistemas que no te fallen cuando más los necesitas."
+      subtitle="Dab combina desarrollo web, campañas y soporte tecnológico para que tu negocio tenga una presencia online sólida y sistemas que no te fallen cuando más los necesitas."
     />
 
     <!-- MOBILE: carrusel para dar respiro -->
     <div class="md:hidden -mx-2 relative">
-      <div class="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-brilint-bg via-brilint-bg/70 to-transparent pointer-events-none"></div>
-      <div class="flex items-center px-3 pb-1 text-[11px] uppercase tracking-[0.16em] text-brilint-muted">
+      <div class="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-dab-bg via-dab-bg/70 to-transparent pointer-events-none"></div>
+      <div class="flex items-center px-3 pb-1 text-[11px] uppercase tracking-[0.16em] text-dab-muted">
         <span>Soluciones digitales principales</span>
       </div>
       <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-5 px-2 hide-scrollbar">
         {servicios.map((servicio) => (
           <article
-            class="min-w-[80%] sm:min-w-[70%] snap-center rounded-2xl border border-brilint-accent/60 bg-brilint-surface/80 p-5 space-y-3 transition duration-200 shadow-brilint-soft active:scale-[0.985] min-h-[320px] flex flex-col"
+            class="min-w-[80%] sm:min-w-[70%] snap-center rounded-2xl border border-dab-accent/60 bg-dab-surface/80 p-5 space-y-3 transition duration-200 shadow-dab-soft active:scale-[0.985] min-h-[320px] flex flex-col"
           >
             <div class="space-y-1">
               <h3 class="font-body font-bold text-lg leading-snug">
@@ -29,14 +29,14 @@ import { WHATSAPP_URL } from '../../config/contact';
               </h3>
             </div>
 
-            <p class="font-body text-sm text-brilint-muted leading-relaxed">
+            <p class="font-body text-sm text-dab-muted leading-relaxed">
               {servicio.descripcion}
             </p>
 
-            <ul class="font-body space-y-2 text-sm text-brilint-muted leading-relaxed flex-1">
+            <ul class="font-body space-y-2 text-sm text-dab-muted leading-relaxed flex-1">
               {servicio.bullets.map((bullet) => (
                 <li class="flex gap-2">
-                  <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-brilint-accent/80"></span>
+                  <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-dab-accent/80"></span>
                   <span>{bullet}</span>
                 </li>
               ))}
@@ -44,7 +44,7 @@ import { WHATSAPP_URL } from '../../config/contact';
 
             <a
               href={WHATSAPP_URL(`Hola, quiero cotizar el servicio de ${servicio.titulo}`)}
-              class="font-body inline-flex items-center justify-center rounded-lg bg-brilint-accent text-brilint-bg text-sm font-semibold px-4 py-2.5 transition duration-200 hover:scale-[1.02] hover:shadow-brilint-soft active:scale-[0.97]"
+              class="font-body inline-flex items-center justify-center rounded-lg bg-dab-accent text-dab-bg text-sm font-semibold px-4 py-2.5 transition duration-200 hover:scale-[1.02] hover:shadow-dab-soft active:scale-[0.97]"
             >
               Cotizar este servicio
             </a>
@@ -57,20 +57,20 @@ import { WHATSAPP_URL } from '../../config/contact';
     <div class="hidden md:grid grid-cols-1 gap-5 sm:gap-5 md:gap-6 md:grid-cols-2 xl:grid-cols-3">
       {servicios.map((servicio) => (
         <article
-          class="rounded-2xl border border-brilint-accent/60 bg-brilint-surface/70 p-5 sm:p-6 space-y-3 transition duration-200 hover:border-brilint-accent/80 hover:shadow-brilint-soft active:scale-[0.98]"
+          class="rounded-2xl border border-dab-accent/60 bg-dab-surface/70 p-5 sm:p-6 space-y-3 transition duration-200 hover:border-dab-accent/80 hover:shadow-dab-soft active:scale-[0.98]"
         >
           <h3 class="font-body font-bold text-lg leading-snug">
             {servicio.titulo}
           </h3>
 
-          <p class="font-body text-sm text-brilint-muted leading-relaxed">
+          <p class="font-body text-sm text-dab-muted leading-relaxed">
             {servicio.descripcion}
           </p>
 
-          <ul class="font-body space-y-1.5 text-sm text-brilint-muted leading-relaxed">
+          <ul class="font-body space-y-1.5 text-sm text-dab-muted leading-relaxed">
             {servicio.bullets.map((bullet) => (
               <li class="flex gap-2">
-                <span class="mt-[5px] h-1.5 w-1.5 rounded-full bg-brilint-accent/80"></span>
+                <span class="mt-[5px] h-1.5 w-1.5 rounded-full bg-dab-accent/80"></span>
                 <span>{bullet}</span>
               </li>
             ))}

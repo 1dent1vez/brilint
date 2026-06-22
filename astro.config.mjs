@@ -3,9 +3,13 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  site: 'https://brilint.dev',
+  site: 'https://dab.dev',
   output: 'static',
   adapter: vercel(),
   integrations: [
@@ -15,4 +19,11 @@ export default defineConfig({
     }),
     sitemap(),
   ],
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
+  },
 });

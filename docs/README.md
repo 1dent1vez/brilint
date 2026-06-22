@@ -1,6 +1,6 @@
-# Brilint — Documentación del Proyecto
+# Dab — Documentación del Proyecto
 
-Bienvenido a la documentación técnica de **Brilint**, una landing page y plataforma de servicios digitales premium enfocada en el Valle de Toluca (Metepec, Toluca, Lerma, San Mateo Atenco y alrededores). Este sitio está construido utilizando **Astro** y optimizado para ofrecer un rendimiento sobresaliente, una experiencia interactiva fluida y una presencia digital moderna.
+Bienvenido a la documentación técnica de **Dab**, una landing page y plataforma de servicios digitales premium enfocada en el Valle de Toluca (Metepec, Toluca, Lerma, San Mateo Atenco y alrededores). Este sitio está construido utilizando **Astro** y optimizado para ofrecer un rendimiento sobresaliente, una experiencia interactiva fluida y una presencia digital moderna.
 
 ---
 
@@ -43,8 +43,8 @@ Sigue estos pasos para levantar el entorno de desarrollo localmente:
 
 ### 1. Clonar el repositorio e instalar dependencias
 ```bash
-git clone https://github.com/1dent1vez/brilint.git
-cd brilint
+git clone https://github.com/1dent1vez/dab.git
+cd dab
 npm install
 ```
 
