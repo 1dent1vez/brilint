@@ -12,6 +12,38 @@ import { testimonios } from '../../data/testimonios.js';
       subtitle="Testimonios reales de proyectos donde se mezclan desarrollo, redes y soporte para que todo funcione mejor en el día a día."
     />
 
-    <TestimonialsMotion testimonios={testimonios} client:visible />
+    <div class="testimonios-wrapper">
+      <TestimonialsMotion testimonios={testimonios} client:visible />
+    </div>
   </Container>
 </section>
+
+<style is:global>
+  /* Cita de testimonios */
+  .testimonios-wrapper article > p {
+    @apply font-body text-base italic;
+  }
+  
+  /* Nombre de testimonios */
+  .testimonios-wrapper div.space-y-0\.5 p:nth-child(1),
+  .testimonios-wrapper div.mt-auto p:nth-child(1) {
+    @apply font-body text-sm font-semibold;
+  }
+
+  /* Rol de testimonios */
+  .testimonios-wrapper div.space-y-0\.5 p:nth-child(2),
+  .testimonios-wrapper div.mt-auto p:nth-child(2) {
+    @apply font-mono text-xs uppercase tracking-wider;
+  }
+
+  /* Info adicional */
+  .testimonios-wrapper div.space-y-0\.5 p:nth-child(3),
+  .testimonios-wrapper div.mt-auto p:nth-child(3) {
+    @apply font-body text-[11px] text-brilint-muted/80;
+  }
+
+  /* Badges (verificado, stack) */
+  .testimonios-wrapper span {
+    @apply font-mono text-[10px] tracking-wider;
+  }
+</style>

@@ -16,8 +16,9 @@ module.exports = {
         'brilint-border': '#1F2933',
       },
       fontFamily: {
-        sans: ['system-ui', 'ui-sans-serif', 'Inter', 'sans-serif'],
-        display: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Thunder', 'Impact', 'Arial Black', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'ui-sans-serif', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       borderRadius: {
         '2xl': '1rem',

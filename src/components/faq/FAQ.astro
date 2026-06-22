@@ -16,7 +16,7 @@ import { faqs } from '../../data/faqs.js';
         <details
           class="group rounded-2xl border border-brilint-border bg-brilint-surface/75 px-4 py-3 sm:px-5 sm:py-4 shadow-brilint-soft"
         >
-          <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm sm:text-base font-medium text-brilint-text">
+          <summary class="font-body flex cursor-pointer items-center justify-between gap-3 text-sm sm:text-base font-semibold text-brilint-text">
             <span class="text-left leading-snug">{faq.pregunta}</span>
 
             <span class="flex items-center justify-center h-7 w-7 rounded-full border border-brilint-border text-[12px] text-brilint-muted group-open:hidden">
@@ -27,7 +27,7 @@ import { faqs } from '../../data/faqs.js';
             </span>
           </summary>
 
-          <div class="mt-2 text-xs sm:text-sm leading-relaxed text-brilint-muted border-t border-brilint-border/60 pt-3">
+          <div class="font-body mt-2 text-sm leading-relaxed text-brilint-muted border-t border-brilint-border/60 pt-3">
             {faq.respuesta}
           </div>
         </details>

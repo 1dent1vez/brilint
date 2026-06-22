@@ -32,20 +32,20 @@ import { WHATSAPP_URL } from '../../config/contact';
               )}
 
               <div class="space-y-2">
-                <p class="text-[11px] tracking-[0.2em] uppercase text-brilint-muted">
+                <p class="font-body text-[11px] tracking-[0.2em] uppercase text-brilint-muted">
                   {paquete.etiqueta}
                 </p>
-                <h3 class="text-2xl font-semibold leading-snug">{paquete.nombre}</h3>
+                <h3 class="font-display font-bold text-xl uppercase tracking-tight leading-snug">{paquete.nombre}</h3>
               </div>
 
               <div class="mt-3 space-y-2">
-                <p class="text-4xl font-semibold text-brilint-accent">
+                <p class="font-display font-bold text-4xl md:text-5xl text-brilint-accent">
                   {paquete.precioDesde}
                 </p>
-                <p class="text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
+                <p class="font-body text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
               </div>
 
-              <ul class="mt-5 space-y-3 text-sm text-brilint-muted leading-relaxed flex-1">
+              <ul class="font-body mt-5 space-y-3 text-sm text-brilint-muted leading-relaxed flex-1">
                 {paquete.incluye.map((item) => (
                   <li class="flex gap-2">
                     <span class="text-brilint-accent">•</span>
@@ -56,7 +56,7 @@ import { WHATSAPP_URL } from '../../config/contact';
 
               <Button
                 href={WHATSAPP_URL(`Hola, quiero el paquete ${paquete.nombre}`)}
-                class="mt-6 w-full uppercase tracking-wide shadow-brilint-soft hover:shadow-lg active:scale-[0.97]"
+                class="font-body mt-6 w-full uppercase tracking-wide shadow-brilint-soft hover:shadow-lg active:scale-[0.97]"
               >
                 Cotizar {paquete.nombre}
               </Button>
@@ -83,20 +83,20 @@ import { WHATSAPP_URL } from '../../config/contact';
           )}
 
           <div class="space-y-2">
-            <p class="text-xs tracking-[0.2em] uppercase text-brilint-muted">
+            <p class="font-body text-xs tracking-[0.2em] uppercase text-brilint-muted">
               {paquete.etiqueta}
             </p>
-            <h3 class="text-2xl font-semibold leading-snug">{paquete.nombre}</h3>
+            <h3 class="font-display font-bold text-xl uppercase tracking-tight leading-snug">{paquete.nombre}</h3>
           </div>
 
           <div class="mt-4 space-y-2">
-            <p class="text-4xl font-semibold text-brilint-accent">
+            <p class="font-display font-bold text-4xl md:text-5xl text-brilint-accent">
               {paquete.precioDesde}
             </p>
-            <p class="text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
+            <p class="font-body text-sm text-brilint-muted leading-relaxed">{paquete.idealPara}</p>
           </div>
 
-          <ul class="mt-6 space-y-3 text-sm text-brilint-muted leading-relaxed flex-1">
+          <ul class="font-body mt-6 space-y-3 text-sm text-brilint-muted leading-relaxed flex-1">
             {paquete.incluye.map((item) => (
               <li class="flex gap-2">
                 <span class="text-brilint-accent">•</span>
@@ -107,7 +107,7 @@ import { WHATSAPP_URL } from '../../config/contact';
 
           <Button
             href={WHATSAPP_URL(`Hola, quiero el paquete ${paquete.nombre}`)}
-            class="mt-8 w-full uppercase tracking-wide shadow-brilint-soft hover:shadow-lg active:scale-[0.97]"
+            class="font-body mt-8 w-full uppercase tracking-wide shadow-brilint-soft hover:shadow-lg active:scale-[0.97]"
           >
             Cotizar {paquete.nombre}
           </Button>

@@ -5,7 +5,7 @@
  * En Astro el contenido va por <slot />, no por children.
  */
 
-const { href = null, variant = 'primary' } = Astro.props;
+const { href = null, variant = 'primary', class: className = '' } = Astro.props;
 
 const base =
   'inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-sm transition duration-fast';
@@ -17,7 +17,7 @@ const variants = {
     'bg-transparent border border-brilint-border text-brilint-text hover:border-brilint-accent',
 };
 
-const classes = `${base} ${variants[variant] ?? variants.primary}`;
+const classes = `${base} ${variants[variant] ?? variants.primary} ${className}`.trim();
 ---
 
 {href ? (

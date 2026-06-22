@@ -17,26 +17,57 @@ const sliderItems = secundarios.length ? secundarios : proyectos;
       subtitle="Muestras reales de trabajo en landing pages, infraestructura, redes y soporte para negocios del Valle de Toluca."
     />
 
-    <!-- Proyectos destacados -->
-    <div class="md:hidden -mx-2">
-      <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 px-2 hide-scrollbar">
+    <div class="portfolio-wrapper space-y-8 md:space-y-10">
+      <!-- Proyectos destacados -->
+      <div class="md:hidden -mx-2">
+        <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 px-2 hide-scrollbar">
+          {destacados.map((p) => (
+            <div class="min-w-[88%] snap-center">
+              <FeaturedProject proyecto={p} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="hidden md:grid md:grid-cols-2 md:gap-6">
         {destacados.map((p) => (
-          <div class="min-w-[88%] snap-center">
-            <FeaturedProject proyecto={p} />
-          </div>
+          <FeaturedProject proyecto={p} />
         ))}
       </div>
-    </div>
 
-    <div class="hidden md:grid md:grid-cols-2 md:gap-6">
-      {destacados.map((p) => (
-        <FeaturedProject proyecto={p} />
-      ))}
-    </div>
-
-    <!-- Slider compacto -->
-    <div class="px-1 sm:px-0">
-      <PortfolioSlider proyectos={sliderItems} client:visible />
+      <!-- Slider compacto -->
+      <div class="px-1 sm:px-0">
+        <PortfolioSlider proyectos={sliderItems} client:visible />
+      </div>
     </div>
   </Container>
 </section>
+
+<style is:global>
+  /* Títulos de proyectos (Featured y Slider) */
+  .portfolio-wrapper h3,
+  .portfolio-wrapper h4 {
+    @apply font-display font-bold text-xl uppercase tracking-tight;
+  }
+
+  /* Descripciones y textos de proyectos */
+  .portfolio-wrapper article div.space-y-1\.5 p:last-of-type,
+  .portfolio-wrapper div.space-y-2 h4 + p {
+    @apply font-body text-sm text-brilint-muted;
+  }
+
+  /* Etiquetas de tipo de proyecto (en FeaturedProject) */
+  .portfolio-wrapper article div.space-y-1\.5 p:first-of-type {
+    @apply font-mono text-[10px] sm:text-xs uppercase tracking-wider;
+  }
+
+  /* Información de zona */
+  .portfolio-wrapper article div.space-y-1\.5 p:nth-of-type(2):not(:last-of-type) {
+    @apply font-body text-[11px] sm:text-xs text-brilint-muted/80;
+  }
+
+  /* Enlaces a código y sitio web */
+  .portfolio-wrapper article a {
+    @apply font-mono text-xs font-semibold;
+  }
+</style>

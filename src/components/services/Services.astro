@@ -24,16 +24,16 @@ import { WHATSAPP_URL } from '../../config/contact';
             class="min-w-[80%] sm:min-w-[70%] snap-center rounded-2xl border border-brilint-accent/60 bg-brilint-surface/80 p-5 space-y-3 transition duration-200 shadow-brilint-soft active:scale-[0.985] min-h-[320px] flex flex-col"
           >
             <div class="space-y-1">
-              <h3 class="text-lg font-semibold leading-snug">
+              <h3 class="font-display font-bold text-lg uppercase tracking-tight leading-snug">
                 {servicio.titulo}
               </h3>
             </div>
 
-            <p class="text-sm text-brilint-muted leading-relaxed">
+            <p class="font-body text-sm text-brilint-muted leading-relaxed">
               {servicio.descripcion}
             </p>
 
-            <ul class="space-y-2 text-sm text-brilint-muted leading-relaxed flex-1">
+            <ul class="font-body space-y-2 text-sm text-brilint-muted leading-relaxed flex-1">
               {servicio.bullets.map((bullet) => (
                 <li class="flex gap-2">
                   <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-brilint-accent/80"></span>
@@ -44,7 +44,7 @@ import { WHATSAPP_URL } from '../../config/contact';
 
             <a
               href={WHATSAPP_URL(`Hola, quiero cotizar el servicio de ${servicio.titulo}`)}
-              class="inline-flex items-center justify-center rounded-lg bg-brilint-accent text-brilint-bg text-sm font-semibold px-4 py-2.5 transition duration-200 hover:scale-[1.02] hover:shadow-brilint-soft active:scale-[0.97]"
+              class="font-body inline-flex items-center justify-center rounded-lg bg-brilint-accent text-brilint-bg text-sm font-semibold px-4 py-2.5 transition duration-200 hover:scale-[1.02] hover:shadow-brilint-soft active:scale-[0.97]"
             >
               Cotizar este servicio
             </a>
@@ -59,15 +59,15 @@ import { WHATSAPP_URL } from '../../config/contact';
         <article
           class="rounded-2xl border border-brilint-accent/60 bg-brilint-surface/70 p-5 sm:p-6 space-y-3 transition duration-200 hover:border-brilint-accent/80 hover:shadow-brilint-soft active:scale-[0.98]"
         >
-          <h3 class="text-base sm:text-lg font-semibold leading-snug">
+          <h3 class="font-display font-bold text-lg uppercase tracking-tight leading-snug">
             {servicio.titulo}
           </h3>
 
-          <p class="text-sm text-brilint-muted leading-relaxed">
+          <p class="font-body text-sm text-brilint-muted leading-relaxed">
             {servicio.descripcion}
           </p>
 
-          <ul class="space-y-1.5 text-sm text-brilint-muted leading-relaxed">
+          <ul class="font-body space-y-1.5 text-sm text-brilint-muted leading-relaxed">
             {servicio.bullets.map((bullet) => (
               <li class="flex gap-2">
                 <span class="mt-[5px] h-1.5 w-1.5 rounded-full bg-brilint-accent/80"></span>

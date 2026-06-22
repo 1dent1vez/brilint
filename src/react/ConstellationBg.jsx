@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export function ConstellationBg({ className = '' }) {
   const canvasRef = useRef(null);
@@ -8,6 +10,9 @@ export function ConstellationBg({ className = '' }) {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    // Register ScrollTrigger plugin inside useEffect
+    gsap.registerPlugin(ScrollTrigger);
 
     const ctx = canvas.getContext('2d');
     let width = window.innerWidth;
@@ -94,10 +99,27 @@ export function ConstellationBg({ className = '' }) {
 
     animate();
 
+    // ScrollTrigger tween: canvas moves y: 100 relative to scroll of parent element
+    const scrollTween = gsap.to(canvas, {
+      y: 100,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: canvas.parentElement,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+
     return () => {
       window.removeEventListener('resize', resize);
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
+      }
+      // Cleanup scroll animation and ScrollTrigger
+      scrollTween.kill();
+      if (scrollTween.scrollTrigger) {
+        scrollTween.scrollTrigger.kill();
       }
     };
   }, []);
