@@ -1,0 +1,204 @@
+---
+import { HERO } from '../../data/hero';
+import { ConstellationBg } from '../../react/ConstellationBg.jsx';
+import { HeroMotion, HeroMotionItem } from '../../react/HeroMotion.jsx';
+---
+
+<section
+  id="top"
+  class="relative min-h-screen flex items-center justify-center pt-[72px] overflow-hidden bg-dab-bg"
+  style="background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 24px 24px;"
+>
+  <!-- Background elements -->
+  <div class="absolute inset-0 z-0">
+    <!-- Central subtle glow -->
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-dab-accent opacity-[0.03] rounded-full blur-[120px] pointer-events-none"
+    >
+    </div>
+    <!-- 3D Animation Layer -->
+    <div class="absolute inset-0 w-full h-full opacity-80 mix-blend-screen pointer-events-none">
+      <ConstellationBg client:load />
+    </div>
+    <!-- Vignette overlay -->
+    <div class="absolute inset-0 bg-hero-gradient pointer-events-none"></div>
+  </div>
+
+  <!-- Content Container -->
+  <div
+    class="relative z-10 max-w-[1280px] mx-auto px-5 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center"
+  >
+    <!-- Left Content Area -->
+    <HeroMotion client:load className="col-span-1 lg:col-span-7 flex flex-col items-start justify-center py-20 lg:py-0">
+      <!-- Badge -->
+      <HeroMotionItem client:load delay={0}>
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-dab-accent/10 border border-dab-accent/20 backdrop-blur-sm mb-6"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-dab-accent opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-dab-accent"></span>
+          </span>
+          <span class="font-mono text-[14px] font-medium leading-none tracking-[0.05em] text-dab-accent uppercase">
+            {HERO.badge}
+          </span>
+        </div>
+      </HeroMotionItem>
+
+      <!-- Headline -->
+      <HeroMotionItem client:load delay={0.1}>
+        <h1
+          class="font-sans text-[40px] lg:text-[72px] font-black leading-[1.2] lg:leading-[1.1] tracking-[-0.02em] lg:tracking-[-0.04em] text-dab-text mb-6 max-w-[800px]"
+        >
+          {HERO.headline.prefix}<span class="text-gradient">{HERO.headline.highlight}</span>{HERO.headline.suffix}
+        </h1>
+      </HeroMotionItem>
+
+      <!-- Subheadline -->
+      <HeroMotionItem client:load delay={0.2}>
+        <p class="font-sans text-[18px] leading-[1.6] text-dab-muted mb-10 max-w-[600px]">
+          {HERO.subheadline}
+        </p>
+      </HeroMotionItem>
+
+      <!-- Actions -->
+      <HeroMotionItem client:load delay={0.3} className="w-full sm:w-auto">
+        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <a
+            class="btn-primary px-8 py-4 rounded-lg font-mono text-[14px] font-medium leading-none tracking-[0.05em] text-dab-bg font-bold active:scale-95 transition-transform flex items-center justify-center gap-2"
+            href={HERO.ctas[0].href}
+          >
+            {HERO.ctas[0].label}
+            {HERO.ctas[0].icon === 'play_arrow' && (
+              <svg class="h-[18px] w-[18px] text-current fill-current" viewBox="0 -960 960 960" aria-hidden="true">
+                <path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/>
+              </svg>
+            )}
+          </a>
+          <a
+            class="btn-ghost px-8 py-4 rounded-lg font-mono text-[14px] font-medium leading-none tracking-[0.05em] text-dab-accent active:scale-95 transition-transform flex items-center justify-center gap-2"
+            href={HERO.ctas[1].href}
+          >
+            {HERO.ctas[1].label}
+            {HERO.ctas[1].icon === 'calendar_today' && (
+              <svg class="h-[18px] w-[18px] text-current fill-current" viewBox="0 -960 960 960" aria-hidden="true">
+                <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/>
+              </svg>
+            )}
+          </a>
+        </div>
+      </HeroMotionItem>
+
+      <!-- Trust Indicators / Terminal snippet -->
+      <HeroMotionItem client:load delay={0.4} className="w-full max-w-md">
+        <div class="mt-16 w-full max-w-md">
+          <div
+            class="bg-[#05060A] border border-dab-border/30 rounded-lg p-4 font-mono text-[12px] text-dab-accent/70 relative overflow-hidden group"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+            </div>
+            <div class="flex items-center gap-2 mb-2 pb-2 border-b border-dab-border/20">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-dab-cyan/50"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-dab-accent/50"></div>
+              <span class="ml-2 text-dab-muted/50">{HERO.terminal.filename}</span>
+            </div>
+            <div class="space-y-1">
+              {
+                HERO.terminal.lines.map((line) => (
+                  line.status === 'OK' ? (
+                    <p>
+                      &gt; {line.text} <span class="text-dab-cyan">[{line.status}]</span>
+                    </p>
+                  ) : (
+                    <p class="animate-pulse">&gt; {line.text}</p>
+                  )
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </HeroMotionItem>
+    </HeroMotion>
+
+    <!-- Right Spacer for 3D element focus -->
+    <div class="col-span-1 lg:col-span-5 hidden lg:block h-full relative">
+      <!-- The 3D animation occupies the absolute background, but this empty column ensures the text doesn't overlap the right side where the sphere is typically focused -->
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <HeroMotionItem
+    client:load
+    delay={0.8}
+    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+  >
+    <span class="font-mono text-[10px] text-dab-muted uppercase tracking-widest">{HERO.scroll}</span>
+    <div class="w-[1px] h-12 bg-gradient-to-b from-dab-accent/50 to-transparent"></div>
+  </HeroMotionItem>
+</section>
+
+<style>
+  /* Scoped color and styling tokens not directly in tailwind.config.cjs */
+  .text-dab-accent-warm {
+    color: #7B61FF;
+  }
+  .bg-dab-accent-warm {
+    background-color: #7B61FF;
+  }
+  .from-dab-accent-warm {
+    --tw-gradient-from: #7B61FF var(--tw-gradient-from-position);
+    --tw-gradient-to: rgb(123 97 255 / 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+  .to-dab-accent-warm {
+    --tw-gradient-to: #7B61FF var(--tw-gradient-to-position);
+  }
+  .text-dab-cyan {
+    color: #28DFB5;
+  }
+  .bg-dab-cyan {
+    background-color: #28DFB5;
+  }
+  .border-dab-cyan {
+    border-color: #28DFB5;
+  }
+
+  /* Scoped Stitch utilities */
+  .bg-hero-gradient {
+    background-image: radial-gradient(circle at 50% 50%, rgba(11, 13, 20, 0) 0%, #05060A 100%);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #608bff, #b3c5ff);
+    box-shadow: 0 0 20px rgba(76, 127, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px rgba(76, 127, 255, 0.4);
+    filter: brightness(1.1);
+  }
+
+  .btn-ghost {
+    background: rgba(11, 13, 20, 0.4);
+    border: 1px solid #4C7FFF;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(96, 139, 255, 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, #4C7FFF, #7B61FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>
