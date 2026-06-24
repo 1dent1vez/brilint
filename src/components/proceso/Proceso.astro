@@ -1,103 +1,18 @@
 ---
 import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
-
-const pasos = [
-  {
-    id: 1,
-    titulo: 'Diagnóstico',
-    linea: 'Entendemos tu negocio antes de tocar una tecla.',
-    tiempo: '30 min',
-  },
-  {
-    id: 2,
-    titulo: 'Estrategia',
-    linea: 'Priorizamos lo que genera clientes, no lo que luce bonito.',
-    tiempo: '1-2 días',
-  },
-  {
-    id: 3,
-    titulo: 'Implementación',
-    linea: 'Construimos, conectamos y probamos antes de entregar.',
-    tiempo: '1-2 semanas',
-  },
-  {
-    id: 4,
-    titulo: 'Optimización',
-    linea: 'Ajustamos según datos reales, no suposiciones.',
-    tiempo: 'Continuo',
-  },
-];
+import TimelineMotion from '../../react/TimelineMotion.jsx';
+import { pasos } from '../../data/proceso';
 ---
 
 <section id="proceso" class="py-16 md:py-section-y bg-dab-surface relative overflow-hidden">
-  <!-- Línea de progresión decorativa (desktop) -->
-  <div class="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-dab-accent/20 to-transparent" aria-hidden="true"></div>
-
   <Container className="space-y-10 md:space-y-14 relative z-10">
     <SectionTitle
       title="Así es trabajar con Dab"
       subtitle="Cuatro pasos. Cero sorpresas. Sabes exactamente dónde estamos y qué sigue."
     />
 
-    <!-- MOBILE: Tarjetas apiladas con indicador visual -->
-    <div class="md:hidden space-y-4">
-      {pasos.map((paso, index) => (
-        <div class="group relative rounded-2xl border border-dab-border/60 bg-dab-bg/50 backdrop-blur-sm p-5 transition-all duration-300 hover:border-dab-accent/30">
-          <!-- Conector vertical -->
-          {index < pasos.length - 1 && (
-            <div class="absolute left-7 top-full h-4 w-px bg-dab-border/40"></div>
-          )}
-          
-          <div class="flex items-start gap-4">
-            <!-- Número con círculo -->
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-dab-accent/10 border border-dab-accent/20 flex items-center justify-center">
-              <span class="font-mono text-sm font-bold text-dab-accent">0{paso.id}</span>
-            </div>
-            
-            <div class="space-y-1 pt-1">
-              <div class="flex items-center gap-2">
-                <h3 class="font-body font-bold text-lg">{paso.titulo}</h3>
-                <span class="text-[10px] font-mono text-dab-muted/60 bg-dab-border/30 px-1.5 py-0.5 rounded">{paso.tiempo}</span>
-              </div>
-              <p class="font-body text-sm text-dab-muted leading-relaxed">{paso.linea}</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-
-    <!-- DESKTOP: Timeline horizontal con cards flotantes -->
-    <div class="hidden md:block">
-      <div class="grid grid-cols-4 gap-6 relative">
-        {pasos.map((paso, index) => (
-          <div class="group relative">
-            <!-- Nodo en la línea -->
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-dab-surface border-2 border-dab-accent/40 flex items-center justify-center z-10 group-hover:border-dab-accent group-hover:scale-110 transition-all duration-300">
-              <span class="font-mono text-[10px] font-bold text-dab-accent">{paso.id}</span>
-            </div>
-            
-            <!-- Card -->
-            <div class="mt-8 rounded-2xl border border-dab-border/50 bg-dab-bg/40 backdrop-blur-sm p-5 text-center transition-all duration-300 hover:bg-dab-bg/70 hover:border-dab-accent/30 hover:-translate-y-1">
-              <span class="inline-block text-[10px] font-mono text-dab-muted/60 bg-dab-border/30 px-2 py-0.5 rounded-full mb-3">{paso.tiempo}</span>
-              
-              <h3 class="font-body font-bold text-lg mb-2">{paso.titulo}</h3>
-              
-              <p class="font-body text-sm text-dab-muted leading-relaxed">{paso.linea}</p>
-              
-              <!-- Flecha indicadora (excepto último) -->
-              {index < pasos.length - 1 && (
-                <div class="absolute -right-3 top-1/2 -translate-y-1/2 text-dab-accent/20 group-hover:text-dab-accent/50 transition-colors">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <TimelineMotion pasos={pasos} client:visible />
 
     <!-- CTA de proceso -->
     <div class="text-center pt-4">
