@@ -9,7 +9,7 @@ export const metricas = [
     titulo: 'Se pierden por falta de seguimiento',
     descripcion: 'Cuatro de cada diez clientes potenciales nunca regresan porque no reciben respuesta inmediata o seguimiento estructurado tras su primera interacción.',
     solucion: {
-      icono: 'robot_2',        // Material Symbol name
+      icono: 'smart_toy',        // Material Symbol name
       label: 'Recuperación Activa',
       texto: 'Agente de IA que recuerda, persigue y cierra 24/7.'
     },
@@ -51,7 +51,7 @@ export const metricas = [
 ];
 
 export const metricasHeader = {
-  label: 'THE GROWTH GAP',
+  label: 'La Brecha',
   titulo: 'Donde los buenos negocios se estancan',
   descripcion: 'La brecha entre el potencial de tu negocio y la realidad operativa. Identificamos los puntos de fuga donde la inteligencia artificial autónoma puede recuperar valor inmediato.'
 };

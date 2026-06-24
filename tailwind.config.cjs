@@ -21,7 +21,7 @@ module.exports = {
         'dab-cyan': '#22D3EE',
       },
       fontFamily: {
-        display: ['Thunder', 'Impact', 'Arial Black', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'ui-sans-serif', 'sans-serif'],
         body: ['Inter', 'system-ui', 'ui-sans-serif', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
         serif: ['Cormorant Garamond', 'Georgia', 'serif'],

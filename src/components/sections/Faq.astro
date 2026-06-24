@@ -17,7 +17,7 @@ const subtitle = "Elige tu servicio y encuentra respuestas claras. Si no está a
 
   <Container className="space-y-10 md:space-y-12 relative z-10">
     <!-- React component con lazy hydration -->
-    <FaqClient client:visible categorias={categoriasFaq} title={title} subtitle={subtitle} />
+    <FaqClient client:load categorias={categoriasFaq} title={title} subtitle={subtitle} />
 
     <!-- Fallback sin JS: todas las FAQs visibles en acordeón nativo -->
     <noscript>

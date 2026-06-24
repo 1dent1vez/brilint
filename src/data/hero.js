@@ -7,49 +7,48 @@ export const NAV = {
   brand: 'DAB',
   logoHref: '#',
   links: [
-    { label: 'AI Agents', href: '#' },
-    { label: 'Services', href: '#' },
-    { label: 'Process', href: '#' },
-    { label: 'Portfolio', href: '#' },
-    { label: 'Pricing', href: '#' },
-    { label: 'FAQ', href: '#' }
+    { label: 'Servicios', href: '#' },
+    { label: 'Cómo lo hacemos', href: '#' },
+    { label: 'Casos', href: '#' },
+    { label: 'Precios', href: '#' },
+    { label: 'Preguntas', href: '#' }
   ],
   cta: {
-    label: 'Book Demo',
+    label: 'Hablemos',
     href: '#',
-    icon: 'arrow_forward'
+    icon: 'chat'
   }
 };
 
 export const HERO = {
-  badge: 'AUTONOMOUS AI AGENTS',
+  badge: 'NO TE ADAPTES, EVOLUCIONA.',
   headline: {
-    prefix: 'A digital employee that works ',
-    highlight: '24/7',
-    suffix: ' for your business'
+    prefix: 'Recupera las ',
+    highlight: 'horas',
+    suffix: ' que tu negocio te roba cada día'
   },
-  subheadline: 'AI agents that schedule appointments, capture leads, follow up, and never forget a customer. Without hiring more staff.',
+  subheadline: 'Dejas de ser recepcionista, vendedor y community manager de tu propio negocio. Te devolvemos el tiempo para que enfoques en lo que realmente te hace crecer.',
   ctas: [
     {
-      label: 'See how it works',
+      label: 'Hablemos de tu negocio',
       href: '#',
-      icon: 'play_arrow',
+      icon: 'chat',
       variant: 'primary'
     },
     {
-      label: 'Book free demo',
+      label: 'Ver cómo funciona',
       href: '#',
-      icon: 'calendar_today',
+      icon: 'play_arrow',
       variant: 'ghost'
     }
   ],
   terminal: {
-    filename: 'agent_status.log',
+    filename: 'tu_negocio_hoy.log',
     lines: [
-      { text: 'Initializing local lead capture...', status: 'OK' },
-      { text: 'Syncing CRM datastream...', status: 'OK' },
-      { text: 'Awaiting incoming queries...', status: 'pending' }
+      { text: 'Nueva cita agendada: Manicure, mañana 10:00 am', status: 'OK' },
+      { text: 'Lead respondido: WhatsApp enviado en 2 min', status: 'OK' },
+      { text: 'Recordatorio enviado a 8 clientas para mañana', status: 'OK' }
     ]
   },
-  scroll: 'Scroll'
+  scroll: 'Descubre más'
 };

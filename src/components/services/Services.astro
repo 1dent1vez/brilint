@@ -1,82 +1,58 @@
 ---
 import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
-import { servicios } from '../../data/servicios.js';
-import { WHATSAPP_URL } from '../../config/contact';
+import ServiceCard from './ServiceCard.astro';
+import { services } from '../../data/services';
 ---
 
 <section id="servicios" class="py-16 md:py-section-y bg-dab-bg">
   <Container className="space-y-8 md:space-y-10">
+    <!-- 
+      OPCIÓN A (Recomendada — Dolor + Promesa + Específico):
+      Habla del problema real (celular, dependencia) y la solución concreta (sistema).
+      Ideal para dueños de negocio local que ya están frustrados.
+    -->
     <SectionTitle
-      title="Servicios digitales para que dejes de perder clientes"
-      subtitle="Dab combina desarrollo web, campañas y soporte tecnológico para que tu negocio tenga una presencia online sólida y sistemas que no te fallen cuando más los necesitas."
+      title="Tu negocio no necesita más publicidad. Necesita un sistema que venda solo."
+      subtitle="Desde un chatbot que responde tu WhatsApp a las 11pm, hasta una máquina de ventas que trabaja 24/7. Tres niveles. Un solo objetivo: que tu negocio deje de depender de tu celular."
     />
 
-    <!-- MOBILE: carrusel para dar respiro -->
-    <div class="md:hidden -mx-2 relative">
-      <div class="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-dab-bg via-dab-bg/70 to-transparent pointer-events-none"></div>
-      <div class="flex items-center px-3 pb-1 text-[11px] uppercase tracking-[0.16em] text-dab-muted">
-        <span>Soluciones digitales principales</span>
-      </div>
-      <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-5 px-2 hide-scrollbar">
-        {servicios.map((servicio) => (
-          <article
-            class="min-w-[80%] sm:min-w-[70%] snap-center rounded-2xl border border-dab-accent/60 bg-dab-surface/80 p-5 space-y-3 transition duration-200 shadow-dab-soft active:scale-[0.985] min-h-[320px] flex flex-col"
-          >
-            <div class="space-y-1">
-              <h3 class="font-body font-bold text-lg leading-snug">
-                {servicio.titulo}
-              </h3>
-            </div>
+    <!-- 
+      OPCIÓN B (Nivel de juego — Framing + Curiosidad):
+      Mantiene tu framing original pero lo hace específico al nicho.
+      Úsala si quieres mantener el tono de "game" pero más agresivo.
+      
+      <SectionTitle
+        title="Elige hasta dónde quieres llegar sin volver a perder una clienta."
+        subtitle="Despierta captura lo que se te escapa. Crece convierte sin que tú estés. Domina predice tu próximo cliente. Cada nivel es un sistema completo. Tú eliges desde cuál empezar."
+      />
+    -->
 
-            <p class="font-body text-sm text-dab-muted leading-relaxed">
-              {servicio.descripcion}
-            </p>
+    <!-- 
+      OPCIÓN C (Directa — Para prospectos fríos/callados):
+      Más corta, menos emocional, más factual. 
+      Útil si tu tráfico viene de ads donde ya calentaste al usuario.
+      
+      <SectionTitle
+        title="3 sistemas para negocios locales que ya están cansados de operar"
+        subtitle="Cada uno incluye chatbot, automatizaciones, landing y soporte. La diferencia es el alcance: captar, convertir o dominar."
+      />
+    -->
 
-            <ul class="font-body space-y-2 text-sm text-dab-muted leading-relaxed flex-1">
-              {servicio.bullets.map((bullet) => (
-                <li class="flex gap-2">
-                  <span class="mt-[6px] h-1.5 w-1.5 rounded-full bg-dab-accent/80"></span>
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href={WHATSAPP_URL(`Hola, quiero cotizar el servicio de ${servicio.titulo}`)}
-              class="font-body inline-flex items-center justify-center rounded-lg bg-dab-accent text-dab-bg text-sm font-semibold px-4 py-2.5 transition duration-200 hover:scale-[1.02] hover:shadow-dab-soft active:scale-[0.97]"
-            >
-              Cotizar este servicio
-            </a>
-          </article>
-        ))}
-      </div>
-    </div>
-
-    <!-- DESKTOP: grid intacta -->
-    <div class="hidden md:grid grid-cols-1 gap-5 sm:gap-5 md:gap-6 md:grid-cols-2 xl:grid-cols-3">
-      {servicios.map((servicio) => (
-        <article
-          class="rounded-2xl border border-dab-accent/60 bg-dab-surface/70 p-5 sm:p-6 space-y-3 transition duration-200 hover:border-dab-accent/80 hover:shadow-dab-soft active:scale-[0.98]"
-        >
-          <h3 class="font-body font-bold text-lg leading-snug">
-            {servicio.titulo}
-          </h3>
-
-          <p class="font-body text-sm text-dab-muted leading-relaxed">
-            {servicio.descripcion}
-          </p>
-
-          <ul class="font-body space-y-1.5 text-sm text-dab-muted leading-relaxed">
-            {servicio.bullets.map((bullet) => (
-              <li class="flex gap-2">
-                <span class="mt-[5px] h-1.5 w-1.5 rounded-full bg-dab-accent/80"></span>
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
+    <!-- Services Grid: Stacks on mobile, 3 columns on desktop -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <ServiceCard service={service} />
       ))}
     </div>
+
+    <!-- Micro-copy de seguridad post-cards (opcional, descomenta si quieres) -->
+    <!--
+    <div class="text-center pt-4">
+      <p class="text-dab-muted text-sm">
+        ¿No sabes cuál te conviene? <a href="/contacto" class="text-dab-accent hover:underline">Agenda un diagnóstico gratuito</a> y te decimos en 15 minutos.
+      </p>
+    </div>
+    -->
   </Container>
 </section>
