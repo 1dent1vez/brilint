@@ -1,7 +1,7 @@
 ---
 import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
-import TimelineMotion from '../../react/TimelineMotion.jsx';
+import TimelineVerticalMotion from '../../react/TimelineVerticalMotion.jsx';
 import { pasos } from '../../data/proceso';
 ---
 
@@ -12,7 +12,7 @@ import { pasos } from '../../data/proceso';
       subtitle="Cuatro pasos. Cero sorpresas. Sabes exactamente dónde estamos y qué sigue."
     />
 
-    <TimelineMotion pasos={pasos} client:visible />
+    <TimelineVerticalMotion pasos={pasos} client:visible />
 
     <!-- CTA de proceso -->
     <div class="text-center pt-4">
