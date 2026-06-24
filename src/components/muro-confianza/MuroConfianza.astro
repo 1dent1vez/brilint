@@ -1,0 +1,24 @@
+---
+import Container from '../ui/Container.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
+import MuroConfianzaMotion from '../../react/MuroConfianzaMotion.jsx';
+import { casosExito } from '../../data/casosExito';
+---
+
+<section id="muro-confianza" class="py-16 md:py-section-y bg-dab-surface">
+  <Container className="space-y-8 md:space-y-10">
+    <SectionTitle
+      title="Negocios que dejaron de depender del celular"
+      subtitle="No es lo que decimos nosotros. Es lo que dicen las dueñas de salones, dentistas y estéticas que por primera vez durmieron 8 horas seguidas sin revisar WhatsApp."
+    />
+    <div class="muro-wrapper">
+      <MuroConfianzaMotion casos={casosExito} client:visible />
+    </div>
+  </Container>
+</section>
+
+<style is:global>
+  .muro-wrapper {
+    /* Estilos adicionales si se requieren, usando clases utilitarias en JSX */
+  }
+</style>
