@@ -31,3 +31,9 @@ pnpm-debug.log*
 
 # reference files
 bhanner_preview.html
+ejemplo_timeline_vertical_landbot.html
+stitch-hero-dab.html
+
+# DAB and Prompt files
+DAB_*.md
+prompt_*.md
