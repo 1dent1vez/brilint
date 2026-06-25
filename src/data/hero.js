@@ -33,7 +33,7 @@ export const HERO = {
     },
     {
       label: 'Ver cómo funciona',
-      href: '#',
+      href: '#proceso',
       icon: 'play_arrow',
       variant: 'ghost'
     }
