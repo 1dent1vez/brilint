@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 # agent settings
 .kimi-code/
+
+# vercel output
+.vercel/
+
+# reference files
+bhanner_preview.html
