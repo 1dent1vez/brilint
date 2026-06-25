@@ -61,6 +61,9 @@ const {
         description: pageDescription,
       })}
     </script>
+
+    <!-- Calendly Widget CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
   </head>
 
   <body class="relative bg-dab-bg text-dab-text">
@@ -75,5 +78,21 @@ const {
     >
       W
     </a>
+
+    <!-- Calendly Widget JS & Handler -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <script is:inline>
+      document.addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+        if (target && target.href && target.href.includes('calendly.com/dabagency/30min')) {
+          e.preventDefault();
+          if (window.Calendly) {
+            window.Calendly.initPopupWidget({ url: target.href });
+          } else {
+            window.open(target.href, '_blank');
+          }
+        }
+      });
+    </script>
   </body>
 </html>

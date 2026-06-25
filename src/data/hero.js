@@ -11,7 +11,7 @@ export const NAV = {
   ],
   cta: {
     label: 'Hablemos',
-    href: WHATSAPP_URL('Hola, quiero hablar sobre mi negocio con Dab'),
+    href: 'https://calendly.com/dabagency/30min',
     icon: 'chat'
   }
 };
@@ -27,7 +27,7 @@ export const HERO = {
   ctas: [
     {
       label: 'Hablemos de tu negocio',
-      href: '#',
+      href: 'https://calendly.com/dabagency/30min',
       icon: 'chat',
       variant: 'primary'
     },
