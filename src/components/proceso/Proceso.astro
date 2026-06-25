@@ -3,6 +3,7 @@ import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
 import TimelineVerticalMotion from '../../react/TimelineVerticalMotion.jsx';
 import { pasos } from '../../data/proceso';
+import Button from '../ui/Button.astro';
 ---
 
 <section id="proceso" class="py-16 md:py-section-y bg-dab-surface relative overflow-hidden">
@@ -15,7 +16,16 @@ import { pasos } from '../../data/proceso';
     <TimelineVerticalMotion pasos={pasos} client:visible />
 
     <!-- CTA de proceso -->
-    <div class="text-center pt-4">
+    <div class="flex flex-col items-center justify-center gap-4 pt-6">
+      <div class="w-full sm:w-auto">
+        <Button
+          href="https://calendly.com/dabagency/30min"
+          variant="primary"
+          class="font-body font-medium text-sm"
+        >
+          Agendar diagnóstico gratuito
+        </Button>
+      </div>
       <p class="font-body text-sm text-dab-muted/70 inline-flex items-center gap-2">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
         Diagnóstico inicial sin costo. Sin compromiso.
