@@ -14,12 +14,11 @@ const year = new Date().getFullYear();
         <div class="inline-flex items-center gap-2">
           <span class="h-2 w-2 rounded-full bg-dab-accent"></span>
           <span class="font-body text-sm sm:text-base font-bold text-dab-text">
-            Dab
+            DAB
           </span>
         </div>
         <p class="max-w-md mx-auto md:mx-0 leading-relaxed">
-          Consultora de servicios digitales para PyMEs, profesionales y hogares que
-          necesitan una presencia online clara y sistemas tecnológicos confiables.
+          Socios de crecimiento. Evolucionamos juntos o no evolucionamos. Tu éxito es el nuestro.
         </p>
         <p class="text-[11px] sm:text-xs text-dab-muted/80 leading-relaxed">
           Zona de trabajo principal: Metepec, Toluca, Lerma, San Mateo Atenco y alrededores.
@@ -31,23 +30,17 @@ const year = new Date().getFullYear();
           Navegación
         </h4>
         <nav class="flex flex-wrap gap-2.5 justify-center md:flex-col md:items-start md:gap-1.5">
-          <a href="#servicios" class="hover:text-dab-text transition duration-fast px-2 py-1 rounded-full">
+          <a href="/#servicios" class="hover:text-dab-accent transition duration-fast px-2 py-1 rounded-full">
             Servicios
           </a>
-          <a href="#paquetes" class="hover:text-dab-text transition duration-fast px-2 py-1 rounded-full">
-            Paquetes
+          <a href="/#proceso" class="hover:text-dab-accent transition duration-fast px-2 py-1 rounded-full">
+            Cómo lo hacemos
           </a>
-          <a href="#proceso" class="hover:text-dab-text transition duration-fast px-2 py-1 rounded-full">
-            Proceso
+          <a href="/#muro-confianza" class="hover:text-dab-accent transition duration-fast px-2 py-1 rounded-full">
+            Casos
           </a>
-          <a href="#portfolio" class="hover:text-dab-text transition duration-fast px-2 py-1 rounded-full">
-            Portafolio
-          </a>
-          <a href="#faq" class="hover:text-dab-text transition duration-fast px-2 py-1 rounded-full">
-            FAQ
-          </a>
-          <a href="#contacto" class="hover:text-dab-text transition duration-fast px-2 py-1 rounded-full">
-            Contacto
+          <a href="/#faq" class="hover:text-dab-accent transition duration-fast px-2 py-1 rounded-full">
+            Preguntas
           </a>
         </nav>
       </div>
@@ -56,27 +49,82 @@ const year = new Date().getFullYear();
         <h4 class="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-dab-muted">
           Contacto
         </h4>
-        <div class="space-y-1.5">
+        <div class="space-y-3">
           <p>
             WhatsApp:{' '}
             <span class="text-dab-text font-medium">
               +{WHATSAPP_NUMBER.slice(0, 2)} {WHATSAPP_NUMBER.slice(2, 5)} {WHATSAPP_NUMBER.slice(5, 8)} {WHATSAPP_NUMBER.slice(8)}
             </span>
           </p>
-          <a
-            href={WHATSAPP_URL("Hola, quiero información sobre Dab")}
-            class="inline-flex items-center justify-center text-dab-accent hover:text-dab-accent/90 transition duration-fast"
-          >
-            Escribir por WhatsApp
-          </a>
+          <div class="flex justify-center md:justify-start gap-3">
+            <a href="https://www.instagram.com/dab.ia.mx?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="h-8 w-8 rounded-full border border-dab-border hover:border-dab-accent bg-dab-surface flex items-center justify-center text-dab-muted hover:text-dab-accent hover:shadow-[0_0_10px_rgba(76,127,255,0.2)] transition-all duration-fast">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61582174464870" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="h-8 w-8 rounded-full border border-dab-border hover:border-dab-accent bg-dab-surface flex items-center justify-center text-dab-muted hover:text-dab-accent hover:shadow-[0_0_10px_rgba(76,127,255,0.2)] transition-all duration-fast">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href={WHATSAPP_URL("Hola, me interesa saber más sobre DAB")} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="h-8 w-8 rounded-full border border-dab-border hover:border-dab-accent bg-dab-surface flex items-center justify-center text-dab-muted hover:text-dab-accent hover:shadow-[0_0_10px_rgba(76,127,255,0.2)] transition-all duration-fast">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.665.989 3.3.15 5.4.15 5.51 0 9.995-4.485 9.999-10.001.002-2.672-1.037-5.184-2.927-7.075C17.23 3.86 14.73 2.82 12.062 2.82c-5.521 0-10.01 4.486-10.014 10.002-.002 2.083.523 4.113 1.521 5.923l.165.297-.996 3.636 3.72-.976.299.177zM16.59 13.911c-.24-.12-1.424-.703-1.646-.784-.223-.08-.386-.12-.549.12-.162.24-.629.784-.771.945-.143.161-.285.18-.525.06-.24-.12-1.014-.374-1.932-1.194-.714-.637-1.197-1.425-1.337-1.666-.14-.24-.015-.37.106-.49.109-.108.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.325-.753-1.814-.197-.476-.399-.412-.549-.42-.143-.008-.308-.01-.472-.01-.164 0-.432.06-.658.307-.226.248-.863.843-.863 2.057 0 1.214.883 2.383.98 2.545.097.161 1.737 2.653 4.207 3.719.587.254 1.046.406 1.403.52.59.187 1.127.16 1.551.097.472-.07 1.424-.582 1.626-1.144.203-.562.203-1.044.142-1.144-.06-.1-.22-.16-.46-.28z"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="flex flex-col items-center justify-between gap-2 border-t border-dab-border/60 pt-4 text-[11px] sm:text-xs md:flex-row">
       <p class="text-dab-muted/80 text-center">
-        © {year} Dab S.A de C.V. Todos los derechos reservados.
+        © {year} DAB S.A de C.V. Todos los derechos reservados.
       </p>
     </div>
   </Container>
 </footer>
+
+<!-- Botón flotante para subir al inicio -->
+<button
+  id="scroll-to-top"
+  aria-label="Volver al inicio"
+  class="fixed bottom-20 right-4 sm:bottom-8 sm:right-8 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-dab-accent/40 bg-[#0B0D14]/90 text-dab-accent shadow-[0_0_15px_rgba(76,127,255,0.25)] opacity-0 translate-y-6 pointer-events-none transition-all duration-300 hover:bg-dab-accent hover:text-dab-bg hover:border-dab-accent hover:shadow-[0_0_25px_rgba(76,127,255,0.45)] active:scale-95 cursor-pointer"
+>
+  <svg class="h-5 w-5 fill-current" viewBox="0 -960 960 960" aria-hidden="true">
+    <path d="M440-160v-487L216-424l-56-56 320-320 320 320-56 56-224-223v487h-80Z"/>
+  </svg>
+</button>
+
+<script>
+  const button = document.getElementById('scroll-to-top');
+  const footer = document.querySelector('footer');
+
+  if (button && footer) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Mostrar botón al llegar al footer
+          button.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+          button.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        } else {
+          // Ocultar botón al salir del footer
+          button.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
+          button.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.05 // Se activa tan pronto como aparece el 5% del footer
+    });
+
+    observer.observe(footer);
+
+    button.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+</script>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAB — Línea de Tiempo Vertical con Scroll</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap');
+
+  body { 
+    font-family: 'Inter', sans-serif; 
+    background: #05060A; 
+    color: #E5E7EB; 
+  }
+
+  .font-display { 
+    font-family: 'Impact', 'Arial Black', sans-serif; 
+    letter-spacing: -0.02em; 
+  }
+
+  .glass-card {
+    background: rgba(11, 13, 20, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid #1F2933;
+    border-top: 1px solid rgba(179, 197, 255, 0.15);
+    box-shadow: 0 0 40px rgba(76, 127, 255, 0.03);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(76, 127, 255, 0.3);
+    box-shadow: 0 0 60px rgba(76, 127, 255, 0.06);
+    transform: translateY(-4px);
+  }
+
+  /* Timeline line */
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #1F2933 0%, #4C7FFF 50%, #1F2933 100%);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  /* Progress arrow that grows with scroll */
+  .timeline-progress {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #4C7FFF 0%, #7B61FF 100%);
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(76, 127, 255, 0.5), 0 0 40px rgba(76, 127, 255, 0.3);
+    /* Animation simulating scroll progress */
+    animation: progressGrow 3s ease-out forwards;
+  }
+
+  @keyframes progressGrow {
+    from { height: 0%; }
+    to { height: 100%; }
+  }
+
+  /* Arrow at the tip of progress */
+  .timeline-arrow {
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid #4C7FFF;
+    filter: drop-shadow(0 0 8px rgba(76, 127, 255, 0.6));
+    z-index: 3;
+    animation: arrowPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes arrowPulse {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(4px); opacity: 0.7; }
+  }
+
+  /* Node circle - SOLID background so arrow passes BEHIND */
+  .timeline-node {
+    position: relative;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #0B0D14; /* SOLID - matches card bg */
+    border: 2px solid #4C7FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    color: #4C7FFF;
+    box-shadow: 0 0 20px rgba(76, 127, 255, 0.2), inset 0 0 10px rgba(76, 127, 255, 0.05);
+    transition: all 0.4s ease;
+  }
+
+  .timeline-node.active {
+    background: #4C7FFF;
+    color: #05060A;
+    box-shadow: 0 0 30px rgba(76, 127, 255, 0.5), 0 0 60px rgba(76, 127, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  .timeline-node::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(76, 127, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .timeline-node.active::after {
+    opacity: 1;
+  }
+
+  /* Icon container inside node */
+  .node-icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Content cards positioned left/right */
+  .timeline-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  .timeline-item:nth-child(odd) {
+    flex-direction: row;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content {
+    margin-right: auto;
+    margin-left: 0;
+    text-align: right;
+    padding-right: 60px;
+  }
+
+  .timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: left;
+    padding-left: 60px;
+  }
+
+  .timeline-content {
+    width: calc(50% - 40px);
+    max-width: 480px;
+  }
+
+  .timeline-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  /* Connector line from node to card */
+  .connector {
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(76, 127, 255, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .timeline-item.active .connector {
+    opacity: 1;
+  }
+
+  .timeline-item:nth-child(odd) .connector {
+    right: 24px;
+    left: auto;
+    width: 40px;
+  }
+
+  .timeline-item:nth-child(even) .connector {
+    left: 24px;
+    right: auto;
+    width: 40px;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .timeline-line,
+    .timeline-progress {
+      left: 24px;
+    }
+
+    .timeline-item {
+      flex-direction: row !important;
+      padding-left: 56px;
+    }
+
+    .timeline-item .timeline-content {
+      width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      text-align: left !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .timeline-center {
+      left: 24px;
+    }
+
+    .timeline-item:nth-child(odd) .connector,
+    .timeline-item:nth-child(even) .connector {
+      left: -32px;
+      right: auto;
+      width: 32px;
+    }
+  }
+
+  /* Fade in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+  .delay-4 { animation-delay: 0.8s; }
+
+  /* Time badge */
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background: rgba(76, 127, 255, 0.08);
+    border: 1px solid rgba(76, 127, 255, 0.15);
+    font-size: 11px;
+    font-weight: 600;
+    color: #4C7FFF;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .time-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4C7FFF;
+    box-shadow: 0 0 8px rgba(76, 127, 255, 0.5);
+  }
+</style>
+</head>
+<body class="min-h-screen">
+
+<nav class="flex justify-between items-center px-6 md:px-10 py-6 max-w-7xl mx-auto">
+  <div class="text-2xl font-black tracking-tighter text-white">DAB</div>
+  <div class="text-xs text-gray-500 uppercase tracking-widest">Ejemplo: Línea de Tiempo Vertical con Scroll</div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-6 pb-24">
+
+  <!-- Section Header -->
+  <div class="text-center pt-10 pb-20">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#4C7FFF] text-sm mb-6">
+      <span class="w-2 h-2 rounded-full bg-[#4C7FFF] animate-pulse"></span>
+      De la primera llamada a tu sistema funcionando
+    </div>
+    <h2 class="font-display text-4xl md:text-6xl text-white mb-4 leading-none">
+      ASÍ ES TRABAJAR<br><span class="text-[#4C7FFF]">CON DAB</span>
+    </h2>
+    <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+      Cuatro pasos. Cero sorpresas. Sabes exactamente dónde estamos,<br class="hidden md:block">
+      cuánto falta y qué sigue — antes de tocar una tecla.
+    </p>
+  </div>
+
+  <!-- Timeline Container -->
+  <div class="relative" style="min-height: 800px;">
+
+    <!-- Background line (dim) -->
+    <div class="timeline-line"></div>
+
+    <!-- Animated progress line with arrow -->
+    <div class="timeline-progress" style="height: 100%;">
+      <div class="timeline-arrow"></div>
+    </div>
+
+    <!-- Timeline Items -->
+    <div class="relative z-10">
+
+      <!-- Step 1: Diagnóstico -->
+      <div class="timeline-item fade-in delay-1">
+        <div class="timeline-content">
+          <div class="glass-card rounded-2xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-4 md:justify-end">
+              <span class="time-badge">30 minutos</span>
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl text-white mb-3 tracking-tight md:text-right">DIAGNÓSTICO</h3>
+            <p class="text-sm md:text-base text-gray-400 leading-relaxed md:text-right">
+              Entendemos tu negocio antes de tocar una tecla. Detectamos dónde se te escapan clientes y cuánto te cuesta no tener un sistema.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 md:text-right">
+              <span class="text-xs text-gray-500 uppercase tracking-wider">Sin costo · Sin compromiso</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node active">
+            <svg class="node-icon" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.3-4.3"/>
+              <path d="M11 8v6"/>
+              <path d="M8 11h6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Estrategia -->
+      <div class="timeline-item fade-in delay-2">
+        <div class="timeline-content">
+          <div class="glass-card rounded-2xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="time-badge">1-2 días</span>
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl text-white mb-3 tracking-tight">ESTRATEGIA</h3>
+            <p class="text-sm md:text-base text-gray-400 leading-relaxed">
+              Priorizamos lo que genera clientes, no lo que luce bonito. Diseñamos el blueprint de tu sistema y tú lo apruebas antes de que construyamos nada.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5">
+              <span class="text-xs text-gray-500 uppercase tracking-wider">Blueprint visual · Tú apruebas</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node">
+            <svg class="node-icon" viewBox="0 0 24 24">
+              <path d="M2 12h5l2-7 4 14 2-7h5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Implementación -->
+      <div class="timeline-item fade-in delay-3">
+        <div class="timeline-content">
+          <div class="glass-card rounded-2xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-4 md:justify-end">
+              <span class="time-badge">1-2 semanas</span>
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl text-white mb-3 tracking-tight md:text-right">IMPLEMENTACIÓN</h3>
+            <p class="text-sm md:text-base text-gray-400 leading-relaxed md:text-right">
+              Construimos, conectamos y probamos antes de entregar. Tu chatbot responde, tu landing carga y tu sistema funciona — antes de que pagues el primer peso.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5 md:text-right">
+              <span class="text-xs text-gray-500 uppercase tracking-wider">Glass Box · Ves todo lo que hacemos</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node">
+            <svg class="node-icon" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Optimización -->
+      <div class="timeline-item fade-in delay-4">
+        <div class="timeline-content">
+          <div class="glass-card rounded-2xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="time-badge">Continuo</span>
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl text-white mb-3 tracking-tight">OPTIMIZACIÓN</h3>
+            <p class="text-sm md:text-base text-gray-400 leading-relaxed">
+              Ajustamos según datos reales, no suposiciones. Cada semana revisamos métricas, refinamos flujos y escalamos lo que funciona. Nunca te dejamos solo.
+            </p>
+            <div class="mt-4 pt-4 border-t border-white/5">
+              <span class="text-xs text-gray-500 uppercase tracking-wider">Reporte semanal · Ajustes ilimitados</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-center">
+          <div class="timeline-node">
+            <svg class="node-icon" viewBox="0 0 24 24">
+              <path d="M3 3v18h18"/>
+              <path d="m19 9-5 5-4-4-3 3"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="text-center mt-16">
+    <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto inline-block">
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <div class="text-left">
+          <h3 class="font-display text-xl text-white mb-1 tracking-tight">¿Listo para empezar?</h3>
+          <p class="text-sm text-gray-400">El diagnóstico es gratis. En 30 minutos sabes si vale la pena.</p>
+        </div>
+        <button class="px-8 py-4 rounded-xl bg-[#4C7FFF] text-white font-bold hover:bg-blue-500 transition whitespace-nowrap shrink-0">
+          Agendar diagnóstico
+        </button>
+      </div>
+    </div>
+    <p class="text-gray-500 text-xs mt-4 uppercase tracking-wider">Sin contrato · 45 días garantía · Toluca y Metepec</p>
+  </div>
+
+</main>
+
+<script>
+  // Simple scroll-based activation simulation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        const node = entry.target.querySelector('.timeline-node');
+        if (node) node.classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.timeline-item').forEach(item => {
+    observer.observe(item);
+  });
+</script>
+
+</body>
+</html>

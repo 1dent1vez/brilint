@@ -196,6 +196,7 @@ export function FaqClient({ categorias, title, subtitle }: FaqClientProps) {
     categorias[0] ? `${categorias[0].id}-0` : null
   );
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const isInitialRender = useRef(true);
   const shouldReduceMotion = useReducedMotion();
 
   const activeCategory = categorias.find((c) => c.id === activeTab) ?? categorias[0];
@@ -237,6 +238,10 @@ export function FaqClient({ categorias, title, subtitle }: FaqClientProps) {
   };
 
   useEffect(() => {
+    if (isInitialRender.current) {
+      isInitialRender.current = false;
+      return;
+    }
     tabRefs.current[activeTab]?.focus();
   }, [activeTab]);
 
@@ -261,46 +266,48 @@ export function FaqClient({ categorias, title, subtitle }: FaqClientProps) {
         </div>
       </FadeIn>
 
-      <FadeIn direction="up" delay={0.1}>
-        <div
-          className="flex flex-wrap gap-2 justify-center"
-          role="tablist"
-          aria-label="Filtrar preguntas por servicio"
-          onKeyDown={handleKeyDown}
-        >
-          {categorias.map((cat) => {
-            const isActive = activeTab === cat.id;
+      {categorias.length > 1 && (
+        <FadeIn direction="up" delay={0.1}>
+          <div
+            className="flex flex-wrap gap-2 justify-center"
+            role="tablist"
+            aria-label="Filtrar preguntas por servicio"
+            onKeyDown={handleKeyDown}
+          >
+            {categorias.map((cat) => {
+              const isActive = activeTab === cat.id;
 
-            return (
-              <button
-                key={cat.id}
-                ref={(el) => {
-                  tabRefs.current[cat.id] = el;
-                }}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                aria-controls={`panel-${cat.id}`}
-                id={`tab-${cat.id}`}
-                tabIndex={isActive ? 0 : -1}
-                onClick={() => setActiveTab(cat.id)}
-                className={cn(baseTabClasses, isActive ? activeColorClasses[cat.color] : inactiveTabClasses)}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeTabPill"
-                    className="absolute inset-0 rounded-full bg-current opacity-[0.08]"
-                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 28 }}
-                    aria-hidden="true"
-                  />
-                )}
-                <span className="relative z-10 hidden sm:inline">{cat.label}</span>
-                <span className="relative z-10 sm:hidden">{cat.labelCorto}</span>
-              </button>
-            );
-          })}
-        </div>
-      </FadeIn>
+              return (
+                <button
+                  key={cat.id}
+                  ref={(el) => {
+                    tabRefs.current[cat.id] = el;
+                  }}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  aria-controls={`panel-${cat.id}`}
+                  id={`tab-${cat.id}`}
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={() => setActiveTab(cat.id)}
+                  className={cn(baseTabClasses, isActive ? activeColorClasses[cat.color] : inactiveTabClasses)}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTabPill"
+                      className="absolute inset-0 rounded-full bg-current opacity-[0.08]"
+                      transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 28 }}
+                      aria-hidden="true"
+                    />
+                  )}
+                  <span className="relative z-10 hidden sm:inline">{cat.label}</span>
+                  <span className="relative z-10 sm:hidden">{cat.labelCorto}</span>
+                </button>
+              );
+            })}
+          </div>
+        </FadeIn>
+      )}
 
       <div className="relative min-h-[300px]">
         <AnimatePresence mode="wait">

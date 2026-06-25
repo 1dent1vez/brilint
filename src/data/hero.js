@@ -1,21 +1,17 @@
-/**
- * Centralized data for Hero and Main Navigation.
- * Extracted from stitch-hero-dab.html.
- */
+import { WHATSAPP_URL } from '../config/contact';
 
 export const NAV = {
   brand: 'DAB',
-  logoHref: '#',
+  logoHref: '/',
   links: [
-    { label: 'Servicios', href: '#' },
-    { label: 'Cómo lo hacemos', href: '#' },
-    { label: 'Casos', href: '#' },
-    { label: 'Precios', href: '#' },
-    { label: 'Preguntas', href: '#' }
+    { label: 'Servicios', href: '/#servicios' },
+    { label: 'Cómo lo hacemos', href: '/#proceso' },
+    { label: 'Casos', href: '/#muro-confianza' },
+    { label: 'Preguntas', href: '/#faq' }
   ],
   cta: {
     label: 'Hablemos',
-    href: '#',
+    href: WHATSAPP_URL('Hola, quiero hablar sobre mi negocio con Dab'),
     icon: 'chat'
   }
 };

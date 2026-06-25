@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dab AI Agency</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Inter:wght@400;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#e2e2ec",
+                        "surface-bright": "#373941",
+                        "primary": "#b3c5ff",
+                        "surface-variant": "#33343c",
+                        "primary-container": "#608bff",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-on-surface": "#2e3038",
+                        "tertiary-fixed": "#55fcd0",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#441cc8",
+                        "on-secondary-fixed": "#1a0063",
+                        "on-secondary-container": "#baaeff",
+                        "secondary-container": "#4720ca",
+                        "surface": "#11131a",
+                        "surface-container-lowest": "#0c0e15",
+                        "secondary-fixed-dim": "#c9bfff",
+                        "surface-container-low": "#191b23",
+                        "outline": "#8d90a0",
+                        "surface-container": "#1d1f27",
+                        "background": "#11131a",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#00513f",
+                        "tertiary-container": "#00a483",
+                        "on-primary": "#002a76",
+                        "tertiary-fixed-dim": "#28dfb5",
+                        "on-primary-container": "#002468",
+                        "on-surface": "#e2e2ec",
+                        "secondary-fixed": "#e5deff",
+                        "on-tertiary-fixed": "#002118",
+                        "error-container": "#93000a",
+                        "inverse-primary": "#0e54d4",
+                        "surface-container-highest": "#33343c",
+                        "tertiary": "#28dfb5",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#003025",
+                        "on-secondary": "#2e009c",
+                        "secondary": "#c9bfff",
+                        "surface-container-high": "#282a31",
+                        "surface-tint": "#b3c5ff",
+                        "surface-dim": "#11131a",
+                        "on-primary-fixed-variant": "#003ea6",
+                        "on-primary-fixed": "#00174a",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "on-tertiary": "#00382b",
+                        "on-background": "#e2e2ec",
+                        "outline-variant": "#434654",
+                        "on-surface-variant": "#c3c6d7",
+                        "glow-primary": "rgba(76, 127, 255, 0.15)",
+                        "glass-dark": "rgba(11, 13, 20, 0.6)"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin_desktop": "48px",
+                        "container_max": "1280px",
+                        "section_gap_desktop": "160px",
+                        "margin_mobile": "20px",
+                        "section_gap_mobile": "80px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "label-mono": ["JetBrains Mono", "monospace"],
+                        "headline-sm": ["Inter", "sans-serif"],
+                        "display-lg-mobile": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        "label-mono": ["14px", { lineHeight: "1.0", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "headline-sm": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "display-lg-mobile": ["40px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "900" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "display-lg": ["72px", { lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "900" }],
+                        "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }]
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'radial-gradient(circle at 50% 50%, rgba(11, 13, 20, 0) 0%, #05060A 100%)',
+                        'primary-glow': 'linear-gradient(to right, #608bff, #b3c5ff)',
+                        'glass-gradient': 'linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0))'
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'pulse-glow': 'pulseGlow 2s infinite'
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.6' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #05060A;
+            color: #e2e2ec;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        .animation-delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .animation-delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .animation-delay-300 {
+            animation-delay: 300ms;
+        }
+
+        .animation-delay-400 {
+            animation-delay: 400ms;
+        }
+
+        .glass-panel {
+            background: rgba(11, 13, 20, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(179, 197, 255, 0.2);
+            border-bottom: 1px solid rgba(31, 41, 51, 1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, theme('colors.primary-container'), theme('colors.primary'));
+            box-shadow: 0 0 20px rgba(76, 127, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(76, 127, 255, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-ghost {
+            background: rgba(11, 13, 20, 0.4);
+            border: 1px solid theme('colors.primary');
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(96, 139, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, theme('colors.primary-container'), theme('colors.primary'));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 h-[72px] glass-panel transition-all duration-300">
+        <div class="max-w-container_max mx-auto px-margin_desktop h-full flex justify-between items-center">
+            <div class="flex items-center gap-2 cursor-pointer group">
+                <span class="material-symbols-outlined text-primary group-hover:animate-pulse-glow transition-all"
+                    style="font-variation-settings: 'FILL' 1;">
+                    blur_on
+                </span>
+                <span class="font-headline-md text-headline-md font-black tracking-tighter text-on-surface">DAB</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="font-label-mono text-label-mono uppercase tracking-widest text-primary border-b-2 border-primary pb-1"
+                    href="#">AI Agents</a>
+                <a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors hover:opacity-80 transition-all duration-300"
+                    href="#">Services</a>
+                <a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors hover:opacity-80 transition-all duration-300"
+                    href="#">Process</a>
+                <a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors hover:opacity-80 transition-all duration-300"
+                    href="#">Portfolio</a>
+                <a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors hover:opacity-80 transition-all duration-300"
+                    href="#">Pricing</a>
+                <a class="font-label-mono text-label-mono uppercase tracking-widest text-on-surface-variant hover:text-on-surface transition-colors hover:opacity-80 transition-all duration-300"
+                    href="#">FAQ</a>
+            </div>
+            <div class="hidden md:flex items-center">
+                <a class="btn-primary px-6 py-2.5 rounded-lg font-label-mono text-label-mono text-surface-container-lowest font-bold active:scale-95 transition-transform flex items-center gap-2"
+                    href="#">
+                    Book Demo
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+            </div>
+            <button class="md:hidden text-on-surface">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <main class="relative min-h-screen flex items-center justify-center pt-[72px] overflow-hidden">
+        <!-- Background elements -->
+        <div class="absolute inset-0 z-0">
+            <!-- Central subtle glow -->
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container opacity-[0.03] rounded-full blur-[120px] pointer-events-none">
+            </div>
+            <!-- 3D Animation Layer -->
+            <div class="absolute inset-0 w-full h-full opacity-80 mix-blend-screen">
+                <!-- STITCH_THREEJS_START:ANIMATION_4 class="absolute inset-0 w-full h-full" -->
+                <div class="absolute inset-0 w-full h-full" style="display:block;">
+                    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+                    <div id="threejs-container-ANIMATION_4" style="width:100%;height:100%"></div>
+                    <script>
+                            (function () {
+                                const container = document.getElementById('threejs-container-ANIMATION_4');
+                                const devicePixelRatio = window.devicePixelRatio || 1;
+                                const width = container.clientWidth || window.innerWidth;
+                                const height = container.clientHeight || window.innerHeight;
+
+                                const scene = new THREE.Scene();
+                                const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+                                camera.position.z = 5;
+
+                                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                                renderer.setSize(width, height);
+                                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                                container.appendChild(renderer.domElement);
+
+                                // Particle Sphere (Halftone effect)
+                                const particleCount = 1500;
+                                const positions = new Float32Array(particleCount * 3);
+                                const colors = new Float32Array(particleCount * 3);
+                                const sizes = new Float32Array(particleCount);
+
+                                const colorBlue = new THREE.Color('#4C7FFF');
+                                const colorPurple = new THREE.Color('#7B61FF');
+
+                                for (let i = 0; i < particleCount; i++) {
+                                    // Spherical distribution
+                                    const phi = Math.acos(-1 + (2 * i) / particleCount);
+                                    const theta = Math.sqrt(particleCount * Math.PI) * phi;
+
+                                    const radius = 2.5;
+                                    positions[i * 3] = radius * Math.cos(theta) * Math.sin(phi);
+                                    positions[i * 3 + 1] = radius * Math.sin(theta) * Math.sin(phi);
+                                    positions[i * 3 + 2] = radius * Math.cos(phi);
+
+                                    // Gradient based on Y position
+                                    const mixedColor = colorBlue.clone().lerp(colorPurple, (positions[i * 3 + 1] + radius) / (radius * 2));
+                                    colors[i * 3] = mixedColor.r;
+                                    colors[i * 3 + 1] = mixedColor.g;
+                                    colors[i * 3 + 2] = mixedColor.b;
+
+                                    // Halftone sizing (denser at center feel via random variation)
+                                    sizes[i] = Math.random() * 0.05 + 0.02;
+                                }
+
+                                const geometry = new THREE.BufferGeometry();
+                                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                                geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+                                const material = new THREE.PointsMaterial({
+                                    size: 0.06,
+                                    vertexColors: true,
+                                    transparent: true,
+                                    opacity: 0.8,
+                                    sizeAttenuation: true
+                                });
+
+                                const sphere = new THREE.Points(geometry, material);
+                                scene.add(sphere);
+
+                                // Subtle rotation
+                                function animate() {
+                                    requestAnimationFrame(animate);
+                                    sphere.rotation.y += 0.002;
+                                    sphere.rotation.x += 0.001;
+                                    renderer.render(scene, camera);
+                                }
+
+                                window.addEventListener('resize', () => {
+                                    const w = container.clientWidth || window.innerWidth;
+                                    const h = container.clientHeight || window.innerHeight;
+                                    camera.aspect = w / h;
+                                    camera.updateProjectionMatrix();
+                                    renderer.setSize(w, h);
+                                });
+
+                                animate();
+                            })();
+                    </script>
+                </div>
+                <!-- STITCH_THREEJS_END:ANIMATION_4 -->
+            </div>
+            <!-- Vignette overlay -->
+            <div class="absolute inset-0 bg-hero-gradient pointer-events-none"></div>
+        </div>
+        <!-- Content Container -->
+        <div
+            class="relative z-10 max-w-container_max mx-auto px-margin_desktop w-full grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+            <!-- Left Content Area -->
+            <div class="col-span-1 lg:col-span-7 flex flex-col items-start justify-center py-20 lg:py-0">
+                <!-- Badge -->
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-6 opacity-0 animate-fade-up">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span class="font-label-mono text-label-mono text-primary uppercase">AUTONOMOUS AI AGENTS</span>
+                </div>
+                <!-- Headline -->
+                <h1
+                    class="font-display-lg-mobile lg:font-display-lg text-display-lg-mobile lg:text-display-lg text-on-surface mb-6 opacity-0 animate-fade-up animation-delay-100 max-w-[800px]">
+                    A digital employee that works <span class="text-gradient">24/7</span> for your business
+                </h1>
+                <!-- Subheadline -->
+                <p
+                    class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-[600px] opacity-0 animate-fade-up animation-delay-200">
+                    AI agents that schedule appointments, capture leads, follow up, and never forget a customer. Without
+                    hiring more staff.
+                </p>
+                <!-- Actions -->
+                <div
+                    class="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-up animation-delay-300 w-full sm:w-auto">
+                    <a class="btn-primary px-8 py-4 rounded-lg font-label-mono text-label-mono text-surface-container-lowest font-bold active:scale-95 transition-transform flex items-center justify-center gap-2"
+                        href="#">
+                        See how it works
+                        <span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                    </a>
+                    <a class="btn-ghost px-8 py-4 rounded-lg font-label-mono text-label-mono text-primary active:scale-95 transition-transform flex items-center justify-center gap-2"
+                        href="#">
+                        Book free demo
+                        <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                    </a>
+                </div>
+                <!-- Trust Indicators / Terminal snippet -->
+                <div class="mt-16 opacity-0 animate-fade-up animation-delay-400 w-full max-w-md">
+                    <div
+                        class="bg-[#05060A] border border-outline-variant/30 rounded-lg p-4 font-label-mono text-[12px] text-primary/70 relative overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-glass-gradient opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="flex items-center gap-2 mb-2 pb-2 border-b border-outline-variant/20">
+                            <div class="w-2.5 h-2.5 rounded-full bg-error/50"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-tertiary/50"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-primary/50"></div>
+                            <span class="ml-2 text-on-surface-variant/50">agent_status.log</span>
+                        </div>
+                        <div class="space-y-1">
+                            <p>&gt; Initializing local lead capture... <span class="text-tertiary">[OK]</span></p>
+                            <p>&gt; Syncing CRM datastream... <span class="text-tertiary">[OK]</span></p>
+                            <p class="animate-pulse">&gt; Awaiting incoming queries...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Spacer for 3D element focus -->
+            <div class="col-span-1 lg:col-span-5 hidden lg:block h-full relative">
+                <!-- The 3D animation occupies the absolute background, but this empty column ensures the text doesn't overlap the right side where the sphere is typically focused -->
+            </div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-up"
+            style="animation-delay: 800ms;">
+            <span class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">Scroll</span>
+            <div class="w-[1px] h-12 bg-gradient-to-b from-primary/50 to-transparent"></div>
+        </div>
+    </main>
+</body>
+
+</html>
