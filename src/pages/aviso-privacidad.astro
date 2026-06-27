@@ -1,0 +1,400 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import Nav from '../components/nav/Nav.astro';
+import Footer from '../components/footer/Footer.astro';
+import Container from '../components/ui/Container.astro';
+
+const indexItems = [
+  { href: '#1-identidad-del-responsable', label: '1. Identidad del Responsable' },
+  { href: '#2-datos-personales-que-recabamos', label: '2. Datos Personales' },
+  { href: '#3-finalidades-del-tratamiento', label: '3. Finalidades del Tratamiento' },
+  { href: '#4-transferencia-de-datos', label: '4. Transferencia de Datos' },
+  { href: '#5-derechos-arco', label: '5. Derechos ARCO' },
+  { href: '#6-mecanismos-para-limitar-el-uso-o-divulgacion', label: '6. Limitar Uso o Divulgación' },
+  { href: '#7-uso-de-cookies-y-tecnologias', label: '7. Cookies y Seguimiento' },
+  { href: '#8-cambios-al-aviso-de-privacidad', label: '8. Cambios al Aviso' },
+  { href: '#9-medidas-de-seguridad', label: '9. Medidas de Seguridad' },
+  { href: '#10-consentimiento', label: '10. Consentimiento' },
+];
+---
+
+<DefaultLayout
+  title="Aviso de Privacidad — DAB"
+  description="Aviso de Privacidad de DAB S.A. de C.V. Conoce cómo protegemos y tratamos tus datos personales."
+>
+  <Nav />
+
+  <main class="bg-dab-bg min-h-screen pt-28 pb-20 relative overflow-hidden">
+    <!-- Fondo decorativo con luces radiales -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-dab-accent/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-[300px] h-[300px] bg-dab-accent-warm/5 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+
+    <Container>
+      <!-- Encabezado de Página -->
+      <div class="max-w-3xl mx-auto lg:mx-0 mb-12 text-center lg:text-left space-y-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dab-accent/30 bg-dab-accent-soft text-dab-accent font-mono text-[10px] sm:text-xs uppercase tracking-wider">
+          Legal / Privacidad
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-dab-accent to-[#b3c5ff]">
+          Aviso de Privacidad
+        </h1>
+        <p class="text-xs sm:text-sm font-mono text-dab-muted">
+          Última actualización: <span class="text-dab-accent">27 de junio de 2026</span>
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 items-start">
+        <!-- Índice lateral pegajoso (Desktop) -->
+        <aside class="hidden lg:block sticky top-28 self-start bg-dab-surface/40 backdrop-blur-md p-6 rounded-xl border border-dab-border">
+          <h2 class="font-mono text-xs uppercase tracking-wider text-dab-text mb-4 border-b border-dab-border pb-2">
+            Índice
+          </h2>
+          <nav class="flex flex-col gap-2.5">
+            {indexItems.map((item) => (
+              <a
+                href={item.href}
+                class="text-xs font-medium text-dab-muted hover:text-dab-accent transition-colors duration-fast leading-relaxed"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <article class="glass-card rounded-2xl p-6 sm:p-10 border border-dab-border text-dab-muted space-y-8 relative">
+          <!-- Índice rápido para móviles / tablets -->
+          <div class="block lg:hidden bg-dab-surface/40 p-5 rounded-xl border border-dab-border/60 mb-6">
+            <h2 class="font-mono text-xs uppercase tracking-wider text-dab-text mb-3 border-b border-dab-border pb-1">
+              Índice
+            </h2>
+            <nav class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              {indexItems.map((item) => (
+                <a
+                  href={item.href}
+                  class="text-dab-muted hover:text-dab-accent transition-colors duration-fast py-0.5"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <p class="leading-relaxed sm:text-base">
+            El presente Aviso de Privacidad regula el tratamiento de los datos personales proporcionados por los usuarios de acuerdo con las disposiciones legales vigentes en México.
+          </p>
+
+          <hr class="border-dab-border" />
+
+          <!-- Sección 1 -->
+          <section id="1-identidad-del-responsable" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">01.</span> Identidad del Responsable
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>
+                <strong>DAB S.A. de C.V.</strong> (en adelante, "DAB", "nosotros" o "el Responsable"), con domicilio en Av. Tecnológico S/N, Colonia Agrícola Bellavista, Metepec, Estado de México, C.P. 52149, zona de operación principal en Metepec, Toluca, Lerma, San Mateo Atenco y alrededores, es el responsable del tratamiento de tus datos personales conforme a lo dispuesto por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y los Lineamientos aplicables emitidos por la autoridad mexicana en materia de protección de datos.
+              </p>
+              <p>
+                Para cualquier asunto relacionado con el tratamiento de tus datos personales, puedes contactarnos a través de:
+              </p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li><strong>Correo electrónico para derechos ARCO:</strong> <a href="mailto:DABcontacto@proton.me" class="text-dab-accent hover:underline">DABcontacto@proton.me</a></li>
+                <li><strong>WhatsApp:</strong> <a href="https://wa.me/527223579869" target="_blank" rel="noopener noreferrer" class="text-dab-accent hover:underline">+52 722 357 9869</a></li>
+                <li><strong>Sitio web:</strong> <a href="https://www.dabtech.me" target="_blank" rel="noopener noreferrer" class="text-dab-accent hover:underline">https://www.dabtech.me</a></li>
+              </ul>
+              <p>
+                DAB ha designado un punto de contacto interno responsable de atender solicitudes relacionadas con el tratamiento de datos personales, contactable a través del correo electrónico antes señalado.
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección 2 -->
+          <section id="2-datos-personales-que-recabamos" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">02.</span> Datos Personales que Recabamos
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>
+                DAB recaba datos personales a través de los siguientes medios:
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li>Formularios de contacto y diagnóstico en nuestro sitio web.</li>
+                <li>Agendamiento de citas a través de Calendly.</li>
+                <li>Conversaciones iniciadas por WhatsApp (incluyendo nuestra API de WhatsApp Business).</li>
+                <li>Navegación en nuestro sitio web (cookies y tecnologías de seguimiento — ver Sección 7).</li>
+                <li>Interacción con chatbots, automatizaciones y sistemas que implementamos para nuestros clientes (PYMES) y, en su caso, para los clientes finales de dichas PYMES.</li>
+              </ul>
+
+              <h3 class="text-base sm:text-lg font-semibold text-dab-text mt-4">2.1 Datos que recabamos directamente de ti (nuestro cliente o prospecto)</h3>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Nombre completo.</li>
+                <li>Número de teléfono / WhatsApp.</li>
+                <li>Correo electrónico.</li>
+                <li>Nombre y datos generales del negocio (giro, ubicación, redes sociales).</li>
+                <li>Información proporcionada voluntariamente durante el diagnóstico gratuito (necesidades operativas, herramientas que usas, volumen de clientes, etc.).</li>
+              </ul>
+
+              <h3 class="text-base sm:text-lg font-semibold text-dab-text mt-4">2.2 Datos que recabamos al implementar soluciones para tu negocio</h3>
+              <p>
+                Cuando DAB diseña e implementa chatbots, automatizaciones o sistemas de captación de leads para un negocio cliente, podemos tener acceso técnico a los datos personales que ese negocio recaba de <strong>sus propios clientes</strong> (por ejemplo, nombre, teléfono y correo de quienes agendan una cita o escriben por WhatsApp). En estos casos, DAB actúa como <strong>Encargado del tratamiento</strong> por cuenta del negocio cliente, quien conserva el carácter de Responsable frente a sus propios clientes.
+              </p>
+
+              <h3 class="text-base sm:text-lg font-semibold text-dab-text mt-4">2.3 Datos personales sensibles</h3>
+              <p>
+                DAB <strong>no recaba ni trata datos personales sensibles</strong> (como datos de salud, biométricos o financieros) como parte ordinaria de sus servicios. Los datos que tratamos, tanto propios como los que procesamos por cuenta de nuestros clientes, se limitan a datos de identificación y contacto básicos (nombre, teléfono, correo electrónico).
+              </p>
+              <p>
+                Si en algún proyecto específico se llegara a requerir el tratamiento de datos sensibles, esto se sujetará a un consentimiento expreso y por escrito adicional, conforme a lo señalado en la Sección 10.
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección 3 -->
+          <section id="3-finalidades-del-tratamiento" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">03.</span> Finalidades del Tratamiento
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <h3 class="text-base sm:text-lg font-semibold text-dab-text">3.1 Finalidades primarias (necesarias para la relación contigo)</h3>
+              <p>Tus datos personales son utilizados para:</p>
+              <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li>Brindarte el diagnóstico gratuito y darte seguimiento comercial.</li>
+                <li>Diseñar, implementar, configurar y dar mantenimiento a los servicios contratados (chatbots, automatizaciones, landing pages, campañas publicitarias, integraciones con CRM).</li>
+                <li>Agendar y confirmar citas, diagnósticos y sesiones de trabajo.</li>
+                <li>Facturación y cumplimiento de obligaciones fiscales y contractuales.</li>
+                <li>Brindarte soporte técnico y atención a tus dudas o reportes.</li>
+                <li>Capacitarte a ti o a tu equipo en el uso de las herramientas implementadas.</li>
+              </ul>
+
+              <h3 class="text-base sm:text-lg font-semibold text-dab-text mt-4">3.2 Finalidades secundarias (requieren tu autorización; puedes oponerte)</h3>
+              <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li>Envío de información sobre nuevos servicios, promociones o mejoras a nuestros planes.</li>
+                <li>Invitación a encuestas de satisfacción o estudios de mercado.</li>
+                <li>Uso de tu caso de éxito (testimonios, métricas de resultados) con fines de promoción comercial — esto siempre se solicita y confirma de forma separada y específica antes de publicarse.</li>
+              </ul>
+              <p class="bg-dab-surface/60 border border-dab-border p-4 rounded-lg text-sm text-dab-muted/90 mt-2">
+                <strong>Si no deseas que tus datos se utilicen para estas finalidades secundarias</strong>, puedes manifestarlo en cualquier momento enviando un correo a <a href="mailto:DABcontacto@proton.me" class="text-dab-accent hover:underline">DABcontacto@proton.me</a> con el asunto "Negativa a finalidades secundarias", o respondiendo "BAJA" al WhatsApp +52 722 357 9869. La negativa a estas finalidades no afecta la prestación del servicio principal que hayas contratado.
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección 4 -->
+          <section id="4-transferencia-de-datos" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">04.</span> Transferencia de Datos
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>
+                DAB <strong>no vende ni renta</strong> tus datos personales a terceros. Sin embargo, para poder operar los servicios, tus datos pueden ser compartidos con los siguientes terceros, exclusivamente para los fines aquí descritos:
+              </p>
+
+              <!-- Tabla Estilizada Premium -->
+              <div class="overflow-x-auto border border-dab-border rounded-xl">
+                <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr class="bg-dab-surface-elevated text-dab-text">
+                      <th class="p-3 font-semibold border-b border-dab-border">Tercero receptor</th>
+                      <th class="p-3 font-semibold border-b border-dab-border">Finalidad</th>
+                      <th class="p-3 font-semibold border-b border-dab-border">Tipo de transferencia</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-dab-border/60">
+                    <tr class="hover:bg-dab-surface/20 transition-colors">
+                      <td class="p-3 font-medium text-dab-text">Meta (WhatsApp Business API, Meta Ads)</td>
+                      <td class="p-3">Envío y recepción de mensajes, gestión de campañas publicitarias</td>
+                      <td class="p-3 text-dab-accent">Encargado / Prestador de servicios</td>
+                    </tr>
+                    <tr class="hover:bg-dab-surface/20 transition-colors">
+                      <td class="p-3 font-medium text-dab-text">n8n</td>
+                      <td class="p-3">Automatización de flujos de trabajo y procesos internos</td>
+                      <td class="p-3 text-dab-accent">Encargado / Prestador de servicios</td>
+                    </tr>
+                    <tr class="hover:bg-dab-surface/20 transition-colors">
+                      <td class="p-3 font-medium text-dab-text">HubSpot</td>
+                      <td class="p-3">Gestión de relación con clientes (CRM)</td>
+                      <td class="p-3 text-dab-accent">Encargado / Prestador de servicios</td>
+                    </tr>
+                    <tr class="hover:bg-dab-surface/20 transition-colors">
+                      <td class="p-3 font-medium text-dab-text">Google (Calendar, Ads, Business Profile)</td>
+                      <td class="p-3">Agendamiento de citas, campañas publicitarias, presencia en buscadores</td>
+                      <td class="p-3 text-dab-accent">Encargado / Prestador de servicios</td>
+                    </tr>
+                    <tr class="hover:bg-dab-surface/20 transition-colors">
+                      <td class="p-3 font-medium text-dab-text">Calendly</td>
+                      <td class="p-3">Agendamiento de diagnósticos y sesiones de trabajo</td>
+                      <td class="p-3 text-dab-accent">Encargado / Prestador de servicios</td>
+                    </tr>
+                    <tr class="hover:bg-dab-surface/20 transition-colors">
+                      <td class="p-3 font-medium text-dab-text">Vercel y otros proveedores de hosting en la nube</td>
+                      <td class="p-3">Almacenamiento y procesamiento de datos</td>
+                      <td class="p-3 text-dab-accent">Encargado / Prestador de servicios</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                Estas transferencias se realizan únicamente para que dichos terceros presten un servicio a nombre y por cuenta de DAB, por lo que no se requiere tu consentimiento conforme al Artículo 37, fracción IV de la LFPDPPP, ya que se trata de transferencias necesarias para el cumplimiento de la relación jurídica entre tú y DAB.
+              </p>
+
+              <h3 class="text-base sm:text-lg font-semibold text-dab-text mt-4">4.1 Transferencia internacional de datos</h3>
+              <p>
+                Algunos de los proveedores señalados arriba (por ejemplo, servicios de Meta, Google, Vercel y otros proveedores de hosting en la nube) almacenan o procesan información en servidores ubicados <strong>fuera de territorio mexicano, incluyendo Estados Unidos</strong>. Estas transferencias internacionales se realizan bajo los siguientes mecanismos:
+              </p>
+              <ul class="list-disc pl-5 space-y-1 text-sm">
+                <li>Los proveedores cuentan con políticas de privacidad y medidas de seguridad propias, y actúan como encargados conforme a las instrucciones de DAB.</li>
+                <li>DAB ha adoptado las medidas razonables para que dichos terceros cumplan con principios de protección de datos equivalentes a los exigidos por la legislación mexicana.</li>
+              </ul>
+              <p>
+                Al utilizar nuestros servicios y aceptar este Aviso de Privacidad, consientes esta transferencia internacional necesaria para la operación de los servicios contratados.
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección 5 -->
+          <section id="5-derechos-arco" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">05.</span> Derechos ARCO
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>Tienes derecho a:</p>
+              <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li><strong>Acceder</strong> a tus datos personales que tratamos y conocer el Aviso de Privacidad aplicable.</li>
+                <li><strong>Rectificar</strong> tus datos cuando sean inexactos o incompletos.</li>
+                <li><strong>Cancelar</strong> tus datos cuando consideres que no se requieren para alguna de las finalidades señaladas, estén siendo usados para finalidades no autorizadas, o haya finalizado la relación contractual.</li>
+                <li><strong>Oponerte</strong> al tratamiento de tus datos para fines específicos.</li>
+              </ul>
+              <p>
+                Adicionalmente, puedes <strong>revocar tu consentimiento</strong> en cualquier momento para el tratamiento de tus datos.
+              </p>
+
+              <h3 class="text-base sm:text-lg font-semibold text-dab-text mt-4">¿Cómo ejercer tus derechos ARCO?</h3>
+              <p>Envía tu solicitud al correo <a href="mailto:DABcontacto@proton.me" class="text-dab-accent hover:underline">DABcontacto@proton.me</a>, indicando:</p>
+              <ol class="list-decimal pl-5 space-y-1 text-sm">
+                <li>Tu nombre completo y datos de contacto.</li>
+                <li>El derecho que deseas ejercer (Acceso, Rectificación, Cancelación u Oposición) o, en su caso, tu intención de revocar el consentimiento.</li>
+                <li>Una descripción clara de los datos sobre los que deseas ejercer el derecho.</li>
+                <li>Cualquier documento que facilite la localización de tus datos.</li>
+              </ol>
+              <p>
+                DAB te confirmará la recepción de tu solicitud y dará respuesta en un plazo máximo de <strong>20 días hábiles</strong>, conforme al Artículo 32 de la LFPDPPP. En caso de ser procedente, la solicitud se hará efectiva dentro de los 15 días hábiles siguientes a la fecha en que se comunique la respuesta.
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección 6 -->
+          <section id="6-mecanismos-para-limitar-el-uso-o-divulgacion" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">06.</span> Mecanismos para Limitar el Uso o Divulgación de tus Datos
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>Puedes limitar el uso o divulgación de tus datos personales a través de:</p>
+              <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li><strong>Correo electrónico:</strong> Enviando tu solicitud a <a href="mailto:DABcontacto@proton.me" class="text-dab-accent hover:underline">DABcontacto@proton.me</a>.</li>
+                <li><strong>WhatsApp:</strong> Respondiendo "BAJA" o solicitando directamente dejar de recibir comunicaciones al <a href="https://wa.me/527223579869" target="_blank" rel="noopener noreferrer" class="text-dab-accent hover:underline">+52 722 357 9869</a>.</li>
+                <li><strong>Configuración del navegador:</strong> Gestionando las cookies y tecnologías de seguimiento de acuerdo con la Sección 7.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Sección 7 -->
+          <section id="7-uso-de-cookies-y-tecnologias" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">07.</span> Uso de Cookies y Tecnologías de Seguimiento
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>
+                Nuestro sitio web utiliza cookies y tecnologías similares para mejorar tu experiencia de navegación. Estas se clasifican en:
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li><strong>Cookies necesarias:</strong> Indispensables para el funcionamiento básico del sitio.</li>
+                <li><strong>Cookies analíticas:</strong> Nos permiten entender cómo los visitantes interactúan con el sitio (por ejemplo, a través de Google Analytics o herramientas similares).</li>
+                <li><strong>Cookies de marketing/publicidad:</strong> Utilizadas por plataformas como Meta Ads y Google Ads para medir el desempeño de campañas y mostrar anuncios relevantes.</li>
+              </ul>
+
+              <h3 class="text-base sm:text-lg font-semibold text-dab-text mt-4">¿Cómo deshabilitar las cookies?</h3>
+              <p>
+                Puedes configurar tu navegador para rechazar o eliminar cookies en cualquier momento. Ten en cuenta que deshabilitar ciertas cookies puede afectar el funcionamiento de algunas secciones del sitio. La mayoría de los navegadores permiten gestionar esta configuración en el menú de "Privacidad" o "Configuración del sitio".
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección 8 -->
+          <section id="8-cambios-al-aviso-de-privacidad" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">08.</span> Cambios al Aviso de Privacidad
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>
+                Este Aviso de Privacidad puede ser modificado o actualizado derivado de nuevos requerimientos legales, de nuestras propias necesidades por los servicios que ofrecemos, de nuestras prácticas de privacidad, de cambios en nuestro modelo de negocio, o por otras causas.
+              </p>
+              <p>
+                Cualquier modificación a este Aviso de Privacidad te la haremos saber a través de:
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li>Publicación de la versión actualizada en <a href="https://www.dabtech.me" target="_blank" rel="noopener noreferrer" class="text-dab-accent hover:underline">https://www.dabtech.me</a>, con la fecha de última actualización visible.</li>
+                <li>En caso de cambios sustanciales, notificación adicional vía correo electrónico o WhatsApp a quienes tengamos identificados como clientes activos.</li>
+              </ul>
+              <p>
+                Los cambios entrarán en vigor a partir de su publicación en el sitio web.
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección 9 -->
+          <section id="9-medidas-de-seguridad" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">09.</span> Medidas de Seguridad
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>
+                DAB ha implementado medidas de seguridad administrativas, técnicas y físicas para proteger tus datos personales contra daño, pérdida, alteración, destrucción, uso, acceso o tratamiento no autorizado, entre las que se incluyen:
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-sm">
+                <li>Cifrado de datos en tránsito y en reposo (AES-256).</li>
+                <li>Control de acceso basado en roles (RBAC), limitando el acceso a la información solo al personal autorizado.</li>
+                <li>Cumplimiento con buenas prácticas alineadas a estándares internacionales de seguridad de la información (ISO 27001).</li>
+                <li>Respaldo periódico de la información en servidores en la nube.</li>
+                <li>Políticas internas de uso responsable de la inteligencia artificial y de los datos que esta procesa.</li>
+              </ul>
+              <p>
+                Estas medidas buscan garantizar los principios de <strong>confidencialidad, integridad y disponibilidad</strong> de tus datos personales en todo momento.
+              </p>
+            </div>
+          </section>
+
+          <!-- Sección 10 -->
+          <section id="10-consentimiento" class="scroll-mt-24 space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-dab-text tracking-tight flex items-center gap-2">
+              <span class="text-dab-accent font-mono text-lg sm:text-xl">10.</span> Consentimiento
+            </h2>
+            <div class="space-y-4 leading-relaxed sm:text-base">
+              <p>
+                Al proporcionarnos tus datos personales a través de nuestro sitio web, formularios, WhatsApp, Calendly o cualquier otro medio habilitado por DAB, <strong>manifiestas tu consentimiento tácito</strong> para el tratamiento de tus datos conforme a las finalidades primarias descritas en este Aviso.
+              </p>
+              <p>
+                Para las <strong>finalidades secundarias</strong> (Sección 3.2), se entenderá tu consentimiento otorgado salvo que manifiestes tu negativa expresa mediante los mecanismos señalados en la Sección 3.2.
+              </p>
+              <p>
+                En caso de que en el futuro DAB requiera tratar <strong>datos personales sensibles</strong>, se solicitará tu <strong>consentimiento expreso y por escrito</strong> de manera separada, conforme al Artículo 9 de la LFPDPPP, antes de recabar dicho tipo de datos.
+              </p>
+              <p>
+                El uso continuado de nuestro sitio web y servicios, posterior a la publicación de este Aviso de Privacidad, constituye tu aceptación de los términos aquí descritos.
+              </p>
+            </div>
+          </section>
+
+          <!-- Firma / Cierre -->
+          <div class="pt-8 border-t border-dab-border/60 text-xs sm:text-sm font-mono space-y-1">
+            <p class="font-bold text-dab-text">DAB S.A. de C.V.</p>
+            <p>Última actualización: 27 de junio de 2026</p>
+            <p>Contacto: <a href="mailto:DABcontacto@proton.me" class="text-dab-accent hover:underline">DABcontacto@proton.me</a> | WhatsApp: <a href="https://wa.me/527223579869" target="_blank" rel="noopener noreferrer" class="text-dab-accent hover:underline">+52 722 357 9869</a></p>
+          </div>
+        </article>
+      </div>
+    </Container>
+  </main>
+
+  <Footer />
+</DefaultLayout>
