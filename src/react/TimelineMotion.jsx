@@ -65,11 +65,9 @@ export default function TimelineMotion({ pasos }) {
         >
           {/* Nodo circular */}
           <motion.div
-            className="relative z-10 shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-full bg-dab-surface border-2 flex items-center justify-center transition-all duration-300"
-            initial={{ borderColor: "rgba(76, 127, 255, 0.3)" }}
+            className={`relative z-10 shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-full liquid-surface flex items-center justify-center transition-all duration-300`}
+            initial={{ }}
             whileInView={{
-              borderColor: "rgba(76, 127, 255, 1)",
-              backgroundColor: "rgba(76, 127, 255, 0.2)",
               scale: !shouldReduceMotion ? 1.08 : 1,
               boxShadow: !shouldReduceMotion ? "0 0 16px rgba(76, 127, 255, 0.4)" : "none"
             }}
@@ -81,11 +79,11 @@ export default function TimelineMotion({ pasos }) {
           </motion.div>
 
           {/* Card */}
-          <div className="flex-1 group relative rounded-2xl border border-dab-border/60 bg-dab-bg/50 backdrop-blur-sm p-5 md:p-6 transition-all duration-300 hover:bg-dab-bg/70 hover:border-dab-accent/30 hover:-translate-y-0.5 shadow-sm hover:shadow-dab-soft">
+          <div className="flex-1 group relative rounded-2xl liquid-surface p-5 md:p-6 transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-dab-soft">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-3">
               {/* Icono animado */}
               <motion.div
-                className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-dab-accent/10 border border-dab-accent/20 flex items-center justify-center shrink-0"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-xl liquid-border flex items-center justify-center shrink-0"
                 animate={!shouldReduceMotion ? { y: [0, -4, 0] } : {}}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.4 }}
               >

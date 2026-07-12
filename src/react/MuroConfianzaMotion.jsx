@@ -39,7 +39,7 @@ export default function MuroConfianzaMotion({ casos }) {
   const renderCardContent = (caso) => (
     <>
       {/* Imagen del proyecto (parte superior) */}
-      <div className="relative rounded-xl border border-dab-border bg-black overflow-hidden h-56 sm:h-64">
+      <div className="relative rounded-xl liquid-border overflow-hidden h-56 sm:h-64">
         {caso.proyecto.imagen ? (
           <img
             src={caso.proyecto.imagen}
@@ -56,7 +56,7 @@ export default function MuroConfianzaMotion({ casos }) {
 
         {/* Badge de servicio */}
         <div className="absolute top-3 left-3">
-          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] border bg-dab-accent/10 border-dab-accent/30 text-dab-accent">
+          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] liquid-border liquid-border--accent text-dab-accent">
             {caso.proyecto.tipo}
           </span>
         </div>
@@ -64,7 +64,7 @@ export default function MuroConfianzaMotion({ casos }) {
         {/* Badge verificado */}
         {caso.testimonio.esVerificado && (
           <div className="absolute top-3 right-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-dab-accent/60 bg-dab-bg/60 px-3 py-1 text-[11px] font-semibold text-dab-text uppercase tracking-[0.14em]">
+            <span className="inline-flex items-center gap-2 rounded-full liquid-border liquid-border--accent px-3 py-1 text-[11px] font-semibold text-dab-text uppercase tracking-[0.14em]">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/35 animate-[ping_1.8s_ease-out_infinite]"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
@@ -122,7 +122,7 @@ export default function MuroConfianzaMotion({ casos }) {
               {caso.techStack.map((tech, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center rounded-full border border-dab-border/70 bg-dab-bg/70 px-2 py-1 text-[10px] font-semibold text-dab-text"
+                  className="inline-flex items-center rounded-full liquid-border liquid-border--accent px-2 py-1 text-[10px] font-semibold text-dab-text"
                 >
                   {tech}
                 </span>
@@ -150,7 +150,7 @@ export default function MuroConfianzaMotion({ casos }) {
     <div className="space-y-6 md:space-y-8">
       {/* MOBILE: carrusel automático */}
       <div className="relative md:hidden">
-        <div className="overflow-hidden rounded-2xl border border-dab-accent/60 bg-dab-surface/85 shadow-dab-soft flex flex-col min-h-[580px]">
+        <div className="overflow-hidden rounded-2xl liquid-surface liquid-surface--accent flex flex-col min-h-[580px]">
           <AnimatePresence mode="wait">
             <motion.article
               key={casoActivo.id}
@@ -171,7 +171,7 @@ export default function MuroConfianzaMotion({ casos }) {
           <button
             onClick={prev}
             aria-label="Caso anterior"
-            className="p-2 rounded-full bg-dab-surface/80 border border-dab-border/70 text-dab-muted hover:text-dab-text transition duration-fast active:scale-95 shadow-dab-soft"
+            className="p-2 rounded-full liquid-border text-dab-muted hover:text-dab-text transition duration-fast active:scale-95 shadow-dab-soft"
           >
             {"<"}
           </button>
@@ -192,7 +192,7 @@ export default function MuroConfianzaMotion({ casos }) {
           <button
             onClick={next}
             aria-label="Caso siguiente"
-            className="p-2 rounded-full bg-dab-surface/80 border border-dab-border/70 text-dab-muted hover:text-dab-text transition duration-fast active:scale-95 shadow-dab-soft"
+            className="p-2 rounded-full liquid-border text-dab-muted hover:text-dab-text transition duration-fast active:scale-95 shadow-dab-soft"
           >
             {">"}
           </button>
@@ -209,7 +209,7 @@ export default function MuroConfianzaMotion({ casos }) {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.4, delay: idx * 0.08, ease: 'easeOut' }}
             whileHover={{ y: -4 }}
-            className="relative h-full rounded-2xl border border-dab-accent/60 bg-dab-surface/70 p-0 overflow-hidden flex flex-col shadow-sm transition duration-200 hover:border-dab-accent/80 hover:shadow-dab-soft"
+            className="relative h-full rounded-2xl liquid-surface liquid-surface--accent p-0 overflow-hidden flex flex-col shadow-sm transition duration-200 hover:border-dab-accent/80 hover:shadow-dab-soft"
           >
             {renderCardContent(caso)}
           </motion.article>

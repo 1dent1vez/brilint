@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LiquidCtaButton from './LiquidCtaButton.jsx';
 
 export function MobileNav({ links, cta, ariaLabel, menuAriaLabel }) {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,7 @@ export function MobileNav({ links, cta, ariaLabel, menuAriaLabel }) {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-dab-border bg-dab-surface/90 text-dab-accent transition hover:border-dab-accent/50"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg liquid-surface text-dab-accent transition hover:border-dab-accent/50"
         aria-label={ariaLabel}
         aria-expanded={open}
         aria-controls="mobile-nav-menu"
@@ -46,7 +47,7 @@ export function MobileNav({ links, cta, ariaLabel, menuAriaLabel }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="absolute right-0 mt-3 w-[min(88vw,17rem)] rounded-xl border border-dab-border bg-dab-surface/95 p-4 shadow-xl backdrop-blur-md z-50"
+            className="fixed top-[76px] right-4 sm:right-auto sm:left-4 w-[min(88vw,17rem)] rounded-xl mobile-menu-solid p-4 shadow-xl z-[60]"
             role="menu"
             aria-label={menuAriaLabel}
           >
@@ -64,11 +65,13 @@ export function MobileNav({ links, cta, ariaLabel, menuAriaLabel }) {
               ))}
 
               <div className="mt-2 border-t border-dab-border pt-3">
-                <a
+                <LiquidCtaButton
                   href={cta.href}
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-dab-accent to-[#608BFF] px-4 py-3 text-xs font-mono font-bold uppercase tracking-wider text-dab-bg shadow-md hover:brightness-110 active:scale-95 transition-all"
-                  role="menuitem"
+                  tint="rgba(59, 91, 255, 0.18)"
+                  textClass="text-dab-cyan"
+                  turbulenceSeed={6}
+                  class="w-full justify-center"
                 >
                   {cta.label}
                   {cta.icon === 'arrow_forward' && (
@@ -76,7 +79,7 @@ export function MobileNav({ links, cta, ariaLabel, menuAriaLabel }) {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   )}
-                </a>
+                </LiquidCtaButton>
               </div>
             </nav>
           </motion.div>

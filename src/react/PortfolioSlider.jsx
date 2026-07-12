@@ -17,7 +17,7 @@ export default function PortfolioSlider({ proyectos }) {
         initial={{ opacity: 0, x: 40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.45, ease: 'easeOut' }}
-        className="rounded-2xl overflow-hidden border border-dab-border bg-dab-surface shadow-dab-soft"
+        className="rounded-2xl overflow-hidden liquid-surface shadow-dab-soft"
       >
         <div className="h-[230px] sm:h-[280px] overflow-y-auto bg-black">
           <img
@@ -41,7 +41,7 @@ export default function PortfolioSlider({ proyectos }) {
         <button
           onClick={prev}
           aria-label="Proyecto anterior"
-          className="p-2 rounded-full bg-dab-bg/85 border border-dab-border text-dab-muted hover:text-dab-accent transition duration-fast active:scale-95 shadow-dab-soft"
+          className="p-2 rounded-full liquid-border text-dab-muted hover:text-dab-accent transition duration-fast active:scale-95 shadow-dab-soft"
         >
           {"<"}
         </button>
@@ -58,7 +58,7 @@ export default function PortfolioSlider({ proyectos }) {
         <button
           onClick={next}
           aria-label="Proyecto siguiente"
-          className="p-2 rounded-full bg-dab-bg/85 border border-dab-border text-dab-muted hover:text-dab-accent transition duration-fast active:scale-95 shadow-dab-soft"
+          className="p-2 rounded-full liquid-border text-dab-muted hover:text-dab-accent transition duration-fast active:scale-95 shadow-dab-soft"
         >
           {">"}
         </button>

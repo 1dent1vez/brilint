@@ -3,10 +3,11 @@ import Container from '../ui/Container.astro';
 import SectionTitle from '../ui/SectionTitle.astro';
 import TimelineVerticalMotion from '../../react/TimelineVerticalMotion.jsx';
 import { pasos } from '../../data/proceso';
-import Button from '../ui/Button.astro';
+import LiquidCtaButton from '../../react/LiquidCtaButton.jsx';
 ---
 
-<section id="proceso" class="py-16 md:py-section-y bg-dab-surface relative overflow-hidden">
+<section id="proceso" class="py-16 md:py-section-y bg-dab-bg relative overflow-hidden">
+  <div class="liquid-aurora" aria-hidden="true"></div>
   <Container className="space-y-10 md:space-y-14 relative z-10">
     <SectionTitle
       title="Así es trabajar con Dab"
@@ -17,14 +18,17 @@ import Button from '../ui/Button.astro';
 
     <!-- CTA de proceso -->
     <div class="flex flex-col items-center justify-center gap-4 pt-6">
-      <div class="w-full sm:w-auto">
-        <Button
+      <div class="w-full sm:w-auto flex justify-center">
+        <LiquidCtaButton
           href="https://calendly.com/dabagency/30min"
-          variant="primary"
-          class="font-body font-medium text-sm"
+          client:load
+          tint="rgba(59, 91, 255, 0.18)"
+          textClass="text-dab-cyan"
+          turbulenceSeed={5}
+          class="w-full sm:w-auto justify-center"
         >
           Agendar diagnóstico gratuito
-        </Button>
+        </LiquidCtaButton>
       </div>
       <p class="font-body text-sm text-dab-muted/70 inline-flex items-center gap-2">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>

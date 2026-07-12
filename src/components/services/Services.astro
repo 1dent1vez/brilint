@@ -1,12 +1,14 @@
 ---
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
+import LiquidCtaButton from '../../react/LiquidCtaButton.jsx';
 import { WHATSAPP_URL } from '../../config/contact';
 ---
 
-<section id="servicios" class="py-16 md:py-section-y bg-dab-bg">
+<section id="servicios" class="py-16 md:py-section-y bg-dab-bg relative">
+  <div class="liquid-aurora" aria-hidden="true"></div>
   <Container className="space-y-8 md:space-y-10">
-    <div class="glass-card rounded-3xl px-6 py-10 sm:px-10 sm:py-14 text-center space-y-6 sm:space-y-8 max-w-3xl mx-auto border-dab-accent/20 shadow-dab-soft">
+    <div class="liquid-surface liquid-surface--accent rounded-3xl px-6 py-10 sm:px-10 sm:py-14 text-center space-y-6 sm:space-y-8 max-w-3xl mx-auto">
       <div class="space-y-3">
         <p class="font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-dab-accent/80">
           Lo que hacemos
@@ -25,13 +27,15 @@ import { WHATSAPP_URL } from '../../config/contact';
       </div>
 
       <div class="pt-2 flex flex-col items-center gap-4">
-        <Button
+        <LiquidCtaButton
           href="/servicios"
-          variant="primary"
-          class="font-body font-semibold text-sm sm:text-base px-8 py-3.5 shadow-dab-accent/20 hover:shadow-dab-accent/40 active:scale-[0.97]"
+          client:load
+          tint="rgba(123, 97, 255, 0.18)"
+          textClass="text-dab-accent"
+          turbulenceSeed={3}
         >
           Ver qué hacemos <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </Button>
+        </LiquidCtaButton>
         <a
           href={WHATSAPP_URL('Hola, quiero saber cómo puede atenderse sólito mi negocio')}
           target="_blank"

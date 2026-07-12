@@ -2,7 +2,6 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro';
 import Nav from '../components/nav/Nav.astro';
 import Services from '../components/services/Services.astro';
-import Paquetes from '../components/paquetes/Paquetes.astro';
 import Proceso from '../components/proceso/Proceso.astro';
 import ContactSection from '../components/form/ContactSection.astro';
 import FAQ from '../components/sections/Faq.astro';
@@ -20,7 +19,10 @@ import TrustBanner from '../components/sections/TrustBanner.astro';
 >
   <Nav />
 
-  <main class="bg-dab-bg">
+  <main class="bg-dab-bg relative">
+    <!-- Aurora de fondo global: da "algo detrás" para que el glass líquido refracte -->
+    <div class="liquid-aurora" aria-hidden="true"></div>
+
     <Hero />
     <MetricsSection />
     <Services />

@@ -5,13 +5,16 @@ export default function TimelineVerticalMotion({ pasos }) {
   const containerRef = useRef(null);
   const shouldReduceMotion = useReducedMotion();
 
-  // Scroll tracking en el contenedor
+  // Scroll tracking en el contenedor — ajustado para que la progresión
+  // siga de cerca el scroll de los 4 nodos (no se adelante ni se atrase).
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 0.75", "end 0.25"]
+    offset: ["start 0.6", "end 0.4"]
   });
 
   const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  // Altura real de la línea de progreso: la flecha viaja con el scroll
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <div ref={containerRef} className="relative py-8 md:py-16">
@@ -25,43 +28,35 @@ export default function TimelineVerticalMotion({ pasos }) {
 
 
       {/* --- LÍNEAS DE PROGRESO ANIMADAS (z-[2]) --- */}
-      {/* Línea de progreso — desktop */}
-      <motion.div 
-        className="hidden md:block absolute left-1/2 top-[88px] bottom-[88px] w-[2px] -translate-x-1/2 bg-gradient-to-b from-dab-accent via-[#7B61FF] to-dab-accent z-[2] origin-top"
-        style={!shouldReduceMotion ? { scaleY: lineScale } : { height: "100%" }}
-      >
-        {/* Flecha en la punta */}
-        {!shouldReduceMotion && (
-          <motion.div 
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-[3]"
-            animate={{ y: [0, 4, 0], opacity: [1, 0.7, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" className="drop-shadow-[0_0_8px_rgba(76,127,255,0.6)]">
-              <path d="M8 12L0 0H16L8 12Z" fill="#4C7FFF"/>
-            </svg>
-          </motion.div>
-        )}
-      </motion.div>
+      {/* Línea de progreso — desktop (línea + punta, UNA sola pieza mismo grosor) */}
+      <div className="hidden md:block absolute left-1/2 top-[88px] bottom-[88px] w-[3px] -translate-x-1/2 z-[2]">
+        <motion.div
+          className="absolute left-0 top-0 w-full flex flex-col"
+          style={!shouldReduceMotion ? { height: lineHeight } : { height: "100%" }}
+        >
+          {/* línea recta (mismo grosor que la punta) */}
+          <div className="flex-1 w-full bg-gradient-to-b from-dab-accent via-[#7B61FF] to-dab-accent" />
+          {/* punta: triángulo fijo, mismo ancho (3px), no se estira */}
+          <svg width="3" height="12" viewBox="0 0 3 12" preserveAspectRatio="none" className="block drop-shadow-[0_0_10px_rgba(76,127,255,0.5)]">
+            <path d="M0 0 H3 L1.5 12 Z" fill="#4C7FFF" />
+          </svg>
+        </motion.div>
+      </div>
 
-      {/* Línea de progreso — mobile */}
-      <motion.div 
-        className="md:hidden absolute left-[19px] top-[52px] bottom-[52px] w-[2px] bg-gradient-to-b from-dab-accent via-[#7B61FF] to-dab-accent z-[2] origin-top"
-        style={!shouldReduceMotion ? { scaleY: lineScale } : { height: "100%" }}
-      >
-        {/* Flecha en la punta */}
-        {!shouldReduceMotion && (
-          <motion.div 
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-[3]"
-            animate={{ y: [0, 4, 0], opacity: [1, 0.7, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg width="14" height="10" viewBox="0 0 16 12" fill="none" className="drop-shadow-[0_0_8px_rgba(76,127,255,0.6)]">
-              <path d="M8 12L0 0H16L8 12Z" fill="#4C7FFF"/>
-            </svg>
-          </motion.div>
-        )}
-      </motion.div>
+      {/* Línea de progreso — mobile (línea + punta, UNA sola pieza mismo grosor) */}
+      <div className="md:hidden absolute left-[19px] top-[52px] bottom-[52px] w-[3px] z-[2]">
+        <motion.div
+          className="absolute left-0 top-0 w-full flex flex-col"
+          style={!shouldReduceMotion ? { height: lineHeight } : { height: "100%" }}
+        >
+          {/* línea recta (mismo grosor que la punta) */}
+          <div className="flex-1 w-full bg-gradient-to-b from-dab-accent via-[#7B61FF] to-dab-accent" />
+          {/* punta: triángulo fijo, mismo ancho (3px), no se estira */}
+          <svg width="3" height="12" viewBox="0 0 3 12" preserveAspectRatio="none" className="block drop-shadow-[0_0_10px_rgba(76,127,255,0.5)]">
+            <path d="M0 0 H3 L1.5 12 Z" fill="#4C7FFF" />
+          </svg>
+        </motion.div>
+      </div>
 
 
       {/* --- PASOS DE LA LÍNEA DE TIEMPO (z-10) --- */}
@@ -132,7 +127,7 @@ function Node({ paso, mobile, shouldReduceMotion }) {
     <motion.div
       className={`relative z-10 rounded-full flex items-center justify-center ${
         mobile ? 'w-10 h-10' : 'w-12 h-12'
-      } bg-dab-surface border-2`}
+      } bg-dab-surface liquid-surface border-2`}
       initial={{ 
         borderColor: "rgba(76, 127, 255, 0.4)",
         backgroundColor: "#0B0D14",
@@ -165,10 +160,10 @@ function Card({ paso, align, mobile = false }) {
   const alignClass = align === 'right' ? 'md:text-right md:items-end' : 'md:text-left md:items-start';
 
   return (
-    <div className={`glass-card rounded-2xl p-5 md:p-6 lg:p-8 max-w-md w-full flex flex-col transition-all duration-300 hover:bg-dab-bg/70 hover:border-dab-accent/30 hover:-translate-y-0.5 shadow-sm hover:shadow-dab-soft ${alignClass}`}>
+    <div className={`glass-card liquid-surface rounded-2xl p-5 md:p-6 lg:p-8 max-w-md w-full flex flex-col transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-dab-soft ${alignClass}`}>
       {/* Time badge */}
       <div className={`flex items-center gap-2 mb-3 ${align === 'right' ? 'md:justify-end' : ''}`}>
-        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-dab-accent/8 border border-dab-accent/15 text-[11px] font-semibold text-dab-accent uppercase tracking-wider">
+        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full liquid-border liquid-border--accent text-[11px] font-semibold text-dab-accent uppercase tracking-wider">
           <span className="w-1.5 h-1.5 rounded-full bg-dab-accent"></span>
           {paso.tiempo}
         </span>

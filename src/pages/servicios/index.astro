@@ -4,6 +4,7 @@ import Nav from '../../components/nav/Nav.astro';
 import Footer from '../../components/footer/Footer.astro';
 import Container from '../../components/ui/Container.astro';
 import SectionTitle from '../../components/ui/SectionTitle.astro';
+import LiquidCtaButton from '../../react/LiquidCtaButton.jsx';
 import { serviciosGenerales } from '../../data/servicios-generales';
 import { WHATSAPP_URL } from '../../config/contact';
 
@@ -21,7 +22,9 @@ const mitadIdx = 3;
 >
   <Nav />
 
-  <main class="bg-dab-bg pt-[72px]">
+  <main class="bg-dab-bg pt-[72px] relative">
+    <div class="liquid-aurora" aria-hidden="true"></div>
+
     <section class="py-16 md:py-section-y">
       <Container className="space-y-10 md:space-y-12">
         <SectionTitle
@@ -33,7 +36,7 @@ const mitadIdx = 3;
           {
             serviciosGenerales.map((servicio, idx) => (
               <>
-                <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col h-full transition duration-300 hover:border-dab-accent/40">
+                <article class="glass-card liquid-surface rounded-2xl p-6 sm:p-7 flex flex-col h-full transition duration-300 hover:border-dab-accent/40">
                   <div class="space-y-3 flex-1">
                     <h3 class="font-body text-xl font-bold tracking-tight text-white">
                       {servicio.titulo}
@@ -45,18 +48,22 @@ const mitadIdx = 3;
                 </article>
 
                 {idx === mitadIdx && (
-                  <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col h-full justify-center items-center text-center gap-4 border-dab-accent/30 bg-dab-accent/5 cta-pulso">
+                  <article class="glass-card liquid-surface liquid-surface--accent rounded-2xl p-6 sm:p-7 flex flex-col h-full justify-center items-center text-center gap-4 cta-pulso">
                     <p class="font-body text-base sm:text-lg text-white font-semibold">
                       ¿No sabes por dónde empezar?
                     </p>
-                    <a
+                    <LiquidCtaButton
                       href={ctaMitad}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="cta-btn group inline-flex items-center justify-center font-body font-semibold text-sm px-6 py-3 rounded-lg bg-dab-accent text-dab-bg hover:bg-dab-accent/90 active:scale-[0.97] transition-all shadow-dab-accent/20 hover:shadow-dab-accent/40"
+                      client:load
+                      tint="rgba(59, 91, 255, 0.18)"
+                      textClass="text-dab-cyan"
+                      turbulenceSeed={8}
+                      class="cta-btn justify-center"
                     >
                       Hablemos y te armamos el paquete <span class="cta-arrow ml-1 transition-transform duration-300">→</span>
-                    </a>
+                    </LiquidCtaButton>
                   </article>
                 )}
               </>
@@ -64,18 +71,22 @@ const mitadIdx = 3;
           }
 
           <!-- CTA final tras el último servicio -->
-          <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col h-full justify-center items-center text-center gap-4 border-dab-accent/30 bg-dab-accent/5 cta-pulso">
+          <article class="glass-card liquid-surface liquid-surface--accent rounded-2xl p-6 sm:p-7 flex flex-col h-full justify-center items-center text-center gap-4 cta-pulso">
             <p class="font-body text-base sm:text-lg text-white font-semibold">
               Tu negocio es único.
             </p>
-            <a
+            <LiquidCtaButton
               href={ctaFinal}
               target="_blank"
               rel="noopener noreferrer"
-              class="cta-btn group inline-flex items-center justify-center font-body font-semibold text-sm px-6 py-3 rounded-lg bg-dab-accent text-dab-bg hover:bg-dab-accent/90 active:scale-[0.97] transition-all shadow-dab-accent/20 hover:shadow-dab-accent/40"
+              client:load
+              tint="rgba(59, 91, 255, 0.18)"
+              textClass="text-dab-cyan"
+              turbulenceSeed={9}
+              class="cta-btn justify-center"
             >
               Armar mi paquete a la medida <span class="cta-arrow ml-1 transition-transform duration-300">→</span>
-            </a>
+            </LiquidCtaButton>
           </article>
         </div>
       </Container>
