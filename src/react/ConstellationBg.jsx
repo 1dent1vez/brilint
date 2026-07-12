@@ -5,7 +5,7 @@ import gsap from 'gsap';
 function getDeviceProfile() {
   if (typeof window === 'undefined') {
     return {
-      particleCount: 1200,
+      particleCount: 4000,
       dpr: 1,
       targetFPS: 60,
       rotationSpeedY: 0.0012,
@@ -15,15 +15,16 @@ function getDeviceProfile() {
     };
   }
 
-  const isMobile = window.matchMedia('(pointer: coarse)').matches 
+  const isMobile = window.matchMedia('(pointer: coarse)').matches
     || window.innerWidth < 768;
-  const isLowPower = navigator.hardwareConcurrency 
-    ? navigator.hardwareConcurrency <= 4 
+  const isLowPower = navigator.hardwareConcurrency
+    ? navigator.hardwareConcurrency <= 4
     : false;
   const saveData = navigator.connection?.saveData === true;
-  
+
   return {
-    particleCount: (isMobile || isLowPower || saveData) ? 450 : 1200,
+    // Volumetric starfield: many more fragments, dense inside.
+    particleCount: (isMobile || isLowPower || saveData) ? 1200 : 4000,
     dpr: isMobile ? 1 : Math.min(window.devicePixelRatio, 2),
     targetFPS: isMobile ? 30 : 60,
     rotationSpeedY: isMobile ? 0.0008 : 0.0012,
@@ -33,26 +34,40 @@ function getDeviceProfile() {
   };
 }
 
+// Volumetric sphere via cube-root sampling -> uniform density throughout the volume.
+// Gives real depth: bright dense core, fading outward (Betelgeuse-like).
+function sampleVolume(radius) {
+  const u = Math.random();
+  const r = radius * Math.cbrt(u); // uniform volumetric distribution
+  const phi = Math.acos(-1 + 2 * Math.random());
+  const theta = Math.random() * Math.PI * 2;
+  const sinPhi = Math.sin(phi);
+  return {
+    x: r * Math.cos(theta) * sinPhi,
+    y: r * Math.sin(theta) * sinPhi,
+    z: r * Math.cos(phi),
+    rNorm: r / radius, // 0 = core, 1 = surface
+  };
+}
+
 const vertexShader = `
   attribute float aOpacity;
   attribute float aSize;
   varying float vOpacity;
   varying float vDepth;
-  varying float vY;
+  varying float vRNorm;
 
   uniform float uTime;
   uniform float uPixelRatio;
 
   void main() {
     vOpacity = aOpacity;
-    vY = position.y;
-    
+    vRNorm = aSize; // packed radius-normalized in aSize channel (reused)
+
     vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
     vDepth = -mvPosition.z;
-    
-    // Attenuate size based on distance, scaled by 1200.0 for visible halftone points
-    gl_PointSize = aSize * uPixelRatio * (1200.0 / -mvPosition.z);
-    
+
+    gl_PointSize = aSize * uPixelRatio * (300.0 / -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;
   }
 `;
@@ -60,33 +75,35 @@ const vertexShader = `
 const fragmentShader = `
   varying float vOpacity;
   varying float vDepth;
-  varying float vY;
+  varying float vRNorm;
 
-  uniform vec3 uColorBlue;
-  uniform vec3 uColorPurple;
+  uniform vec3 uColorCore;   // hot orange/red (Betelgeuse)
+  uniform vec3 uColorMid;    // amber
+  uniform vec3 uColorHalo;   // purple/blue outer haze
   uniform float uMaxDepth;
 
   void main() {
-    // Perfect circle shape
+    // Soft round orb
     vec2 coord = gl_PointCoord - vec2(0.5);
     float dist = length(coord);
     if (dist > 0.5) discard;
-    
-    // Vertical gradient mix based on original Y position (-2.5 to 2.5)
-    float yFactor = (vY + 2.5) / 5.0;
-    vec3 finalColor = mix(uColorBlue, uColorPurple, clamp(yFactor, 0.0, 1.0));
-    
-    // Proper depth fade: brighter at the front (closer, depth ~2.5), transparent at the back (depth ~7.5)
+
+    float softEdge = 1.0 - smoothstep(0.2, 0.5, dist);
+
+    // Core->halo color: dense core is hot, outer fade to purple/blue
+    vec3 coreMix = mix(uColorCore, uColorMid, smoothstep(0.0, 0.45, vRNorm));
+    vec3 finalColor = mix(coreMix, uColorHalo, smoothstep(0.45, 1.0, vRNorm));
+
+    // Depth fade: brighter at front, transparent at back -> volumetric feel
     float depthFade = 1.0 - smoothstep(2.5, uMaxDepth, vDepth);
-    float alpha = vOpacity * depthFade * 0.85;
-    
-    // Soft edge
-    float softEdge = 1.0 - smoothstep(0.3, 0.5, dist);
-    
-    gl_FragColor = vec4(
-      finalColor, 
-      alpha * softEdge
-    );
+
+    // Core glow boost: particles near the center burn brighter
+    float coreGlow = 1.0 + (1.0 - vRNorm) * 1.6;
+
+    float alpha = vOpacity * depthFade * softEdge * 0.9;
+    alpha *= clamp(coreGlow, 1.0, 2.6);
+
+    gl_FragColor = vec4(finalColor * coreGlow, alpha);
   }
 `;
 
@@ -103,7 +120,7 @@ export function ConstellationBg({ className = '' }) {
     try {
       initializedRef.current = true;
       const container = containerRef.current;
-      
+
       const profile = getDeviceProfile();
       const width = container.clientWidth || window.innerWidth;
       const height = container.clientHeight || window.innerHeight;
@@ -120,7 +137,7 @@ export function ConstellationBg({ className = '' }) {
       const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       renderer.setSize(width, height);
       renderer.setPixelRatio(profile.dpr);
-      
+
       const canvas = renderer.domElement;
       canvas.className = 'constellation-canvas';
       canvas.style.position = 'absolute';
@@ -130,28 +147,34 @@ export function ConstellationBg({ className = '' }) {
       canvas.style.height = '100%';
       canvas.style.zIndex = '0';
       canvas.style.pointerEvents = profile.enableMouse ? 'auto' : 'none';
-      
+
       container.appendChild(canvas);
       rendererRef.current = renderer;
 
-      // Particle Sphere (Halftone effect)
+      // --- Volumetric starfield (Betelgeuse-like) ---
       const particleCount = profile.particleCount;
+      const radius = 2.5;
       const positions = new Float32Array(particleCount * 3);
       const opacities = new Float32Array(particleCount);
+      const rNormArr = new Float32Array(particleCount);
       const sizes = new Float32Array(particleCount);
 
       for (let i = 0; i < particleCount; i++) {
-        // Spherical distribution via golden ratio / Fibonacci
-        const phi = Math.acos(-1 + (2 * i) / particleCount);
-        const theta = Math.sqrt(particleCount * Math.PI) * phi;
+        const p = sampleVolume(radius);
+        positions[i * 3] = p.x;
+        positions[i * 3 + 1] = p.y;
+        positions[i * 3 + 2] = p.z;
 
-        const radius = 2.5;
-        positions[i * 3] = radius * Math.cos(theta) * Math.sin(phi);
-        positions[i * 3 + 1] = radius * Math.sin(theta) * Math.sin(phi);
-        positions[i * 3 + 2] = radius * Math.cos(phi);
+        // Dense core: most particles cluster near center, fewer at the rim.
+        // rNorm already small for core; bias opacity/size up at the core.
+        const core = 1.0 - p.rNorm; // 1 at core, 0 at surface
+        opacities[i] = 0.35 + core * 0.6; // 0.35..0.95
 
-        opacities[i] = 0.8;
-        sizes[i] = Math.random() * 0.05 + 0.02;
+        // Mixed sizes: a few big glowing orbs, many small faint fragments.
+        const big = Math.random() < 0.06;
+        const base = big ? 0.10 : 0.02;
+        sizes[i] = base + Math.random() * (big ? 0.10 : 0.04) + core * 0.03;
+        rNormArr[i] = p.rNorm;
       }
 
       const geometry = new THREE.BufferGeometry();
@@ -165,12 +188,14 @@ export function ConstellationBg({ className = '' }) {
         uniforms: {
           uTime: { value: 0 },
           uPixelRatio: { value: profile.dpr },
-          uColorBlue: { value: new THREE.Color('#4C7FFF') },
-          uColorPurple: { value: new THREE.Color('#7B61FF') },
-          uMaxDepth: { value: 7.5 }
+          uColorCore: { value: new THREE.Color('#FF5A2B') }, // hot Betelgeuse orange-red
+          uColorMid: { value: new THREE.Color('#FF9D5C') },  // warm amber
+          uColorHalo: { value: new THREE.Color('#7B61FF') }, // purple/blue outer haze
+          uMaxDepth: { value: 7.5 },
         },
         transparent: true,
-        depthWrite: false
+        depthWrite: false,
+        blending: THREE.AdditiveBlending, // glow stacks -> starfield depth
       });
 
       const sphere = new THREE.Points(geometry, material);
@@ -195,7 +220,7 @@ export function ConstellationBg({ className = '' }) {
             if (sphere) {
               sphere.scale.setScalar(scaleObj.value);
             }
-          }
+          },
         });
       }
 
@@ -281,7 +306,7 @@ export function ConstellationBg({ className = '' }) {
         }
       };
     } catch (err) {
-      console.error('[ConstellationBg] Error initializing custom Three.js halftone sphere:', err);
+      console.error('[ConstellationBg] Error initializing volumetric starfield:', err);
       setError(true);
     }
   }, []);
