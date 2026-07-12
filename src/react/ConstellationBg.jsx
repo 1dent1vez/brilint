@@ -35,7 +35,7 @@ function getDeviceProfile() {
 }
 
 // Volumetric sphere via cube-root sampling -> uniform density throughout the volume.
-// Gives real depth: bright dense core, fading outward (Betelgeuse-like).
+// Gives real depth: bright dense core, fading outward.
 function sampleVolume(radius) {
   const u = Math.random();
   const r = radius * Math.cbrt(u); // uniform volumetric distribution
@@ -49,63 +49,6 @@ function sampleVolume(radius) {
     rNorm: r / radius, // 0 = core, 1 = surface
   };
 }
-
-const vertexShader = `
-  attribute float aOpacity;
-  attribute float aSize;
-  varying float vOpacity;
-  varying float vDepth;
-  varying float vRNorm;
-
-  uniform float uTime;
-  uniform float uPixelRatio;
-
-  void main() {
-    vOpacity = aOpacity;
-    vRNorm = aSize; // packed radius-normalized in aSize channel (reused)
-
-    vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-    vDepth = -mvPosition.z;
-
-    gl_PointSize = aSize * uPixelRatio * (300.0 / -mvPosition.z);
-    gl_Position = projectionMatrix * mvPosition;
-  }
-`;
-
-const fragmentShader = `
-  varying float vOpacity;
-  varying float vDepth;
-  varying float vRNorm;
-
-  uniform vec3 uColorCore;   // hot orange/red (Betelgeuse)
-  uniform vec3 uColorMid;    // amber
-  uniform vec3 uColorHalo;   // purple/blue outer haze
-  uniform float uMaxDepth;
-
-  void main() {
-    // Soft round orb
-    vec2 coord = gl_PointCoord - vec2(0.5);
-    float dist = length(coord);
-    if (dist > 0.5) discard;
-
-    float softEdge = 1.0 - smoothstep(0.2, 0.5, dist);
-
-    // Core->halo color: dense core is hot, outer fade to purple/blue
-    vec3 coreMix = mix(uColorCore, uColorMid, smoothstep(0.0, 0.45, vRNorm));
-    vec3 finalColor = mix(coreMix, uColorHalo, smoothstep(0.45, 1.0, vRNorm));
-
-    // Depth fade: brighter at front, transparent at back -> volumetric feel
-    float depthFade = 1.0 - smoothstep(2.5, uMaxDepth, vDepth);
-
-    // Core glow boost: particles near the center burn brighter
-    float coreGlow = 1.0 + (1.0 - vRNorm) * 1.6;
-
-    float alpha = vOpacity * depthFade * softEdge * 0.9;
-    alpha *= clamp(coreGlow, 1.0, 2.6);
-
-    gl_FragColor = vec4(finalColor * coreGlow, alpha);
-  }
-`;
 
 export function ConstellationBg({ className = '' }) {
   const containerRef = useRef(null);
@@ -151,13 +94,13 @@ export function ConstellationBg({ className = '' }) {
       container.appendChild(canvas);
       rendererRef.current = renderer;
 
-      // --- Volumetric starfield (Betelgeuse-like) ---
+      // --- Volumetric starfield (Betelgeuse-like depth, star sprite texture) ---
       const particleCount = profile.particleCount;
       const radius = 2.5;
       const positions = new Float32Array(particleCount * 3);
       const opacities = new Float32Array(particleCount);
-      const rNormArr = new Float32Array(particleCount);
       const sizes = new Float32Array(particleCount);
+      const rNormArr = new Float32Array(particleCount);
 
       for (let i = 0; i < particleCount; i++) {
         const p = sampleVolume(radius);
@@ -166,7 +109,6 @@ export function ConstellationBg({ className = '' }) {
         positions[i * 3 + 2] = p.z;
 
         // Dense core: most particles cluster near center, fewer at the rim.
-        // rNorm already small for core; bias opacity/size up at the core.
         const core = 1.0 - p.rNorm; // 1 at core, 0 at surface
         opacities[i] = 0.35 + core * 0.6; // 0.35..0.95
 
@@ -182,44 +124,147 @@ export function ConstellationBg({ className = '' }) {
       geometry.setAttribute('aOpacity', new THREE.BufferAttribute(opacities, 1));
       geometry.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
 
-      const material = new THREE.ShaderMaterial({
-        vertexShader,
-        fragmentShader,
-        uniforms: {
-          uTime: { value: 0 },
-          uPixelRatio: { value: profile.dpr },
-          uColorCore: { value: new THREE.Color('#4C7FFF') }, // azul brillante (núcleo)
-          uColorMid: { value: new THREE.Color('#6B8BFF') },  // azul medio
-          uColorHalo: { value: new THREE.Color('#7B61FF') }, // morado halo externo
-          uMaxDepth: { value: 7.5 },
-        },
+      // --- Star sprite texture (generated at runtime, no external asset) ---
+      // A glowing 4-point star (cross flare) on a radial gradient -> reads as a real star.
+      function makeStarTexture() {
+        const s = 128;
+        const cv = document.createElement('canvas');
+        cv.width = s; cv.height = s;
+        const ctx = cv.getContext('2d');
+        const c = s / 2;
+
+        // radial glow base
+        const g = ctx.createRadialGradient(c, c, 0, c, c, c);
+        g.addColorStop(0.0, 'rgba(255,255,255,1)');
+        g.addColorStop(0.18, 'rgba(210,225,255,0.95)');
+        g.addColorStop(0.45, 'rgba(140,170,255,0.35)');
+        g.addColorStop(1.0, 'rgba(123,97,255,0.0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, s, s);
+
+        // 4-point cross flare
+        ctx.globalCompositeOperation = 'lighter';
+        const flare = (len, w, a) => {
+          const grad = ctx.createLinearGradient(c - len, c, c + len, c);
+          grad.addColorStop(0, 'rgba(255,255,255,0)');
+          grad.addColorStop(0.5, `rgba(200,220,255,${a})`);
+          grad.addColorStop(1, 'rgba(255,255,255,0)');
+          ctx.fillStyle = grad;
+          ctx.fillRect(c - len, c - w / 2, len * 2, w);
+          const gradV = ctx.createLinearGradient(c, c - len, c, c + len);
+          gradV.addColorStop(0, 'rgba(255,255,255,0)');
+          gradV.addColorStop(0.5, `rgba(200,220,255,${a})`);
+          gradV.addColorStop(1, 'rgba(255,255,255,0)');
+          ctx.fillStyle = gradV;
+          ctx.fillRect(c - w / 2, c - len, w, len * 2);
+        };
+        flare(c * 0.95, 3.2, 0.55);
+        flare(c * 0.55, 1.6, 0.4);
+
+        // tiny bright core dot
+        ctx.fillStyle = 'rgba(255,255,255,0.95)';
+        ctx.beginPath();
+        ctx.arc(c, c, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        const tex = new THREE.CanvasTexture(cv);
+        tex.needsUpdate = true;
+        return tex;
+      }
+
+      const starTex = makeStarTexture();
+
+      // Per-vertex colors: azul core -> morado halo by radius (matches the look)
+      const colors = new Float32Array(particleCount * 3);
+      const cCore = new THREE.Color('#4C7FFF');
+      const cMid = new THREE.Color('#6B8BFF');
+      const cHalo = new THREE.Color('#7B61FF');
+      const tmp = new THREE.Color();
+      for (let i = 0; i < particleCount; i++) {
+        const r = rNormArr[i];
+        if (r < 0.45) tmp.copy(cCore).lerp(cMid, r / 0.45);
+        else tmp.copy(cMid).lerp(cHalo, (r - 0.45) / 0.55);
+        colors[i * 3] = tmp.r;
+        colors[i * 3 + 1] = tmp.g;
+        colors[i * 3 + 2] = tmp.b;
+      }
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const material = new THREE.PointsMaterial({
+        size: 0.12,
+        map: starTex,
+        vertexColors: true,
         transparent: true,
         depthWrite: false,
-        blending: THREE.AdditiveBlending, // glow stacks -> starfield depth
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true,
+        opacity: 0.95,
       });
 
       const sphere = new THREE.Points(geometry, material);
       scene.add(sphere);
+
+      // Offset so it frames the hero without sitting behind the headline.
+      const isMobileView = !profile.enableMouse;
+      if (isMobileView) {
+        sphere.position.y = 1.5; // up, behind the badge (not the title)
+      } else {
+        sphere.position.set(1.7, 1.1, 0); // upper-right on desktop
+      }
 
       // Check user reduced motion preference
       const prefersReducedMotion = window.matchMedia(
         '(prefers-reduced-motion: reduce)'
       ).matches;
 
-      // GSAP scale entrance animation
+      // GSAP entrance: a slow, emphasized "explosion" so the constellation's
+      // shape reads clearly, then settle to a balanced, calmer state.
       if (prefersReducedMotion) {
         sphere.scale.setScalar(1);
       } else {
+        // 1) Build-up: scale 0 -> 1.15 (slight overshoot) slowly so the form blooms.
         const scaleObj = { value: 0 };
         sphere.scale.set(0, 0, 0);
         gsap.to(scaleObj, {
-          value: 1,
-          duration: 1.5,
+          value: 1.15,
+          duration: 2.6,
           ease: 'power2.out',
           onUpdate: () => {
-            if (sphere) {
-              sphere.scale.setScalar(scaleObj.value);
-            }
+            if (sphere) sphere.scale.setScalar(scaleObj.value);
+          },
+          onComplete: () => {
+            // 2) Settle overshoot back to 1.0 (the balanced resting state)
+            gsap.to(scaleObj, {
+              value: 1.0,
+              duration: 0.8,
+              ease: 'power1.inOut',
+              onUpdate: () => {
+                if (sphere) sphere.scale.setScalar(scaleObj.value);
+              },
+            });
+          },
+        });
+
+        // 3) Opacity emphasis -> then attenuate to a calm balance.
+        // Canvas fades in bright (1.0) during the bloom, then eases to 0.4.
+        const canvasOpacity = { value: 0 };
+        canvas.style.opacity = '0';
+        gsap.to(canvasOpacity, {
+          value: 1.0,
+          duration: 2.6,
+          ease: 'power2.out',
+          onUpdate: () => {
+            canvas.style.opacity = String(canvasOpacity.value);
+          },
+          onComplete: () => {
+            gsap.to(canvasOpacity, {
+              value: 0.4, // balanced, doesn't steal focus from hero text
+              duration: 1.4,
+              ease: 'power1.inOut',
+              onUpdate: () => {
+                canvas.style.opacity = String(canvasOpacity.value);
+              },
+            });
           },
         });
       }
@@ -257,9 +302,6 @@ export function ConstellationBg({ className = '' }) {
         if (delta < frameInterval) return;
 
         lastFrameTime = currentTime - (delta % frameInterval);
-
-        // Update uTime uniform
-        material.uniforms.uTime.value = currentTime * 0.001;
 
         if (!prefersReducedMotion) {
           // Rotations
@@ -299,6 +341,7 @@ export function ConstellationBg({ className = '' }) {
 
         geometry.dispose();
         material.dispose();
+        if (starTex) starTex.dispose();
         renderer.dispose();
 
         if (canvas.parentNode) {

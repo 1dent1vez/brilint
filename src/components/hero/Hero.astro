@@ -16,12 +16,13 @@ import { HeroMotion, HeroMotionItem, BadgeMotion } from '../../react/HeroMotion.
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-dab-accent opacity-[0.03] rounded-full blur-[120px] pointer-events-none"
     >
     </div>
-    <!-- 3D Animation Layer -->
-    <div class="absolute inset-0 w-full h-full opacity-80 mix-blend-screen pointer-events-none">
+    <!-- 3D Animation Layer (opacity driven by JS timeline) -->
+    <div class="absolute inset-0 w-full h-full mix-blend-screen pointer-events-none">
       <ConstellationBg client:load />
     </div>
-    <!-- Vignette overlay -->
+    <!-- Vignette overlay (reinforced so hero text stays 100% readable) -->
     <div class="absolute inset-0 bg-hero-gradient pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,transparent_0%,rgba(5,6,10,0.55)_70%)] pointer-events-none"></div>
   </div>
 
   <!-- Simple Badge right below the navbar -->
