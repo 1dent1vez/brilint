@@ -5,7 +5,7 @@ export interface Metrica {
 
 export interface CasoExito {
   id: string;
-  servicio: 'despierta' | 'crece' | 'domina';
+  servicio: string;
   proyecto: {
     titulo: string;
     tipo: string;

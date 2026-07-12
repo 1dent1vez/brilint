@@ -25,12 +25,12 @@ export const categoriasFaq = [
       {
         pregunta: '¿Cuánto cuesta realmente? ¿Hay costos ocultos?',
         respuesta:
-          'Los precios que ves en nuestros planes son reales y sin letra chica. Desde $3,500 MXN/mes para empezar. Desde $8,500 MXN/mes para escalar. Desde $18,000 MXN/mes para dominar. Todo incluye: IA, hosting, soporte, ajustes y reportes. Sin costos ocultos de API. Sin sorpresas. El chatbot de WhatsApp tiene costo según volumen: hasta 200 conversaciones/mes está incluido en Starter. Si creces, escalamos contigo. Siempre con precio fijo anticipado. ¿Necesitas algo fuera de los planes? Te damos presupuesto cerrado antes de empezar.',
+          'Nuestros servicios se combinan a tu medida según lo que tu negocio necesite. Sin costos ocultos: ves exactamente qué incluye cada servicio y armamos el paquete contigo antes de empezar. El asistente de WhatsApp tiene costo según volumen de conversaciones; si creces, escalamos contigo. Siempre con precio fijo anticipado y presupuesto cerrado antes de arrancar.',
       },
       {
         pregunta: '¿Qué pasa si no me gusta o no veo resultados?',
         respuesta:
-          'Si en los primeros 30 días no estás satisfecho, lo rehacemos sin costo. Si sigues sin estar conforme, te regresamos tu inversión. Así de seguros estamos de nuestro trabajo. La realidad: el 98% de nuestros clientes en plan Growth renuevan después del primer mes. Porque ven resultados: más leads, menos tiempo perdido, más clientes que llegan solos. No te quedas con un sistema que no funciona. Te quedas con un sistema que te hace crecer.',
+          'Si en los primeros 30 días no estás satisfecho, lo rehacemos sin costo. Si sigues sin estar conforme, te regresamos tu inversión. Así de seguros estamos de nuestro trabajo. La realidad: la mayoría de nuestros clientes renuevan después del primer mes porque ven resultados: más leads, menos tiempo perdido, más clientes que llegan solos. No te quedas con un sistema que no funciona. Te quedas con un sistema que te hace crecer.',
       },
       {
         pregunta: '¿Es seguro con los datos de mis clientes?',

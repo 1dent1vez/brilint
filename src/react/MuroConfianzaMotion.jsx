@@ -56,18 +56,8 @@ export default function MuroConfianzaMotion({ casos }) {
 
         {/* Badge de servicio */}
         <div className="absolute top-3 left-3">
-          <span
-            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] border ${
-              caso.servicio === 'despierta'
-                ? 'bg-dab-amber/10 border-dab-amber/30 text-dab-amber'
-                : caso.servicio === 'crece'
-                ? 'bg-dab-cyan/10 border-dab-cyan/30 text-dab-cyan'
-                : 'bg-dab-rose/10 border-dab-rose/30 text-dab-rose'
-            }`}
-          >
-            {caso.servicio === 'despierta' && '☀ Despierta'}
-            {caso.servicio === 'crece' && '↗ Crece'}
-            {caso.servicio === 'domina' && '♔ Domina'}
+          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] border bg-dab-accent/10 border-dab-accent/30 text-dab-accent">
+            {caso.proyecto.tipo}
           </span>
         </div>
 
