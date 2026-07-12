@@ -188,9 +188,9 @@ export function ConstellationBg({ className = '' }) {
         uniforms: {
           uTime: { value: 0 },
           uPixelRatio: { value: profile.dpr },
-          uColorCore: { value: new THREE.Color('#FF5A2B') }, // hot Betelgeuse orange-red
-          uColorMid: { value: new THREE.Color('#FF9D5C') },  // warm amber
-          uColorHalo: { value: new THREE.Color('#7B61FF') }, // purple/blue outer haze
+          uColorCore: { value: new THREE.Color('#4C7FFF') }, // azul brillante (núcleo)
+          uColorMid: { value: new THREE.Color('#6B8BFF') },  // azul medio
+          uColorHalo: { value: new THREE.Color('#7B61FF') }, // morado halo externo
           uMaxDepth: { value: 7.5 },
         },
         transparent: true,
