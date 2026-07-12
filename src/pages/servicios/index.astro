@@ -4,9 +4,15 @@ import Nav from '../../components/nav/Nav.astro';
 import Footer from '../../components/footer/Footer.astro';
 import Container from '../../components/ui/Container.astro';
 import SectionTitle from '../../components/ui/SectionTitle.astro';
-import Button from '../../components/ui/Button.astro';
 import { serviciosGenerales } from '../../data/servicios-generales';
 import { WHATSAPP_URL } from '../../config/contact';
+
+// Bullet CTA del mismo tamaño que una ficha de servicio.
+const ctaMitad = WHATSAPP_URL('Hola, no sé por dónde empezar. ¿Me ayudan a armar mi paquete?');
+const ctaFinal = WHATSAPP_URL('Hola, quiero armar mi paquete a la medida de mi negocio');
+
+// Insertar el CTA de mitad tras el 4o servicio (índice 3).
+const mitadIdx = 3;
 ---
 
 <DefaultLayout
@@ -20,46 +26,57 @@ import { WHATSAPP_URL } from '../../config/contact';
       <Container className="space-y-10 md:space-y-12">
         <SectionTitle
           title="Todo lo que hacemos por tu negocio"
-          subtitle="No vendemos paquetes cerrados: detectamos las necesidades de tu negocio y armamos la solución a tu medida. Estos son los servicios con los que lo hacemos."
+          subtitle="No vendemos paquetes cerrados: detectamos las necesidades de tu negocio y armamos la solución a tu medida con los servicios que ofrecemos."
         />
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {
-            serviciosGenerales.map((servicio) => (
-              <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col h-full transition duration-300 hover:border-dab-accent/40">
-                <div class="space-y-3 flex-1">
-                  <h3 class="font-body text-xl font-bold tracking-tight text-white">
-                    {servicio.titulo}
-                  </h3>
-                  <p class="font-body text-sm text-dab-muted leading-relaxed">
-                    {servicio.descripcion}
-                  </p>
-                  <p class="font-body text-xs text-dab-accent/80 leading-relaxed pt-1">
-                    {servicio.bullet}
-                  </p>
-                </div>
+            serviciosGenerales.map((servicio, idx) => (
+              <>
+                <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col h-full transition duration-300 hover:border-dab-accent/40">
+                  <div class="space-y-3 flex-1">
+                    <h3 class="font-body text-xl font-bold tracking-tight text-white">
+                      {servicio.titulo}
+                    </h3>
+                    <p class="font-body text-sm text-dab-muted leading-relaxed">
+                      {servicio.descripcion}
+                    </p>
+                  </div>
+                </article>
 
-                <a
-                  href={servicio.ctaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="mt-6 inline-flex items-center justify-center w-full font-body font-medium text-sm py-3 px-6 rounded-lg bg-transparent border border-dab-border text-dab-text hover:border-dab-accent/40 hover:bg-white/5 active:scale-[0.98] transition-all"
-                >
-                  Quiero este servicio
-                  <span class="ml-1 text-white opacity-60 group-hover:opacity-100 transition-opacity">→</span>
-                </a>
-              </article>
+                {idx === mitadIdx && (
+                  <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col h-full justify-center items-center text-center gap-4 border-dab-accent/30 bg-dab-accent/5">
+                    <p class="font-body text-base sm:text-lg text-white font-semibold">
+                      ¿No sabes por dónde empezar?
+                    </p>
+                    <a
+                      href={ctaMitad}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center font-body font-semibold text-sm px-6 py-3 rounded-lg bg-dab-accent text-dab-bg hover:bg-dab-accent/90 active:scale-[0.97] transition-all shadow-dab-accent/20 hover:shadow-dab-accent/40"
+                    >
+                      Hablemos y te armamos el paquete <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </a>
+                  </article>
+                )}
+              </>
             ))
           }
-        </div>
 
-        <div class="text-center pt-4 space-y-4">
-          <p class="font-body text-base text-dab-muted max-w-xl mx-auto leading-relaxed">
-            ¿No sabes por dónde empezar? Hablemos y armamos tu paquete a la medida de tu negocio.
-          </p>
-          <Button href={WHATSAPP_URL('Hola, quiero armar mi paquete a medida')} variant="primary">
-            Armar mi paquete
-          </Button>
+          <!-- CTA final tras el último servicio -->
+          <article class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col h-full justify-center items-center text-center gap-4 border-dab-accent/30 bg-dab-accent/5">
+            <p class="font-body text-base sm:text-lg text-white font-semibold">
+              Tu negocio es único.
+            </p>
+            <a
+              href={ctaFinal}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center font-body font-semibold text-sm px-6 py-3 rounded-lg bg-dab-accent text-dab-bg hover:bg-dab-accent/90 active:scale-[0.97] transition-all shadow-dab-accent/20 hover:shadow-dab-accent/40"
+            >
+              Armar mi paquete a la medida <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </a>
+          </article>
         </div>
       </Container>
     </section>
