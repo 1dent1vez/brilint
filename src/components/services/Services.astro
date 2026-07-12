@@ -1,32 +1,82 @@
 ---
 import Container from '../ui/Container.astro';
-import SectionTitle from '../ui/SectionTitle.astro';
 import Button from '../ui/Button.astro';
 import { WHATSAPP_URL } from '../../config/contact';
 ---
 
 <section id="servicios" class="py-16 md:py-section-y bg-dab-bg">
-  <Container className="space-y-8 md:space-y-10 text-center">
-    <SectionTitle
-      title="Todo lo que hacemos por tu negocio"
-      subtitle="No vendemos paquetes cerrados. Detectamos las necesidades de tu negocio y armamos la solución a tu medida con los servicios que ofrecemos."
-    />
+  <Container className="space-y-8 md:space-y-10">
+    <div class="glass-card rounded-3xl px-6 py-10 sm:px-10 sm:py-14 text-center space-y-6 sm:space-y-8 max-w-3xl mx-auto border-dab-accent/20 shadow-dab-soft">
+      <div class="space-y-3">
+        <p class="font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-dab-accent/80">
+          Lo que hacemos
+        </p>
+        <h2 class="font-body font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight leading-[1.15] text-white">
+          Tu negocio puede atenderse sólito.<br class="hidden sm:block" />
+          ¿Sabes cómo?
+        </h2>
+      </div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <Button
-        href="/servicios"
-        variant="primary"
-        class="font-body font-medium text-sm"
-      >
-        Ver servicios
-      </Button>
-      <Button
-        href={WHATSAPP_URL('Hola, quiero armar mi paquete a medida')}
-        variant="ghost"
-        class="font-body font-medium text-sm"
-      >
-        Hablar con DAB
-      </Button>
+      <!-- Línea que rota (CSS puro, sin JS) -->
+      <div class="rotator font-body text-base sm:text-lg text-dab-muted min-h-[1.6em]" aria-live="polite">
+        <span class="rot-item rot-1">↳ Alguien responde por ti 24/7</span>
+        <span class="rot-item rot-2">↳ Tus citas se agendan solas</span>
+        <span class="rot-item rot-3">↳ Tus clientas vuelven solas</span>
+      </div>
+
+      <div class="pt-2 flex flex-col items-center gap-4">
+        <Button
+          href="/servicios"
+          variant="primary"
+          class="font-body font-semibold text-sm sm:text-base px-8 py-3.5 shadow-dab-accent/20 hover:shadow-dab-accent/40 active:scale-[0.97]"
+        >
+          Ver qué hacemos <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </Button>
+        <a
+          href={WHATSAPP_URL('Hola, quiero saber cómo puede atenderse sólito mi negocio')}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-body text-sm text-dab-muted hover:text-dab-accent transition-colors duration-200 underline-offset-4 hover:underline"
+        >
+          o hablemos primero
+        </a>
+      </div>
     </div>
   </Container>
 </section>
+
+<style>
+  .rotator {
+    position: relative;
+  }
+  .rot-item {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: rot 9s infinite;
+  }
+  .rot-1 { animation-delay: 0s; }
+  .rot-2 { animation-delay: 3s; }
+  .rot-3 { animation-delay: 6s; }
+
+  @keyframes rot {
+    0%, 6%   { opacity: 0; transform: translateY(-50%) translateY(8px); }
+    12%, 27% { opacity: 1; transform: translateY(-50%) translateY(0); }
+    33%, 100%{ opacity: 0; transform: translateY(-50%) translateY(-8px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rotator { min-height: 0; }
+    .rot-item {
+      position: static;
+      transform: none;
+      opacity: 1;
+      animation: none;
+      display: block;
+    }
+    .rot-2, .rot-3 { display: none; }
+  }
+</style>
