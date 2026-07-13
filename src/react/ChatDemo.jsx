@@ -101,7 +101,7 @@ export default function ChatDemo() {
         inViewRef.current = entry.isIntersecting;
         setInView(entry.isIntersecting);
       },
-      { threshold: 0.25 }
+      { threshold: 0.6, rootMargin: '0px 0px -35% 0px' }
     );
     io.observe(el);
     return () => io.disconnect();
