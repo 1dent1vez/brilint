@@ -75,7 +75,7 @@ export function ConstellationBg({ className = '' }) {
 
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-      camera.position.z = 5;
+      camera.position.z = 4.2;
 
       const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       renderer.setSize(width, height);
@@ -209,7 +209,7 @@ export function ConstellationBg({ className = '' }) {
       if (isMobileView) {
         sphere.position.y = 1.5; // up, behind the badge (not the title)
       } else {
-        sphere.position.set(1.7, 1.1, 0); // upper-right on desktop
+        sphere.position.set(0, 0, 0); // centrada: llena todo el hero en desktop
       }
 
       // Check user reduced motion preference

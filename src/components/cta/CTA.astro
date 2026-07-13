@@ -8,58 +8,62 @@ import LiquidCtaButton from '../../react/LiquidCtaButton.jsx';
 <section class="py-16 md:py-section-y bg-dab-bg relative overflow-hidden">
   <div class="liquid-aurora" aria-hidden="true"></div>
   <Container className="px-4 sm:px-0 space-y-6 md:space-y-8">
-    <!-- Fragmento 1: la tensión humana real -->
-    <article
-      class="glass-card liquid-surface rounded-3xl px-6 py-10 sm:px-10 sm:py-12 text-center space-y-4"
-    >
-      <h2 class="font-body font-bold text-2xl md:text-3xl text-dab-text leading-snug max-w-2xl mx-auto">
-        Sigues despertando a las 7 para responder el WhatsApp que llegó a las 11pm.
-      </h2>
-      <p class="font-body text-base text-dab-muted max-w-xl mx-auto leading-relaxed">
-        Otra cita se perdió porque se la llevó la captura de pantalla.
-        Otra clienta que ya casi cerraba, se fue por el tiempo que tardaste en contestar.
-      </p>
-      <p class="font-body text-sm text-dab-accent/80 max-w-xl mx-auto pt-1">
-        No es que no trabajes. Es que tu negocio duerme cuando tú duermes.
-      </p>
-    </article>
 
-    <!-- Divisor sutil -->
+    <!-- Divisor sutil como encabezado de sección -->
     <div class="flex items-center justify-center gap-3 text-dab-border/40">
       <span class="h-px w-16 bg-current"></span>
       <span class="font-mono text-[11px] tracking-[0.3em] uppercase">y si no fuera así</span>
       <span class="h-px w-16 bg-current"></span>
     </div>
 
-    <!-- Fragmento 2: la resolución + CTA -->
-    <article
-      class="glass-card liquid-surface liquid-surface--accent rounded-3xl px-6 py-10 sm:px-10 sm:py-12 text-center space-y-5"
-    >
-      <h2 class="font-body font-bold text-2xl md:text-3xl text-dab-text leading-snug max-w-2xl mx-auto">
-        Tu negocio puede responder, agendar y cerrar — sin que estés pegado al celular.
-      </h2>
-      <p class="font-body text-base text-dab-muted max-w-xl mx-auto leading-relaxed">
-        Nos tomamos 30 minutos contigo. Sin costo. Sin compromiso.
-        Solo para ver si podemos quitarte una carga de encima.
-      </p>
+    <!-- Dos recuadros de gancho humano: apilados en móvil, lado a lado en desktop -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <!-- Fragmento 1: la tensión humana real -->
+      <article
+        class="glass-card liquid-surface rounded-3xl px-6 py-10 sm:px-10 sm:py-12 text-center space-y-4"
+      >
+        <h2 class="font-body font-bold text-2xl md:text-3xl text-dab-text leading-snug max-w-2xl mx-auto">
+          Sigues despertando a las 7 para responder el WhatsApp que llegó a las 11pm.
+        </h2>
+        <p class="font-body text-base text-dab-muted max-w-xl mx-auto leading-relaxed">
+          Otra cita se perdió porque se la llevó la captura de pantalla.
+          Otra clienta que ya casi cerraba, se fue por el tiempo que tardaste en contestar.
+        </p>
+        <p class="font-body text-sm text-dab-accent/80 max-w-xl mx-auto pt-1">
+          No es que no trabajes. Es que tu negocio duerme cuando tú duermes.
+        </p>
+      </article>
 
-      <div class="flex flex-col items-center justify-center gap-4 w-full pt-2">
-        <div class="w-full sm:w-auto">
-          <LiquidCtaButton
-            href="https://calendly.com/dabagency/30min"
-            client:load
+      <!-- Fragmento 2: la resolución + CTA -->
+      <article
+        class="glass-card liquid-surface liquid-surface--accent rounded-3xl px-6 py-10 sm:px-10 sm:py-12 text-center space-y-5"
+      >
+        <h2 class="font-body font-bold text-2xl md:text-3xl text-dab-text leading-snug max-w-2xl mx-auto">
+          Tu negocio puede responder, agendar y cerrar — sin que estés pegado al celular.
+        </h2>
+        <p class="font-body text-base text-dab-muted max-w-xl mx-auto leading-relaxed">
+          Nos tomamos 30 minutos contigo. Sin costo. Sin compromiso.
+          Solo para ver si podemos quitarte una carga de encima.
+        </p>
+
+        <div class="flex flex-col items-center justify-center gap-4 w-full pt-2">
+          <div class="w-full sm:w-auto">
+            <LiquidCtaButton
+              href="https://calendly.com/dabagency/30min"
+              client:load
+            >
+              Agendar mi diagnóstico gratis
+            </LiquidCtaButton>
+          </div>
+          <a
+            href={WHATSAPP_URL}
+            class="font-body text-sm text-dab-muted hover:text-dab-cyan transition-colors duration-fast underline-offset-4 hover:underline"
           >
-            Agendar mi diagnóstico gratis
-          </LiquidCtaButton>
+            o escríbenos por WhatsApp →
+          </a>
         </div>
-        <a
-          href={WHATSAPP_URL}
-          class="font-body text-sm text-dab-muted hover:text-dab-cyan transition-colors duration-fast underline-offset-4 hover:underline"
-        >
-          o escríbenos por WhatsApp →
-        </a>
-      </div>
-    </article>
+      </article>
+    </div>
   </Container>
 </section>
 

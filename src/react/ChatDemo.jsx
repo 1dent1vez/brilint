@@ -24,7 +24,7 @@ const TypingDots = ({ dotClass }) => (
     {[0, 1, 2].map((i) => (
       <motion.span
         key={i}
-        className={`block h-1.5 w-1.5 rounded-full ${dotClass}`}
+        className={`block h-1.5 w-1.5 lg:h-2 lg:w-2 rounded-full ${dotClass}`}
         animate={{ y: [0, -3, 0], opacity: [0.35, 1, 0.35] }}
         transition={{ duration: 0.9, repeat: Infinity, delay: i * 0.15 }}
       />
@@ -48,8 +48,8 @@ const ChatBubble = ({ who, text, typing }) => {
         layout
         className={
           isClient
-            ? 'max-w-[85%] rounded-2xl rounded-tl-sm bg-white/5 border border-dab-border/20 px-3.5 py-2.5'
-            : 'max-w-[85%] rounded-2xl rounded-tr-sm bg-[#25D366]/15 border border-[#25D366]/30 px-3.5 py-2.5'
+            ? 'max-w-[85%] lg:max-w-[80%] rounded-2xl rounded-tl-sm bg-white/5 border border-dab-border/20 px-3.5 py-2.5 lg:px-4 lg:py-3'
+            : 'max-w-[85%] lg:max-w-[80%] rounded-2xl rounded-tr-sm bg-[#25D366]/15 border border-[#25D366]/30 px-3.5 py-2.5 lg:px-4 lg:py-3'
         }
       >
         <AnimatePresence mode="wait" initial={false}>
@@ -69,7 +69,7 @@ const ChatBubble = ({ who, text, typing }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="font-body text-[13px] text-dab-text"
+              className="font-body text-[13px] lg:text-[15px] text-dab-text"
             >
               {text}
             </motion.p>
@@ -84,6 +84,7 @@ export default function ChatDemo() {
   const reduce = useReducedMotion();
   const rootRef = useRef(null);
   const inViewRef = useRef(false);
+  const scrollRef = useRef(null);
   const [inView, setInView] = useState(false);
   const [started, setStarted] = useState(reduce);
   const [steps, setSteps] = useState(
@@ -136,7 +137,7 @@ export default function ChatDemo() {
         setSteps((prev) => prev.map((s) => (s.id === i ? { ...s, typing: false } : s)));
         await wait(STEP_MS);
       }
-      if (!cancelled) setDone(true);
+      if (cancelled) setDone(true);
     };
     run();
     return () => {
@@ -144,8 +145,38 @@ export default function ChatDemo() {
     };
   }, [started, reduce, done]);
 
+  // Auto-scroll inteligente: mientras la demo reproduce, mantiene el fondo
+  // pegado. Si el usuario sube (mouse/dedo) para leer, se pausa; al volver
+  // abajo reanuda. Nunca traba el scroll manual.
+  useEffect(() => {
+    if (!started || done) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    let rafId;
+    let userScrolling = false;
+    let userTimer;
+    const onUserScroll = () => {
+      // Si NO está cerca del fondo => el usuario subió a leer => pausamos
+      const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
+      userScrolling = !atBottom;
+      clearTimeout(userTimer);
+      userTimer = setTimeout(() => { userScrolling = false; }, 1200);
+    };
+    el.addEventListener('scroll', onUserScroll, { passive: true });
+    const tick = () => {
+      if (!userScrolling) el.scrollTop = el.scrollHeight;
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(userTimer);
+      el.removeEventListener('scroll', onUserScroll);
+    };
+  }, [started, done]);
+
   return (
-    <div ref={rootRef} className="mt-14 w-full liquid-surface rounded-3xl p-4 sm:p-5 shadow-[0_0_30px_rgba(123,97,255,0.12)]">
+    <div ref={rootRef} className="mt-14 lg:mt-0 w-full max-w-sm lg:max-w-[460px] xl:max-w-[480px] flex flex-col lg:h-[min(560px,80vh)] liquid-surface rounded-3xl p-4 sm:p-5 lg:p-6 shadow-[0_0_30px_rgba(123,97,255,0.12)]">
       {/* Header estilo chat */}
       <div className="flex items-center gap-3 mb-3 pb-3 border-b border-dab-border/20">
         <div className="h-9 w-9 rounded-full flex items-center justify-center text-[#25D366] bg-[#25D366]/15">
@@ -161,9 +192,9 @@ export default function ChatDemo() {
       </div>
 
       {/* Conversación */}
-      <div className="space-y-2.5 min-h-[180px]">
+      <div ref={scrollRef} className="space-y-2.5 lg:space-y-3 min-h-[180px] lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:scrollbar-none lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden lg:pr-1">
         {!started && !reduce && (
-          <p className="font-mono text-[11px] text-dab-muted/60 text-center pt-6 animate-pulse">
+          <p className="font-mono text-[11px] lg:text-xs text-dab-muted/60 text-center pt-6 animate-pulse">
             ↓ desliza para ver la demo en vivo
           </p>
         )}
@@ -175,7 +206,7 @@ export default function ChatDemo() {
         </AnimatePresence>
 
         {started && !done && !reduce && (
-          <p className="font-mono text-[10px] text-dab-muted/50 text-center pt-1">demo en vivo…</p>
+          <p className="font-mono text-[10px] lg:text-xs text-dab-muted/50 text-center pt-1">demo en vivo…</p>
         )}
       </div>
     </div>

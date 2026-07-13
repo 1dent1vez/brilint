@@ -196,8 +196,8 @@ export default function MuroConfianzaMotion({ casos }) {
         </div>
       </div>
 
-      {/* DESKTOP: grid animada */}
-      <div className="hidden md:grid gap-6 md:grid-cols-3">
+      {/* DESKTOP: grid animada de 2 columnas centradas y proporcionales */}
+      <div className="hidden md:grid gap-6 md:grid-cols-2 max-w-[1040px] mx-auto">
         {casos.map((caso, idx) => (
           <motion.article
             key={caso.id}
