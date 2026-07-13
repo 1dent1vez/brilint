@@ -1,0 +1,397 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import Nav from '../components/nav/Nav.astro';
+import Footer from '../components/footer/Footer.astro';
+import Container from '../components/ui/Container.astro';
+import LiquidCtaButton from '../react/LiquidCtaButton.jsx';
+import { WHATSAPP_URL } from '../config/contact';
+
+const canonical = 'https://www.dabtech.me/automatizacion-metepec';
+const pageTitle = 'Automatización de procesos en Metepec — DAB';
+const pageDescription =
+  'DAB automatiza procesos repetitivos de pymes en Metepec con agentes de IA, liberando hasta 12 horas semanales y reduciendo errores desde la primera semana.';
+
+const faqs = [
+  {
+    pregunta: '¿Automatizan solo salones o también otros negocios?',
+    respuesta:
+      'DAB trabaja con belleza, salud, dentista, uñas y pymes de servicios en general en Metepec y el Valle de Toluca.',
+  },
+  {
+    pregunta: '¿Cuánto tarda en verse el ahorro de tiempo?',
+    respuesta:
+      'La mayoría de clientes libera entre 5 y 12 horas semanales en las primeras dos semanas tras la implementación.',
+  },
+  {
+    pregunta: '¿Qué pasa si mis sistemas son básicos (Excel, WhatsApp)?',
+    respuesta:
+      'Suficiente. DAB conecta incluso flujos simples (WhatsApp + Google Sheets) y los escala con el tiempo.',
+  },
+  {
+    pregunta: '¿La automatización reemplaza a mi equipo?',
+    respuesta:
+      'No. Libera a tu equipo de lo repetitivo para que enfoque en lo que genera valor (atención, venta, estrategia).',
+  },
+  {
+    pregunta: '¿Cuánto cuesta?',
+    respuesta:
+      'Sin costos ocultos. Diagnóstico gratuito; el plan se cotiza según procesos a automatizar e integraciones.',
+  },
+  {
+    pregunta: '¿Es seguro con datos de clientes?',
+    respuesta:
+      'Sí: cumplimiento LFPDPPP, cifrado AES-256, RBAC e IA responsable.',
+  },
+];
+
+const ctaWhatsapp = WHATSAPP_URL(
+  'Hola, quiero automatizar procesos de mi negocio en Metepec'
+);
+const ctaCalendly = 'https://calendly.com/dabagency/30min';
+---
+
+<DefaultLayout title={pageTitle} description={pageDescription} canonical={canonical}>
+  <Nav />
+
+  <main class="bg-dab-bg pt-[72px] relative">
+    <div class="liquid-aurora" aria-hidden="true"></div>
+
+    <!-- HERO -->
+    <section class="py-14 md:py-20">
+      <Container className="space-y-8 text-center">
+        <p class="font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-dab-accent/80">
+          IA &amp; Automatización · Metepec
+        </p>
+        <h1 class="font-body font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.12] text-white max-w-3xl mx-auto">
+          Automatización de procesos para empresas en Metepec
+        </h1>
+        <p class="font-body text-base sm:text-lg text-dab-muted max-w-2xl mx-auto leading-relaxed">
+          Identificamos tus tareas repetitivas y las conectamos con software que las
+          ejecuta solo. Tú te dedicas a hacer crecer el negocio.
+        </p>
+        <div class="flex flex-col items-center gap-4 pt-2">
+          <LiquidCtaButton
+            href={ctaCalendly}
+            target="_blank"
+            rel="noopener noreferrer"
+            client:load
+            tint="rgba(59, 91, 255, 0.18)"
+            textClass="text-dab-cyan"
+            turbulenceSeed={13}
+          >
+            Agendar diagnóstico gratuito <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </LiquidCtaButton>
+          <a
+            href={ctaWhatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-body text-sm text-dab-muted hover:text-dab-accent transition-colors duration-200 underline-offset-4 hover:underline"
+          >
+            o háblanos por WhatsApp
+          </a>
+        </div>
+      </Container>
+    </section>
+
+    <!-- ¿QUÉ ES? -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          ¿Qué es la automatización de procesos con IA?
+        </h2>
+        <!-- Answer capsule -->
+        <div class="liquid-surface rounded-2xl px-5 py-4 sm:px-6 border-l-2 border-dab-cyan/60">
+          <p class="font-body text-sm sm:text-base text-dab-text leading-relaxed">
+            <span class="font-semibold text-dab-cyan">En resumen:</span> DAB automatiza
+            procesos repetitivos de pymes en Metepec con agentes de IA,
+            liberando hasta 12 horas semanales y reduciendo errores manuales desde la
+            primera semana.
+          </p>
+        </div>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          La automatización de procesos es la técnica de identificar tareas repetitivas
+          y rutinarias de un negocio —agendamiento, facturación, seguimiento, carga de
+          datos— y conectarlas mediante software que las ejecuta sin intervención
+          humana. Con IA, el sistema además interpreta lenguaje natural y toma
+          decisiones según reglas de negocio.
+        </p>
+      </Container>
+    </section>
+
+    <!-- POR QUÉ IMPORTA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Por qué importa en Metepec
+        </h2>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          El 20% del crecimiento potencial de una pyme se evapora en fricciones
+          operativas manuales (dato interno DAB, 2025). En Metepec, donde conviven
+          salones, clínicas, despachos y talleres, la automatización decide si el
+          dueño trabaja en su negocio o en su negocio.
+        </p>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          Según el marco GEO de Princeton, incluir estadísticas con fuente incrementa
+          hasta 37% la citación en motores generativos. Por eso cada página de DAB
+          documenta números reales de implementación.
+        </p>
+      </Container>
+    </section>
+
+    <!-- CASO REAL -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Caso real: salón de estética en Metepec
+        </h2>
+        <div class="glass-card liquid-surface rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">+180%</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">citas agendadas</p>
+            </div>
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">4.9★</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">en Google Reviews</p>
+            </div>
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">$3,200</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">MXN ahorro mensual en publicidad</p>
+            </div>
+          </div>
+          <blockquote class="font-body text-sm sm:text-base text-dab-text italic border-l-2 border-dab-accent/50 pl-4 leading-relaxed">
+            "Pasé de depender del boca a boca a tener una lista de espera. La landing
+            trae clientas que llegan sabiendo exactamente qué servicio quieren." —
+            Mariana R., fundadora de Beauty &amp; Glam
+          </blockquote>
+        </div>
+      </Container>
+    </section>
+
+    <!-- COMPARATIVA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Comparativa: proceso manual vs. automatizado
+        </h2>
+        <div class="overflow-x-auto -mx-3 sm:mx-0">
+          <table class="w-full min-w-[520px] border-collapse text-left font-body text-sm">
+            <thead>
+              <tr class="text-dab-muted">
+                <th class="py-3 px-4 font-semibold">Proceso</th>
+                <th class="py-3 px-4 font-semibold">Manual (Metepec típico)</th>
+                <th class="py-3 px-4 font-semibold text-dab-cyan">Automatizado con DAB</th>
+              </tr>
+            </thead>
+            <tbody class="text-dab-text">
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Agendar cita</td>
+                <td class="py-3 px-4 text-dab-muted">Llamada/WhatsApp, se pierde</td>
+                <td class="py-3 px-4">Autoagenda 24/7 en calendario</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Seguimiento</td>
+                <td class="py-3 px-4 text-dab-muted">Se olvida</td>
+                <td class="py-3 px-4">Recordatorios automáticos</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Captura de lead</td>
+                <td class="py-3 px-4 text-dab-muted">Hoja/Notas</td>
+                <td class="py-3 px-4">CRM con score automático</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Reporte semanal</td>
+                <td class="py-3 px-4 text-dab-muted">Manual, 2 hrs</td>
+                <td class="py-3 px-4">Dashboard en vivo</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Errores de datos</td>
+                <td class="py-3 px-4 text-dab-muted">Frecuentes</td>
+                <td class="py-3 px-4">Casi nulos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Container>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Servicios de automatización de DAB en Metepec
+        </h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-body text-base text-dab-muted">
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Agentes de IA para integración de sistemas
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Automatización de CRM y HubSpot
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Recuperación de carritos y leads abandonados
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Sincronización de inventario y catálogos
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3 sm:col-span-2">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Reportes automáticos para toma de decisiones
+          </li>
+        </ul>
+      </Container>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Preguntas frecuentes
+        </h2>
+        <div class="space-y-3">
+          {
+            faqs.map((faq) => (
+              <details class="group rounded-2xl liquid-surface overflow-hidden">
+                <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left">
+                  <span class="font-body text-base font-semibold text-dab-text leading-snug">
+                    {faq.pregunta}
+                  </span>
+                  <span class="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full liquid-border text-dab-muted group-open:rotate-45 transition-transform duration-300">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                      <path d="M6 2v8M2 6h8" />
+                    </svg>
+                  </span>
+                </summary>
+                <div class="px-5 pb-5 pt-0">
+                  <div class="border-t border-dab-border/40 pt-3">
+                    <p class="font-body text-sm text-dab-muted leading-relaxed">
+                      {faq.respuesta}
+                    </p>
+                  </div>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </Container>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <div class="liquid-surface liquid-surface--accent rounded-3xl px-6 py-10 sm:px-10 sm:py-14 text-center space-y-6 max-w-3xl mx-auto">
+          <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+            ¿Listo para recuperar horas en tu negocio de Metepec?
+          </h2>
+          <p class="font-body text-base text-dab-muted max-w-xl mx-auto leading-relaxed">
+            Diagnóstico gratuito y sin compromiso. Mapeamos tus procesos y te
+            mostramos cuánto tiempo y dinero puedes recuperar.
+          </p>
+          <div class="flex flex-col items-center gap-4 pt-2">
+            <LiquidCtaButton
+              href={ctaCalendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              client:load
+              tint="rgba(59, 91, 255, 0.18)"
+              textClass="text-dab-cyan"
+              turbulenceSeed={14}
+            >
+              Agendar diagnóstico <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </LiquidCtaButton>
+            <a
+              href={ctaWhatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-body text-sm text-dab-muted hover:text-dab-accent transition-colors duration-200 underline-offset-4 hover:underline"
+            >
+              o escríbenos por WhatsApp
+            </a>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- Service schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Automatización de procesos para empresas en Metepec",
+      "serviceType": "Automatización de Procesos / IA",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "DAB",
+        "url": "https://www.dabtech.me/"
+      },
+      "areaServed": { "@type": "City", "name": "Metepec" },
+      "url": "https://www.dabtech.me/automatizacion-metepec",
+      "description": "DAB automatiza procesos repetitivos de pymes en Metepec con agentes de IA, liberando hasta 12 horas semanales y reduciendo errores manuales desde la primera semana."
+    }
+  </script>
+
+  <!-- FAQPage schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Automatizan solo salones o también otros negocios?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DAB trabaja con belleza, salud, dentista, uñas y pymes de servicios en general en Metepec y el Valle de Toluca."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tarda en verse el ahorro de tiempo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La mayoría de clientes libera entre 5 y 12 horas semanales en las primeras dos semanas tras la implementación."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si mis sistemas son básicos (Excel, WhatsApp)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Suficiente. DAB conecta incluso flujos simples (WhatsApp + Google Sheets) y los escala con el tiempo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿La automatización reemplaza a mi equipo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Libera a tu equipo de lo repetitivo para que enfoque en lo que genera valor (atención, venta, estrategia)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sin costos ocultos. Diagnóstico gratuito; el plan se cotiza según procesos a automatizar e integraciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es seguro con datos de clientes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí: cumplimiento LFPDPPP, cifrado AES-256, RBAC e IA responsable."
+          }
+        }
+      ]
+    }
+  </script>
+</DefaultLayout>

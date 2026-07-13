@@ -211,3 +211,12 @@ p {
   0%, 100% { box-shadow: 0 0 0 0 rgba(40, 223, 181, 0.4); }
   70% { box-shadow: 0 0 0 10px rgba(40, 223, 181, 0); }
 }
+
+/* Fit de desktop: en pantallas >=1024px la hero no cabe a 100% (se cortan
+   botones/demo), así que replicamos el "zoom al 90%" que el usuario hace a mano
+   en el navegador. En móvil/tablet (<1024px) se queda a 100%. */
+@media (min-width: 1024px) {
+  html {
+    zoom: 0.9;
+  }
+}

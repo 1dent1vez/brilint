@@ -1,0 +1,395 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import Nav from '../components/nav/Nav.astro';
+import Footer from '../components/footer/Footer.astro';
+import Container from '../components/ui/Container.astro';
+import LiquidCtaButton from '../react/LiquidCtaButton.jsx';
+import { WHATSAPP_URL } from '../config/contact';
+
+const canonical = 'https://www.dabtech.me/chatbots-edomex';
+const pageTitle = 'Chatbots de WhatsApp en Edomex — DAB';
+const pageDescription =
+  'DAB construye chatbots de WhatsApp con IA para empresas del Estado de México que responden al instante, califican leads y agendan citas 24/7, desde 7 días.';
+
+const faqs = [
+  {
+    pregunta: '¿El chatbot contesta como robot o natural?',
+    respuesta:
+      'Natural. Usa lenguaje de tu negocio y puede transferir a un humano cuando la consulta lo amerita.',
+  },
+  {
+    pregunta: '¿Necesito la API de WhatsApp pagada?',
+    respuesta:
+      'Sí, DAB te ayuda a habilitar la API oficial de Meta. El costo por conversación lo cobra Meta, no DAB; el plan de construcción es fijo.',
+  },
+  {
+    pregunta: '¿En cuánto tiempo está listo?',
+    respuesta:
+      'Desde 7 días en el plan Despierta, hasta 1-2 semanas en planes con más integraciones.',
+  },
+  {
+    pregunta: '¿Funciona para mi tipo de negocio en Edomex?',
+    respuesta:
+      'Sí: salones, clínicas, dentistas, uñas, despachos y pymes de servicios en Toluca, Metepec y alrededores.',
+  },
+  {
+    pregunta: '¿Es seguro?',
+    respuesta:
+      'Sí: LFPDPPP, cifrado AES-256, RBAC e IA responsable.',
+  },
+  {
+    pregunta: '¿Cuánto cuesta?',
+    respuesta:
+      'Diagnóstico gratuito sin compromiso. El costo se define por volumen de conversaciones e integraciones, sin costos ocultos.',
+  },
+];
+
+const ctaWhatsapp = WHATSAPP_URL(
+  'Hola, quiero un chatbot de WhatsApp para mi negocio en Edomex'
+);
+const ctaCalendly = 'https://calendly.com/dabagency/30min';
+---
+
+<DefaultLayout title={pageTitle} description={pageDescription} canonical={canonical}>
+  <Nav />
+
+  <main class="bg-dab-bg pt-[72px] relative">
+    <div class="liquid-aurora" aria-hidden="true"></div>
+
+    <!-- HERO -->
+    <section class="py-14 md:py-20">
+      <Container className="space-y-8 text-center">
+        <p class="font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-dab-accent/80">
+          IA &amp; Automatización · Estado de México
+        </p>
+        <h1 class="font-body font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.12] text-white max-w-3xl mx-auto">
+          Chatbots de WhatsApp para empresas en el Estado de México
+        </h1>
+        <p class="font-body text-base sm:text-lg text-dab-muted max-w-2xl mx-auto leading-relaxed">
+          Un asistente que responde, califica y agenda por ti en el canal que tus
+          clientes ya usan. Sin que un humano escriba cada respuesta.
+        </p>
+        <div class="flex flex-col items-center gap-4 pt-2">
+          <LiquidCtaButton
+            href={ctaCalendly}
+            target="_blank"
+            rel="noopener noreferrer"
+            client:load
+            tint="rgba(59, 91, 255, 0.18)"
+            textClass="text-dab-cyan"
+            turbulenceSeed={15}
+          >
+            Agendar diagnóstico gratuito <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </LiquidCtaButton>
+          <a
+            href={ctaWhatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-body text-sm text-dab-muted hover:text-dab-accent transition-colors duration-200 underline-offset-4 hover:underline"
+          >
+            o háblanos por WhatsApp
+          </a>
+        </div>
+      </Container>
+    </section>
+
+    <!-- ¿QUÉ ES? -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          ¿Qué es un chatbot de WhatsApp con IA?
+        </h2>
+        <!-- Answer capsule -->
+        <div class="liquid-surface rounded-2xl px-5 py-4 sm:px-6 border-l-2 border-dab-cyan/60">
+          <p class="font-body text-sm sm:text-base text-dab-text leading-relaxed">
+            <span class="font-semibold text-dab-cyan">En resumen:</span> DAB construye
+            chatbots de WhatsApp con IA para empresas del Estado de México que
+            responden al instante, califican leads y agendan citas 24/7, con
+            implementación desde 7 días.
+          </p>
+        </div>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          Un chatbot de WhatsApp es un asistente conversacional alojado en la API
+          oficial de WhatsApp Business que responde, califica y agenda clientes
+          automáticamente. Con IA, entiende lenguaje natural, mantiene contexto de la
+          conversación y ejecuta acciones (agendar, cobrar, derivar) sin que un humano
+          escriba cada respuesta.
+        </p>
+      </Container>
+    </section>
+
+    <!-- POR QUÉ IMPORTA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Por qué importa en el Edomex
+        </h2>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          WhatsApp es el canal principal de comunicación comercial en México. Negocios
+          en Toluca, Metepec y alrededores que responden tarde pierden la venta a un
+          competidor más ágil. Un chatbot con IA cierra esa brecha de velocidad.
+        </p>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          La investigación GEO de Princeton demuestra que el contenido con citas y
+          datos aumenta hasta 40% su visibilidad en respuestas generativas. DAB
+          documenta resultados reales para que las IA citen casos verificables.
+        </p>
+      </Container>
+    </section>
+
+    <!-- CASO REAL -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Caso real: Glam Studio (Metepec, Edomex)
+        </h2>
+        <div class="glass-card liquid-surface rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">+40%</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">mensajes de clientas nuevas por semana</p>
+            </div>
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">12 hrs</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">semanales liberadas a la dueña</p>
+            </div>
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">7 días</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">de implementación a operación</p>
+            </div>
+          </div>
+          <blockquote class="font-body text-sm sm:text-base text-dab-text italic border-l-2 border-dab-accent/50 pl-4 leading-relaxed">
+            "Con la landing y el chatbot ahora me encuentran fácil y llegan mensajes de
+            clientas nuevas cada semana." — Anahí G., dueña de Glam Studio
+          </blockquote>
+        </div>
+      </Container>
+    </section>
+
+    <!-- COMPARATIVA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Comparativa: WhatsApp manual vs. chatbot IA
+        </h2>
+        <div class="overflow-x-auto -mx-3 sm:mx-0">
+          <table class="w-full min-w-[520px] border-collapse text-left font-body text-sm">
+            <thead>
+              <tr class="text-dab-muted">
+                <th class="py-3 px-4 font-semibold">Capacidad</th>
+                <th class="py-3 px-4 font-semibold">WhatsApp manual</th>
+                <th class="py-3 px-4 font-semibold text-dab-cyan">Chatbot IA DAB</th>
+              </tr>
+            </thead>
+            <tbody class="text-dab-text">
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Respuesta fuera de horario</td>
+                <td class="py-3 px-4 text-dab-muted">No</td>
+                <td class="py-3 px-4">Sí, 24/7</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Calificación de lead</td>
+                <td class="py-3 px-4 text-dab-muted">Subjetiva</td>
+                <td class="py-3 px-4">Score automático</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Agendamiento</td>
+                <td class="py-3 px-4 text-dab-muted">Manual</td>
+                <td class="py-3 px-4">En calendario solo</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Costo por conversación</td>
+                <td class="py-3 px-4 text-dab-muted">Tiempo humano</td>
+                <td class="py-3 px-4">Plan fijo + tarifa Meta</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Escala</td>
+                <td class="py-3 px-4 text-dab-muted">1 a la vez</td>
+                <td class="py-3 px-4">Cientos paralelo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Container>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Servicios de chatbot de DAB en Edomex
+        </h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-body text-base text-dab-muted">
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Chatbots en WhatsApp Business API oficial
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Calificación y scoring de leads
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Agendamiento automático con recordatorios
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Integración con CRM y catálogos
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3 sm:col-span-2">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Transferencia a humano cuando el caso lo requiere
+          </li>
+        </ul>
+      </Container>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Preguntas frecuentes
+        </h2>
+        <div class="space-y-3">
+          {
+            faqs.map((faq) => (
+              <details class="group rounded-2xl liquid-surface overflow-hidden">
+                <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left">
+                  <span class="font-body text-base font-semibold text-dab-text leading-snug">
+                    {faq.pregunta}
+                  </span>
+                  <span class="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full liquid-border text-dab-muted group-open:rotate-45 transition-transform duration-300">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                      <path d="M6 2v8M2 6h8" />
+                    </svg>
+                  </span>
+                </summary>
+                <div class="px-5 pb-5 pt-0">
+                  <div class="border-t border-dab-border/40 pt-3">
+                    <p class="font-body text-sm text-dab-muted leading-relaxed">
+                      {faq.respuesta}
+                    </p>
+                  </div>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </Container>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <div class="liquid-surface liquid-surface--accent rounded-3xl px-6 py-10 sm:px-10 sm:py-14 text-center space-y-6 max-w-3xl mx-auto">
+          <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+            ¿Listo para responder en segundos en el Edomex?
+          </h2>
+          <p class="font-body text-base text-dab-muted max-w-xl mx-auto leading-relaxed">
+            Diagnóstico gratuito y sin compromiso. Revisamos tu WhatsApp actual y te
+            decimos qué puede responder y agendar solo.
+          </p>
+          <div class="flex flex-col items-center gap-4 pt-2">
+            <LiquidCtaButton
+              href={ctaCalendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              client:load
+              tint="rgba(59, 91, 255, 0.18)"
+              textClass="text-dab-cyan"
+              turbulenceSeed={16}
+            >
+              Agendar diagnóstico <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </LiquidCtaButton>
+            <a
+              href={ctaWhatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-body text-sm text-dab-muted hover:text-dab-accent transition-colors duration-200 underline-offset-4 hover:underline"
+            >
+              o escríbenos por WhatsApp
+            </a>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- Service schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Chatbots de WhatsApp para empresas en el Estado de México",
+      "serviceType": "Chatbot / Inteligencia Artificial",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "DAB",
+        "url": "https://www.dabtech.me/"
+      },
+      "areaServed": { "@type": "City", "name": "Estado de México" },
+      "url": "https://www.dabtech.me/chatbots-edomex",
+      "description": "DAB construye chatbots de WhatsApp con IA para empresas del Estado de México que responden al instante, califican leads y agendan citas 24/7, con implementación desde 7 días."
+    }
+  </script>
+
+  <!-- FAQPage schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿El chatbot contesta como robot o natural?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Natural. Usa lenguaje de tu negocio y puede transferir a un humano cuando la consulta lo amerita."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito la API de WhatsApp pagada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, DAB te ayuda a habilitar la API oficial de Meta. El costo por conversación lo cobra Meta, no DAB; el plan de construcción es fijo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En cuánto tiempo está listo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Desde 7 días en el plan Despierta, hasta 1-2 semanas en planes con más integraciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Funciona para mi tipo de negocio en Edomex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí: salones, clínicas, dentistas, uñas, despachos y pymes de servicios en Toluca, Metepec y alrededores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es seguro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí: LFPDPPP, cifrado AES-256, RBAC e IA responsable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Diagnóstico gratuito sin compromiso. El costo se define por volumen de conversaciones e integraciones, sin costos ocultos."
+          }
+        }
+      ]
+    }
+  </script>
+</DefaultLayout>

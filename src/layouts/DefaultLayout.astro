@@ -5,8 +5,9 @@ import { WHATSAPP_URL } from '../config/contact';
 import LiquidCtaButton from '../react/LiquidCtaButton.jsx';
 
 const {
-  title = 'Dab — Servicios digitales premium',
+  title = 'DAB — Servicios digitales premium',
   description: pageDescription = 'Consultora de servicios digitales para PyMEs, profesionales y hogares del Valle de Toluca.',
+  canonical,
 } = Astro.props;
 ---
 
@@ -31,7 +32,7 @@ const {
     <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content="/og-image.webp" />
     <meta property="og:type" content="website" />
-    <link rel="canonical" href={Astro.site} />
+    <link rel="canonical" href={canonical ?? new URL(Astro.url.pathname, Astro.site).href} />
 
     <!-- Fuentes Web Centralizadas: Inter + JetBrains Mono + Cormorant Garamond -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,23 +47,43 @@ const {
     />
 
     <!-- JSON-LD -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        name: 'Dab',
-        image: new URL('og-image.webp', Astro.site).href,
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Metepec',
-          addressRegion: 'Estado de México',
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: 'DAB',
+      image: new URL('og-image.webp', Astro.site).href,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Metepec',
+        addressRegion: 'Estado de México',
+        addressCountry: 'MX',
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Toluca' },
+        { '@type': 'City', name: 'Metepec' },
+        { '@type': 'City', name: 'Zinacantepec' },
+        { '@type': 'City', name: 'Lerma' },
+        { '@type': 'City', name: 'San Mateo Atenco' },
+      ],
+      url: new URL('/', Astro.site).href,
+      telephone: '+52 1 7223579869',
+      priceRange: '$$',
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          opens: '11:00',
+          closes: '18:00',
         },
-        url: Astro.site.href,
-        telephone: '+52 1 7223579869',
-        servesLocation: ['Metepec', 'Toluca', 'Lerma', 'San Mateo Atenco'],
-        description: pageDescription,
-      })}
-    </script>
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Saturday'],
+          opens: '12:00',
+          closes: '15:00',
+        },
+      ],
+      description: pageDescription,
+    })} />
 
     <!-- Calendly Widget CSS -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />

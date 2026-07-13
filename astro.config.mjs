@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  site: 'https://dab.dev',
+  site: 'https://www.dabtech.me/',
   output: 'static',
   adapter: vercel(),
   integrations: [

@@ -1,0 +1,400 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro';
+import Nav from '../components/nav/Nav.astro';
+import Footer from '../components/footer/Footer.astro';
+import Container from '../components/ui/Container.astro';
+import LiquidCtaButton from '../react/LiquidCtaButton.jsx';
+import { WHATSAPP_URL } from '../config/contact';
+
+const canonical = 'https://www.dabtech.me/agentes-ia-toluca';
+const pageTitle = 'Agentes de IA en Toluca — DAB';
+const pageDescription =
+  'Diseñamos agentes de IA que atienden, agendan y cierran ventas 24/7 por WhatsApp y web para negocios de Toluca y el Valle de Toluca.';
+
+const faqs = [
+  {
+    pregunta: '¿Necesito saber de tecnología para usar un agente de IA?',
+    respuesta:
+      'No. DAB diseña, implementa y capacita a tu equipo. Tú usas el sistema; DAB lo mantiene. Puedes modificar respuestas del agente sin código.',
+  },
+  {
+    pregunta: '¿Cuánto tarda en estar funcionando?',
+    respuesta:
+      'Entre 7 días (plan Despierta) y 1-2 semanas (planes Crece/Domina), según la complejidad de las integraciones.',
+  },
+  {
+    pregunta: '¿En qué zonas de Toluca y alrededores trabajan?',
+    respuesta:
+      'Toluca, Metepec, Zinacantepec, Lerma, San Mateo Atenco y hasta 2 horas en coche desde la base en Metepec.',
+  },
+  {
+    pregunta: '¿Es seguro con los datos de mis clientes?',
+    respuesta:
+      'Sí. Cumplimiento LFPDPPP, cifrado AES-256, control de acceso por rol (RBAC) e IA responsable. Los datos de tus clientes no se comparten.',
+  },
+  {
+    pregunta: '¿Cuánto cuesta un agente de IA?',
+    respuesta:
+      'DAB maneja planes sin costos ocultos. El diagnóstico inicial es gratuito y sin compromiso; el costo se define según el volumen de conversaciones y las integraciones requeridas.',
+  },
+  {
+    pregunta: '¿Qué pasa si no veo resultados?',
+    respuesta:
+      'DAB ofrece optimización continua basada en datos reales. Si tras la implementación no ves mejora medible, se ajusta la estrategia antes de cobrar escalamiento.',
+  },
+];
+
+const ctaWhatsapp = WHATSAPP_URL(
+  'Hola, quiero un agente de IA para mi negocio en Toluca'
+);
+const ctaCalendly = 'https://calendly.com/dabagency/30min';
+---
+
+<DefaultLayout title={pageTitle} description={pageDescription} canonical={canonical}>
+  <Nav />
+
+  <main class="bg-dab-bg pt-[72px] relative">
+    <div class="liquid-aurora" aria-hidden="true"></div>
+
+    <!-- HERO -->
+    <section class="py-14 md:py-20">
+      <Container className="space-y-8 text-center">
+        <p class="font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-dab-accent/80">
+          IA &amp; Automatización · Toluca
+        </p>
+        <h1 class="font-body font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.12] text-white max-w-3xl mx-auto">
+          Agentes de IA para negocios en Toluca
+        </h1>
+        <p class="font-body text-base sm:text-lg text-dab-muted max-w-2xl mx-auto leading-relaxed">
+          Sistemas que responden, califican y cierran ventas por ti, 24/7, por
+          WhatsApp y web. Diseñados para el ritmo de una PyME del Valle de Toluca.
+        </p>
+        <div class="flex flex-col items-center gap-4 pt-2">
+          <LiquidCtaButton
+            href={ctaCalendly}
+            target="_blank"
+            rel="noopener noreferrer"
+            client:load
+            tint="rgba(59, 91, 255, 0.18)"
+            textClass="text-dab-cyan"
+            turbulenceSeed={11}
+          >
+            Agendar diagnóstico gratuito <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </LiquidCtaButton>
+          <a
+            href={ctaWhatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-body text-sm text-dab-muted hover:text-dab-accent transition-colors duration-200 underline-offset-4 hover:underline"
+          >
+            o háblanos por WhatsApp
+          </a>
+        </div>
+      </Container>
+    </section>
+
+    <!-- ¿QUÉ ES? -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          ¿Qué es un agente de IA para un negocio?
+        </h2>
+        <!-- Answer capsule -->
+        <div class="liquid-surface rounded-2xl px-5 py-4 sm:px-6 border-l-2 border-dab-cyan/60">
+          <p class="font-body text-sm sm:text-base text-dab-text leading-relaxed">
+            <span class="font-semibold text-dab-cyan">En resumen:</span> DAB diseña
+            agentes de IA que atienden, agendan y cierran ventas 24/7 por WhatsApp y
+            web para negocios de Toluca y el Valle de Toluca, con implementación en 7
+            días.
+          </p>
+        </div>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          Un agente de IA es un sistema de software que realiza tareas cognitivas de
+          forma autónoma —responder mensajes, calificar leads, agendar citas y dar
+          seguimiento— sin intervención humana constante. A diferencia de un chatbot
+          de respuestas fijas, un agente de IA interpreta el contexto, toma
+          decisiones según reglas y se conecta con tus sistemas (WhatsApp, CRM,
+          calendario) para ejecutar acciones reales.
+        </p>
+      </Container>
+    </section>
+
+    <!-- POR QUÉ IMPORTA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Por qué importa para negocios en Toluca
+        </h2>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          El 46% de las búsquedas en Google tienen intención local y muestran
+          resultados de Maps (Google, 2025). En Toluca y el Valle de Toluca, salones
+          de belleza, clínicas, despachos y pymes pierden clientes potenciales cada
+          día por no responder fuera de horario. Un agente de IA convierte esa
+          ventana perdida en atención continua.
+        </p>
+        <p class="font-body text-base text-dab-muted leading-relaxed max-w-3xl">
+          Según la investigación de Princeton sobre Generative Engine Optimization
+          (GEO), el contenido que incluye estadísticas concretas y fuentes aumenta
+          hasta 40% su probabilidad de ser citado por motores generativos (ChatGPT,
+          Perplexity, Gemini).
+        </p>
+      </Container>
+    </section>
+
+    <!-- CASO REAL -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Caso real: salón de estética en Metepec (Valle de Toluca)
+        </h2>
+        <div class="glass-card liquid-surface rounded-2xl p-6 sm:p-8 space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">+40%</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">mensajes de clientas nuevas por semana</p>
+            </div>
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">12 hrs</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">semanales liberadas a la dueña</p>
+            </div>
+            <div class="text-center liquid-border rounded-xl px-3 py-4">
+              <p class="font-body text-2xl sm:text-3xl font-bold text-dab-cyan">7 días</p>
+              <p class="font-body text-xs sm:text-sm text-dab-muted mt-1">para estar operando</p>
+            </div>
+          </div>
+          <blockquote class="font-body text-sm sm:text-base text-dab-text italic border-l-2 border-dab-accent/50 pl-4 leading-relaxed">
+            "Antes respondía todo por WhatsApp sin orden. Ahora me encuentran fácil,
+            llegan mensajes de clientas nuevas cada semana y ya no estoy pegada al
+            celular." — Anahí G., dueña de Glam Studio (Metepec)
+          </blockquote>
+        </div>
+      </Container>
+    </section>
+
+    <!-- COMPARATIVA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Comparativa: agente de IA vs. atención manual
+        </h2>
+        <div class="overflow-x-auto -mx-3 sm:mx-0">
+          <table class="w-full min-w-[520px] border-collapse text-left font-body text-sm">
+            <thead>
+              <tr class="text-dab-muted">
+                <th class="py-3 px-4 font-semibold">Dimensión</th>
+                <th class="py-3 px-4 font-semibold">Recepcionista manual</th>
+                <th class="py-3 px-4 font-semibold text-dab-cyan">Agente de IA DAB</th>
+              </tr>
+            </thead>
+            <tbody class="text-dab-text">
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Horario de atención</td>
+                <td class="py-3 px-4 text-dab-muted">9-6 hrs hábiles</td>
+                <td class="py-3 px-4">24/7, 365 días</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Tiempo de respuesta</td>
+                <td class="py-3 px-4 text-dab-muted">Minutos a horas</td>
+                <td class="py-3 px-4">Instantáneo (&lt;2s)</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Costo mensual</td>
+                <td class="py-3 px-4 text-dab-muted">Sueldo + prestaciones</td>
+                <td class="py-3 px-4">Plan recurrente fijo</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Seguimiento a clientas</td>
+                <td class="py-3 px-4 text-dab-muted">Manual, se olvida</td>
+                <td class="py-3 px-4">Automático, persistente</td>
+              </tr>
+              <tr class="border-t border-dab-border/40">
+                <td class="py-3 px-4 font-medium">Escalabilidad</td>
+                <td class="py-3 px-4 text-dab-muted">1 persona = 1 conversación</td>
+                <td class="py-3 px-4">Cientos en paralelo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Container>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Servicios de agentes de IA de DAB en Toluca
+        </h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-body text-base text-dab-muted">
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Agentes de atención por WhatsApp Business API
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Asistentes de agendamiento automático (sin ver calendario)
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Recuperación activa de clientas perdidas (follow-up 24/7)
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Integración con CRM, HubSpot y Google Calendar
+          </li>
+          <li class="liquid-surface rounded-xl px-5 py-4 flex items-start gap-3 sm:col-span-2">
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-dab-cyan flex-shrink-0"></span>
+            Dashboards de métricas en tiempo real
+          </li>
+        </ul>
+      </Container>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+          Preguntas frecuentes
+        </h2>
+        <div class="space-y-3">
+          {
+            faqs.map((faq) => (
+              <details class="group rounded-2xl liquid-surface overflow-hidden">
+                <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left">
+                  <span class="font-body text-base font-semibold text-dab-text leading-snug">
+                    {faq.pregunta}
+                  </span>
+                  <span class="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full liquid-border text-dab-muted group-open:rotate-45 transition-transform duration-300">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                      <path d="M6 2v8M2 6h8" />
+                    </svg>
+                  </span>
+                </summary>
+                <div class="px-5 pb-5 pt-0">
+                  <div class="border-t border-dab-border/40 pt-3">
+                    <p class="font-body text-sm text-dab-muted leading-relaxed">
+                      {faq.respuesta}
+                    </p>
+                  </div>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </Container>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-12 md:py-16">
+      <Container className="space-y-6">
+        <div class="liquid-surface liquid-surface--accent rounded-3xl px-6 py-10 sm:px-10 sm:py-14 text-center space-y-6 max-w-3xl mx-auto">
+          <h2 class="font-body font-bold text-2xl sm:text-3xl tracking-tight leading-[1.15] text-white">
+            ¿Listo para que tu negocio atienda solo en Toluca?
+          </h2>
+          <p class="font-body text-base text-dab-muted max-w-xl mx-auto leading-relaxed">
+            Diagnóstico gratuito y sin compromiso. Vemos tu flujo actual y te
+            decimos dónde un agente de IA recupera ventas perdidas.
+          </p>
+          <div class="flex flex-col items-center gap-4 pt-2">
+            <LiquidCtaButton
+              href={ctaCalendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              client:load
+              tint="rgba(59, 91, 255, 0.18)"
+              textClass="text-dab-cyan"
+              turbulenceSeed={12}
+            >
+              Agendar diagnóstico <span class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </LiquidCtaButton>
+            <a
+              href={ctaWhatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-body text-sm text-dab-muted hover:text-dab-accent transition-colors duration-200 underline-offset-4 hover:underline"
+            >
+              o escríbenos por WhatsApp
+            </a>
+          </div>
+        </div>
+      </Container>
+    </section>
+  </main>
+
+  <Footer />
+
+  <!-- Service schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Agentes de IA para negocios en Toluca",
+      "serviceType": "Inteligencia Artificial / Automatización",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "DAB",
+        "url": "https://www.dabtech.me/"
+      },
+      "areaServed": { "@type": "City", "name": "Toluca" },
+      "url": "https://www.dabtech.me/agentes-ia-toluca",
+      "description": "Diseño e implementación de agentes de IA que atienden, agendan y cierran ventas 24/7 por WhatsApp y web para negocios de Toluca."
+    }
+  </script>
+
+  <!-- FAQPage schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Necesito saber de tecnología para usar un agente de IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. DAB diseña, implementa y capacita a tu equipo. Tú usas el sistema; DAB lo mantiene. Puedes modificar respuestas del agente sin código."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tarda en estar funcionando?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entre 7 días (plan Despierta) y 1-2 semanas (planes Crece/Domina), según la complejidad de las integraciones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué zonas de Toluca y alrededores trabajan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Toluca, Metepec, Zinacantepec, Lerma, San Mateo Atenco y hasta 2 horas en coche desde la base en Metepec."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Es seguro con los datos de mis clientes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Cumplimiento LFPDPPP, cifrado AES-256, control de acceso por rol (RBAC) e IA responsable. Los datos de tus clientas no se comparten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta un agente de IA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DAB maneja planes sin costos ocultos. El diagnóstico inicial es gratuito y sin compromiso; el costo se define según el volumen de conversaciones y las integraciones requeridas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si no veo resultados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DAB ofrece optimización continua basada en datos reales. Si tras la implementación no ves mejora medible, se ajusta la estrategia antes de cobrar escalamiento."
+          }
+        }
+      ]
+    }
+  </script>
+</DefaultLayout>

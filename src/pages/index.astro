@@ -38,14 +38,3 @@ import TrustBanner from '../components/sections/TrustBanner.astro';
 
   <Footer />
 </DefaultLayout>
-
-<style is:global>
-  /* En desktop la hero no cabe a 100%: replicamos el "zoom al 80%" que se hace
-     manual en el navegador para que al abrir ya se vea completo (botones + demo).
-     Solo en pantallas >=1024px. En móvil/tablet se queda a 100%. */
-  @media (min-width: 1024px) {
-    html {
-      zoom: 0.9;
-    }
-  }
-</style>
