@@ -2,10 +2,10 @@
 import { Image } from 'astro:assets';
 const { proyecto } = Astro.props;
 ---
-
 <article
-  class={`rounded-2xl border ${proyecto.destacado ? 'border-dab-accent/80' : 'border-dab-accent/60'} bg-dab-bg/70 p-4 sm:p-5 flex flex-col gap-4 md:gap-5 shadow-dab-soft`}
+  class={`rounded-2xl liquid-surface ${proyecto.destacado ? 'liquid-surface--accent' : ''} p-4 sm:p-5 flex flex-col gap-4 md:gap-5 shadow-dab-soft`}
 >
+
   <div class="space-y-1.5">
     <p class="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-dab-muted/80">
       {proyecto.tipo}
@@ -23,7 +23,7 @@ const { proyecto } = Astro.props;
     </p>
   </div>
 
-  <div class="rounded-xl border border-dab-border bg-black overflow-hidden h-72 sm:h-80">
+  <div class="rounded-xl liquid-border overflow-hidden h-72 sm:h-80">
     {proyecto.mockup ? (
       <div class="h-full overflow-y-auto">
         <Image
@@ -65,7 +65,7 @@ const { proyecto } = Astro.props;
         href={proyecto.repo}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-full border border-dab-border px-4 py-2 text-xs font-semibold text-dab-text hover:border-dab-accent/70 transition"
+        class="inline-flex items-center gap-2 rounded-full liquid-border px-4 py-2 text-xs font-semibold text-dab-text hover:text-dab-accent transition"
       >
         Ver código
       </a>

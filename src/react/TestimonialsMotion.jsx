@@ -46,7 +46,7 @@ export default function TestimonialsMotion({ testimonios }) {
     <div className="space-y-6 md:space-y-8">
       {/* MOBILE: carrusel automático */}
       <div className="relative md:hidden">
-        <div className="overflow-hidden rounded-2xl border border-dab-accent/60 bg-dab-surface/85 shadow-dab-soft">
+        <div className="overflow-hidden rounded-2xl liquid-surface liquid-surface--accent flex flex-col min-h-[580px]">
           <AnimatePresence mode="wait">
             <motion.article
               key={active.id}
@@ -59,7 +59,7 @@ export default function TestimonialsMotion({ testimonios }) {
             >
               <div className="flex items-center gap-2 text-[11px] text-dab-muted uppercase tracking-[0.14em]">
                 {active.esVerificado && (
-                  <span className="inline-flex items-center gap-2 rounded-full border border-dab-accent/60 bg-dab-bg/60 px-3 py-1 text-[11px] font-semibold text-dab-text">
+                  <span className="inline-flex items-center gap-2 rounded-full liquid-border liquid-border--accent px-3 py-1 text-[11px] font-semibold text-dab-text">
                     <span className="relative flex h-2 w-2">
                       <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/35 animate-[ping_1.8s_ease-out_infinite]"></span>
                       <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
@@ -98,7 +98,7 @@ export default function TestimonialsMotion({ testimonios }) {
                         initial="hidden"
                         animate="show"
                         transition={{ duration: 0.25, ease: 'easeOut' }}
-                        className="inline-flex items-center gap-2 rounded-full border border-dab-border/70 bg-dab-bg/70 px-3 py-1 text-[11px] font-semibold text-dab-text"
+                        className="inline-flex items-center gap-2 rounded-full liquid-border liquid-border--accent px-3 py-1 text-[11px] font-semibold text-dab-text"
                       >
                         <span className="h-1.5 w-1.5 rounded-full bg-dab-accent/80"></span>
                         {tech}
@@ -115,7 +115,7 @@ export default function TestimonialsMotion({ testimonios }) {
           <button
             onClick={prev}
             aria-label="Anterior"
-            className="p-2 rounded-full bg-dab-surface/80 border border-dab-border/70 text-dab-muted hover:text-dab-text transition duration-fast active:scale-95 shadow-dab-soft"
+            className="p-2 rounded-full liquid-border text-dab-muted hover:text-dab-text transition duration-fast active:scale-95 shadow-dab-soft"
           >
             {"<"}
           </button>
@@ -134,7 +134,7 @@ export default function TestimonialsMotion({ testimonios }) {
           <button
             onClick={next}
             aria-label="Siguiente"
-            className="p-2 rounded-full bg-dab-surface/80 border border-dab-border/70 text-dab-muted hover:text-dab-text transition duration-fast active:scale-95 shadow-dab-soft"
+            className="p-2 rounded-full liquid-border text-dab-muted hover:text-dab-text transition duration-fast active:scale-95 shadow-dab-soft"
           >
             {">"}
           </button>
@@ -151,7 +151,7 @@ export default function TestimonialsMotion({ testimonios }) {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.4, ease: 'easeOut', delay: idx * 0.08 }}
             whileHover={{ y: -4 }}
-            className="relative h-full rounded-2xl border border-dab-accent/60 bg-dab-surface/70 p-6 flex flex-col gap-4 shadow-sm transition duration-200 hover:border-dab-accent/80 hover:shadow-dab-soft"
+            className="relative h-full rounded-2xl liquid-surface liquid-surface--accent p-6 flex flex-col gap-4 shadow-sm transition duration-200 hover:border-dab-accent/80 hover:shadow-dab-soft"
           >
             <div className="flex items-center gap-2">
               {t.esVerificado && (
@@ -205,7 +205,7 @@ export default function TestimonialsMotion({ testimonios }) {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
                       transition={{ duration: 0.2, ease: 'easeOut', delay: techIdx * 0.03 }}
-                      className="inline-flex items-center gap-2 rounded-full border border-dab-border/70 bg-dab-bg/70 px-3 py-1 text-[11px] font-semibold text-dab-text"
+                      className="inline-flex items-center gap-2 rounded-full liquid-border liquid-border--accent px-3 py-1 text-[11px] font-semibold text-dab-text"
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-dab-accent/80"></span>
                       {tech}

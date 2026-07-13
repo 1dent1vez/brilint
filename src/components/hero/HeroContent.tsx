@@ -79,7 +79,7 @@ export function HeroContent() {
           <div className="absolute -inset-4 bg-gradient-to-br from-dab-accent/10 to-transparent rounded-[2.5rem] blur-2xl" />
 
           {/* Placeholder visual */}
-          <div className="relative w-full h-full rounded-3xl overflow-hidden border border-dab-border/20 bg-dab-surface/30 backdrop-blur-sm">
+          <div className="relative w-full h-full rounded-3xl overflow-hidden liquid-surface">
             <HeroPlaceholder />
           </div>
         </div>

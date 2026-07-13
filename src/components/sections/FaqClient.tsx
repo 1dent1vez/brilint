@@ -38,7 +38,7 @@ const activeColorClasses = {
 };
 
 const inactiveTabClasses =
-  "border-dab-border/50 bg-dab-surface/40 text-dab-muted hover:text-dab-text hover:border-dab-border hover:bg-dab-surface/60";
+  "liquid-border text-dab-muted hover:text-dab-text hover:border-dab-accent/50";
 
 const baseTabClasses =
   "relative px-4 py-2 rounded-full text-sm font-medium border transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-dab-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-dab-bg";
@@ -50,7 +50,7 @@ function PlusIcon({ isOpen }: { isOpen: boolean }) {
     <motion.span
       animate={{ rotate: isOpen ? 45 : 0 }}
       transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3 }}
-      className="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full border border-dab-border/60 text-dab-muted"
+      className="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full liquid-border text-dab-muted"
       aria-hidden="true"
     >
       <svg
@@ -93,10 +93,10 @@ function FaqItem({
       whileHover={shouldReduceMotion ? undefined : { y: -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 24 }}
       className={cn(
-        "rounded-2xl border bg-dab-surface/50 backdrop-blur-sm overflow-hidden transition-colors duration-300",
+        "rounded-2xl liquid-surface overflow-hidden transition-colors duration-300",
         isOpen
           ? "border-dab-accent/40 shadow-dab-soft"
-          : "border-dab-border/60 hover:border-dab-accent/40"
+          : "hover:border-dab-accent/40"
       )}
     >
       <h3>

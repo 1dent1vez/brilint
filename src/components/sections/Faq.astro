@@ -40,14 +40,14 @@ const subtitle = "Encuentra respuestas claras a tus dudas sobre DAB. Si no está
               <div class="space-y-3">
                 {cat.faqs.map((faq, faqIndex) => (
                   <details
-                    class="group rounded-2xl border border-dab-border/60 bg-dab-surface/50 backdrop-blur-sm overflow-hidden"
+                    class="group rounded-2xl liquid-surface overflow-hidden"
                     open={faqIndex === 0}
                   >
                     <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left">
                       <span class="font-body text-base font-semibold text-dab-text leading-snug">
                         {faq.pregunta}
                       </span>
-                      <span class="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full border border-dab-border/60 text-dab-muted group-open:rotate-45 transition-transform duration-300">
+                      <span class="flex-shrink-0 flex items-center justify-center h-7 w-7 rounded-full liquid-border text-dab-muted group-open:rotate-45 transition-transform duration-300">
                         <svg
                           width="12"
                           height="12"

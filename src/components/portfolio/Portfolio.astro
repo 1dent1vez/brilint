@@ -10,7 +10,8 @@ const secundarios = proyectos.filter((p) => !p.destacado);
 const sliderItems = secundarios.length ? secundarios : proyectos;
 ---
 
-<section id="portfolio" class="py-16 md:py-section-y bg-dab-surface">
+<section id="portfolio" class="py-16 md:py-section-y bg-dab-bg relative overflow-hidden">
+  <div class="liquid-aurora" aria-hidden="true"></div>
   <Container className="space-y-8 md:space-y-10">
     <SectionTitle
       title="Algunos proyectos recientes"

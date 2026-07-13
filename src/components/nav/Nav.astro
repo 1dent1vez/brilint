@@ -1,9 +1,10 @@
 ---
 import { MobileNav } from '../../react/MobileNav.jsx';
 import { NAV } from '../../data/hero';
+import LiquidCtaButton from '../../react/LiquidCtaButton.jsx';
 ---
 
-<nav class="fixed top-0 w-full z-50 h-[72px] glass-panel transition-all duration-300">
+<nav class="fixed top-0 w-full z-50 h-[72px] liquid-surface rounded-none overflow-visible transition-all duration-300">
   <div class="max-w-[1280px] mx-auto px-5 lg:px-12 h-full flex justify-between items-center">
     <!-- Brand Logo -->
     <a href={NAV.logoHref} class="flex items-center gap-2 cursor-pointer group">
@@ -26,9 +27,12 @@ import { NAV } from '../../data/hero';
 
     <!-- Desktop CTA Button -->
     <div class="hidden md:flex items-center">
-      <a
-        class="bg-gradient-to-br from-[#608bff] to-[#b3c5ff] hover:brightness-110 shadow-[0_0_20px_rgba(76,127,255,0.2)] hover:shadow-[0_0_30px_rgba(76,127,255,0.4)] px-6 py-2.5 rounded-lg font-mono text-[14px] leading-none text-dab-bg font-bold active:scale-95 transition-all flex items-center gap-2"
+      <LiquidCtaButton
         href={NAV.cta.href}
+        client:load
+        tint="rgba(59, 91, 255, 0.18)"
+        textClass="text-dab-cyan"
+        turbulenceSeed={4}
       >
         {NAV.cta.label}
         {NAV.cta.icon === 'arrow_forward' && (
@@ -36,7 +40,7 @@ import { NAV } from '../../data/hero';
             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>
         )}
-      </a>
+      </LiquidCtaButton>
     </div>
 
     <!-- Mobile Nav Wrapper -->
@@ -49,13 +53,3 @@ import { NAV } from '../../data/hero';
     />
   </div>
 </nav>
-
-<style>
-  .glass-panel {
-    background: rgba(11, 13, 20, 0.6);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-top: 1px solid rgba(179, 197, 255, 0.2);
-    border-bottom: 1px solid rgba(31, 41, 51, 1);
-  }
-</style>

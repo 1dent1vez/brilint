@@ -18,7 +18,7 @@ module.exports = {
         'dab-border': '#1F2933',
         'dab-rose': '#F43F5E',
         'dab-amber': '#F59E0B',
-        'dab-cyan': '#22D3EE',
+        'dab-cyan': '#3B5BFF', // acento de entrada (cobalto, sustituye al cyan viejo)
       },
       fontFamily: {
         display: ['Inter', 'system-ui', 'ui-sans-serif', 'sans-serif'],

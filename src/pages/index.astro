@@ -2,7 +2,6 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro';
 import Nav from '../components/nav/Nav.astro';
 import Services from '../components/services/Services.astro';
-import Paquetes from '../components/paquetes/Paquetes.astro';
 import Proceso from '../components/proceso/Proceso.astro';
 import ContactSection from '../components/form/ContactSection.astro';
 import FAQ from '../components/sections/Faq.astro';
@@ -20,7 +19,10 @@ import TrustBanner from '../components/sections/TrustBanner.astro';
 >
   <Nav />
 
-  <main class="bg-dab-bg">
+  <main class="bg-dab-bg relative">
+    <!-- Aurora de fondo global: da "algo detrás" para que el glass líquido refracte -->
+    <div class="liquid-aurora" aria-hidden="true"></div>
+
     <Hero />
     <MetricsSection />
     <Services />
@@ -36,3 +38,14 @@ import TrustBanner from '../components/sections/TrustBanner.astro';
 
   <Footer />
 </DefaultLayout>
+
+<style is:global>
+  /* En desktop la hero no cabe a 100%: replicamos el "zoom al 80%" que se hace
+     manual en el navegador para que al abrir ya se vea completo (botones + demo).
+     Solo en pantallas >=1024px. En móvil/tablet se queda a 100%. */
+  @media (min-width: 1024px) {
+    html {
+      zoom: 0.9;
+    }
+  }
+</style>

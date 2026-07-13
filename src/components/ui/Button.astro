@@ -15,6 +15,10 @@ const variants = {
     'bg-dab-accent text-dab-bg hover:bg-dab-accent/90',
   ghost:
     'bg-transparent border border-dab-border text-dab-text hover:border-dab-accent',
+  cyan:
+    'bg-dab-cyan text-dab-bg hover:bg-dab-cyan/90 shadow-[0_0_24px_rgba(59,91,255,0.35)]',
+  'cyan-glass':
+    'bg-dab-cyan/15 text-dab-cyan border border-dab-cyan/40 hover:bg-dab-cyan/25 hover:border-dab-cyan/60 backdrop-blur-xl shadow-[0_0_24px_rgba(59,91,255,0.18)]',
 };
 
 const classes = `${base} ${variants[variant] ?? variants.primary} ${className}`.trim();

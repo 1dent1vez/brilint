@@ -14,7 +14,7 @@ import MetricsAnimation from '../../react/MetricsAnimation.jsx';
   <div class="relative z-10 max-w-[1280px] mx-auto px-5 md:px-12">
     <!-- Header -->
     <header class="text-center mb-16 md:mb-24 lg:mb-32 max-w-4xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-dab-border/30 bg-dab-surface/50 backdrop-blur-sm mb-6 md:mb-8 metric-header-badge">
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full liquid-surface mb-6 md:mb-8 metric-header-badge">
         <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-dab-rose animate-pulse" aria-hidden="true"></span>
         <span class="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-dab-muted">
           {metricasHeader.label}
@@ -30,8 +30,8 @@ import MetricsAnimation from '../../react/MetricsAnimation.jsx';
       </p>
     </header>
 
-    <!-- Métricas -->
-    <div class="space-y-16 md:space-y-24 lg:space-y-32">
+    <!-- Métricas (embudo simétrico: ancho y tamaño escalan por la cifra) -->
+    <div class="space-y-10 md:space-y-16 lg:space-y-20 max-w-[1100px] mx-auto">
       {metricas.map((metrica, index) => (
         <MetricItem metrica={metrica} index={index} />
       ))}

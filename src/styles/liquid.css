@@ -1,0 +1,156 @@
+/* ============================================================
+   DAB Liquid iOS — Design System Tokens
+   Capa base del sistema glass líquido estilo iOS.
+   Se importa en base.css (al final) o en el layout global.
+   ============================================================ */
+
+:root {
+  /* Tintes de vidrio */
+  --glass-tint-cyan: rgba(59, 91, 255, 0.16);
+  --glass-tint-accent: rgba(123, 97, 255, 0.16);
+  --glass-tint-blue: rgba(76, 127, 255, 0.14);
+  --glass-tint-neutral: rgba(255, 255, 255, 0.06);
+
+  /* Borde espejo iOS: highlight arriba-izq + sombra interior */
+  --glass-border-highlight: rgba(179, 197, 255, 0.35);
+  --glass-border-base: rgba(31, 41, 51, 0.6);
+  --glass-inset-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.25);
+
+  /* Glow por defecto */
+  --glass-glow: 0 0 40px rgba(76, 127, 255, 0.06);
+}
+
+/* ---------- Superficie de vidrio líquido (solo CSS, sin SVG filter) ---------- */
+/* Usar en cards/sections grandes: barato, escalable, coherente con el isla LiquidGlass. */
+.liquid-surface {
+  background: var(--glass-tint-neutral);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--glass-border-base);
+  border-top-color: var(--glass-border-highlight);
+  border-left-color: var(--glass-border-highlight);
+  box-shadow: var(--glass-inset-shadow), var(--glass-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tinte cian */
+.liquid-surface--cyan {
+  background: var(--glass-tint-cyan);
+  --glass-glow: 0 0 40px rgba(59, 91, 255, 0.10);
+}
+/* Tinte morado/accent */
+.liquid-surface--accent {
+  background: var(--glass-tint-accent);
+  --glass-glow: 0 0 40px rgba(123, 97, 255, 0.10);
+}
+/* Tinte azul */
+.liquid-surface--blue {
+  background: var(--glass-tint-blue);
+}
+
+/* Tinte verde WhatsApp para el FAB flotante */
+.liquid-surface--whatsapp {
+  background: rgba(37, 211, 102, 0.16);
+  --glass-glow: 0 0 40px rgba(37, 211, 102, 0.18);
+  border-color: rgba(37, 211, 102, 0.4);
+  border-top-color: rgba(37, 211, 102, 0.55);
+  border-left-color: rgba(37, 211, 102, 0.55);
+}
+
+/* Reflejo diagonal sutil que recorre el borde (sheen) */
+.liquid-surface::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.08) 48%,
+    rgba(255, 255, 255, 0.02) 52%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.liquid-surface:hover::after {
+  opacity: 1;
+}
+
+/* ---------- Solo borde espejo (pills, tags, inputs) ---------- */
+.liquid-border {
+  background: rgba(11, 13, 20, 0.4);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid var(--glass-border-base);
+  border-top-color: var(--glass-border-highlight);
+  border-left-color: var(--glass-border-highlight);
+  box-shadow: var(--glass-inset-shadow);
+}
+.liquid-border--cyan {
+  border-color: rgba(59, 91, 255, 0.35);
+  border-top-color: rgba(59, 91, 255, 0.5);
+  border-left-color: rgba(59, 91, 255, 0.5);
+}
+.liquid-border--accent {
+  border-color: rgba(123, 97, 255, 0.4);
+  border-top-color: rgba(123, 97, 255, 0.55);
+  border-left-color: rgba(123, 97, 255, 0.55);
+}
+
+/* ---------- Menú móvil: vidrio opaco que SIEMPRE se lee ---------- */
+/* El .liquid-surface normal queda casi transparente sobre secciones claras/oscuras.
+   Este modifica el fondo a oscuro opaco + blur fuerte para legibilidad total. */
+.mobile-menu-solid {
+  background: rgba(8, 10, 16, 0.82);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(123, 97, 255, 0.45);
+  border-top-color: rgba(179, 197, 255, 0.5);
+  border-left-color: rgba(179, 197, 255, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+/* ---------- Aurora de fondo (para que el glass refracte) ---------- */
+/* Se coloca como capa absoluta detrás del contenido de cada sección. */
+.liquid-aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.liquid-aurora::before,
+.liquid-aurora::after {
+  content: '';
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.22;
+}
+.liquid-aurora::before {
+  top: -10%;
+  left: -5%;
+  background: radial-gradient(circle, #4C7FFF 0%, transparent 70%);
+}
+.liquid-aurora::after {
+  bottom: -10%;
+  right: -5%;
+  background: radial-gradient(circle, #3B5BFF 0%, transparent 70%);
+  opacity: 0.16;
+}
+
+/* ---------- Respeto a preferencias de movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-surface::after {
+    transition: none;
+  }
+}

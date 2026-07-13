@@ -1,13 +1,15 @@
 ---
 const { metrica, index } = Astro.props;
 
-const isEven = index % 2 === 0;
-const layoutClass = isEven ? 'md:flex-row' : 'md:flex-row-reverse';
-const numberAlign = isEven ? 'md:justify-start' : 'md:justify-end';
-const textOffset = isEven ? 'md:pr-6 lg:pr-12' : 'md:pl-6 lg:pl-12';
-
-// Mobile-first offsets: translate ±4% on tablet (md:), ±8% on desktop (lg:)
-const offsetClass = isEven ? 'md:-translate-x-[4%] lg:-translate-x-[8%]' : 'md:translate-x-[4%] lg:translate-x-[8%]';
+// Embudo simétrico (mobile-first + responsive): el ancho y el tamaño del
+// número escalan según la magnitud de la cifra. 40% = grande, 20% = medio,
+// 5 HRS = chico. Cards centradas, formando un cono descendente.
+const sizeByNumber = {
+  40: { width: 'w-[92%] sm:w-[78%] lg:w-[70%]', num: 'text-funnel-xl', title: 'text-funnel-title-xl' },
+  20: { width: 'w-[82%] sm:w-[66%] lg:w-[58%]', num: 'text-funnel-lg', title: 'text-funnel-title-lg' },
+  5:  { width: 'w-[72%] sm:w-[54%] lg:w-[46%]', num: 'text-funnel-md', title: 'text-funnel-title-md' }
+};
+const funnel = sizeByNumber[metrica.numero] ?? sizeByNumber[20];
 
 const colorTextClass = {
   rose: 'text-dab-rose',
@@ -23,16 +25,13 @@ const colorBgClass = {
 ---
 
 <article 
-  class={`metric-item flex flex-col ${layoutClass} items-center gap-8 md:gap-12 lg:gap-24 relative ${offsetClass}`}
+  class={`metric-item funnel-block flex flex-col items-center text-center mx-auto ${funnel.width}`}
   data-metrica-index={index}
 >
-  <!-- Número grande -->
-  <div class={`w-full md:w-5/12 flex-shrink-0 relative flex ${numberAlign} justify-center`}>
-    <!-- Glow decorativo (solo desktop) -->
-    <div class="absolute -inset-4 md:-inset-8 lg:-inset-10 bg-dab-accent/5 rounded-full blur-2xl lg:blur-3xl -z-10 opacity-60 lg:opacity-100" aria-hidden="true"></div>
-    
-    <div class="metric-number flex items-baseline gap-1 md:gap-2">
-      <span class="font-body font-black text-fluid-number leading-none tracking-[-0.04em] text-dab-accent">
+  <!-- Número grande (SIN recuadro, solo dígitos en color de acento) -->
+  <div class="w-full flex-shrink-0 relative flex justify-center">
+    <div class={`metric-number flex items-baseline gap-1 sm:gap-2 ${funnel.num}`}>
+      <span class={`font-body font-black leading-none tracking-[-0.04em] ${colorTextClass[metrica.colorLabel]}`}>
         {metrica.numero}
       </span>
       {metrica.sufijo !== '%' && (
@@ -41,7 +40,7 @@ const colorBgClass = {
         </span>
       )}
       {metrica.sufijo === '%' && (
-        <span class="font-body font-black text-fluid-number leading-none tracking-[-0.04em] text-dab-accent">
+        <span class={`font-body font-black leading-none tracking-[-0.04em] ${colorTextClass[metrica.colorLabel]}`}>
           %
         </span>
       )}
@@ -49,9 +48,9 @@ const colorBgClass = {
   </div>
 
   <!-- Card de información -->
-  <div class={`w-full md:w-7/12 flex flex-col items-start bg-dab-surface/60 backdrop-blur-xl border border-dab-border/50 p-6 md:p-8 lg:p-12 rounded-xl lg:rounded-2xl relative overflow-hidden group hover:border-dab-accent/30 transition-colors duration-500 metric-card ${textOffset}`}>
-    <!-- Glow decorativo del color de la métrica (solo desktop/hover) -->
-    <div class={`absolute top-0 ${isEven ? 'right-0' : 'left-0'} w-32 h-32 ${colorBgClass[metrica.colorLabel]} blur-2xl rounded-full ${isEven ? '-mr-16' : '-ml-16'} -mt-16`} aria-hidden="true"></div>
+  <div class={`w-full flex flex-col items-center liquid-surface rounded-xl lg:rounded-2xl relative overflow-visible group p-5 md:p-6 lg:p-8 mt-4 md:mt-6`}>
+    <!-- Glow decorativo del color de la métrica -->
+    <div class={`absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 ${colorBgClass[metrica.colorLabel]} blur-2xl rounded-full -mt-16`} aria-hidden="true"></div>
     
     <!-- Label -->
     <span class={`font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] ${colorTextClass[metrica.colorLabel]} mb-3 md:mb-4 metric-label`}>
@@ -59,21 +58,21 @@ const colorBgClass = {
     </span>
     
     <!-- Título -->
-    <h3 class="font-body font-bold text-fluid-title text-dab-text mb-3 md:mb-4 leading-tight metric-titulo">
+    <h3 class={`font-body font-bold ${funnel.title} text-dab-text mb-3 md:mb-4 leading-tight break-words metric-titulo`}>
       {metrica.titulo}
     </h3>
     
     <!-- Descripción -->
-    <p class="font-body font-normal text-sm md:text-base text-dab-muted mb-6 md:mb-8 leading-relaxed metric-descripcion">
+    <p class="font-body font-normal text-sm md:text-base text-dab-muted mb-6 md:mb-8 leading-relaxed break-words metric-descripcion max-w-prose">
       {metrica.descripcion}
     </p>
     
     <!-- Solución -->
-    <div class="w-full flex items-center gap-3 md:gap-4 bg-dab-bg/50 border border-dab-border/30 rounded-lg p-3 md:p-4 metric-solucion">
+    <div class="w-full flex items-center justify-center gap-3 md:gap-4 liquid-border rounded-lg p-3 md:p-4 metric-solucion">
       <span class="material-symbols-outlined text-dab-cyan text-xl md:text-2xl" aria-hidden="true">
         {metrica.solucion.icono}
       </span>
-      <div>
+      <div class="text-left">
         <p class="font-mono text-[10px] md:text-xs text-dab-cyan uppercase tracking-wider mb-1">
           {metrica.solucion.label}
         </p>
@@ -86,13 +85,15 @@ const colorBgClass = {
 </article>
 
 <style>
-  .text-fluid-number {
-    font-size: clamp(4rem, 8vw + 1rem, 8.75rem); /* 64px → 140px */
-  }
   .text-fluid-suffix {
     font-size: clamp(1.125rem, 1vw + 0.75rem, 1.5rem); /* 18px → 24px */
   }
-  .text-fluid-title {
-    font-size: clamp(1.25rem, 2vw + 0.5rem, 2.0625rem); /* 20px → 33px */
-  }
+  /* Números del embudo (escala por magnitud de la cifra) */
+  .text-funnel-md { font-size: clamp(2.75rem, 9vw, 4.5rem); }   /* 5 HRS  ~44-72px */
+  .text-funnel-lg { font-size: clamp(3.5rem, 12vw, 6rem); }    /* 20%    ~56-96px */
+  .text-funnel-xl { font-size: clamp(4.25rem, 16vw, 8.75rem); } /* 40%    ~68-140px */
+  /* Títulos del embudo */
+  .text-funnel-title-md { font-size: clamp(1.1rem, 2.4vw, 1.5rem); }
+  .text-funnel-title-lg { font-size: clamp(1.25rem, 3vw, 1.85rem); }
+  .text-funnel-title-xl { font-size: clamp(1.5rem, 3.6vw, 2.25rem); }
 </style>

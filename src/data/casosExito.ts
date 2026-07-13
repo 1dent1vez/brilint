@@ -79,28 +79,4 @@ export const casosExito: CasoExito[] = [
     ],
     techStack: ['Astro', 'Meta Ads', 'Google Business'],
   },
-  {
-    id: 'dental-smile-domina',
-    servicio: 'domina',
-    proyecto: {
-      titulo: 'Dental Smile Toluca',
-      tipo: 'Ecosistema completo: Web + Chatbot + CRM + Ads',
-      descripcion: 'Consultorio dental con landing de 7 secciones, chatbot calificador de urgencias, CRM HubSpot, campañas Meta/Google Ads y dashboard de métricas en tiempo real.',
-      zona: 'Toluca',
-      imagen: '',
-    },
-    testimonio: {
-      nombre: 'Dra. Fernanda L.',
-      rol: 'Directora de Dental Smile',
-      mensaje: 'Mi asistente solo atiende los pacientes que el chatbot ya calificó. Sé exactamente cuánto cuesta cada paciente nuevo y por primera vez puedo dormir sin revisar el celular cada hora.',
-      esVerificado: true,
-      badgeLabel: 'Reseña verificada',
-    },
-    metricas: [
-      { valor: '+291%', etiqueta: 'Pacientes nuevos' },
-      { valor: '3.4x', etiqueta: 'ROI primer trimestre' },
-      { valor: '68%', etiqueta: 'Tasa de retención' },
-    ],
-    techStack: ['HubSpot', 'WhatsApp API', 'Meta Ads', 'Google Ads'],
-  },
 ];

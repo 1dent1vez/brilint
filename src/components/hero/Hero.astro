@@ -2,6 +2,8 @@
 import { HERO } from '../../data/hero';
 import { ConstellationBg } from '../../react/ConstellationBg.jsx';
 import { HeroMotion, HeroMotionItem, BadgeMotion } from '../../react/HeroMotion.jsx';
+import ChatDemo from '../../react/ChatDemo.jsx';
+import LiquidCtaButton from '../../react/LiquidCtaButton.jsx';
 ---
 
 <section
@@ -25,8 +27,8 @@ import { HeroMotion, HeroMotionItem, BadgeMotion } from '../../react/HeroMotion.
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_55%,transparent_0%,rgba(5,6,10,0.55)_70%)] pointer-events-none"></div>
   </div>
 
-  <!-- Simple Badge right below the navbar -->
-  <div class="absolute top-[96px] inset-x-0 z-20 pointer-events-none flex justify-center px-5">
+  <!-- Simple Badge right below the navbar (visible en móvil/tablet, oculto en desktop) -->
+  <div class="hero-badge absolute top-[96px] inset-x-0 z-20 pointer-events-none flex justify-center px-5">
     <BadgeMotion client:load delay={0.1}>
       <span class="inline-block font-mono text-[11px] sm:text-[12.5px] font-bold tracking-[0.22em] text-dab-accent uppercase text-center">
         {HERO.badge}
@@ -39,102 +41,63 @@ import { HeroMotion, HeroMotionItem, BadgeMotion } from '../../react/HeroMotion.
     class="relative z-10 max-w-[1280px] mx-auto px-5 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center"
   >
     <!-- Left Content Area -->
-    <HeroMotion client:load className="col-span-1 lg:col-span-7 flex flex-col items-start justify-center py-20 lg:py-0">
-
-
-      <!-- Headline -->
+    <HeroMotion client:load className="col-span-1 lg:col-span-6 flex flex-col items-start justify-center py-20 lg:py-0">
+      <!-- Headline (estilo cinético: peso dividido, "horas" massive cobalto) -->
       <HeroMotionItem client:load delay={0.1}>
         <h1
-          class="font-sans text-[40px] lg:text-[72px] font-black leading-[1.2] lg:leading-[1.1] tracking-[-0.02em] lg:tracking-[-0.04em] text-dab-text mb-6 max-w-[800px]"
+          class="font-sans text-[34px] sm:text-[44px] lg:text-[60px] xl:text-[68px] leading-[1.15] lg:leading-[1.05] tracking-[-0.02em] lg:tracking-[-0.04em] mb-6 max-w-[680px]"
         >
-          {HERO.headline.prefix}<span class="text-gradient">{HERO.headline.highlight}</span>{HERO.headline.suffix}
+          <span class="font-extralight text-dab-text">{HERO.headline.prefix}</span><span class="text-dab-cyan font-black lg:text-[80px] xl:text-[96px] leading-[0.9]">{HERO.headline.highlight}</span><span class="font-medium text-dab-text">{HERO.headline.suffix}</span>
         </h1>
       </HeroMotionItem>
 
-      <!-- Subheadline -->
+      <!-- Subheadline (keyword "tiempo" en cobalto) -->
       <HeroMotionItem client:load delay={0.2}>
-        <p class="font-sans text-[18px] leading-[1.6] text-dab-muted mb-10 max-w-[600px]">
-          {HERO.subheadline}
+        <p class="font-sans text-[17px] sm:text-[18px] lg:text-[19px] leading-[1.6] text-dab-muted mb-10 max-w-[560px]">
+          {HERO.subheadline.split('tiempo').map((part, i, arr) => (
+            <Fragment>
+              {part}
+              {i < arr.length - 1 && <span class="text-dab-cyan font-medium">tiempo</span>}
+            </Fragment>
+          ))}
         </p>
       </HeroMotionItem>
 
-      <!-- Actions -->
+      <!-- Actions: jerarquía clara (principal hero cobalto full-width, secundario ghost compacto) -->
       <HeroMotionItem client:load delay={0.3} className="w-full sm:w-auto">
-        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <a
-            class="btn-primary px-8 py-4 rounded-lg font-mono text-[14px] font-medium leading-none tracking-[0.05em] text-dab-bg font-bold active:scale-95 transition-transform flex items-center justify-center gap-2"
+        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-center sm:items-center">
+          <LiquidCtaButton
             href={HERO.ctas[0].href}
+            client:load
+            tint="rgba(59, 91, 255, 0.18)"
+            textClass="text-dab-cyan"
+            class="w-full sm:w-auto px-7 py-4 text-[15px] sm:text-base"
           >
-            {HERO.ctas[0].label}
-            {HERO.ctas[0].icon === 'play_arrow' && (
+            <span class="flex items-center justify-center gap-2 font-mono font-semibold leading-none tracking-[0.04em]">
+              {HERO.ctas[0].label}
               <svg class="h-[18px] w-[18px] text-current fill-current" viewBox="0 -960 960 960" aria-hidden="true">
-                <path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/>
+                <path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z" />
               </svg>
-            )}
-          </a>
+            </span>
+          </LiquidCtaButton>
           <a
-            class="btn-ghost px-8 py-4 rounded-lg font-mono text-[14px] font-medium leading-none tracking-[0.05em] text-dab-accent active:scale-95 transition-transform flex items-center justify-center gap-2"
             href={HERO.ctas[1].href}
+            class="group mx-auto sm:mx-0 inline-flex w-auto items-center justify-center gap-2 px-5 py-3 rounded-2xl border border-dab-accent/40 text-dab-accent font-mono text-[13px] sm:text-sm font-medium tracking-[0.04em] bg-dab-accent/5 hover:bg-dab-accent/12 hover:border-dab-accent/60 backdrop-blur-md transition-all duration-200 active:scale-[0.98]"
           >
             {HERO.ctas[1].label}
-            {HERO.ctas[1].icon === 'calendar_today' && (
-              <svg class="h-[18px] w-[18px] text-current fill-current" viewBox="0 -960 960 960" aria-hidden="true">
-                <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/>
-              </svg>
-            )}
+            <svg class="h-[16px] w-[16px] text-current fill-current transition-transform duration-300 group-hover:translate-x-1" viewBox="0 -960 960 960" aria-hidden="true">
+              <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+            </svg>
           </a>
-        </div>
-      </HeroMotionItem>
-
-      <!-- Trust Indicators / Terminal snippet -->
-      <HeroMotionItem client:load delay={0.4} className="w-full max-w-md">
-        <div class="mt-16 w-full max-w-md">
-          <div
-            class="bg-[#05060A] border border-dab-border/30 rounded-lg p-4 font-mono text-[12px] text-dab-accent/70 relative overflow-hidden group"
-          >
-            <div
-              class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-            </div>
-            <div class="flex items-center gap-2 mb-2 pb-2 border-b border-dab-border/20">
-              <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-dab-cyan/50"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-dab-accent/50"></div>
-              <span class="ml-2 text-dab-muted/50">{HERO.terminal.filename}</span>
-            </div>
-            <div class="space-y-1">
-              {
-                HERO.terminal.lines.map((line) => (
-                  line.status === 'OK' ? (
-                    <p>
-                      &gt; {line.text} <span class="text-dab-cyan">[{line.status}]</span>
-                    </p>
-                  ) : (
-                    <p class="animate-pulse">&gt; {line.text}</p>
-                  )
-                ))
-              }
-            </div>
-          </div>
         </div>
       </HeroMotionItem>
     </HeroMotion>
 
-    <!-- Right Spacer for 3D element focus -->
-    <div class="col-span-1 lg:col-span-5 hidden lg:block h-full relative">
-      <!-- The 3D animation occupies the absolute background, but this empty column ensures the text doesn't overlap the right side where the sphere is typically focused -->
-    </div>
+    <!-- Right column: Chat demo animado (visible en desktop, protagonista) -->
+    <HeroMotionItem client:load delay={0.4} className="col-span-1 lg:col-span-6 w-full flex justify-center lg:justify-end lg:pl-8">
+      <ChatDemo client:load />
+    </HeroMotionItem>
   </div>
-
-  <!-- Scroll indicator -->
-  <HeroMotionItem
-    client:load
-    delay={0.8}
-    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-  >
-    <span class="font-mono text-[10px] text-dab-muted uppercase tracking-widest">{HERO.scroll}</span>
-    <div class="w-[1px] h-12 bg-gradient-to-b from-dab-accent/50 to-transparent"></div>
-  </HeroMotionItem>
 </section>
 
 <style>
@@ -154,13 +117,13 @@ import { HeroMotion, HeroMotionItem, BadgeMotion } from '../../react/HeroMotion.
     --tw-gradient-to: #7B61FF var(--tw-gradient-to-position);
   }
   .text-dab-cyan {
-    color: #28DFB5;
+    color: #3B5BFF;
   }
   .bg-dab-cyan {
-    background-color: #28DFB5;
+    background-color: #3B5BFF;
   }
   .border-dab-cyan {
-    border-color: #28DFB5;
+    border-color: #3B5BFF;
   }
 
   /* Scoped Stitch utilities */
@@ -195,5 +158,12 @@ import { HeroMotion, HeroMotionItem, BadgeMotion } from '../../react/HeroMotion.
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Badge superior: visible en móvil/tablet, oculto en desktop (>=1024px) */
+  @media (min-width: 1024px) {
+    .hero-badge {
+      display: none;
+    }
   }
 </style>
