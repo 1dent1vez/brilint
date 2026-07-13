@@ -38,39 +38,36 @@ export default function MuroConfianzaMotion({ casos }) {
 
   const renderCardContent = (caso) => (
     <>
-      {/* Imagen del proyecto (parte superior) */}
-      <div className="relative rounded-xl liquid-border overflow-hidden h-56 sm:h-64">
+      {/* Badges en fila arriba, fuera de la imagen, delgadas y una sola línea; en móvil envuelven sin cortarse */}
+      <div className="flex flex-wrap items-center gap-2 px-4 sm:px-5 pt-4 sm:pt-5">
+        <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] liquid-border liquid-border--accent text-dab-accent whitespace-nowrap">
+          {caso.proyecto.tipo}
+        </span>
+
+        {caso.testimonio.esVerificado && (
+          <span className="inline-flex items-center gap-1.5 rounded-full liquid-border liquid-border--accent px-3 py-1 text-[10px] font-semibold text-dab-text uppercase tracking-[0.12em] shrink-0 whitespace-nowrap">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/35 animate-[ping_1.8s_ease-out_infinite]"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400"></span>
+            </span>
+            {caso.testimonio.badgeLabel}
+          </span>
+        )}
+      </div>
+
+      {/* Imagen del proyecto (laptop completa, sin recortar) */}
+      <div className="relative rounded-xl liquid-border overflow-hidden h-52 sm:h-64 mx-4 sm:mx-5 mt-3 bg-dab-bg/40">
         {caso.proyecto.imagen ? (
           <img
             src={caso.proyecto.imagen}
             alt={caso.proyecto.titulo}
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-contain object-top"
             loading="lazy"
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-dab-accent/15 to-purple-950/20 gap-2">
             <span className="text-5xl animate-[pulse-glow_2s_infinite]">🦷</span>
             <span className="text-xs text-dab-muted/60 uppercase tracking-widest font-body">Ecosistema Médico</span>
-          </div>
-        )}
-
-        {/* Badge de servicio */}
-        <div className="absolute top-3 left-3">
-          <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] liquid-border liquid-border--accent text-dab-accent">
-            {caso.proyecto.tipo}
-          </span>
-        </div>
-
-        {/* Badge verificado */}
-        {caso.testimonio.esVerificado && (
-          <div className="absolute top-3 right-3">
-            <span className="inline-flex items-center gap-2 rounded-full liquid-border liquid-border--accent px-3 py-1 text-[11px] font-semibold text-dab-text uppercase tracking-[0.14em]">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400/35 animate-[ping_1.8s_ease-out_infinite]"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-              </span>
-              {caso.testimonio.badgeLabel}
-            </span>
           </div>
         )}
       </div>
@@ -122,7 +119,7 @@ export default function MuroConfianzaMotion({ casos }) {
               {caso.techStack.map((tech, i) => (
                 <span
                   key={i}
-                  className="inline-flex items-center rounded-full liquid-border liquid-border--accent px-2 py-1 text-[10px] font-semibold text-dab-text"
+                  className="inline-flex items-center rounded-full liquid-border liquid-border--accent px-3 py-1.5 text-[10px] font-semibold text-dab-text"
                 >
                   {tech}
                 </span>
