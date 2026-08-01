@@ -1,0 +1,90 @@
+---
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import Nav from '../../components/nav/Nav.astro';
+import Footer from '../../components/footer/Footer.astro';
+import Container from '../../components/ui/Container.astro';
+import LiquidCtaButton from '../../react/LiquidCtaButton.jsx';
+import { WHATSAPP_URL } from '../../config/contact';
+import { seoArticles, getSeoArticle } from '../../data/seoArticles';
+
+export function getStaticPaths() {
+  return seoArticles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article: articleFromProps } = Astro.props;
+const article = articleFromProps ?? getSeoArticle(Astro.params.slug ?? '');
+
+if (!article) {
+  return Astro.redirect('/404');
+}
+
+const canonical = `https://www.dabtech.me/guias/${article.slug}`;
+const ctaWhatsapp = WHATSAPP_URL(`Hola, quiero mejorar mi presencia digital. Leí la guía ${article.title}`);
+---
+
+<DefaultLayout title={`${article.title} | DAB`} description={article.description} canonical={canonical}>
+  <Nav />
+  <main class="bg-dab-bg pt-[72px] relative">
+    <div class="liquid-aurora" aria-hidden="true"></div>
+    <article class="py-14 md:py-20">
+      <Container className="max-w-4xl">
+        <p class="font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-dab-accent/80">{article.eyebrow}</p>
+        <h1 class="mt-5 font-body font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.12] text-white">{article.title}</h1>
+        <p class="mt-6 text-lg text-dab-muted leading-relaxed max-w-3xl">{article.intro}</p>
+
+        <div class="mt-12 space-y-10">
+          {article.sections.map((section) => (
+            <section class="space-y-4">
+              <h2 class="font-body font-bold text-2xl sm:text-3xl text-white">{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => <p class="text-base text-dab-muted leading-relaxed">{paragraph}</p>)}
+            </section>
+          ))}
+        </div>
+
+        {article.related && article.related.length > 0 && (
+          <nav class="mt-12 border-t border-dab-border/60 pt-8" aria-label="Guías relacionadas">
+            <h2 class="font-body font-bold text-sm uppercase tracking-[0.2em] text-dab-muted">Sigue leyendo</h2>
+            <div class="mt-4 grid gap-4 sm:grid-cols-2">
+              {article.related.map((slug) => {
+                const related = getSeoArticle(slug);
+                if (!related) return null;
+                return (
+                  <a
+                    href={`/guias/${related.slug}`}
+                    class="liquid-surface rounded-xl p-4 sm:p-5 block transition duration-200 hover:border-dab-accent/50"
+                  >
+                    <span class="block font-mono text-[10px] uppercase tracking-[0.18em] text-dab-accent/70">{related.eyebrow}</span>
+                    <span class="mt-2 block font-body font-semibold text-white leading-snug">{related.title}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </nav>
+        )}
+
+        <aside class="mt-14 liquid-surface rounded-2xl p-6 sm:p-8 border-l-2 border-dab-cyan/60">
+          <p class="text-base sm:text-lg text-dab-text leading-relaxed">{article.cta}</p>
+          <div class="mt-5">
+            <LiquidCtaButton href={ctaWhatsapp} target="_blank" rel="noopener noreferrer" client:load tint="rgba(59, 91, 255, 0.18)" textClass="text-dab-cyan" turbulenceSeed={21}>
+              Hablar con DAB <span class="ml-1">→</span>
+            </LiquidCtaButton>
+          </div>
+        </aside>
+      </Container>
+    </article>
+  </main>
+  <Footer />
+</DefaultLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.description,
+  author: { '@type': 'Organization', name: 'DAB', url: 'https://www.dabtech.me/' },
+  publisher: { '@type': 'Organization', name: 'DAB', url: 'https://www.dabtech.me/' },
+  mainEntityOfPage: canonical,
+})} />

@@ -37,3 +37,4 @@ stitch-hero-dab.html
 # DAB and Prompt files
 DAB_*.md
 prompt_*.md
+.vercel

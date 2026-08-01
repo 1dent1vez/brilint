@@ -1,0 +1,62 @@
+---
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import Nav from '../../components/nav/Nav.astro';
+import Footer from '../../components/footer/Footer.astro';
+import Container from '../../components/ui/Container.astro';
+import LiquidCtaButton from '../../react/LiquidCtaButton.jsx';
+import { seoArticles } from '../../data/seoArticles';
+import { WHATSAPP_URL } from '../../config/contact';
+
+const cta = WHATSAPP_URL('Hola, leí las guías de crecimiento y quiero aplicar esto a mi negocio');
+---
+
+<DefaultLayout
+  title="Guías de crecimiento para negocios del Valle de Toluca | DAB"
+  description="Guías prácticas y sin humo para negocios de Toluca, Metepec y Edomex: costos de página web, SEO local, citas, WhatsApp y automatización."
+  canonical="https://www.dabtech.me/guias/"
+>
+  <Nav />
+  <main class="bg-dab-bg pt-[72px] relative">
+    <div class="liquid-aurora" aria-hidden="true"></div>
+    <section class="py-14 md:py-20">
+      <Container className="max-w-5xl">
+        <p class="font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-dab-accent/80">Contenido editorial · Valle de Toluca</p>
+        <h1 class="mt-5 font-body font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.12] text-white">
+          Guías de crecimiento para negocios locales
+        </h1>
+        <p class="mt-6 text-lg text-dab-muted leading-relaxed max-w-3xl">
+          Escribimos para negocios de Toluca, Metepec y el Estado de México, no para lectores genéricos: costos reales,
+          canales que sí funcionan en la zona y automatizaciones aplicables. Sin promesas de posiciones garantizadas.
+        </p>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2">
+          {seoArticles.map((article) => (
+            <a
+              href={`/guias/${article.slug}`}
+              class="liquid-surface rounded-2xl p-6 sm:p-7 block flex flex-col transition duration-200 hover:border-dab-accent/50"
+            >
+              <span class="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.18em] text-dab-accent/70">{article.eyebrow}</span>
+              <h2 class="mt-3 font-body font-bold text-xl sm:text-2xl tracking-tight text-white leading-snug">{article.title}</h2>
+              <p class="mt-3 text-sm text-dab-muted leading-relaxed">{article.description}</p>
+              <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-dab-cyan">
+                Leer guía <span aria-hidden="true">→</span>
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <aside class="mt-14 liquid-surface rounded-2xl p-6 sm:p-8 border-l-2 border-dab-cyan/60">
+          <p class="text-base sm:text-lg text-dab-text leading-relaxed">
+            ¿Ves en estas guías un problema parecido al de tu negocio? Cuéntanoslo y lo atacamos con un diagnóstico.
+          </p>
+          <div class="mt-5">
+            <LiquidCtaButton href={cta} target="_blank" rel="noopener noreferrer" client:load tint="rgba(59, 91, 255, 0.18)" textClass="text-dab-cyan" turbulenceSeed={21}>
+              Hablar con DAB <span class="ml-1">→</span>
+            </LiquidCtaButton>
+          </div>
+        </aside>
+      </Container>
+    </section>
+  </main>
+  <Footer />
+</DefaultLayout>
