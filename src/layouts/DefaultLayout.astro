@@ -30,7 +30,7 @@ const {
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:image" content="/og-image.webp" />
+    <meta property="og:image" content={new URL('og-image.webp', Astro.site).href} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -54,8 +54,14 @@ const {
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
+      '@id': new URL('/', Astro.site).href + '#business',
       name: 'DAB',
       image: new URL('og-image.webp', Astro.site).href,
+      logo: new URL('logo.svg', Astro.site).href,
+      url: new URL('/', Astro.site).href,
+      telephone: '+52 1 7223579869',
+      priceRange: '$$',
+      description: pageDescription,
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Metepec',
@@ -69,9 +75,16 @@ const {
         { '@type': 'City', name: 'Lerma' },
         { '@type': 'City', name: 'San Mateo Atenco' },
       ],
-      url: new URL('/', Astro.site).href,
-      telephone: '+52 1 7223579869',
-      priceRange: '$$',
+      sameAs: [
+        'https://www.instagram.com/dab.ia.mx',
+        'https://www.facebook.com/profile.php?id=61582174464870',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: '+52 1 7223579869',
+        availableLanguage: 'Spanish',
+      },
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
@@ -86,7 +99,6 @@ const {
           closes: '15:00',
         },
       ],
-      description: pageDescription,
     })} />
 
     <!-- Calendly Widget CSS -->
