@@ -11,7 +11,7 @@ const {
 } = Astro.props;
 ---
 
-<html lang="es" class="scroll-smooth">
+<html lang="es-MX" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
 
@@ -28,6 +28,7 @@ const {
     <meta name="description" content={pageDescription} />
 
     <!-- Open Graph -->
+    <meta property="og:site_name" content="DAB — dabtech.me" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content={new URL('og-image.webp', Astro.site).href} />
@@ -50,12 +51,15 @@ const {
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block"
     />
 
-    <!-- JSON-LD -->
+    <!-- JSON-LD: Entidad (LocalBusiness) + Sitio (WebSite), ligados por @id -->
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
       '@id': new URL('/', Astro.site).href + '#business',
       name: 'DAB',
+      alternateName: ['DAB Agencia de IA', 'DAB IA', 'DAB Tecnología'],
+      slogan: 'No te adaptes, evoluciona',
+      knowsAbout: ['Inteligencia artificial', 'Automatización de procesos', 'Chatbots de WhatsApp', 'Landing pages', 'SEO local', 'Agentes de IA'],
       image: new URL('og-image.webp', Astro.site).href,
       logo: new URL('logo.svg', Astro.site).href,
       url: new URL('/', Astro.site).href,
@@ -99,6 +103,15 @@ const {
           closes: '15:00',
         },
       ],
+    })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      '@id': new URL('/', Astro.site).href + '#website',
+      name: 'DAB — dabtech.me',
+      url: new URL('/', Astro.site).href,
+      inLanguage: 'es-MX',
+      publisher: { '@id': new URL('/', Astro.site).href + '#business' },
     })} />
 
     <!-- Calendly Widget CSS -->
